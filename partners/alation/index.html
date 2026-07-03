@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrustLogix + Alation — Turn Data Intelligence into Enforced Policy | TrustLogix</title>
+  <meta name="description" content="Alation defines how data should be governed. TrustLogix makes sure those rules are enforced as real-time access controls." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css?v=268" />
+  <style>
+    /* ─── Partner detail page — WHITE theme, hero matches /platform/trustdspm exactly ─── */
+    .pn-hero { position:relative; padding:7rem 0 4rem; text-align:center; overflow:hidden;
+      background-image:url("../../hero-bg.svg"), linear-gradient(#fff,#f4faf8 60%,#eaf4f3 101%);
+      background-position:50% 0,0 0; background-size:70px,auto; background-repeat:repeat,no-repeat; color:var(--neutral-darkest); }
+    .pn-hero__glow { position:absolute; width:600px; height:600px; bottom:-130px; left:-250px; background-image:radial-gradient(circle closest-side,rgba(111,190,70,.28),transparent); pointer-events:none; }
+    .pn-hero__glow2 { position:absolute; width:520px; height:520px; top:-160px; right:-180px; background-image:radial-gradient(circle closest-side,rgba(8,170,195,.18),transparent); pointer-events:none; }
+    .pn-hero__inner { position:relative; z-index:2; max-width:56rem; margin:0 auto; }
+    .pn-badge { display:inline-flex; align-items:center; gap:.5rem; font-family:var(--font-heading); font-weight:700; font-size:.85rem; letter-spacing:.12em; text-transform:uppercase; color:var(--pine-green); background:rgba(0,115,115,.08); padding:.5rem 1rem; border-radius:99px; margin-bottom:1.25rem; }
+    .pn-badge b { color:var(--mantis); }
+    .pn-hero__title { font-family:var(--font-heading); font-size:3.5rem; font-weight:400; line-height:1.2; margin-bottom:1.5rem; color:var(--neutral-darkest); }
+    .pn-hero__title .grad { font-weight:700; background:var(--grad-brand); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+    .pn-hero__desc { font-size:1rem; line-height:1.5; color:var(--neutral-darkest); max-width:46.5rem; margin:0 auto 2.4rem; }
+    .pn-hero__cta { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .pn-hero__badge-row { display:flex; gap:.75rem; margin-top:1.75rem; flex-wrap:wrap; justify-content:center; }
+    .pn-hero__badge-row img { height:60px; width:auto; }
+    .pn-hero__graphic { width:100%; max-width:80rem; margin:3.5rem auto 0; padding:48px 32px; background:#ffffff; border:1px solid rgba(0,6,6,.04); border-radius:20px; box-shadow:2px 6px 20px #00000021; overflow:hidden; }
+    .pn-hero__graphic img { display:block; width:100%; height:auto; border-radius:20px; }
+    .pn-res-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .pn-res-card { background:#fff; border:1px solid #e5edee; border-radius:18px; overflow:hidden; display:flex; flex-direction:column; transition:box-shadow .25s ease, transform .25s ease; }
+    .pn-res-card:hover { box-shadow:0 18px 44px rgba(12,63,65,.12); transform:translateY(-4px); }
+    .pn-res-card__thumb { aspect-ratio:16/9; overflow:hidden; background:#f4f8f8; }
+    .pn-res-card__thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+    .pn-res-card__body { padding:1.5rem; display:flex; flex-direction:column; gap:.75rem; flex:1; }
+    .pn-res-card__type { font-family:var(--font-heading); font-weight:700; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--pine-green); }
+    .pn-res-card__title { font-family:var(--font-heading); font-weight:700; font-size:1.05rem; line-height:1.35; color:var(--neutral-darkest); }
+    .pn-res-card__link { margin-top:auto; }
+    @media (max-width:860px){ .pn-res-grid{ grid-template-columns:1fr; } }
+
+
+    .pn-sec { padding:5rem 0; }
+    .pn-sec--alt { background:#f4f8f8; }
+    .pn-eyebrow { font-family:var(--font-heading); font-weight:700; font-size:1rem; letter-spacing:.15em; text-transform:uppercase; color:var(--pine-green); margin-bottom:1rem; }
+    .pn-h2 { font-family:var(--font-heading); font-weight:400; font-size:clamp(1.9rem,2.6vw,2.75rem); letter-spacing:-.0325rem; line-height:1.2; color:var(--neutral-darkest); margin-bottom:1rem; }
+    .pn-h2 b { font-weight:700; color:var(--neutral-darkest); }
+    .pn-lead { font-size:1.125rem; line-height:1.7; color:var(--neutral); max-width:52rem; }
+    .pn-head { margin-bottom:2.5rem; }
+
+    .pn-why { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:2.5rem; }
+    .pn-why__item { display:flex; gap:1rem; align-items:flex-start; background:#fff; border:1px solid #e5edee; border-radius:16px; padding:1.4rem 1.6rem; }
+    .pn-why__check { flex:none; width:28px; height:28px; border-radius:50%; background:var(--grad-brand); display:grid; place-items:center; }
+    .pn-why__check svg { width:16px; height:16px; color:#fff; }
+    .pn-why__text { font-size:1rem; line-height:1.6; color:var(--neutral-darkest); }
+    @media (max-width:760px){ .pn-why{ grid-template-columns:1fr; } }
+
+    .pn-value { background:linear-gradient(110deg,#08aac3 0%,#23ad9c 48%,#6fbe46 100%); position:relative; overflow:hidden; }
+    .pn-value::before { content:""; position:absolute; inset:0; opacity:.26; background-image:radial-gradient(circle,#fff 1.2px,transparent 1.2px); background-size:24px 24px; }
+    .pn-value__card { position:relative; z-index:1; background:#fff; border-radius:24px; padding:3.5rem; text-align:center; box-shadow:0 24px 60px rgba(12,63,65,.12); max-width:60rem; margin:0 auto; }
+    .pn-value__title { font-family:var(--font-heading); font-weight:800; font-size:clamp(1.6rem,2.4vw,2.25rem); letter-spacing:-.02em; color:var(--eden); margin-bottom:1rem; }
+    .pn-value__sub { font-size:1.05rem; line-height:1.7; color:var(--neutral); margin-bottom:2rem; }
+    .pn-value__cta { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+    /* module split — matches /platform/trustdspm .dspm-split exactly */
+    .pn-mod { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+    .pn-mod + .pn-mod { margin-top:4.5rem; }
+    .pn-mod--rev .pn-mod__text { order:2; }
+    .pn-mod--rev .pn-mod__img { order:1; }
+    .pn-mod__tag { display:inline-flex; align-items:center; gap:.5rem; font-family:var(--font-heading); font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--pine-green); background:rgba(0,115,115,.08); padding:.45rem .9rem; border-radius:99px; margin-bottom:1rem; }
+    .pn-mod__title { font-family:var(--font-heading); font-weight:400; font-size:40px; line-height:1.2; letter-spacing:-.0325rem; color:var(--neutral-darkest); margin-bottom:1.5rem; }
+    .pn-mod__title b { font-weight:700; }
+    .pn-mod__body { font-size:1.05rem; line-height:1.7; color:var(--neutral); margin-bottom:1.25rem; }
+    .pn-mod__list { list-style:none; display:flex; flex-direction:column; gap:.7rem; }
+    .pn-mod__list li { position:relative; padding-left:1.85rem; font-size:1rem; line-height:1.55; color:var(--neutral-darkest); }
+    .pn-mod__list li::before { content:""; position:absolute; left:0; top:.3rem; width:18px; height:18px; border-radius:50%; background:var(--mantis-lighter); }
+    .pn-mod__list li::after { content:""; position:absolute; left:5px; top:.55rem; width:8px; height:5px; border-left:2px solid var(--pine-green); border-bottom:2px solid var(--pine-green); transform:rotate(-45deg); }
+    .pn-mod__img { position:relative; width:100%; max-width:540px; height:345px; margin:0 auto; padding:24px; border-radius:24px; overflow:hidden; display:flex; align-items:center; justify-content:center; background:linear-gradient(110deg,#08aac3 0%,#23ad9c 48%,#6fbe46 100%); box-shadow:0 20px 50px rgba(12,63,65,.16); }
+    .pn-mod__img::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.28; background-image:radial-gradient(circle,#fff 1.2px,transparent 1.2px); background-size:24px 24px; }
+    .pn-mod__img img { position:relative; z-index:1; display:block; max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.18); }
+    @media (max-width:860px){ .pn-mod{ grid-template-columns:1fr; gap:2rem; } .pn-mod--rev .pn-mod__text,.pn-mod--rev .pn-mod__img{ order:0; } .pn-mod__img{ height:auto; max-width:none; padding:20px; } }
+
+    .pn-testi { background:var(--eden); color:#fff; position:relative; overflow:hidden; }
+    .pn-testi::before { content:""; position:absolute; inset:0; opacity:.06; background-image:radial-gradient(circle,#fff 1.2px,transparent 1.2px); background-size:24px 24px; }
+    .pn-testi__inner { position:relative; z-index:1; max-width:56rem; margin:0 auto; text-align:center; }
+    .pn-testi__mark { font-family:var(--font-heading); font-weight:800; font-size:4rem; line-height:.6; color:rgba(255,255,255,.18); }
+    .pn-testi__text { font-family:var(--font-heading); font-weight:600; font-size:clamp(1.3rem,2vw,1.75rem); line-height:1.5; letter-spacing:-.01em; margin:1rem 0 1.5rem; }
+    .pn-testi__text b { color:var(--mantis); }
+    .pn-testi__attr { font-size:1rem; color:rgba(255,255,255,.7); font-family:var(--font-heading); font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="TrustLogix home">
+        <img src="../../trustlogix-logo.svg" alt="TrustLogix" class="nav__logo-img" width="200" height="34" />
+      </a>
+      <nav class="nav__menu" aria-label="Primary">
+        <div class="nav__item">
+          <a href="/platform" class="nav__link"><span class="nav__swap"><span>Platform</span><span aria-hidden="true">Platform</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/platform" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Our platform architecture, core modules, and benefits.</span></a>
+            <a href="/platform/trustai">– TrustAI</a>
+            <a href="/platform/trustdspm">– TrustDSPM</a>
+            <a href="/platform/trustaccess">– TrustAccess</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/partners" class="nav__link"><span class="nav__swap"><span>Partners</span><span aria-hidden="true">Partners</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/partners" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Introduction to the TrustLogix Interoperable Ecosystem.</span></a>
+            <a href="/partners/snowflake">– Snowflake</a>
+            <a href="/partners/databricks">– Databricks</a>
+            <a href="/partners/microsoft">– Power BI</a>
+            <a href="/partners/aws">– AWS</a>
+            <a href="/partners/alation">– Alation</a>
+            <a href="/partners/collibra">– Collibra</a>
+          </div>
+        </div>
+        <div class="nav__item"><a href="/pricing" class="nav__link"><span class="nav__swap"><span>Pricing</span><span aria-hidden="true">Pricing</span></span></a></div>
+        <div class="nav__item">
+          <a href="/resources" class="nav__link"><span class="nav__swap"><span>Resources</span><span aria-hidden="true">Resources</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/resources" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Resources available to existing and potential customers.</span></a>
+            <a href="/resource-library">– Resource Library</a>
+            <a href="/blog">– The TrustLogix Blog</a>
+            <a href="https://docs.trustlogix.io/">– Documentation</a>
+            <a href="/newsletter">– Newsletter</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/about" class="nav__link"><span class="nav__swap"><span>About</span><span aria-hidden="true">About</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/about" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">About TrustLogix – our culture, values, and more.</span></a>
+            <a href="/events">– Events</a>
+            <a href="/newsroom">– Newsroom</a>
+            <a href="/newsroom/press-releases">– Press Releases</a>
+            <a href="/careers">– Careers</a>
+            <a href="/contact">– Contact</a>
+          </div>
+        </div>
+      </nav>
+      <div class="nav__actions">
+        <a href="/get-started" class="btn btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+        <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="pn-hero">
+      <div class="pn-hero__glow"></div><div class="pn-hero__glow2"></div>
+      <div class="container pn-hero__inner">
+        <span class="pn-badge">TrustLogix <b>+</b> Alation</span>
+        <h1 class="pn-hero__title">Turn <span class="grad">Data Intelligence</span> into Enforced Policy</h1>
+        <p class="pn-hero__desc">Alation defines how data should be governed. TrustLogix makes sure those rules are enforced—turning trusted metadata into real-time access controls and secure data usage across platforms like Snowflake, Databricks, and Power BI.</p>
+      </div>
+      <div class="container">
+        <div class="pn-hero__graphic"><img src="../../logos/live/ref/partners-hero.svg" alt="TrustLogix for Alation" /></div>
+      </div>
+    </section>
+
+    <section class="pn-sec">
+      <div class="container">
+        <div class="pn-head">
+          <p class="pn-eyebrow">Why TrustLogix</p>
+          <h2 class="pn-h2">Why Alation Customers Need <b>TrustLogix</b></h2>
+        </div>
+        <div class="pn-why">
+          <div class="pn-why__item"><span class="pn-why__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span><span class="pn-why__text">Enforce catalog policies across platforms in real time.</span></div>
+          <div class="pn-why__item"><span class="pn-why__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span><span class="pn-why__text">Reduce risk and policy drift with unified governance.</span></div>
+          <div class="pn-why__item"><span class="pn-why__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span><span class="pn-why__text">Automate compliance for HIPAA, GDPR, DORA, and more.</span></div>
+          <div class="pn-why__item"><span class="pn-why__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span><span class="pn-why__text">Maximize catalog value with fast, no-code deployment.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pn-sec pn-sec--alt">
+      <div class="container">
+        <div class="pn-head" style="text-align:center;">
+          <p class="pn-eyebrow">One Platform, Three Modules</p>
+          <h2 class="pn-h2">Make <b>Alation Metadata</b> Actionable Everywhere</h2>
+        </div>
+        <div class="pn-mod">
+                    <div class="pn-mod__text">
+            <span class="pn-mod__tag">TrustAccess</span>
+            <h3 class="pn-mod__title">Enforce Access <b>from Your Catalog</b></h3>
+            <p class="pn-mod__body">Make Alation metadata actionable across your environment.</p>
+            <ul class="pn-mod__list">
+              <li>Use classifications, ownership, and purpose tags to drive no-code access policies.</li>
+              <li>Apply rules across Snowflake, Databricks, Redshift, Power BI, and more.</li>
+              <li>Empower stewards to manage policies while reducing over-permissioning and delays.</li>
+            </ul>
+          </div>
+          <div class="pn-mod__img"><img src="../../logos/live/ref/alation-mod1.webp" alt="TrustAccess for Alation" loading="lazy" /></div>
+        </div>
+
+        <div class="pn-mod pn-mod--rev">
+          <div class="pn-mod__img"><img src="../../logos/live/ref/alation-mod2.webp" alt="TrustDSPM for Alation" loading="lazy" /></div>
+          <div class="pn-mod__text">
+            <span class="pn-mod__tag">TrustDSPM</span>
+            <h3 class="pn-mod__title">Align Risk Detection <b>with Governance Intent</b></h3>
+            <p class="pn-mod__body">Bridge the gap between policy definition and real-world access.</p>
+            <ul class="pn-mod__list">
+              <li>Correlate access activity with catalog metadata to expose misalignment.</li>
+              <li>Detect overlapping roles, excessive access, and drift from defined policies.</li>
+              <li>Prioritize remediation using sensitivity context from Alation.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pn-mod">
+                    <div class="pn-mod__text">
+            <span class="pn-mod__tag">TrustAI</span>
+            <h3 class="pn-mod__title">Govern AI Access <b>with Trusted Metadata</b></h3>
+            <p class="pn-mod__body">Extend Alation-defined policies into AI and ML workflows.</p>
+            <ul class="pn-mod__list">
+              <li>Enforce entitlements based on use case, sensitivity, and geography.</li>
+              <li>Apply masking and row-level controls across catalogued datasets.</li>
+              <li>Monitor how AI tools interact with sensitive data across platforms.</li>
+            </ul>
+          </div>
+          <div class="pn-mod__img"><img src="../../logos/live/ref/alation-mod3.webp" alt="TrustAI for Alation" loading="lazy" /></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quote-section quote--card">
+      <div class="container">
+        <figure class="quote reveal">
+          <img class="quote__icon" src="../../logos/quote-icon.svg" alt="" aria-hidden="true" />
+          <blockquote class="quote__text">TrustLogix runs on top of Snowflake out of band, consuming only metadata without accessing the data. With a <b>single pane of glass</b>, policies are applied automatically—providing real-time protection without manual deployment.</blockquote>
+          <figcaption class="quote__foot">
+            <img class="quote__avatar" src="../../logos/customer-avatar-5.jpg" alt="Seth Youssef" />
+            <div class="quote__info">
+              <div class="quote__author">Seth Youssef</div>
+              <div class="quote__role">Security Field CTO, Snowflake</div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section scheme-light">
+      <div class="container">
+        <div class="res-head reveal">
+          <div class="section-head" style="margin-bottom:0;">
+            <span class="eyebrow">Resources</span>
+            <h2 class="section-head__title">Related <b>Resources</b></h2>
+            <p class="section-head__sub" style="font-size:16px;color:var(--neutral);">Unlock innovation with our latest insights and thought leadership.</p>
+          </div>
+          <a href="/resource-library" class="btn reviews-cta reveal" data-delay="2">Browse Our Resource Library
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="res-track" id="res-track">
+          <a class="res-card reveal" href="/case-studies/modern-data-mesh-in-snowflake-cloud">
+            <div class="res-card__thumb"><img class="res-card__img" src="../../logos/resources/modern-data-mesh.webp" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Case Study</span><span class="res-card__date">JAN 15, 2025</span></div>
+              <h3 class="res-card__title">Securing a Modern Data Mesh in the Snowflake Data Cloud</h3>
+              <p class="res-card__desc">A global mobility vendor used TrustLogix to modernize data, protect sensitive information, and improve compliance.</p>
+              <span class="link-arrow res-card__link">Read More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/datasheets/why-security-teams-replacing-ibm-guardium-trustlogix">
+            <div class="res-card__thumb"><img class="res-card__img" src="../../logos/resources/guardium.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Data Sheet</span><span class="res-card__date">FEB 8, 2025</span></div>
+              <h3 class="res-card__title">Why Security Teams Are Replacing IBM Guardium with TrustLogix</h3>
+              <p class="res-card__desc">IBM Guardium's agent-based architecture wasn't built for cloud. See how TrustLogix replaces legacy DAM.</p>
+              <span class="link-arrow res-card__link">Read More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/datasheets/solution-brief-preemptive-data-security-for-ai-agents">
+            <div class="res-card__thumb"><img class="res-card__img" src="../../logos/resources/trustai-brief.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Solution Brief</span><span class="res-card__date">MAR 22, 2025</span></div>
+              <h3 class="res-card__title">Preemptive Data Security for the Age of AI Agents</h3>
+              <p class="res-card__desc">Stop AI data leaks before they happen with preemptive security and JIT access control.</p>
+              <span class="link-arrow res-card__link">Read More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+        </div>
+        <div class="res-nav">
+          <div class="res-dots" id="res-dots"></div>
+          <div class="res-arrows">
+            <button class="res-arrow" data-dir="-1" aria-label="Previous resources"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"/></svg></button>
+            <button class="res-arrow" data-dir="1" aria-label="Next resources"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-final">
+      <div class="cta-final__card reveal">
+        <div class="cta-final__bg"></div>
+        <img class="cta-final__graphic" src="../../logos/cta-bg-graphic.svg" alt="" aria-hidden="true" />
+        <div class="cta-final__content">
+          <div class="cta-final__left"><h2 class="cta-final__title">Experience TrustLogix in Action</h2></div>
+          <div class="cta-final__right">
+            <p class="cta-final__sub">Schedule a call to discover how TrustLogix can accelerate your AI initiatives with faster, safer data access.</p>
+            <div class="cta-final__buttons">
+              <a href="/get-started" class="btn cta-final__btn cta-final__btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+              <a href="/platform" class="btn cta-final__btn cta-final__btn--secondary"><span class="btn__swap"><span>Our Platform</span><span aria-hidden="true">Our Platform</span></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-final__strip"></div>
+    </section>
+  </main>
+
+  <footer class="footer footer--brand footer--light">
+    <div class="container">
+      <div class="footer__top">
+        <a href="/" class="footer__logo" aria-label="TrustLogix"><img src="../../trustlogix-logo.svg" alt="TrustLogix" width="180" height="31" /></a>
+        <p class="footer__tagline">Unified, secure access to the data that drives AI—so innovation moves quickly, safely.</p>
+        <div class="footer__social">
+          <a href="https://x.com/TrustLogix" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="none"><path d="M17.1761 4H19.9362L13.9061 10.7774L21 20H15.4456L11.0951 14.4066L6.11723 20H3.35544L9.80517 12.7508L3 4H8.69545L12.6279 9.11262L17.1761 4ZM16.2073 18.3754H17.7368L7.86441 5.53928H6.2232L16.2073 18.3754Z" fill="currentColor"/></svg></a>
+          <a href="https://www.linkedin.com/company/trustlogix/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 3C3.67157 3 3 3.67157 3 4.5V19.5C3 20.3284 3.67157 21 4.5 21H19.5C20.3284 21 21 20.3284 21 19.5V4.5C21 3.67157 20.3284 3 19.5 3H4.5ZM8.52076 7.00272C8.52639 7.95897 7.81061 8.54819 6.96123 8.54397C6.16107 8.53975 5.46357 7.90272 5.46779 7.00413C5.47201 6.15897 6.13998 5.47975 7.00764 5.49944C7.88795 5.51913 8.52639 6.1646 8.52076 7.00272ZM12.2797 9.76176H9.7583V18.3216H12.4217V16.9819C12.4203 15.9674 12.4194 14.9532 12.4246 13.9397C12.426 13.6936 12.4372 13.4377 12.5005 13.2028C12.7381 12.3253 13.5271 11.7586 14.4074 11.8979C14.9727 11.9864 15.3467 12.3141 15.5042 12.8471C15.6013 13.1803 15.6449 13.5389 15.6491 13.8863C15.6589 15.9815 15.6573 17.0294 15.6561 18.1388V18.3202H18.328V16.7591C18.327 15.6293 18.3264 14.5001 18.3294 13.3702C18.3308 12.8597 18.276 12.3563 18.1508 11.8627C17.9638 11.1286 17.5771 10.5211 16.9485 10.0824C16.5027 9.77019 16.0133 9.5691 15.4663 9.5466C15.404 9.54401 14.7141 9.50673 14.4467 9.56066C13.6817 9.71394 13.0096 10.0641 12.5019 10.6814C12.4429 10.7522 12.3852 10.8241 12.2991 10.9315L12.2797 10.9557V9.76176ZM5.68164 18.3244H8.33242V9.76733H5.68164V18.3244Z" fill="currentColor"/></svg></a>
+          <a href="http://www.youtube.com/@trustlogix" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.5686 4.77345C21.5163 5.02692 22.2555 5.76903 22.5118 6.71673C23.1821 9.42042 23.1385 14.5321 22.5259 17.278C22.2724 18.2257 21.5303 18.965 20.5826 19.2213C17.9071 19.8831 5.92356 19.8015 3.40294 19.2213C2.45524 18.9678 1.71595 18.2257 1.45966 17.278C0.827391 14.7011 0.871044 9.25144 1.44558 6.73081C1.69905 5.78311 2.44116 5.04382 3.38886 4.78753C6.96561 4.0412 19.2956 4.282 20.5686 4.77345ZM9.86682 8.70227L15.6122 11.9974L9.86682 15.2925V8.70227Z" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col"><h5>Platform</h5><a href="/platform">Platform Overview</a><a href="/platform/trustdspm">TrustDSPM</a><a href="/platform/trustaccess">TrustAccess</a><a href="/platform/trustai">TrustAI</a></div>
+        <div class="footer__col"><h5>Partners</h5><a href="/partners">Partners Overview</a><a href="/partners/snowflake">Snowflake</a><a href="/partners/databricks">Databricks</a><a href="/partners/microsoft">Power BI</a><a href="/partners/aws">AWS</a><a href="/partners/alation">Alation</a><a href="/partners/collibra">Collibra</a></div>
+        <div class="footer__col"><h5>Resources</h5><a href="/resources">Resources Overview</a><a href="/resource-library">Resource Library</a><a href="/blog">The TrustLogix Blog</a><a href="https://docs.trustlogix.io/">Documentation</a><a href="/newsletter">Newsletter</a></div>
+        <div class="footer__col"><h5>About</h5><a href="/about">About TrustLogix</a><a href="/newsroom">Newsroom</a><a href="/newsroom/press-releases">Press Releases</a><a href="/contact">Contact</a><a href="#">Cookie Preferences</a></div>
+      </div>
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <span class="footer__credit">© 2026 TrustLogix. All rights reserved.</span>
+        <div class="footer__legal"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-service">Terms of Service</a><a href="/security-pledge">Security Pledge</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+  <script>(function(){var nav=document.getElementById('nav');function onScroll(){nav.classList.toggle('nav--solid',window.scrollY>20);}window.addEventListener('scroll',onScroll,{passive:true});onScroll();})();</script>
+</body>
+</html>

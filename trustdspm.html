@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrustDSPM — Data Security Posture Management with Business Context | TrustLogix</title>
+  <meta name="description" content="TrustDSPM continuously discovers data risk, right-sizes entitlements to least privilege, and turns compliance into living evidence—with the business context to know what actually matters. Proxyless, agentless, live in under an hour." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="trustlogix-theme.css" />
+  <style>
+  /* ====== TrustDSPM page-specific (tokens only) ====== */
+
+  /* Hero: two-column on this page (copy left, console right) */
+  .dspm-hero { text-align: left; padding-bottom: 5rem; }
+  .dspm-hero .hero__inner { max-width: var(--container-large); }
+  .dspm-hero__grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 4rem; align-items: center; }
+  .dspm-hero__sub { margin-left: 0; }
+  .dspm-hero__cta { justify-content: flex-start; }
+  .dspm-hero__trust { margin-top: 2rem; display: flex; gap: 2rem; flex-wrap: wrap; }
+  .dspm-hero__trust div { display: flex; flex-direction: column; }
+  .dspm-hero__trust b {
+    font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; line-height: 1;
+    background: var(--grad-brand); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .dspm-hero__trust span { font-size: 0.85rem; color: var(--neutral); margin-top: 0.35rem; }
+
+  /* Posture console mock */
+  .console {
+    background: #fff; border: 1px solid var(--card-border); border-radius: var(--card-radius);
+    box-shadow: var(--shadow-card); overflow: hidden;
+  }
+  .console__bar { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.1rem; border-bottom: 1px solid var(--card-border); background: #f4f8f8; }
+  .console__bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--neutral-lighter); }
+  .console__bar i:first-child { background: var(--mantis); }
+  .console__bar span { margin-left: 0.5rem; font-family: var(--font-heading); font-weight: 700; font-size: 0.85rem; color: var(--neutral); letter-spacing: 0.02em; }
+  .console__body { padding: 1.5rem; display: grid; gap: 1.25rem; }
+  .console__top { display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: center; }
+  .gauge { position: relative; width: 132px; height: 132px; display: grid; place-items: center; }
+  .gauge svg { transform: rotate(-90deg); }
+  .gauge__num { position: absolute; text-align: center; }
+  .gauge__num b { display: block; font-family: var(--font-heading); font-weight: 800; font-size: 2.1rem; line-height: 1; color: var(--neutral-darkest); }
+  .gauge__num span { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--neutral); }
+  .console__legend { display: grid; gap: 0.65rem; }
+  .lg-row { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--neutral-darkest); }
+  .lg-row b { font-family: var(--font-heading); margin-left: auto; }
+  .dot { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+  .dot--red { background: #d8584f; } .dot--amber { background: #e0a32e; } .dot--green { background: var(--mantis); }
+  .findings { border-top: 1px solid var(--card-border); padding-top: 1.1rem; display: grid; gap: 0.7rem; }
+  .finding { display: flex; align-items: center; gap: 0.75rem; padding: 0.7rem 0.85rem; border: 1px solid var(--card-border); border-radius: var(--r-xxs); background: #fff; }
+  .finding__tag { font-family: var(--font-heading); font-weight: 700; font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 4px; flex: none; }
+  .finding__tag--high { color: #b23b33; background: #f9e3e1; }
+  .finding__tag--med { color: #8a6410; background: #fbf0d6; }
+  .finding__txt { font-size: 0.85rem; color: var(--neutral-darkest); line-height: 1.35; }
+  .finding__txt b { font-weight: 700; }
+  .finding__fix { margin-left: auto; flex: none; font-family: var(--font-heading); font-weight: 700; font-size: 0.72rem; color: var(--pine-green); white-space: nowrap; }
+
+  /* How it works — 4 numbered steps */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; counter-reset: step; }
+  .step { counter-increment: step; position: relative; padding: 2rem 1.5rem; background: #fff; border: 1px solid var(--card-border); border-radius: var(--card-radius); display: flex; flex-direction: column; gap: 0.6rem; }
+  .step::before { content: "0" counter(step); font-family: var(--font-heading); font-weight: 800; font-size: 1rem; background: var(--grad-brand); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .step h4 { font-size: 1.15rem; }
+  .step p { font-size: 0.9rem; color: var(--neutral); line-height: 1.5; }
+  .step__arrow { position: absolute; top: 50%; right: -0.65rem; transform: translateY(-50%); width: 1.3rem; height: 1.3rem; color: var(--neutral-lighter); z-index: 2; }
+  .step:last-child .step__arrow { display: none; }
+
+  /* Before / After over-privilege */
+  .ba { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.5rem; align-items: stretch; }
+  .ba__card { border: 1px solid var(--card-border); border-radius: var(--card-radius); overflow: hidden; background: #fff; }
+  .ba__head { padding: 1rem 1.5rem; font-family: var(--font-heading); font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; }
+  .ba__card--before .ba__head { background: #f9e3e1; color: #b23b33; }
+  .ba__card--after .ba__head { background: var(--mantis-lighter); color: #3e7a26; }
+  .ba__list { padding: 1.25rem 1.5rem; display: grid; gap: 0.75rem; }
+  .ba__item { display: flex; align-items: center; gap: 0.7rem; font-size: 0.92rem; color: var(--neutral-darkest); }
+  .ba__item svg { width: 18px; height: 18px; flex: none; }
+  .ba__mid { display: grid; place-items: center; }
+  .ba__mid svg { width: 2.5rem; height: 2.5rem; color: var(--pine-green); }
+
+  @media (max-width: 1024px) {
+    .dspm-hero__grid { grid-template-columns: 1fr; gap: 3rem; }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .step__arrow { display: none; }
+  }
+  @media (max-width: 768px) {
+    .ba { grid-template-columns: 1fr; }
+    .ba__mid svg { transform: rotate(90deg); }
+    .steps { grid-template-columns: 1fr; }
+    .console__top { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="TrustLogix home">
+        <img src="trustlogix-logo.svg" alt="TrustLogix" class="nav__logo-img" width="200" height="34" />
+      </a>
+      <nav class="nav__menu" aria-label="Primary">
+        <div class="nav__item">
+          <a href="/platform" class="nav__link">
+            <span class="nav__swap"><span>Platform</span><span aria-hidden="true">Platform</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M256 406c-10 0-18-4-26-11L10 166C-3 152-3 130 11 116s37-13 50 1l195 203L451 117c13-14 36-14 50 0s14 36 1 49L282 395c-7 7-16 11-26 11Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/platform" class="nav__dropdown-overview">
+              <span class="nav__menu-label">Overview</span>
+              <span class="nav__dropdown-desc">Our platform architecture, core modules, and benefits.</span>
+            </a>
+            <a href="/platform/trustai">– TrustAI</a>
+            <a href="/platform/trustapp">– TrustApp</a>
+            <a href="/platform/trustdspm">– TrustDSPM</a>
+            <a href="/platform/trustaccess">– TrustAccess</a>
+          </div>
+        </div>
+        <div class="nav__item"><a href="#" class="nav__link"><span class="nav__swap"><span>Partners</span><span aria-hidden="true">Partners</span></span></a></div>
+        <div class="nav__item"><a href="#" class="nav__link"><span class="nav__swap"><span>Pricing</span><span aria-hidden="true">Pricing</span></span></a></div>
+        <div class="nav__item"><a href="#" class="nav__link"><span class="nav__swap"><span>Resources</span><span aria-hidden="true">Resources</span></span></a></div>
+        <div class="nav__item"><a href="#" class="nav__link"><span class="nav__swap"><span>About</span><span aria-hidden="true">About</span></span></a></div>
+      </nav>
+      <div class="nav__actions">
+        <a href="#" class="btn btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+        <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero dspm-hero">
+      <div class="hero__glow"></div>
+      <div class="container hero__inner">
+        <div class="dspm-hero__grid">
+          <div>
+            <span class="hero__badge reveal"><b>TrustDSPM</b> · Data Security Posture Management</span>
+            <h1 class="hero__title reveal" data-delay="1">See and shrink your <span class="grad">data security posture</span> risk—before it's an incident</h1>
+            <p class="hero__sub dspm-hero__sub reveal" data-delay="2">Most DSPM tools drown you in findings without telling you which ones matter. TrustDSPM adds the <b>business context</b>—continuously discovering risk, recommending least-privilege policies, and turning compliance into living evidence across Snowflake, Databricks, Power BI and beyond.</p>
+            <div class="hero__cta dspm-hero__cta reveal" data-delay="3">
+              <a href="#" class="btn btn--primary btn--lg"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+              <a href="#" class="btn btn--ghost btn--lg">Schedule a Call</a>
+            </div>
+            <div class="dspm-hero__trust reveal" data-delay="3">
+              <div><b>&lt; 1 hr</b><span>To first posture insight</span></div>
+              <div><b>Proxyless</b><span>Agentless, at the source</span></div>
+              <div><b>99%</b><span>Less manual policy work</span></div>
+            </div>
+          </div>
+
+          <!-- Posture console mock -->
+          <div class="console reveal" data-delay="2" aria-label="TrustDSPM posture dashboard preview">
+            <div class="console__bar"><i></i><i></i><i></i><span>TrustDSPM · Posture</span></div>
+            <div class="console__body">
+              <div class="console__top">
+                <div class="gauge">
+                  <svg width="132" height="132" viewBox="0 0 132 132">
+                    <circle cx="66" cy="66" r="58" fill="none" stroke="#eef3f3" stroke-width="12" />
+                    <circle cx="66" cy="66" r="58" fill="none" stroke="#6fbe46" stroke-width="12" stroke-linecap="round" stroke-dasharray="364" stroke-dashoffset="84" />
+                  </svg>
+                  <div class="gauge__num"><b>77</b><span>Posture</span></div>
+                </div>
+                <div class="console__legend">
+                  <div class="lg-row"><span class="dot dot--red"></span>Critical exposures<b>3</b></div>
+                  <div class="lg-row"><span class="dot dot--amber"></span>Over-privileged roles<b>28</b></div>
+                  <div class="lg-row"><span class="dot dot--green"></span>Right-sized this week<b>+142</b></div>
+                </div>
+              </div>
+              <div class="findings">
+                <div class="finding">
+                  <span class="finding__tag finding__tag--high">High</span>
+                  <span class="finding__txt"><b>FINANCE_PII</b> readable by 1,204 users via inherited role</span>
+                  <span class="finding__fix">Right-size →</span>
+                </div>
+                <div class="finding">
+                  <span class="finding__tag finding__tag--med">Med</span>
+                  <span class="finding__txt"><b>analytics_svc</b> has unused write grants on 9 schemas</span>
+                  <span class="finding__fix">Revoke →</span>
+                </div>
+                <div class="finding">
+                  <span class="finding__tag finding__tag--med">Med</span>
+                  <span class="finding__txt">Column <b>ssn</b> unmasked for 3 BI workspaces</span>
+                  <span class="finding__fix">Apply mask →</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRUSTED LOGOS ============ -->
+    <section class="logos-section scheme-light">
+      <div class="container">
+        <p class="logos__label reveal">Securing data posture across <b>leading enterprises</b></p>
+      </div>
+      <div class="logos-marquee reveal" data-delay="1">
+        <div class="logos-track">
+          <img class="logos-logo" src="logos/snowflake.webp" alt="Snowflake" />
+          <img class="logos-logo" src="logos/databricks.webp" alt="Databricks" />
+          <img class="logos-logo" src="logos/power-bi.webp" alt="Microsoft Power BI" />
+          <img class="logos-logo" src="logos/aws.png" alt="AWS" />
+          <img class="logos-logo" src="logos/azure.webp" alt="Microsoft Azure" />
+          <img class="logos-logo" src="logos/bedrock.png" alt="Amazon Bedrock" />
+          <img class="logos-logo" src="logos/langgraph.png" alt="LangGraph" />
+          <img class="logos-logo" src="logos/snowflake.webp" alt="" aria-hidden="true" />
+          <img class="logos-logo" src="logos/databricks.webp" alt="" aria-hidden="true" />
+          <img class="logos-logo" src="logos/power-bi.webp" alt="" aria-hidden="true" />
+          <img class="logos-logo" src="logos/aws.png" alt="" aria-hidden="true" />
+          <img class="logos-logo" src="logos/azure.webp" alt="" aria-hidden="true" />
+          <img class="logos-logo" src="logos/bedrock.png" alt="" aria-hidden="true" />
+          <img class="logos-logo" src="logos/langgraph.png" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE CHALLENGE (statement band) ============ -->
+    <section class="section scheme-light">
+      <div class="container statement">
+        <div class="statement__col">
+          <span class="eyebrow reveal">The Challenge</span>
+          <h2 class="statement__title reveal" style="margin-top:1rem;">Posture tools find <b>everything</b>—and tell you what matters <b>nowhere</b></h2>
+        </div>
+        <div class="statement__col">
+          <p class="statement__desc reveal" data-delay="1">As data spreads across the lakehouse, entitlements pile up, policies drift, and every scanner hands you thousands of context-free alerts. Without knowing which data is sensitive to <em>your</em> business—or who actually needs it—teams can't tell a real exposure from noise. Risk grows, audits drag, and least privilege stays a slide, not a reality.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CAPABILITIES (3) ============ -->
+    <section class="section bg-pattern">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">What TrustDSPM Does</span>
+          <h2 class="section-head__title">Discover risk, right-size access, <b>prove compliance</b>—continuously</h2>
+          <p class="section-head__sub">One control plane that understands the business context of your data, so every recommendation is one you can actually act on.</p>
+        </div>
+        <div class="cards-grid cards-grid--3">
+          <!-- 1 -->
+          <article class="capability reveal">
+            <div class="capability__icon"><img src="logos/cap-graph.svg" alt="" /></div>
+            <h4 class="capability__title">Continuous Risk Discovery</h4>
+            <ul class="capability__list">
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div><div class="cap-item__label">Sensitive data, classified in context</div><p class="cap-item__desc">Auto-discover and tag PII, financial and regulated data by business meaning.</p></div>
+              </li>
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div><div class="cap-item__label">Over-privileged access exposed</div><p class="cap-item__desc">See who can reach what—and how—across every platform.</p></div>
+              </li>
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div><div class="cap-item__label">Posture scored, not just listed</div><p class="cap-item__desc">A prioritized score that ranks exposures by real business impact.</p></div>
+              </li>
+            </ul>
+          </article>
+          <!-- 2 -->
+          <article class="capability reveal" data-delay="1">
+            <div class="capability__icon"><img src="logos/cap-bolt.svg" alt="" /></div>
+            <h4 class="capability__title">Least-Privilege Recommendations</h4>
+            <ul class="capability__list">
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div><div class="cap-item__label">Right-size entitlements automatically</div><p class="cap-item__desc">Get specific, ready-to-apply policy fixes—not vague advice.</p></div>
+              </li>
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div><div class="cap-item__label">Row- & column-level masking</div><p class="cap-item__desc">Recommend fine-grained masking and filtering where it's needed.</p></div>
+              </li>
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div><div class="cap-item__label">Stop policy drift before it starts</div><p class="cap-item__desc">Stay aligned as users, data and platforms keep changing.</p></div>
+              </li>
+            </ul>
+          </article>
+          <!-- 3 -->
+          <article class="capability reveal" data-delay="2">
+            <div class="capability__icon"><img src="logos/cap-encrypted.svg" alt="" /></div>
+            <h4 class="capability__title">Compliance, Made Continuous</h4>
+            <ul class="capability__list">
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div><div class="cap-item__label">Audit-ready evidence on demand</div><p class="cap-item__desc">Living proof for SOC 2, GDPR, HIPAA and NIST—no fire drills.</p></div>
+              </li>
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div><div class="cap-item__label">Map controls to frameworks</div><p class="cap-item__desc">See exactly which policies satisfy which requirements.</p></div>
+              </li>
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div><div class="cap-item__label">Feeds your SIEM</div><p class="cap-item__desc">Stream posture signals to Splunk, Sentinel and Chronicle.</p></div>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BEFORE / AFTER (over-privilege) ============ -->
+    <section class="section scheme-light">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">From Risk to Right-Sized</span>
+          <h2 class="section-head__title">Turn over-privileged sprawl into <b>least privilege</b></h2>
+        </div>
+        <div class="ba reveal" data-delay="1">
+          <div class="ba__card ba__card--before">
+            <div class="ba__head">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+              Before · uncontrolled
+            </div>
+            <div class="ba__list">
+              <div class="ba__item"><svg viewBox="0 0 24 24" fill="none" stroke="#d8584f" stroke-width="2"><path d="m18 6-12 12M6 6l12 12"/></svg>1,204 users inherit access to FINANCE_PII</div>
+              <div class="ba__item"><svg viewBox="0 0 24 24" fill="none" stroke="#d8584f" stroke-width="2"><path d="m18 6-12 12M6 6l12 12"/></svg>Service accounts with unused write grants</div>
+              <div class="ba__item"><svg viewBox="0 0 24 24" fill="none" stroke="#d8584f" stroke-width="2"><path d="m18 6-12 12M6 6l12 12"/></svg>SSN columns exposed to BI workspaces</div>
+              <div class="ba__item"><svg viewBox="0 0 24 24" fill="none" stroke="#d8584f" stroke-width="2"><path d="m18 6-12 12M6 6l12 12"/></svg>Compliance evidence assembled by hand</div>
+            </div>
+          </div>
+          <div class="ba__mid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="ba__card ba__card--after">
+            <div class="ba__head">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+              After · TrustDSPM
+            </div>
+            <div class="ba__list">
+              <div class="ba__item"><svg viewBox="0 0 24 24" fill="none" stroke="#3e7a26" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Access scoped to 38 users who actually need it</div>
+              <div class="ba__item"><svg viewBox="0 0 24 24" fill="none" stroke="#3e7a26" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Idle grants revoked, least privilege enforced</div>
+              <div class="ba__item"><svg viewBox="0 0 24 24" fill="none" stroke="#3e7a26" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Column-level masking applied automatically</div>
+              <div class="ba__item"><svg viewBox="0 0 24 24" fill="none" stroke="#3e7a26" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Audit evidence generated continuously</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="section scheme-grey">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">How It Works</span>
+          <h2 class="section-head__title">From connection to continuous posture in <b>four steps</b></h2>
+          <p class="section-head__sub">Proxyless and agentless—nothing sits in your data path. Connect and you're scoring posture in under an hour.</p>
+        </div>
+        <div class="steps reveal" data-delay="1">
+          <div class="step">
+            <h4>Connect</h4>
+            <p>Link Snowflake, Databricks, Power BI, AWS and more—cloud-native, nothing in the data path.</p>
+            <svg class="step__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+          <div class="step">
+            <h4>Discover</h4>
+            <p>Classify sensitive data and map every entitlement to its real business context.</p>
+            <svg class="step__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+          <div class="step">
+            <h4>Recommend</h4>
+            <p>Score posture and surface ready-to-apply least-privilege policy fixes, ranked by impact.</p>
+            <svg class="step__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+          <div class="step">
+            <h4>Prove</h4>
+            <p>Enforce through TrustAccess and generate living compliance evidence—automatically.</p>
+            <svg class="step__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BY THE NUMBERS ============ -->
+    <section class="section scheme-light">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Proven at Enterprise Scale</span>
+          <h2 class="section-head__title">Posture you can <b>measure</b></h2>
+        </div>
+        <div class="metrics reveal" data-delay="1">
+          <div class="metric"><div class="metric__value">27 TB+</div><div class="metric__title">Enterprise data secured</div><p class="metric__sub">Across the lakehouse and BI layer.</p></div>
+          <div class="metric"><div class="metric__value">350K+</div><div class="metric__title">Employees protected</div><p class="metric__sub">Through right-sized, business-aware policy.</p></div>
+          <div class="metric"><div class="metric__value">10M+</div><div class="metric__title">Permissions automated</div><p class="metric__sub">Continuously evaluated and kept in line.</p></div>
+          <div class="metric"><div class="metric__value">99%</div><div class="metric__title">Less manual policy work</div><p class="metric__sub">From slideware least-privilege to reality.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURE QUOTE ============ -->
+    <section class="section quote-section scheme-dark">
+      <div class="container">
+        <figure class="quote">
+          <img class="quote__icon" src="logos/quote-icon.svg" alt="" />
+          <blockquote class="quote__text">For the first time we can see our entire data security <b>posture in business terms</b>—and act on it. TrustDSPM cut months of manual entitlement reviews down to an afternoon, and our audits stopped being fire drills.</blockquote>
+          <figcaption class="quote__foot">
+            <div class="quote__info">
+              <span class="quote__author">VP, Information Security</span>
+              <span class="quote__role">Global Financial Services Enterprise</span>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="cta-final">
+      <div class="cta-final__card">
+        <div class="cta-final__bg"></div>
+        <div class="cta-final__content">
+          <div class="cta-final__left">
+            <h2 class="cta-final__title">See your data security posture in under an hour</h2>
+            <p class="cta-final__sub">Schedule a call to discover how TrustDSPM turns context-free findings into least privilege you can prove.</p>
+          </div>
+          <div class="cta-final__right">
+            <div class="cta-final__buttons">
+              <a href="#" class="btn cta-final__btn cta-final__btn--primary">Get Started</a>
+              <a href="#" class="btn cta-final__btn cta-final__btn--secondary">Schedule a Call</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-final__strip"></div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer footer--brand">
+    <div class="container">
+      <div class="footer__top">
+        <a class="footer__logo"><img src="trustlogix-white.svg" alt="TrustLogix" /></a>
+        <p class="footer__tagline">Accelerate your enterprise with AI-ready data access.</p>
+        <div class="footer__social"><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v16H4zM10 9h4v2a4 4 0 0 1 7 3v6h-4v-5a2 2 0 0 0-4 0v5h-4z"/></svg></a></div>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col"><h5>Platform</h5><a href="/platform">Platform Overview</a><a href="/platform/trustdspm">TrustDSPM</a><a href="/platform/trustapp">TrustApp</a><a href="/platform/trustaccess">TrustAccess</a><a href="/platform/trustai">TrustAI</a></div>
+        <div class="footer__col"><h5>Solutions</h5><a href="#">Snowflake</a><a href="#">Databricks</a><a href="#">Power BI</a></div>
+        <div class="footer__col"><h5>Resources</h5><a href="#">Blog</a><a href="#">Library</a><a href="#">Docs</a></div>
+        <div class="footer__col"><h5>Company</h5><a href="#">About</a><a href="#">Careers</a><a href="#">Contact</a></div>
+      </div>
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <span>© 2026 TrustLogix. All rights reserved.</span>
+        <div class="footer__legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

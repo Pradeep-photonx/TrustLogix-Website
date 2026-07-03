@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partners — Secure and Scalable Data Integrations | TrustLogix</title>
+  <meta name="description" content="Unify data visibility, policy enforcement, and AI protection through a proxyless, agentless, cloud-native architecture that activates in minutes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css?v=268" />
+  <style>
+    /* ─── Platform page styles ─── */
+    .quote--flat {
+      background-color: var(--eden) !important;
+      background-image: url("../logos/rhombus-tile.svg") !important;
+      background-size: 26px 26px !important;
+      background-repeat: repeat !important;
+      background-position: top left !important;
+      padding: 80px 0 !important;
+    }
+    .quote--flat::before { display: none !important; }
+    .quote--flat .quote {
+      position: relative;
+      background: #134749;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      padding: 54px 60px;
+      overflow: hidden;
+    }
+    .quote--flat .quote > * { position: relative; z-index: 1; }
+    .quote--flat .quote__icon { width: 50px; }
+    .quote--flat .quote__text {
+      font-weight: 400 !important;
+      color: rgba(255,255,255,.85) !important;
+      font-size: 24px;
+      line-height: 1.6;
+    }
+    .quote--flat .quote__text b { font-weight: 700 !important; color: #fff !important; }
+
+    /* transparent nav handled by .nav--transparent component in styles.css */
+
+    /* HERO — full 100vh */
+    .plat-hero {
+      background: linear-gradient(110deg, #08aac3 0%, #23ad9c 48%, #6fbe46 100%);
+      color: #fff;
+      padding: 112px 0;
+      position: relative; overflow: hidden;
+      text-align: center;
+    }
+    .plat-hero::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .28;
+      background-image: radial-gradient(circle, #fff 1.2px, transparent 1.2px);
+      background-size: 24px 24px;
+    }
+    .plat-hero__inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
+    .plat-hero__head { max-width: 56rem; margin: 0 auto; }
+    .plat-hero__badge {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-family: var(--font-heading); font-weight: 700; font-size: 16px;
+      letter-spacing: .1em; text-transform: uppercase;
+      background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35); backdrop-filter: blur(4px);
+      padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 16px;
+      color: #ffffff;
+    }
+    .plat-hero__badge b { color: #fff; }
+    .plat-hero__title {
+      font-family: var(--font-heading); font-weight: 800;
+      font-size: clamp(2.4rem, 4vw, 3.5rem); line-height: 1.1;
+      letter-spacing: -.02em; margin-bottom: 1.5rem; color: #fff;
+    }
+    .plat-hero__title .grad { background: linear-gradient(120deg,#6fbe46,#23ad9c 50%,#08aac3); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .plat-hero__desc { font-size: 16px; line-height: 1.7; color: #ffffff; margin: 0 auto 0; max-width: 46.5rem; }
+    .plat-hero__img {
+      width: 100%;
+      max-width: 80rem;
+      margin: 3.5rem auto 0;
+      padding: 0;
+      background: #ffffff;
+      border: 1px solid rgba(0, 6, 6, 0.04);
+      border-radius: 20px;
+      box-shadow: 2px 6px 20px #00000021;
+      overflow: hidden;
+    }
+    .plat-hero__img img { display: block; width: 100%; height: auto; border-radius: 20px; }
+    @media (max-width: 768px) { .plat-hero__img { margin-top: 2.5rem; } }
+
+    /* SHARED — STANDARDIZED SPACING */
+    .plat-section { padding: 5rem 0; }
+    .plat-diagram { margin-top: 2rem; background: #fff; padding: 42px; border-radius: 24px; border: 1px solid #e5edee; }
+    .plat-diagram img { width: 100%; max-width: none; height: auto; display: block; border-radius: 12px; }
+    .plat-section--alt { background: #f4f8f8; }
+    .plat-eyebrow { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; letter-spacing: .15em; text-transform: uppercase; color: var(--pine-green); margin-bottom: 16px; }
+    .plat-h2 { font-family: var(--font-heading); font-weight: 800; font-size: clamp(2rem, 2.8vw, 2.75rem); letter-spacing: -.02em; line-height: 1.12; color: var(--neutral-darkest); margin-bottom: 1rem; }
+    .plat-lead { font-size: 1.125rem; line-height: 1.7; color: var(--neutral); max-width: 52rem; margin-top: 0; }
+    .plat-section-head { margin-bottom: 2rem; }
+    .plat-section-head--c { text-align: center; }
+    .plat-section-head--c .plat-lead { margin: 0 auto; }
+
+    /* MODULES — gradient-tile icon with white glyph */
+    .product-card__head { display: flex; align-items: center; gap: .9rem; margin-bottom: .75rem; }
+    .product-card__head .product-card__name { margin: 0; font-size: 24px; }
+    .product-card__icon {
+      width: 60px; height: 60px; border-radius: 16px; margin-bottom: 0;
+      background: linear-gradient(135deg,#6fbe46,#23ad9c 50%,#08aac3) !important;
+      -webkit-mask-image: none !important; mask-image: none !important;
+      display: grid; place-items: center;
+    }
+    .product-card__icon::before {
+      content: ""; width: 34px; height: 34px; background: #fff;
+      -webkit-mask-image: var(--icon); mask-image: var(--icon);
+      -webkit-mask-size: contain; mask-size: contain;
+      -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+      -webkit-mask-position: center; mask-position: center;
+    }
+    .modules-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .mod-card {
+      background: var(--eden); border-radius: 20px; padding: 2.25rem 2rem;
+      display: flex; flex-direction: column; gap: 1rem; position: relative; overflow: hidden;
+      transition: transform .3s;
+    }
+    .mod-card:hover { transform: translateY(-5px); }
+    .mod-card--access { background: linear-gradient(135deg, #08aac3 0%, #6fbe46 100%); }
+    .mod-card__icon { width: 52px; height: 52px; }
+    .mod-card__name { font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; color: #fff; }
+    .mod-card__subtitle { font-family: var(--font-heading); font-weight: 600; font-size: 1rem; color: #ffffff; line-height: 1.4; }
+    .mod-card__desc { font-size: 1rem; color: #ffffff; line-height: 1.6; flex: 1; }
+    .mod-card__link { margin-top: .5rem; font-family: var(--font-heading); font-weight: 700; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; color: #ffffff; text-decoration: none; display: inline-flex; align-items: center; gap: .4rem; }
+    .mod-card__link:hover { color: #fff; }
+
+    /* TESTIMONIAL — new design */
+    .testi-new {
+      background: #fff; border: 1px solid #e5edee; border-radius: 24px;
+      padding: 3rem 3.5rem; display: grid; grid-template-columns: 1fr auto;
+      gap: 3rem; align-items: center; position: relative; overflow: hidden;
+    }
+    .testi-new::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: linear-gradient(180deg,#6fbe46,#23ad9c,#08aac3); border-radius: 4px 0 0 4px; }
+    .testi-new__quote { font-family: var(--font-heading); font-weight: 800; font-size: 4rem; line-height: .8; color: #e5edee; margin-bottom: 1rem; }
+    .testi-new__text { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 600; line-height: 1.5; color: var(--eden); margin-bottom: 1.5rem; letter-spacing: -.01em; }
+    .testi-new__attr { font-size: 1rem; color: var(--muted); font-style: italic; }
+    .testi-new__badge {
+      flex: none; background: #f4f8f8; border: 1px solid #e5edee;
+      border-radius: 16px; padding: 1.5rem; text-align: center;
+      min-width: 200px;
+    }
+    .testi-new__badge-label { font-family: var(--font-heading); font-weight: 700; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--pine-green); margin-bottom: .5rem; }
+    .testi-new__badge-name { font-family: var(--font-heading); font-weight: 800; font-size: 1rem; color: var(--eden); line-height: 1.3; }
+    .testi-new__badge-year { font-size: .85rem; color: var(--neutral); margin-top: .25rem; }
+
+    /* ENTERPRISE DATA PROTECTION — capability card style (like our Why TrustLogix) */
+    .protect-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .protect-grid--4 { grid-template-columns: repeat(4,1fr); }
+    @media (max-width: 1024px) { .protect-grid--4 { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 560px) { .protect-grid--4 { grid-template-columns: 1fr; } }
+    .protect-card {
+      border: 1.5px solid transparent; border-radius: 18px;
+      background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg, rgba(111,190,70,.45), rgba(35,173,156,.45) 45%, rgba(8,170,195,.45)) border-box;
+      padding: 2rem; display: flex; flex-direction: column; gap: 1rem;
+      align-items: center; text-align: center;
+    }
+    .protect-card__icon-wrap { background: transparent; display: grid; place-items: center; }
+    .protect-card__icon-wrap svg { width: 40px; height: 40px; }
+    .protect-card__title { font-family: var(--font-heading); font-weight: 700; font-size: 20px; color: var(--neutral-darkest); }
+    .protect-card__desc { font-size: 1rem; color: var(--neutral-darkest); line-height: 1.65; }
+
+    /* EXPLORE OUR PARTNERS — filterable tabs + grid (reference) */
+    .epd { display: grid; grid-template-columns: 300px 1fr; gap: 2.5rem; align-items: start; margin-top: 3.5rem; }
+    .epd__tabs { display: flex; flex-direction: column; gap: .75rem; }
+    .epd__tab {
+      text-align: left; padding: 1rem 1.4rem; border-radius: 16px;
+      background: #f4f8f8; border: 0;
+      font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem;
+      color: var(--neutral-darkest); cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      transition: background .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+    .epd__tab .chev { font-size: 1.3rem; line-height: 1; opacity: .4; transition: opacity .2s ease; }
+    .epd__tab:hover { background: #e9f1f1; }
+    .epd__tab.is-active { background: var(--grad-brand); color: #fff; box-shadow: 0 12px 26px rgba(12,63,65,.18); transform: translateX(4px); }
+    .epd__tab.is-active .chev { opacity: 1; }
+    .epd__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-height: 620px; overflow-y: auto; padding: 24px; box-sizing: border-box; }
+    .epd__grid::-webkit-scrollbar { width: 8px; }
+    .epd__grid::-webkit-scrollbar-thumb { background: #d8e2e2; border-radius: 99px; }
+    .epd__grid::-webkit-scrollbar-track { background: transparent; }
+
+    /* SOLUTION INTEGRATORS */
+    .sintg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .sintg-card { background: #f5f7f7; border: 1px solid #eef2f2; border-radius: 18px; padding: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+    .sintg-card__logo { height: 48px; display: flex; align-items: center; }
+    .sintg-card__logo img { height: 100%; width: auto; max-width: 220px; object-fit: contain; }
+    .sintg-card__desc { font-size: 1rem; line-height: 1.6; color: var(--neutral); flex: 1; }
+    .sintg-card__link { margin-top: auto; }
+    @media (max-width: 900px) { .sintg-grid { grid-template-columns: 1fr; } }
+    .epd__card {
+      background: #fff; border: 1px solid #ececec; border-radius: 16px;
+      height: 130px; display: grid; place-items: center; padding: 0.5rem 1.25rem; overflow: hidden;
+      box-shadow: 0 2px 10px rgba(12,63,65,.04);
+      transition: box-shadow .25s ease, transform .25s ease;
+    }
+    .epd__card:hover { box-shadow: 0 8px 20px rgba(12,63,65,.10); transform: translateY(-3px); }
+    .epd__card img { max-height: 110px; max-width: 82%; width: auto; object-fit: contain; }
+    .epd__card.is-hidden { display: none; }
+    @media (max-width: 900px) {
+      .epd { grid-template-columns: 1fr; gap: 1.5rem; }
+      .epd__tabs { flex-direction: row; flex-wrap: wrap; }
+      .epd__tab { padding: .7rem 1.1rem; font-size: .95rem; }
+    }
+    @media (max-width: 600px) { .epd__grid { grid-template-columns: repeat(2,1fr); } }
+
+    /* ECOSYSTEM — new design */
+    .eco-new { background: var(--eden); color: #fff; position: relative; overflow: hidden; }
+    .eco-new::before { content: ""; position: absolute; inset: 0; opacity: .06; background-image: radial-gradient(circle,#fff 1.2px,transparent 1.2px); background-size: 24px 24px; pointer-events: none; }
+    .eco-new .plat-eyebrow { color: #08aac3; }
+    .eco-new .plat-h2 { color: #fff; }
+    .eco-new .plat-lead { color: #ffffff; }
+    .eco-cats { display: flex; flex-direction: column; gap: 2rem; margin-top: 3rem; }
+    .eco-cat__label { font-family: var(--font-heading); font-weight: 700; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: .85rem; }
+    .eco-cat__chips { display: flex; flex-wrap: wrap; gap: .65rem; }
+    .eco-chip {
+      font-family: var(--font-heading); font-weight: 600; font-size: .9rem;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+      padding: .5rem 1.1rem; border-radius: 99px; color: rgba(255,255,255,.88);
+      margin-bottom: 16px;
+    }
+
+    /* SECURITY ARCHITECTURE — 3-col grid of feature tiles */
+    .arch-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+    .arch-card {
+      border: 1px solid #e5edee; border-radius: 18px; padding: 2rem;
+      background: #fff; display: flex; flex-direction: column; gap: 1rem;
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+    .arch-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 44px rgba(12,63,65,.12);
+      border-color: transparent;
+    }
+    .arch-card__icon { transition: transform .28s ease; }
+    .arch-card:hover .arch-card__icon { transform: scale(1.06); }
+    .arch-card__icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--eden); display: grid; place-items: center; color: #fff;
+    }
+    .arch-card__title { font-family: var(--font-heading); font-weight: 700; font-size: 1.125rem; color: var(--neutral-darkest); }
+    .arch-card__desc { font-size: 1rem; color: var(--neutral-darkest); line-height: 1.6; }
+
+    /* SECURITY VALUE — ref style */
+    .sec-band { background: linear-gradient(110deg, #08aac3 0%, #23ad9c 48%, #6fbe46 100%); position: relative; overflow: hidden; }
+    .sec-band::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .28; background-image: radial-gradient(circle, #fff 1.2px, transparent 1.2px); background-size: 24px 24px; }
+    .sec-band__inner { padding: 70px 100px; position: relative; z-index: 1; }
+    .sec-card { background: #fff; border: 1px solid #e5edee; border-radius: 20px; padding: 90px; display: grid; grid-template-columns: 1fr auto; gap: 3.5rem; align-items: center; box-shadow: 0 24px 60px rgba(12,63,65,.10); }
+    @media (max-width: 768px) { .sec-band__inner { padding: 40px 20px; } }
+    .sec-card__eyebrow { display: inline-flex; align-items: center; gap: .6rem; font-family: var(--font-heading); font-weight: 700; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pine-green); background: #f4f8f8; padding: .5rem 1rem; border-radius: 8px; margin-bottom: 16px; }
+    .sec-card__eyebrow i { width: 10px; height: 10px; border-radius: 2px; background: linear-gradient(135deg,#6fbe46,#23ad9c 45%,#08aac3); }
+    .sec-card__title { font-family: var(--font-heading); font-weight: 500; font-size: clamp(2rem, 2.8vw, 2.5rem); color: var(--neutral-darkest); margin-bottom: 1rem; letter-spacing: -.02em; line-height: 1.1; }
+    .sec-card__title b { font-weight: 800; }
+    .sec-card__text { font-size: 18px; color: var(--neutral); line-height: 1.7; margin-bottom: 16px; max-width: none; }
+    .sec-card__link { color: var(--pine-green); font-weight: 700; }
+    .sec-card__right { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding-left: 0; }
+    .sec-card__badge { display: flex; flex-direction: column; align-items: center; gap: .85rem; }
+    .sec-card__badge img { width: 210px; height: auto; }
+    .sec-card__badge-label { font-family: var(--font-heading); font-weight: 700; font-size: .9rem; letter-spacing: .08em; text-transform: uppercase; color: var(--eden); }
+    .sec-card__chips { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; }
+    .sec-card__chips span { font-family: var(--font-heading); font-weight: 600; font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; color: var(--pine-green); background: rgba(0,115,115,.07); padding: .4rem .8rem; border-radius: 99px; margin-bottom: 16px; }
+    @media (max-width: 768px) { .sec-card { grid-template-columns: 1fr; padding: 2.25rem; } .sec-card__right { border-left: 0; border-top: 1px dashed #d8d9d9; padding-left: 0; padding-top: 2rem; } }
+
+    /* FAQS — new accordion design */
+    .faq-list { display: flex; flex-direction: column; gap: .75rem; }
+    .faq-item { border: 1.5px solid #e5edee; border-radius: 14px; overflow: hidden; background: #fff; transition: border-color .25s; }
+    .faq-item.open { border-color: transparent; background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#6fbe46,#23ad9c 45%,#08aac3) border-box; }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 24px; cursor: pointer; user-select: none;
+    }
+    .faq-q__text { font-family: var(--font-heading); font-weight: 700; font-size: 1.05rem; color: var(--neutral-darkest); }
+    .faq-q__icon {
+      flex: none; width: 24px; height: 24px; border-radius: 50%;
+      background: transparent; border: 0;
+      display: grid; place-items: center; color: var(--pine-green); transition: all .25s;
+    }
+    .faq-q__icon svg { width: 24px; height: 24px; stroke-width: 1.5; }
+    .faq-item.open .faq-q__icon { background: transparent; color: var(--pine-green); transform: rotate(180deg); }
+    .faq-item.open .faq-q { border-bottom: 0; }
+    .faq-a { display: none; padding: 1.25rem 1.6rem; font-size: 1rem; color: var(--neutral-darkest); line-height: 1.7; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a ul { padding-left: 1.25rem; margin-top: .5rem; display: flex; flex-direction: column; gap: .4rem; }
+    .faq-a ul li { font-size: 1rem; line-height: 1.6; }
+    .faq-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .faq-col__intro .plat-lead { margin-bottom: 1.5rem; }
+
+    @media (max-width: 900px) {
+      .modules-grid, .protect-grid, .arch-grid { grid-template-columns: 1fr; }
+      .testi-new, .sec-value, .faq-col { grid-template-columns: 1fr; }
+      .testi-new__badge { min-width: unset; }
+    }
+
+    /* PARTNER PROGRAM split */
+    .pprog { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .pprog__title { font-family: var(--font-heading); font-weight: 400; font-size: 44px; line-height: 1.2; color: var(--neutral-darkest); margin-bottom: 1.25rem; }
+    .pprog__desc { font-size: 1rem; line-height: 1.7; color: var(--neutral-darkest); max-width: 34rem; }
+    .pprog__img { display: flex; justify-content: center; }
+    .pprog__img img { width: 100%; height: auto; }
+    @media (max-width: 900px) { .pprog { grid-template-columns: 1fr; gap: 2rem; } }
+
+    /* PARTNER TOOLS — 2-column layout */
+    .ptool-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .ptool-intro__title { font-family: var(--font-heading); font-weight: 400; font-size: 40px; line-height: 1.2; color: var(--neutral-darkest); margin-bottom: 1rem; }
+    .ptool-intro__sub { font-size: 16px; line-height: 1.7; color: var(--neutral); margin-bottom: 1.75rem; max-width: 30rem; }
+    .ptool-stack { display: flex; flex-direction: column; gap: 16px; }
+    .ptool-stack .arch-card__icon { background: linear-gradient(135deg,#6fbe46,#23ad9c 45%,#08aac3); }
+    @media (max-width: 900px) { .ptool-layout { grid-template-columns: 1fr; gap: 2rem; } }
+
+    /* PARTNER INTEGRATION CARDS */
+    .pint-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; align-items: stretch; grid-auto-rows: 1fr; }
+    .pint-card {
+      background: #fff; border: 1px solid #d8d9d9; border-radius: var(--card-radius);
+      padding: 2rem; display: flex; flex-direction: column; gap: 0;
+      height: 100%;
+    }
+    .pint-card__logo { height: 40px; display: flex; align-items: center; margin-bottom: 1.75rem; }
+    .pint-card__logo img { height: 100%; width: auto; max-width: 200px; object-fit: contain; }
+    .pint-card__logo--databricks img { height: 30px; }
+    .pint-card__tag { font-family: var(--font-heading); font-weight: 700; font-size: 1.125rem; color: var(--neutral-darkest); margin-bottom: 1rem; }
+    .pint-card__desc { font-size: 1rem; line-height: 1.6; color: var(--neutral-darkest); }
+    .pint-card .product-card__link { margin-top: auto; padding-top: 1.75rem; }
+    @media (max-width: 768px) { .pint-grid { grid-template-columns: 1fr; } }
+
+    /* PARTNER BENEFIT CARDS — dark eden */
+    .partner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .partner-card {
+      position: relative; overflow: hidden;
+      background: var(--eden);
+      border-radius: 18px;
+      padding: 2rem;
+      min-height: 320px;
+      display: flex; flex-direction: column; gap: 1.5rem;
+      color: #fff;
+    }
+    .partner-card--accent {
+      background:
+        radial-gradient(rgba(255,255,255,.28) 1.2px, transparent 1.2px),
+        linear-gradient(150deg, #08aac3 0%, #23ad9c 45%, #6fbe46 100%);
+      background-size: 22px 22px, auto;
+    }
+    .partner-card__icon { width: 44px; height: 44px; color: #fff; }
+    .partner-card__icon svg { width: 100%; height: 100%; }
+    .partner-card__text { font-size: 1.15rem; line-height: 1.5; color: rgba(255,255,255,.92); }
+    @media (max-width: 1024px) { .partner-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .partner-grid { grid-template-columns: 1fr; } .partner-card { min-height: 0; } }
+
+    /* PARTNER / INTEGRATION CARDS — live content, current theme */
+    .pcard-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .pcard-grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .pcard { display: flex; flex-direction: column; gap: 1rem; background: #fff; border: 1px solid #e5edee; border-radius: 18px; padding: 2rem; text-decoration: none; transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease); }
+    .pcard:hover { transform: translateY(-6px); box-shadow: 0 18px 44px rgba(12,63,65,.12); border-color: transparent; }
+    .pcard__logo { height: 42px; display: flex; align-items: center; }
+    .pcard__logo img { max-height: 42px; max-width: 190px; width: auto; height: auto; object-fit: contain; }
+    .pcard__title { font-family: var(--font-heading); font-weight: 800; font-size: 1.15rem; color: var(--neutral-darkest); line-height: 1.3; }
+    .pcard__desc { font-size: 1rem; line-height: 1.6; color: var(--neutral); flex: 1; }
+    .pcard__link { font-family: var(--font-heading); font-weight: 700; font-size: .82rem; letter-spacing: .06em; text-transform: uppercase; color: var(--pine-green); display: inline-flex; align-items: center; gap: .4rem; }
+    .pcard__link svg { transition: transform .25s var(--ease); }
+    .pcard:hover .pcard__link svg { transform: translateX(4px); }
+    .pcard--si { align-items: flex-start; }
+    .pcard--si .pcard__logo { height: 38px; margin-bottom: .25rem; }
+    .pcard--si .pcard__logo img { max-height: 38px; }
+    @media (max-width: 860px) { .pcard-grid, .pcard-grid--3 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="TrustLogix home">
+        <img src="../trustlogix-logo.svg" alt="TrustLogix" class="nav__logo-img" width="200" height="34" />
+      </a>
+      <nav class="nav__menu" aria-label="Primary">
+        <div class="nav__item">
+          <a href="/platform" class="nav__link"><span class="nav__swap"><span>Platform</span><span aria-hidden="true">Platform</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/platform" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Our platform architecture, core modules, and benefits.</span></a>
+            <a href="/platform/trustai">– TrustAI</a>
+            <a href="/platform/trustdspm">– TrustDSPM</a>
+            <a href="/platform/trustaccess">– TrustAccess</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/partners" class="nav__link"><span class="nav__swap"><span>Partners</span><span aria-hidden="true">Partners</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/partners" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Introduction to the TrustLogix Interoperable Ecosystem.</span></a>
+            <a href="/partners/snowflake">– Snowflake</a>
+            <a href="/partners/databricks">– Databricks</a>
+            <a href="/partners/microsoft">– Power BI</a>
+            <a href="/partners/aws">– AWS</a>
+            <a href="/partners/alation">– Alation</a>
+            <a href="/partners/collibra">– Collibra</a>
+          </div>
+        </div>
+        <div class="nav__item"><a href="/pricing" class="nav__link"><span class="nav__swap"><span>Pricing</span><span aria-hidden="true">Pricing</span></span></a></div>
+        <div class="nav__item">
+          <a href="/resources" class="nav__link"><span class="nav__swap"><span>Resources</span><span aria-hidden="true">Resources</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/resources" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Resources available to existing and potential customers.</span></a>
+            <a href="/resource-library">– Resource Library</a>
+            <a href="/blog">– The TrustLogix Blog</a>
+            <a href="https://docs.trustlogix.io/">– Documentation</a>
+            <a href="/newsletter">– Newsletter</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/about" class="nav__link"><span class="nav__swap"><span>About</span><span aria-hidden="true">About</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/about" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">About TrustLogix – our culture, values, and more.</span></a>
+            <a href="/events">– Events</a>
+            <a href="/newsroom">– Newsroom</a>
+            <a href="/newsroom/press-releases">– Press Releases</a>
+            <a href="/careers">– Careers</a>
+            <a href="/contact">– Contact</a>
+          </div>
+        </div>
+      </nav>
+      <div class="nav__actions">
+        <a href="/get-started" class="btn btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+        <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="plat-hero">
+      <div class="container plat-hero__inner reveal">
+        <div class="plat-hero__head">
+          <span class="plat-hero__badge"><b>Partners</b> · Interoperable Ecosystem</span>
+          <h1 class="plat-hero__title"><span style="font-weight:400;">Faster, Safer Data Access —</span> <span style="color:#fff;font-weight:800;">Across Your Data Ecosystem</span></h1>
+          <p class="plat-hero__desc">With hot pluggable, fully extensible native integrations across your cloud data platforms, the <strong>TrustLogix Interoperable Ecosystem</strong> accelerates governance, enforces policy consistently, and protects sensitive information without locking you into a single vendor, impacting performance or affecting your existing stack.</p>
+        </div>
+        <div class="plat-hero__img">
+          <img src="https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/6962237c5d639efc1920084f_Partners.svg" alt="TrustLogix Interoperable Ecosystem diagram" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE TRUSTLOGIX PARTNER PROGRAM ============ -->
+    <section class="section bg-pattern" style="padding-top:80px;padding-bottom:0;">
+      <div class="container">
+        <div class="pprog reveal">
+          <div>
+            <span class="eyebrow">Partner Program</span>
+            <h2 class="pprog__title">The TrustLogix <b>Partner Program</b></h2>
+            <p class="pprog__desc">The TrustLogix Partner Program is built for technology and services partners who help enterprises unlock AI velocity with built-in security and compliance from TrustLogix.</p>
+          </div>
+          <div class="pprog__img">
+            <img src="../references/Frame%20149.png" alt="TrustAlliance, TrustPremier, and TrustDev partner tiers" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY PARTNER WITH TRUSTLOGIX — benefit cards ============ -->
+    <section class="section bg-pattern" id="modules" style="padding-top:110px;padding-bottom:0;">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <span class="eyebrow reveal">Why TrustLogix</span>
+          <h2 class="section-head__title reveal" data-delay="1">Why <b>Partner with TrustLogix</b></h2>
+          <p class="section-head__sub reveal" data-delay="2">Every enterprise deploying AI is asking the same question: who controls what data the agents can see? TrustLogix is the only platform built to answer that at machine speed, with no infrastructure changes and no implementation drag.</p>
+        </div>
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="whyIconGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6fbe46"/><stop offset="0.5" stop-color="#23ad9c"/><stop offset="1" stop-color="#08aac3"/></linearGradient></defs></svg>
+        <div class="protect-grid protect-grid--4">
+          <article class="protect-card reveal">
+            <div class="protect-card__icon-wrap">
+              <svg viewBox="0 0 512 512" fill="url(#whyIconGrad)"><path d="m511.4 38.222c-1.109-20.338-17.284-36.511-37.622-37.621-41.038-2.242-121.342-.061-198.13 39.656-39.145 20.248-80.545 54.577-113.584 94.185-.407.488-.803.979-1.207 1.468l-74.98 5.792c-12.342.954-23.335 7.423-30.161 17.747l-51.154 77.372c-5.177 7.83-6 17.629-2.203 26.212 3.798 8.584 11.602 14.566 20.877 16.003l63.171 9.784c-.223 1.228-.447 2.455-.652 3.683-2.103 12.58 2.065 25.514 11.151 34.599l87.992 87.993c7.533 7.533 17.712 11.686 28.142 11.686 2.148 0 4.308-.177 6.458-.536 1.228-.205 2.455-.429 3.683-.652l9.784 63.172c1.437 9.275 7.419 17.08 16.001 20.877 3.571 1.58 7.35 2.36 11.112 2.36 5.283-.001 10.529-1.539 15.101-4.562l77.372-51.155c10.325-6.827 16.793-17.82 17.745-30.161l5.792-74.979c.489-.404.981-.8 1.469-1.207 39.609-33.039 73.939-74.439 94.186-113.585 39.719-76.791 41.896-157.096 39.657-198.131zm-175.394 393.037-74.011 48.933-9.536-61.565c31.28-9.197 62.223-23.927 91.702-43.66l-3.773 48.845c-.235 3.047-1.833 5.762-4.382 7.447zm-129.895-37.377-87.993-87.993c-2.245-2.246-3.283-5.401-2.774-8.44 2.616-15.643 6.681-30.534 11.713-44.562l132.028 132.028c-16.848 6.035-31.939 9.635-44.534 11.741-3.044.506-6.195-.529-8.44-2.774zm-117.923-222.269 48.844-3.773c-19.734 29.479-34.464 60.422-43.661 91.702l-61.564-9.535 48.934-74.012c1.686-2.55 4.401-4.147 7.447-4.382zm270.155 155.286c-24.233 20.213-47.756 34.833-69.438 45.412l-149.221-149.221c13.858-28.304 30.771-51.873 45.417-69.431 30.575-36.655 68.602-68.276 104.331-86.756 70.474-36.453 144.725-38.416 182.713-36.348 5.028.274 9.027 4.273 9.301 9.302 2.071 37.988.104 112.238-36.349 182.713-18.479 35.728-50.1 73.754-86.754 104.329z"/><path d="m350.721 236.243c19.202-.002 38.412-7.312 53.031-21.931 14.166-14.165 21.966-32.999 21.966-53.031s-7.801-38.866-21.966-53.031c-29.242-29.243-76.822-29.241-106.062 0-14.166 14.165-21.967 32.999-21.967 53.031s7.802 38.866 21.967 53.031c14.622 14.622 33.822 21.933 53.031 21.931zm-31.82-106.781c8.772-8.773 20.295-13.159 31.818-13.159 11.524 0 23.047 4.386 31.819 13.159 8.499 8.499 13.179 19.799 13.179 31.818s-4.68 23.32-13.179 31.819c-17.544 17.545-46.093 17.544-63.638 0-8.499-8.499-13.18-19.799-13.18-31.818s4.682-23.32 13.181-31.819z"/><path d="m15.301 421.938c3.839 0 7.678-1.464 10.606-4.394l48.973-48.973c5.858-5.858 5.858-15.355 0-21.213-5.857-5.858-15.355-5.858-21.213 0l-48.972 48.973c-5.858 5.858-5.858 15.355 0 21.213 2.928 2.929 6.767 4.394 10.606 4.394z"/><path d="m119.761 392.239c-5.857-5.858-15.355-5.858-21.213 0l-94.154 94.155c-5.858 5.858-5.858 15.355 0 21.213 2.929 2.929 6.767 4.393 10.606 4.393s7.678-1.464 10.606-4.394l94.154-94.154c5.859-5.858 5.859-15.355.001-21.213z"/><path d="m143.429 437.12-48.973 48.973c-5.858 5.858-5.858 15.355 0 21.213 2.929 2.929 6.768 4.394 10.606 4.394s7.678-1.464 10.606-4.394l48.973-48.973c5.858-5.858 5.858-15.355 0-21.213-5.857-5.858-15.355-5.858-21.212 0z"/></svg>
+            </div>
+            <p class="protect-card__desc">Start deals with a free 30-day PoC in your prospect's existing Snowflake or Databricks environment.</p>
+          </article>
+          <article class="protect-card reveal" data-delay="1">
+            <div class="protect-card__icon-wrap">
+              <svg viewBox="0 0 32 32" fill="url(#whyIconGrad)"><path d="m18 18h-4a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-8a2 2 0 0 0 -2-2zm-4 10v-8h4v8z"/><path d="m8 21h-4a2 2 0 0 0 -2 2v5a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-5a2 2 0 0 0 -2-2zm-4 7v-5h4v5z"/><path d="m28 13h-4a2 2 0 0 0 -2 2v13a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-13a2 2 0 0 0 -2-2zm-4 15v-13h4v13z"/><path d="m6 17a1.007 1.007 0 0 0 .247-.031 42.138 42.138 0 0 0 10.243-4.1 42.055 42.055 0 0 0 9.51-7.346v2.477a1 1 0 0 0 2 0v-5a1 1 0 0 0 -1-1h-5a1 1 0 0 0 0 2h2.676a40.026 40.026 0 0 1 -9.166 7.128 40.115 40.115 0 0 1 -9.757 3.9 1 1 0 0 0 .247 1.972z"/></svg>
+            </div>
+            <p class="protect-card__desc">Expand deal size with multi-year upsell paths on accounts you already own.</p>
+          </article>
+          <article class="protect-card reveal" data-delay="2">
+            <div class="protect-card__icon-wrap">
+              <svg viewBox="0 0 682.66669 682.66669"><defs><clipPath clipPathUnits="userSpaceOnUse" id="handsClip"><path d="M 0,512 H 512 V 0 H 0 Z"/></clipPath></defs><g transform="matrix(1.3333333,0,0,-1.3333333,0,682.66667)"><g clip-path="url(#handsClip)"><g transform="translate(249.041,414.8086)"><path d="m 0,0 -59.735,43.19 c -23.496,16.99 -55.85,14.406 -76.352,-6.096 l -63.012,-63.011 c -46.862,-46.863 -46.862,-122.843 0,-169.706 l 170.025,-170.024 c 12.494,-12.495 32.852,-13.26 45.684,-1.113 13.314,12.604 13.532,33.618 0.654,46.496 l 14.809,-14.809 c 12.495,-12.494 32.853,-13.26 45.685,-1.113 13.314,12.603 13.531,33.618 0.653,46.497 l 14.81,-14.811 c 12.494,-12.494 32.852,-13.26 45.684,-1.112 13.314,12.603 13.532,33.618 0.654,46.496 l 14.809,-14.81 c 12.495,-12.494 32.853,-13.26 45.685,-1.112 13.314,12.602 13.531,33.617 0.653,46.496 L 31.942,-59.778 -17.542,-109.263 c -12.494,-12.495 -32.852,-13.259 -45.684,-1.113 -13.314,12.604 -13.532,33.618 -0.653,46.496 l 78.663,78.664 60.355,35.064 c 23.16,13.455 52.477,9.635 71.417,-9.304 l 66.461,-66.461 c 46.862,-46.863 46.862,-122.843 0,-169.706 l -22.616,-22.614" style="fill:none;stroke:url(#whyIconGrad);stroke-width:30;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10"/></g><g transform="translate(266.3047,94.5449)"><path d="M 0,0 -68.995,68.995" style="fill:none;stroke:url(#whyIconGrad);stroke-width:30;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10"/></g><g transform="translate(327.4521,125.1191)"><path d="M 0,0 -84.282,84.281" style="fill:none;stroke:url(#whyIconGrad);stroke-width:30;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10"/></g><g transform="translate(388.5996,155.6924)"><path d="M 0,0 -99.568,99.568" style="fill:none;stroke:url(#whyIconGrad);stroke-width:30;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10"/></g></g></g></svg>
+            </div>
+            <p class="protect-card__desc">Co-develop your first pitch with the TrustLogix channel team.</p>
+          </article>
+          <article class="protect-card reveal" data-delay="3">
+            <div class="protect-card__icon-wrap">
+              <svg viewBox="0 0 32 32" fill="url(#whyIconGrad)"><path d="M28.068,12H27.94a.934.934,0,0,1-.864-.6.924.924,0,0,1,.2-1.01l.091-.091a2.938,2.938,0,0,0,0-4.147l-1.511-1.51a2.935,2.935,0,0,0-4.146,0l-.091.091A.956.956,0,0,1,20,4.061V3.932A2.935,2.935,0,0,0,17.068,1H14.932A2.935,2.935,0,0,0,12,3.932v.129a.956.956,0,0,1-1.614.668L10.3,4.638a2.935,2.935,0,0,0-4.146,0L4.638,6.148a2.938,2.938,0,0,0,0,4.147l.091.091a.935.935,0,0,1,.185,1.035A.924.924,0,0,1,4.06,12H3.932A2.935,2.935,0,0,0,1,14.932v2.136A2.935,2.935,0,0,0,3.932,20H4.06a.934.934,0,0,1,.864.6.924.924,0,0,1-.2,1.01l-.091.091a2.938,2.938,0,0,0,0,4.147l1.51,1.509a2.934,2.934,0,0,0,4.147,0l.091-.091a.936.936,0,0,1,1.035-.185.922.922,0,0,1,.579.853v.129A2.935,2.935,0,0,0,14.932,31h2.136A2.935,2.935,0,0,0,20,28.068v-.129a.956.956,0,0,1,1.614-.668l.091.091a2.935,2.935,0,0,0,4.146,0l1.511-1.509a2.938,2.938,0,0,0,0-4.147l-.091-.091a.935.935,0,0,1-.185-1.035A.924.924,0,0,1,27.94,20h.128A2.935,2.935,0,0,0,31,17.068V14.932A2.935,2.935,0,0,0,28.068,12ZM29,17.068a.933.933,0,0,1-.932.932H27.94a2.956,2.956,0,0,0-2.083,5.028l.09.091a.934.934,0,0,1,0,1.319l-1.511,1.509a.932.932,0,0,1-1.318,0l-.09-.091A2.957,2.957,0,0,0,18,27.939v.129a.933.933,0,0,1-.932.932H14.932A.933.933,0,0,1,14,28.068v-.129a2.951,2.951,0,0,0-5.028-2.082l-.091.091a.934.934,0,0,1-1.318,0l-1.51-1.509a.934.934,0,0,1,0-1.319l.091-.091A2.956,2.956,0,0,0,4.06,18H3.932A.933.933,0,0,1,3,17.068V14.932A.933.933,0,0,1,3.932,14H4.06A2.956,2.956,0,0,0,6.143,8.972l-.09-.091a.933.933,0,0,1,0-1.318L7.563,6.052a.932.932,0,0,1,1.318,0l.09.091A2.957,2.957,0,0,0,14,4.061V3.932A.933.933,0,0,1,14.932,3h2.136A.933.933,0,0,1,18,3.932v.129a2.956,2.956,0,0,0,5.028,2.082l.091-.091a.932.932,0,0,1,1.318,0l1.51,1.511a.933.933,0,0,1,0,1.318l-.091.091A2.956,2.956,0,0,0,27.94,14h.128a.933.933,0,0,1,.932.932Z"/><path d="M16,9a7,7,0,1,0,7,7A7.008,7.008,0,0,0,16,9Zm0,12a5,5,0,1,1,5-5A5.006,5.006,0,0,1,16,21Z"/></svg>
+            </div>
+            <p class="protect-card__desc">Let us do the technical heavy lifting on discovery calls; you stay in the deal.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PARTNER TOOLS ============ -->
+    <section class="section bg-pattern" style="padding-top:110px;">
+      <div class="container">
+        <div class="ptool-layout">
+          <div class="reveal">
+            <span class="eyebrow">Partner Program</span>
+            <h2 class="ptool-intro__title">Partner <b>Tools</b></h2>
+            <p class="ptool-intro__sub">Everything partners need to demo, assess, and deploy TrustLogix—built to accelerate secure data projects from first pitch to production.</p>
+            <a href="/contact" class="btn btn--primary"><span class="btn__swap"><span>Contact Us</span><span aria-hidden="true">Contact Us</span></span></a>
+          </div>
+          <div class="ptool-stack">
+            <div class="arch-card reveal">
+              <div class="arch-card__icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              </div>
+              <div class="arch-card__title">TrustAssessment</div>
+              <p class="arch-card__desc">Integrations are compliant with the cloud vendor platform and we collaborate with vendors as a technology partner.</p>
+            </div>
+            <div class="arch-card reveal" data-delay="1">
+              <div class="arch-card__icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+              </div>
+              <div class="arch-card__title">TrustBench</div>
+              <p class="arch-card__desc">A partner sandbox for running demos and proof-of-concepts across the full TrustLogix platform.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SEAMLESS DATA SECURITY — partner integration cards ============ -->
+    <section class="plat-section">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Technology Partners</span>
+          <h2 class="section-head__title">Seamless Data Security for <b>Enterprise Data</b></h2>
+          <p class="section-head__sub" style="font-size:16px;color:var(--neutral);max-width:48rem;margin:0 auto;">Integrations are compliant with the cloud vendor platform, and we collaborate with vendors as a technology partner.</p>
+        </div>
+        <div class="pint-grid">
+          <div class="pint-card reveal">
+            <div class="pint-card__logo"><img src="https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68cb23fddbd0700a0d1ef5e7_trustlogix-snowflake-logo.svg" alt="Snowflake" /></div>
+            <div class="pint-card__tag">Where Data Does More</div>
+            <p class="pint-card__desc">TrustLogix extends Snowflake's built-in security with centralized access policies, real-time risk insights, and AI governance—enabling secure, scalable data use across accounts, geographies, and workloads.</p>
+            <a href="/partners/snowflake" class="link-arrow product-card__link">Learn More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="pint-card reveal" data-delay="1">
+            <div class="pint-card__logo pint-card__logo--databricks"><img src="https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68cb25043dc86ed94f36468e_trustlogix-databricks-logo.svg" alt="Databricks" /></div>
+            <div class="pint-card__tag">The Data and AI Company</div>
+            <p class="pint-card__desc">TrustLogix helps organizations secure their Databricks lakehouse environment with dynamic policy enforcement, unified visibility, and access controls that scale from Unity Catalog to AI pipelines.</p>
+            <a href="/partners/databricks" class="link-arrow product-card__link">Learn More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="pint-card reveal" data-delay="2">
+            <div class="pint-card__logo"><img src="https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68def1727c474a8dc680a3a8_aws.webp" alt="AWS" /></div>
+            <div class="pint-card__tag">Data Security Across Redshift, S3, and RDS</div>
+            <p class="pint-card__desc">TrustLogix brings unified access governance and risk management to AWS data services—enforcing least-privileged access and enabling consistent control across analytics, storage, and databases.</p>
+            <a href="/partners/aws" class="link-arrow product-card__link">Learn More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="pint-card reveal" data-delay="3">
+            <div class="pint-card__logo"><img src="https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68def1b3255927681dfd24d0_power-bi.webp" alt="Power BI" /></div>
+            <div class="pint-card__tag">The BI Platform for Data Analysis and Visualization</div>
+            <p class="pint-card__desc">TrustLogix closes the security gap when sensitive data flows into Power BI—applying source-aligned policies, enforcing compliance, and enabling secure self-service analytics at scale.</p>
+            <a href="/partners/microsoft" class="link-arrow product-card__link">Learn More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ECOSYSTEM — homepage marquee design ============ -->
+    <section class="section scheme-light">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Our Partners</span>
+          <h2 class="section-head__title">Explore Our <b>Partners</b></h2>
+          <p class="section-head__sub" style="font-size:16px;color:var(--neutral);max-width:48rem;margin:0 auto;">TrustLogix integrates seamlessly with the solutions already in your modern data stack—enabling access control and security without disruption, duplication, or lock-in.</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="epd reveal" data-delay="1">
+          <div class="epd__tabs" id="epd-tabs">
+            <button class="epd__tab is-active" data-cat="all">All Partners <span class="chev">&rsaquo;</span></button>
+            <button class="epd__tab" data-cat="storage">Data Storage <span class="chev">&rsaquo;</span></button>
+            <button class="epd__tab" data-cat="analytics">Analytics / Visualization <span class="chev">&rsaquo;</span></button>
+            <button class="epd__tab" data-cat="multiple">Multiple <span class="chev">&rsaquo;</span></button>
+            <button class="epd__tab" data-cat="iam">IAM <span class="chev">&rsaquo;</span></button>
+            <button class="epd__tab" data-cat="classification">Data Classification <span class="chev">&rsaquo;</span></button>
+            <button class="epd__tab" data-cat="siem">SIEM <span class="chev">&rsaquo;</span></button>
+            <button class="epd__tab" data-cat="messaging">Messaging <span class="chev">&rsaquo;</span></button>
+            <button class="epd__tab" data-cat="service">Service Providers <span class="chev">&rsaquo;</span></button>
+          </div>
+          <div class="epd__grid" id="epd-grid">
+            <div class="epd__card" data-cat="storage"><img src="../logos/eco/snowflake.png" alt="Snowflake" /></div>
+            <div class="epd__card" data-cat="storage"><img src="../logos/eco/databricks.png" alt="Databricks" /></div>
+            <div class="epd__card" data-cat="multiple"><img src="../logos/eco/aws.png" alt="AWS" /></div>
+            <div class="epd__card" data-cat="storage"><img src="../logos/eco/aws-s3.png" alt="Amazon S3" /></div>
+            <div class="epd__card" data-cat="storage"><img src="../logos/eco/aws-rds.png" alt="Amazon RDS" /></div>
+            <div class="epd__card" data-cat="storage"><img src="../logos/eco/aws-redshift.png" alt="Amazon Redshift" /></div>
+            <div class="epd__card" data-cat="analytics"><img src="../logos/eco/power-bi.png" alt="Power BI" /></div>
+            <div class="epd__card" data-cat="storage"><img src="../logos/eco/oracle.png" alt="Oracle" /></div>
+            <div class="epd__card" data-cat="storage"><img src="../logos/eco/mysql.png" alt="MySQL" /></div>
+            <div class="epd__card" data-cat="storage"><img src="../logos/eco/mssql.png" alt="Microsoft SQL Server" /></div>
+            <div class="epd__card" data-cat="storage"><img src="../logos/eco/column.png" alt="Column" /></div>
+            <div class="epd__card" data-cat="iam"><img src="../logos/eco/azure-ad.png" alt="Azure Active Directory" /></div>
+            <div class="epd__card" data-cat="iam"><img src="../logos/eco/okta.png" alt="Okta" /></div>
+            <div class="epd__card" data-cat="classification"><img src="../logos/eco/alation.png" alt="Alation" /></div>
+            <div class="epd__card" data-cat="classification"><img src="../logos/eco/atlan.png" alt="Atlan" /></div>
+            <div class="epd__card" data-cat="siem"><img src="../logos/eco/splunk.png" alt="Splunk" /></div>
+            <div class="epd__card" data-cat="siem"><img src="../logos/eco/rapid7.png" alt="Rapid7" /></div>
+            <div class="epd__card" data-cat="messaging"><img src="../logos/eco/slack.png" alt="Slack" /></div>
+            <div class="epd__card" data-cat="messaging"><img src="../logos/eco/teams.png" alt="Microsoft Teams" /></div>
+            <div class="epd__card" data-cat="analytics"><img src="../logos/eco/tableau.png" alt="Tableau" /></div>
+            <div class="epd__card" data-cat="iam"><img src="../logos/eco/sailpoint.png" alt="SailPoint" /></div>
+            <div class="epd__card" data-cat="classification"><img src="../logos/eco/collibra.png" alt="Collibra" /></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      (function(){
+        var tabs = document.getElementById('epd-tabs');
+        if(!tabs) return;
+        tabs.addEventListener('click', function(e){
+          var btn = e.target.closest('.epd__tab');
+          if(!btn) return;
+          tabs.querySelectorAll('.epd__tab').forEach(function(t){ t.classList.remove('is-active'); });
+          btn.classList.add('is-active');
+          var cat = btn.dataset.cat;
+          document.querySelectorAll('#epd-grid .epd__card').forEach(function(c){
+            c.classList.toggle('is-hidden', cat !== 'all' && c.dataset.cat !== cat);
+          });
+        });
+      })();
+    </script>
+
+    <!-- ============ SUPPORTED PLATFORMS ============ -->
+    <section class="plat-section bg-pattern">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Data Governance</span>
+          <h2 class="section-head__title">Integrate Data Access Control and <b>Security Across Your Stack</b></h2>
+        </div>
+        <div class="pint-grid" style="grid-template-columns:repeat(3,1fr);">
+          <div class="pint-card reveal">
+            <div class="pint-card__logo"><img src="https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68def25ccb101c2aac0d2c41_alation.webp" alt="Alation" /></div>
+            <div class="pint-card__tag">The Data Intelligence Company</div>
+            <p class="pint-card__desc">TrustLogix complements Alation's catalog and governance with consistent, least-privilege access enforcement—turning data intelligence into enforced policy across your stack.</p>
+            <a href="https://www.alation.com" target="_blank" rel="noopener" class="link-arrow product-card__link">Learn More
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <div class="pint-card reveal" data-delay="1">
+            <div class="pint-card__logo"><img src="https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68def37cf2270314035a3077_collibra.webp" alt="Collibra" /></div>
+            <div class="pint-card__tag">The market leader in unified governance for data and AI</div>
+            <p class="pint-card__desc">TrustLogix operationalizes Collibra governance policies with native, no-code enforcement across cloud and analytics platforms—closing the gap between policy and control.</p>
+            <a href="https://www.collibra.com" target="_blank" rel="noopener" class="link-arrow product-card__link">Learn More
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <div class="pint-card reveal" data-delay="2">
+            <div class="pint-card__logo"><img src="https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68def317dbce7839e87a911b_atlan.webp" alt="Atlan" /></div>
+            <div class="pint-card__tag">The Active Metadata Platform</div>
+            <p class="pint-card__desc">TrustLogix extends Atlan's active metadata with enforced, fine-grained access controls—ensuring sensitive data stays protected wherever it moves.</p>
+            <a href="https://www.atlan.com" target="_blank" rel="noopener" class="link-arrow product-card__link">Learn More
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOLUTION INTEGRATORS ============ -->
+    <section class="plat-section">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Solution Integrators</span>
+          <h2 class="section-head__title">TrustLogix + Solution Integrators: <b>Accelerating Secure Data Projects at Scale</b></h2>
+        </div>
+        <div class="sintg-grid">
+          <div class="sintg-card reveal">
+            <div class="sintg-card__logo"><img src="../logos/partners/persistent.svg" alt="Persistent" /></div>
+            <p class="sintg-card__desc">AI-led, platform-driven Digital Engineering and Enterprise Modernization partner.</p>
+            <a href="/partners" class="link-arrow sintg-card__link">Learn More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="sintg-card reveal" data-delay="1">
+            <div class="sintg-card__logo"><img src="../logos/partners/tiger-analytics.svg" alt="Tiger Analytics" /></div>
+            <p class="sintg-card__desc">Strategize and operationalize Data and AI-led transformation programs that deliver real value at scale.</p>
+            <a href="/partners" class="link-arrow sintg-card__link">Learn More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="sintg-card reveal" data-delay="2">
+            <div class="sintg-card__logo"><img src="../logos/partners/ey.svg" alt="EY" /></div>
+            <p class="sintg-card__desc">Enabled by data, AI and advanced technology, EY teams help clients shape the future.</p>
+            <a href="/partners" class="link-arrow sintg-card__link">Learn More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta-final">
+      <div class="cta-final__card reveal">
+        <div class="cta-final__bg"></div>
+        <img class="cta-final__graphic" src="../logos/cta-bg-graphic.svg" alt="" aria-hidden="true" />
+        <div class="cta-final__content">
+          <div class="cta-final__left">
+            <h2 class="cta-final__title">Experience TrustLogix in Action</h2>
+          </div>
+          <div class="cta-final__right">
+            <p class="cta-final__sub">Schedule a call to discover how TrustLogix can accelerate your AI initiatives with faster, safer data access.</p>
+            <div class="cta-final__buttons">
+              <a href="/get-started" class="btn cta-final__btn cta-final__btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+              <a href="/partners" class="btn cta-final__btn cta-final__btn--secondary"><span class="btn__swap"><span>Our Partners</span><span aria-hidden="true">Our Partners</span></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-final__strip"></div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer footer--brand footer--light">
+    <div class="container">
+      <div class="footer__top">
+        <a href="/" class="footer__logo" aria-label="TrustLogix">
+          <img src="../trustlogix-logo.svg" alt="TrustLogix" width="180" height="31" />
+        </a>
+        <p class="footer__tagline">Unified, secure access to the data that drives AI—so innovation moves quickly, safely.</p>
+        <div class="footer__social">
+          <a href="https://x.com/TrustLogix" target="_blank" rel="noopener" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M17.1761 4H19.9362L13.9061 10.7774L21 20H15.4456L11.0951 14.4066L6.11723 20H3.35544L9.80517 12.7508L3 4H8.69545L12.6279 9.11262L17.1761 4ZM16.2073 18.3754H17.7368L7.86441 5.53928H6.2232L16.2073 18.3754Z" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/trustlogix/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 3C3.67157 3 3 3.67157 3 4.5V19.5C3 20.3284 3.67157 21 4.5 21H19.5C20.3284 21 21 20.3284 21 19.5V4.5C21 3.67157 20.3284 3 19.5 3H4.5ZM8.52076 7.00272C8.52639 7.95897 7.81061 8.54819 6.96123 8.54397C6.16107 8.53975 5.46357 7.90272 5.46779 7.00413C5.47201 6.15897 6.13998 5.47975 7.00764 5.49944C7.88795 5.51913 8.52639 6.1646 8.52076 7.00272ZM12.2797 9.76176H9.7583V18.3216H12.4217V16.9819C12.4203 15.9674 12.4194 14.9532 12.4246 13.9397C12.426 13.6936 12.4372 13.4377 12.5005 13.2028C12.7381 12.3253 13.5271 11.7586 14.4074 11.8979C14.9727 11.9864 15.3467 12.3141 15.5042 12.8471C15.6013 13.1803 15.6449 13.5389 15.6491 13.8863C15.6589 15.9815 15.6573 17.0294 15.6561 18.1388V18.3202H18.328V16.7591C18.327 15.6293 18.3264 14.5001 18.3294 13.3702C18.3308 12.8597 18.276 12.3563 18.1508 11.8627C17.9638 11.1286 17.5771 10.5211 16.9485 10.0824C16.5027 9.77019 16.0133 9.5691 15.4663 9.5466C15.404 9.54401 14.7141 9.50673 14.4467 9.56066C13.6817 9.71394 13.0096 10.0641 12.5019 10.6814C12.4429 10.7522 12.3852 10.8241 12.2991 10.9315L12.2797 10.9557V9.76176ZM5.68164 18.3244H8.33242V9.76733H5.68164V18.3244Z" fill="currentColor"/></svg>
+          </a>
+          <a href="http://www.youtube.com/@trustlogix" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.5686 4.77345C21.5163 5.02692 22.2555 5.76903 22.5118 6.71673C23.1821 9.42042 23.1385 14.5321 22.5259 17.278C22.2724 18.2257 21.5303 18.965 20.5826 19.2213C17.9071 19.8831 5.92356 19.8015 3.40294 19.2213C2.45524 18.9678 1.71595 18.2257 1.45966 17.278C0.827391 14.7011 0.871044 9.25144 1.44558 6.73081C1.69905 5.78311 2.44116 5.04382 3.38886 4.78753C6.96561 4.0412 19.2956 4.282 20.5686 4.77345ZM9.86682 8.70227L15.6122 11.9974L9.86682 15.2925V8.70227Z" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col">
+          <h5>Platform</h5>
+          <a href="/platform">Platform Overview</a>
+          <a href="/platform/trustdspm">TrustDSPM</a>
+          <a href="/platform/trustaccess">TrustAccess</a>
+          <a href="/platform/trustai">TrustAI</a>
+        </div>
+        <div class="footer__col">
+          <h5>Partners</h5>
+          <a href="/partners">Partners Overview</a>
+          <a href="/partners/snowflake">Snowflake</a>
+          <a href="/partners/databricks">Databricks</a>
+          <a href="/partners/microsoft">Power BI</a>
+          <a href="/partners/aws">AWS</a>
+          <a href="/partners/alation">Alation</a>
+          <a href="/partners/collibra">Collibra</a>
+        </div>
+        <div class="footer__col">
+          <h5>Resources</h5>
+          <a href="/resources">Resources Overview</a>
+          <a href="/resource-library">Resource Library</a>
+          <a href="/blog">The TrustLogix Blog</a>
+          <a href="https://docs.trustlogix.io/">Documentation</a>
+          <a href="/newsletter">Newsletter</a>
+        </div>
+        <div class="footer__col">
+          <h5>About</h5>
+          <a href="/about">About TrustLogix</a>
+          <a href="/newsroom">Newsroom</a>
+          <a href="/newsroom/press-releases">Press Releases</a>
+          <a href="/contact">Contact</a>
+          <a href="#">Cookie Preferences</a>
+        </div>
+      </div>
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <span class="footer__credit">© 2026 TrustLogix. All rights reserved.</span>
+        <div class="footer__legal">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-of-service">Terms of Service</a>
+          <a href="/security-pledge">Security Pledge</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    (function(){
+      var nav = document.getElementById('nav');
+      function onScroll(){
+        nav.classList.toggle('nav--solid', window.scrollY > 20);
+      }
+      window.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+    })();
+  </script>
+</body>
+</html>

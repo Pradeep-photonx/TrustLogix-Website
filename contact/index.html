@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact TrustLogix | TrustLogix</title>
+  <meta name="description" content="Contact the TrustLogix team — sales, partnerships, and support." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css?v=268" />
+  <style>
+    .mp-hero { background: linear-gradient(110deg, #08aac3 0%, #23ad9c 48%, #6fbe46 100%);
+      color:#fff; position:relative; overflow:hidden; padding: 112px 0; text-align:center; }
+    .mp-hero::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.28; background-image: radial-gradient(circle,#fff 1.2px,transparent 1.2px); background-size:24px 24px; }
+    .mp-hero__inner { position:relative; z-index:2; max-width: 54rem; margin:0 auto; }
+    .mp-badge { display:inline-flex; align-items:center; gap:.5rem; font-family:var(--font-heading); font-weight:700; font-size:.9rem; letter-spacing:.1em; text-transform:uppercase; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35); backdrop-filter:blur(4px); padding:.5rem 1rem; border-radius:20px; margin-bottom:1.25rem; color:#fff; }
+    .mp-hero__title { font-family:var(--font-heading); font-weight:400; font-size:clamp(2.3rem,4vw,3.4rem); line-height:1.1; letter-spacing:-.02em; margin-bottom:1.25rem; color:#fff; }
+    .mp-hero__title .grad { font-weight:800; color:#fff; }
+    .mp-hero__desc { font-size:1.1rem; line-height:1.7; color:rgba(255,255,255,.85); margin-bottom:2rem; }
+    .mp-hero__cta { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .mp-btn-w { background:#fff; color:var(--eden); font-family:var(--font-heading); font-weight:700; padding:.9rem 2rem; border-radius:var(--r-btn); text-decoration:none; transition:transform .2s var(--ease); }
+    .mp-btn-g { background:rgba(255,255,255,.1); color:#fff; border:1px solid rgba(255,255,255,.3); font-family:var(--font-heading); font-weight:700; padding:.9rem 2rem; border-radius:var(--r-btn); text-decoration:none; }
+    .mp-btn-w:hover,.mp-btn-g:hover { transform:translateY(-2px); }
+    .mp-sec { padding:5rem 0; }
+    .mp-sec--alt { background:#f4f8f8; }
+    .mp-eyebrow { font-family:var(--font-heading); font-weight:700; font-size:1rem; letter-spacing:.15em; text-transform:uppercase; color:var(--pine-green); margin-bottom:1rem; }
+    .mp-h2 { font-family:var(--font-heading); font-weight:800; font-size:clamp(1.9rem,2.6vw,2.5rem); letter-spacing:-.02em; line-height:1.15; color:var(--neutral-darkest); margin-bottom:1rem; }
+    .mp-h2 b { color:var(--pine-green); }
+    .mp-lead { font-size:1.125rem; line-height:1.7; color:var(--neutral); max-width:52rem; }
+    .mp-head { margin-bottom:2.5rem; }
+    .mp-head--c { text-align:center; } .mp-head--c .mp-lead { margin:0 auto; }
+    /* === Reach Us 3-card grid === */
+    .ct-reach { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; margin-top:3rem; }
+    .ct-card { background:#fff; border:1px solid #e5edee; border-radius:20px; padding:2rem 1.75rem; display:flex; flex-direction:column; gap:.8rem; }
+    .ct-card__ic { width:54px; height:54px; border-radius:14px; background:var(--grad-brand); display:grid; place-items:center; }
+    .ct-card__ic svg { width:24px; height:24px; stroke:#fff; fill:none; stroke-width:2; }
+    .ct-card h4 { font-family:var(--font-heading); font-weight:800; font-size:18px; color:var(--eden); margin:0; }
+    .ct-card p { font-size:14px; color:var(--neutral); line-height:1.6; margin:0; flex:1; }
+    .ct-card a.link { color:var(--pine-green); font-weight:700; font-size:13.5px; text-decoration:none; letter-spacing:.04em; display:inline-flex; align-items:center; gap:.3rem; }
+
+    /* === Form + side info layout === */
+    .ct-split { display:grid; grid-template-columns:1.5fr 1.5fr; gap:20px; margin-top:4rem; align-items:start; }
+    .ct-form { background:#fff; border:1px solid #e5edee; border-radius:24px; padding:2.5rem; box-shadow:0 22px 50px rgba(12,63,65,.08); }
+    .ct-form h3 { font-family:var(--font-heading); font-weight:800; font-size:24px; color:var(--eden); margin:0 0 .4rem; }
+    .ct-form p.sub { font-size:14.5px; color:var(--neutral); margin:0 0 1.75rem; }
+    .ct-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .ct-field { margin-bottom:1rem; }
+    .ct-field label { display:block; font-family:var(--font-heading); font-weight:700; font-size:12.5px; color:var(--neutral-darkest); margin-bottom:.4rem; letter-spacing:.02em; }
+    .ct-field input, .ct-field select, .ct-field textarea { width:100%; border:1px solid #d8e0e0; border-radius:10px; padding:.85rem 1rem; font-family:var(--font-body); font-size:14.5px; color:var(--neutral-darkest); background:#fafdfd; }
+    .ct-field input:focus, .ct-field select:focus, .ct-field textarea:focus { outline:none; border-color:var(--pine-green); background:#fff; }
+    .ct-field textarea { min-height:110px; resize:vertical; }
+    .ct-form button { width:100%; text-align:center; padding:1rem; }
+    .ct-fineprint { font-size:12px; color:var(--neutral); text-align:center; margin-top:.8rem; }
+    .ct-fineprint a { color:var(--pine-green); }
+
+    /* Side info card (offices + response promise) */
+    .ct-side { display:flex; flex-direction:column; gap:1.25rem; }
+    .ct-side__card { background:linear-gradient(110deg,#08aac3 0%,#23ad9c 48%,#6fbe46 100%); border-radius:20px; padding:2rem; color:#fff; position:relative; overflow:hidden; }
+    .ct-side__card::before { content:""; position:absolute; inset:0; background-image:radial-gradient(circle,#fff 1.2px,transparent 1.2px); background-size:24px 24px; opacity:.15; pointer-events:none; }
+    .ct-side__card > * { position:relative; z-index:1; }
+    .ct-side__eyebrow { font-family:var(--font-heading); font-weight:700; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.8); margin:0 0 .6rem; }
+    .ct-side__title { font-family:var(--font-heading); font-weight:800; font-size:22px; margin:0 0 .7rem; line-height:1.2; color:#fff; }
+    .ct-side__title b { font-weight:800; color:#fff; }
+    .ct-side__lead { font-size:14.5px; line-height:1.55; color:rgba(255,255,255,.88); margin:0; }
+    .ct-stats { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1.5rem; }
+    .ct-stats__num { font-family:var(--font-heading); font-weight:800; font-size:26px; color:#fff; line-height:1; }
+    .ct-stats__lbl { font-size:11.5px; color:rgba(255,255,255,.85); margin-top:4px; line-height:1.35; }
+
+    /* Office map */
+    .ct-map { display:block; border-radius:20px; overflow:hidden; border:1px solid #e5edee; box-shadow:0 18px 40px rgba(12,63,65,.08); text-decoration:none; position:relative; }
+    .ct-map img { display:block; width:100%; height:auto; }
+    .ct-map__overlay { position:absolute; left:1rem; bottom:1rem; right:1rem; display:flex; align-items:center; justify-content:space-between; gap:.6rem; background:rgba(255,255,255,.95); backdrop-filter:blur(6px); border-radius:12px; padding:.75rem 1rem; }
+    .ct-map__overlay h5 { font-family:var(--font-heading); font-weight:800; font-size:13.5px; color:var(--eden); margin:0; }
+    .ct-map__overlay span { font-size:12px; color:var(--neutral); }
+    .ct-map__overlay .arr { font-family:var(--font-heading); font-weight:700; font-size:13px; color:var(--pine-green); }
+
+    .ct-office { background:#fff; border:1px solid #e5edee; border-radius:20px; padding:1.75rem; }
+    .ct-office__head { display:flex; align-items:center; gap:.7rem; margin-bottom:.5rem; }
+    .ct-office__head svg { width:18px; height:18px; stroke:var(--pine-green); fill:none; stroke-width:2; }
+    .ct-office__head h5 { font-family:var(--font-heading); font-weight:700; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--pine-green); margin:0; }
+    .ct-office__city { font-family:var(--font-heading); font-weight:800; font-size:17px; color:var(--eden); margin:.2rem 0 .35rem; }
+    .ct-office__addr { font-size:13.5px; color:var(--neutral); line-height:1.55; margin:0; }
+    .ct-office__contact { display:flex; flex-direction:column; gap:.25rem; margin-top:.1rem; }
+    .ct-office__row { display:flex; align-items:baseline; gap:.7rem; font-size:14px; padding:.15rem 0; }
+    .ct-office__row .ct-office__lbl { font-family:var(--font-heading); font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--neutral); min-width:64px; }
+    .ct-office__row a { color:var(--neutral-darkest); text-decoration:none; font-weight:600; }
+    .ct-office__row a:hover { text-decoration:underline; }
+    .ct-side > * { width:100%; box-sizing:border-box; }
+
+    /* Final FAQ-lite card */
+    .ct-faq { background:#f4f8f8; border:1px solid #e5edee; border-radius:20px; padding:2rem 2.25rem; margin-top:4rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; }
+    .ct-faq__txt h4 { font-family:var(--font-heading); font-weight:800; font-size:18px; color:var(--eden); margin:0 0 .3rem; }
+    .ct-faq__txt p { font-size:14px; color:var(--neutral); margin:0; }
+    .ct-faq__cta { font-family:var(--font-heading); font-weight:700; color:var(--pine-green); text-decoration:none; font-size:14px; letter-spacing:.04em; display:inline-flex; align-items:center; gap:.4rem; }
+
+    @media (max-width:900px){ .ct-reach { grid-template-columns:1fr; } .ct-split { grid-template-columns:1fr; } .ct-row { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="TrustLogix home">
+        <img src="../trustlogix-logo.svg" alt="TrustLogix" class="nav__logo-img" width="200" height="34" />
+      </a>
+      <nav class="nav__menu" aria-label="Primary">
+        <div class="nav__item">
+          <a href="/platform" class="nav__link"><span class="nav__swap"><span>Platform</span><span aria-hidden="true">Platform</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/platform" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Our platform architecture, core modules, and benefits.</span></a>
+            <a href="/platform/trustai">– TrustAI</a>
+            <a href="/platform/trustdspm">– TrustDSPM</a>
+            <a href="/platform/trustaccess">– TrustAccess</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/partners" class="nav__link"><span class="nav__swap"><span>Partners</span><span aria-hidden="true">Partners</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/partners" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Introduction to the TrustLogix Interoperable Ecosystem.</span></a>
+            <a href="/partners/snowflake">– Snowflake</a>
+            <a href="/partners/databricks">– Databricks</a>
+            <a href="/partners/microsoft">– Power BI</a>
+            <a href="/partners/aws">– AWS</a>
+            <a href="/partners/alation">– Alation</a>
+            <a href="/partners/collibra">– Collibra</a>
+          </div>
+        </div>
+        <div class="nav__item"><a href="/pricing" class="nav__link"><span class="nav__swap"><span>Pricing</span><span aria-hidden="true">Pricing</span></span></a></div>
+        <div class="nav__item">
+          <a href="/resources" class="nav__link"><span class="nav__swap"><span>Resources</span><span aria-hidden="true">Resources</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/resources" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Resources available to existing and potential customers.</span></a>
+            <a href="/resource-library">– Resource Library</a>
+            <a href="/blog">– The TrustLogix Blog</a>
+            <a href="https://docs.trustlogix.io/">– Documentation</a>
+            <a href="/newsletter">– Newsletter</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/about" class="nav__link"><span class="nav__swap"><span>About</span><span aria-hidden="true">About</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/about" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">About TrustLogix – our culture, values, and more.</span></a>
+            <a href="/events">– Events</a>
+            <a href="/newsroom">– Newsroom</a>
+            <a href="/newsroom/press-releases">– Press Releases</a>
+            <a href="/careers">– Careers</a>
+            <a href="/contact">– Contact</a>
+          </div>
+        </div>
+      </nav>
+      <div class="nav__actions">
+        <a href="/get-started" class="btn btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+        <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="mp-hero">
+      <div class="container mp-hero__inner">
+        <span class="mp-badge">Contact</span>
+        <h1 class="mp-hero__title">Let's <span class="grad">Talk Data Security</span></h1>
+        <p class="mp-hero__desc">Whether you're exploring the platform, evaluating a proof of concept, or have a question for our team—we'd love to hear from you.</p>
+      </div>
+    </section>
+
+    <section class="mp-sec">
+      <div class="container">
+        <div class="mp-head mp-head--c">
+          <p class="mp-eyebrow">Reach Us</p>
+          <h2 class="mp-h2">How Can We <b>Help?</b></h2>
+          <p class="mp-lead">Pick the path that fits — our team typically responds within one business day.</p>
+        </div>
+
+        <div class="ct-reach">
+          <div class="ct-card">
+            <div class="ct-card__ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <h4>Talk to Sales</h4>
+            <p>See the platform in action and explore a free proof of concept in your own environment — no agents, no proxies, no data movement.</p>
+            <a class="link" href="/get-started">Schedule a Call →</a>
+          </div>
+          <div class="ct-card">
+            <div class="ct-card__ic"><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M11 20c0-3 2.5-5 5-5s5 2 5 5"/></svg></div>
+            <h4>Partnerships</h4>
+            <p>Join the TrustLogix Interoperable Ecosystem as a technology, services, or channel partner — accelerate adoption together.</p>
+            <a class="link" href="/partners">Partner With Us →</a>
+          </div>
+          <div class="ct-card">
+            <div class="ct-card__ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+            <h4>Support &amp; Docs</h4>
+            <p>Existing customer? Find product guides, API references, and how-to articles in our technical documentation center.</p>
+            <a class="link" href="https://docs.trustlogix.io/">View Documentation →</a>
+          </div>
+        </div>
+
+        <div class="ct-split">
+          <aside class="ct-side">
+            <a class="ct-map" href="https://maps.google.com/?q=Silicon+Valley+California" target="_blank" rel="noopener">
+              <img src="../logos/live/ct/office-map.webp" alt="Map of TrustLogix office in San Jose / Silicon Valley" />
+              <div class="ct-map__overlay">
+                <div>
+                  <h5>San Jose, California</h5>
+                  <span>TrustLogix HQ · Open in Google Maps</span>
+                </div>
+                <span class="arr">→</span>
+              </div>
+            </a>
+
+            <div class="ct-office">
+              <div class="ct-office__head"><svg viewBox="0 0 24 24"><path d="M12 22s8-7 8-13a8 8 0 0 0-16 0c0 6 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg><h5>Office Address</h5></div>
+              <div class="ct-office__city">TrustLogix, Inc.</div>
+              <p class="ct-office__addr">800 W. El Camino Real, Suite 180<br />Mountain View, CA 94040<br />United States</p>
+            </div>
+
+            <div class="ct-office">
+              <div class="ct-office__head">
+                <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                <h5>Email &amp; Phone</h5>
+              </div>
+              <div class="ct-office__contact">
+                <div class="ct-office__row"><span class="ct-office__lbl">Email</span><a href="mailto:hello@trustlogix.io">hello@trustlogix.io</a></div>
+                <div class="ct-office__row"><span class="ct-office__lbl">Phone</span><a href="tel:+16509432493">+1 (650) 943-2493</a></div>
+              </div>
+            </div>
+          </aside>
+
+          <form class="ct-form" onsubmit="return false;">
+            <h3>Send Us a Message</h3>
+            <p class="sub">We'll route your note to the right team and respond within one business day.</p>
+            <div class="ct-row">
+              <div class="ct-field"><label>First name</label><input type="text" placeholder="Jane" /></div>
+              <div class="ct-field"><label>Last name</label><input type="text" placeholder="Doe" /></div>
+            </div>
+            <div class="ct-field"><label>Work email</label><input type="email" placeholder="jane@company.com" /></div>
+            <div class="ct-row">
+              <div class="ct-field"><label>Company</label><input type="text" placeholder="Company name" /></div>
+              <div class="ct-field"><label>Country</label><select><option>United States</option><option>United Kingdom</option><option>Germany</option><option>India</option><option>Australia</option><option>Other</option></select></div>
+            </div>
+            <div class="ct-field"><label>How can we help?</label><select><option>Request a demo</option><option>Start a proof of concept</option><option>Partnership inquiry</option><option>Customer support</option><option>Other</option></select></div>
+            <div class="ct-field"><label>Anything else?</label><textarea placeholder="Share a few details about your team, data stack, or what you're trying to solve."></textarea></div>
+            <button class="btn btn--primary">Send Message</button>
+            <p class="ct-fineprint">By submitting, you agree to our <a href="/privacy-policy">privacy policy</a>.</p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta-final">
+      <div class="cta-final__card reveal">
+        <div class="cta-final__bg"></div>
+        <img class="cta-final__graphic" src="../logos/cta-bg-graphic.svg" alt="" aria-hidden="true" />
+        <div class="cta-final__content">
+          <div class="cta-final__left"><h2 class="cta-final__title">Experience TrustLogix in Action</h2></div>
+          <div class="cta-final__right">
+            <p class="cta-final__sub">Schedule a call to discover how TrustLogix can accelerate your AI initiatives with faster, safer data access.</p>
+            <div class="cta-final__buttons">
+              <a href="/get-started" class="btn cta-final__btn cta-final__btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+              <a href="/platform" class="btn cta-final__btn cta-final__btn--secondary"><span class="btn__swap"><span>Our Platform</span><span aria-hidden="true">Our Platform</span></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-final__strip"></div>
+    </section>
+  </main>
+
+  <footer class="footer footer--brand footer--light">
+    <div class="container">
+      <div class="footer__top">
+        <a href="/" class="footer__logo" aria-label="TrustLogix"><img src="../trustlogix-logo.svg" alt="TrustLogix" width="180" height="31" /></a>
+        <p class="footer__tagline">Unified, secure access to the data that drives AI—so innovation moves quickly, safely.</p>
+        <div class="footer__social">
+          <a href="https://x.com/TrustLogix" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="none"><path d="M17.1761 4H19.9362L13.9061 10.7774L21 20H15.4456L11.0951 14.4066L6.11723 20H3.35544L9.80517 12.7508L3 4H8.69545L12.6279 9.11262L17.1761 4ZM16.2073 18.3754H17.7368L7.86441 5.53928H6.2232L16.2073 18.3754Z" fill="currentColor"/></svg></a>
+          <a href="https://www.linkedin.com/company/trustlogix/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 3C3.67157 3 3 3.67157 3 4.5V19.5C3 20.3284 3.67157 21 4.5 21H19.5C20.3284 21 21 20.3284 21 19.5V4.5C21 3.67157 20.3284 3 19.5 3H4.5ZM8.52076 7.00272C8.52639 7.95897 7.81061 8.54819 6.96123 8.54397C6.16107 8.53975 5.46357 7.90272 5.46779 7.00413C5.47201 6.15897 6.13998 5.47975 7.00764 5.49944C7.88795 5.51913 8.52639 6.1646 8.52076 7.00272ZM12.2797 9.76176H9.7583V18.3216H12.4217V16.9819C12.4203 15.9674 12.4194 14.9532 12.4246 13.9397C12.426 13.6936 12.4372 13.4377 12.5005 13.2028C12.7381 12.3253 13.5271 11.7586 14.4074 11.8979C14.9727 11.9864 15.3467 12.3141 15.5042 12.8471C15.6013 13.1803 15.6449 13.5389 15.6491 13.8863C15.6589 15.9815 15.6573 17.0294 15.6561 18.1388V18.3202H18.328V16.7591C18.327 15.6293 18.3264 14.5001 18.3294 13.3702C18.3308 12.8597 18.276 12.3563 18.1508 11.8627C17.9638 11.1286 17.5771 10.5211 16.9485 10.0824C16.5027 9.77019 16.0133 9.5691 15.4663 9.5466C15.404 9.54401 14.7141 9.50673 14.4467 9.56066C13.6817 9.71394 13.0096 10.0641 12.5019 10.6814C12.4429 10.7522 12.3852 10.8241 12.2991 10.9315L12.2797 10.9557V9.76176ZM5.68164 18.3244H8.33242V9.76733H5.68164V18.3244Z" fill="currentColor"/></svg></a>
+          <a href="http://www.youtube.com/@trustlogix" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.5686 4.77345C21.5163 5.02692 22.2555 5.76903 22.5118 6.71673C23.1821 9.42042 23.1385 14.5321 22.5259 17.278C22.2724 18.2257 21.5303 18.965 20.5826 19.2213C17.9071 19.8831 5.92356 19.8015 3.40294 19.2213C2.45524 18.9678 1.71595 18.2257 1.45966 17.278C0.827391 14.7011 0.871044 9.25144 1.44558 6.73081C1.69905 5.78311 2.44116 5.04382 3.38886 4.78753C6.96561 4.0412 19.2956 4.282 20.5686 4.77345ZM9.86682 8.70227L15.6122 11.9974L9.86682 15.2925V8.70227Z" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col"><h5>Platform</h5><a href="/platform">Platform Overview</a><a href="/platform/trustdspm">TrustDSPM</a><a href="/platform/trustaccess">TrustAccess</a><a href="/platform/trustai">TrustAI</a></div>
+        <div class="footer__col"><h5>Partners</h5><a href="/partners">Partners Overview</a><a href="/partners/snowflake">Snowflake</a><a href="/partners/databricks">Databricks</a><a href="/partners/microsoft">Power BI</a><a href="/partners/aws">AWS</a><a href="/partners/alation">Alation</a><a href="/partners/collibra">Collibra</a></div>
+        <div class="footer__col"><h5>Resources</h5><a href="/resources">Resources Overview</a><a href="/resource-library">Resource Library</a><a href="/blog">The TrustLogix Blog</a><a href="https://docs.trustlogix.io/">Documentation</a><a href="/newsletter">Newsletter</a></div>
+        <div class="footer__col"><h5>About</h5><a href="/about">About TrustLogix</a><a href="/newsroom">Newsroom</a><a href="/newsroom/press-releases">Press Releases</a><a href="/contact">Contact</a><a href="#">Cookie Preferences</a></div>
+      </div>
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <span class="footer__credit">© 2026 TrustLogix. All rights reserved.</span>
+        <div class="footer__legal"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-service">Terms of Service</a><a href="/security-pledge">Security Pledge</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>(function(){var nav=document.getElementById('nav');function onScroll(){nav.classList.toggle('nav--solid',window.scrollY>20);}window.addEventListener('scroll',onScroll,{passive:true});onScroll();})();</script>
+</body>
+</html>

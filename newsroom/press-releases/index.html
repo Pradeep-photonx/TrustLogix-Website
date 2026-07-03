@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Press Releases — TrustLogix | TrustLogix</title>
+  <meta name="description" content="Official TrustLogix press releases and company announcements." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css?v=268" />
+  <style>
+    /* WHITE HERO — referenced from /platform/trustdspm */
+    .wp-hero { position:relative; padding-top:7rem; padding-bottom:4rem; text-align:center; overflow:hidden;
+      background-image:url("../../hero-bg.svg"), linear-gradient(#fff,#f4faf8 60%,#eaf4f3 101%);
+      background-position:50% 0,0 0; background-size:70px,auto; background-repeat:repeat,no-repeat; color:var(--neutral-darkest); }
+    .wp-hero__glow { position:absolute; width:600px; height:600px; bottom:-130px; left:-250px; background-image:radial-gradient(circle closest-side,rgba(111,190,70,.28),transparent); pointer-events:none; }
+    .wp-hero__glow2 { position:absolute; width:520px; height:520px; top:-160px; right:-180px; background-image:radial-gradient(circle closest-side,rgba(8,170,195,.20),transparent); pointer-events:none; }
+    .wp-hero__inner { position:relative; max-width:56rem; margin:0 auto; }
+    .wp-badge { display:inline-flex; align-items:center; gap:.5rem; font-family:var(--font-heading); font-weight:700; font-size:.85rem; letter-spacing:.12em; text-transform:uppercase; color:var(--pine-green); background:rgba(0,115,115,.08); padding:.5rem 1rem; border-radius:99px; margin-bottom:1.25rem; }
+    .wp-hero__title { font-family:var(--font-heading); font-weight:400; font-size:clamp(2.2rem,4vw,3.5rem); line-height:1.15; letter-spacing:-.01em; margin-bottom:1.25rem; color:var(--neutral-darkest); }
+    .wp-hero__title .ds { font-weight:800; color:var(--neutral-darkest); background:none; -webkit-text-fill-color:initial; }
+    .wp-hero__desc { font-size:16px; line-height:1.65; color:var(--neutral-darkest); max-width:44rem; margin:0 auto 2rem; }
+    .wp-hero__cta { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .wp-sec { padding:4.5rem 0; }
+    .wp-sec--alt { background:#f4f8f8; }
+    .wp-eyebrow { font-family:var(--font-heading); font-weight:700; font-size:1rem; letter-spacing:.15em; text-transform:uppercase; color:var(--pine-green); margin-bottom:1rem; }
+    .wp-h2 { font-family:var(--font-heading); font-weight:400; font-size:clamp(1.9rem,2.6vw,2.5rem); letter-spacing:-.02em; line-height:1.15; color:var(--neutral-darkest); margin-bottom:1rem; }
+    .wp-h2 b { color:var(--neutral-darkest); font-weight:800; }
+    .wp-head { margin-bottom:2rem; }
+    /* filter chips */
+    .wp-filters { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2.5rem; }
+    .wp-filter { font-family:var(--font-heading); font-weight:600; font-size:.88rem; background:#fff; border:1px solid #e5edee; padding:.5rem 1.15rem; border-radius:99px; color:var(--neutral-darkest); cursor:pointer; }
+    .wp-filter.is-active { background:var(--eden); color:#fff; border-color:var(--eden); }
+    /* card grid */
+    .wp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .wp-grid--2 { grid-template-columns:repeat(2,1fr); }
+    .wp-card { background:#fff; border:1px solid #e5edee; border-radius:18px; overflow:hidden; display:flex; flex-direction:column; }
+    .wp-card__thumb { height:150px; background:linear-gradient(135deg,#0c3f41,#08aac3); position:relative; }
+    .wp-card__thumb::before { content:""; position:absolute; inset:0; opacity:.12; background-image:radial-gradient(circle,#fff 1.2px,transparent 1.2px); background-size:20px 20px; }
+    .wp-card__type { position:absolute; top:1rem; left:1rem; font-family:var(--font-heading); font-weight:700; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; background:#fff; color:var(--pine-green); padding:.35rem .8rem; border-radius:99px; }
+    .wp-card__body { padding:1.4rem 1.5rem; display:flex; flex-direction:column; flex:1; }
+    .wp-card__title { font-family:var(--font-heading); font-weight:700; font-size:1.02rem; line-height:1.4; color:var(--neutral-darkest); margin-bottom:.6rem; }
+    .wp-card__meta { font-size:.85rem; color:var(--neutral); margin-top:auto; }
+    /* list rows (news / events / careers) */
+    /* === Featured press release card (newsroom style) === */
+    .nw-feat { display:grid; grid-template-columns:1.1fr 1fr; gap:0; background:#fff; border:1px solid #e5edee; border-radius:24px; overflow:hidden; margin-top:2rem; box-shadow:0 24px 50px rgba(12,63,65,.08); }
+    .nw-feat__body { padding:3rem; display:flex; flex-direction:column; justify-content:center; gap:1rem; }
+    .nw-feat__tag { font-family:var(--font-heading); font-weight:700; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--pine-green); background:#eef7f1; padding:.4rem .8rem; border-radius:99px; align-self:flex-start; }
+    .nw-feat__title { font-family:var(--font-heading); font-weight:700; font-size:clamp(1.5rem,2.4vw,2rem); line-height:1.25; color:var(--neutral-darkest); margin:0; }
+    .nw-feat__source { font-size:14.5px; color:var(--neutral-darkest); margin:0; font-weight:400; }
+    .nw-feat__cta { font-family:var(--font-heading); font-weight:700; font-size:16px; color:var(--pine-green); text-decoration:none; display:inline-flex; align-items:center; gap:.45rem; margin-top:.5rem; }
+    .nw-feat__visual { background:#f4f8f8; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:0; }
+    .nw-feat__visual img { width:100%; height:100%; object-fit:cover; display:block; }
+
+    /* === Filter tabs === */
+    .nw-filt { display:flex; gap:.65rem; flex-wrap:wrap; margin:3rem 0 1.5rem; }
+    .nw-filt button { background:#fff; border:1px solid #e5edee; border-radius:99px; padding:.55rem 1.2rem; font-family:var(--font-heading); font-weight:600; font-size:.9rem; color:var(--neutral-darkest); cursor:pointer; display:inline-flex; align-items:center; gap:.5rem; }
+    .nw-filt .ct { font-family:var(--font-heading); font-weight:700; font-size:11px; color:var(--neutral); background:#f1f5f5; padding:.1rem .5rem; border-radius:99px; min-width:18px; text-align:center; }
+    .nw-filt button.is-active { background:var(--eden); color:#fff; border-color:var(--eden); }
+    .nw-filt button.is-active .ct { background:rgba(255,255,255,.2); color:#fff; }
+
+    /* === Press release grid (mirrors resource-card style) === */
+    .nw-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .nw-card { background:#f4f8f8; border:none; border-radius:var(--card-radius,20px); overflow:hidden; display:flex; flex-direction:column; }
+    .nw-card__thumb { height:200px; background:var(--eden); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+    .nw-card__thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+    .nw-card__body { padding:1.5rem 1.25rem; display:flex; flex-direction:column; flex:1; }
+    .nw-card__meta { display:flex; align-items:center; justify-content:space-between; gap:.5rem; margin-bottom:.85rem; }
+    .nw-card__tag { font-family:var(--font-heading); font-weight:700; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:#fff; background:var(--pine-green); padding:.35rem .75rem; border-radius:6px; }
+    .nw-card__date { font-family:var(--font-heading); font-weight:600; font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; color:var(--neutral); white-space:nowrap; }
+    .nw-card__title { font-family:var(--font-heading); font-weight:700; font-size:18px; line-height:1.4; letter-spacing:-0.01375rem; color:var(--neutral-darkest); margin:0 0 .7rem; }
+    .nw-card__source { font-size:.875rem; line-height:1.55; color:var(--neutral-darkest); margin:0; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden; cursor:pointer; }
+    .nw-card__source.is-open { -webkit-line-clamp:initial; display:block; overflow:visible; }
+    .nw-card__more { margin-top:auto; padding-top:1.25rem; font-family:var(--font-heading); font-weight:700; font-size:16px; color:var(--pine-green); text-decoration:none; display:inline-flex; align-items:center; gap:.45rem; letter-spacing:.02em; align-self:flex-start; }
+    .nw-card__more svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:2; }
+    @media (max-width:900px){ .nw-feat { grid-template-columns:1fr; } .nw-grid { grid-template-columns:1fr; } }
+
+    /* === Media inquiry card === */
+    .pr-media { display:grid; grid-template-columns:1fr 1fr; gap:2rem; background:#fff; border:1px solid #e5edee; border-radius:24px; padding:2.5rem 3rem; margin-top:3rem; box-shadow:0 18px 40px rgba(12,63,65,.06); align-items:center; }
+    .pr-media__head { font-family:var(--font-heading); font-weight:700; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--pine-green); margin:0 0 .5rem; }
+    .pr-media h3 { font-family:var(--font-heading); font-weight:800; font-size:24px; color:var(--eden); margin:0 0 .5rem; }
+    .pr-media p { font-size:14.5px; color:var(--neutral); line-height:1.6; margin:0; }
+    .pr-media__right { display:flex; flex-direction:column; gap:.7rem; }
+    .pr-media__row { display:flex; align-items:center; gap:.7rem; background:#f4f8f8; padding:.9rem 1.1rem; border-radius:12px; font-family:var(--font-heading); font-weight:600; font-size:14px; color:var(--eden); }
+    .pr-media__row svg { width:18px; height:18px; stroke:var(--pine-green); fill:none; stroke-width:2; flex:none; }
+
+    @media (max-width:900px){ .pr-media { grid-template-columns:1fr; } }
+    /* signup form */
+    .wp-form { max-width:34rem; margin:0 auto; background:#fff; border:1px solid #e5edee; border-radius:22px; padding:2.5rem; box-shadow:var(--shadow-card); text-align:left; }
+    .wp-form h3 { font-family:var(--font-heading); font-weight:800; font-size:1.3rem; color:var(--eden); margin-bottom:.4rem; }
+    .wp-form p { font-size:.97rem; color:var(--neutral); margin-bottom:1.4rem; }
+    .wp-field { margin-bottom:1rem; }
+    .wp-field label { display:block; font-family:var(--font-heading); font-weight:600; font-size:.85rem; color:var(--neutral-darkest); margin-bottom:.4rem; }
+    .wp-field input,.wp-field select { width:100%; border:1px solid #d8d9d9; border-radius:8px; padding:.8rem 1rem; font-family:var(--font-body); font-size:1rem; color:var(--neutral-darkest); }
+    .wp-field input:focus,.wp-field select:focus { outline:none; border-color:var(--pine-green); }
+    .wp-form .btn { width:100%; text-align:center; }
+    .wp-note { font-size:.85rem; color:var(--neutral); text-align:center; margin-top:1rem; }
+    @media (max-width:900px){ .wp-grid,.wp-grid--2{ grid-template-columns:1fr; } .wp-row{ flex-direction:column; align-items:flex-start; gap:.6rem; } .wp-row__date{ width:auto; } }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="TrustLogix home">
+        <img src="../../trustlogix-logo.svg" alt="TrustLogix" class="nav__logo-img" width="200" height="34" />
+      </a>
+      <nav class="nav__menu" aria-label="Primary">
+        <div class="nav__item">
+          <a href="/platform" class="nav__link"><span class="nav__swap"><span>Platform</span><span aria-hidden="true">Platform</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/platform" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Our platform architecture, core modules, and benefits.</span></a>
+            <a href="/platform/trustai">– TrustAI</a>
+            <a href="/platform/trustdspm">– TrustDSPM</a>
+            <a href="/platform/trustaccess">– TrustAccess</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/partners" class="nav__link"><span class="nav__swap"><span>Partners</span><span aria-hidden="true">Partners</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/partners" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Introduction to the TrustLogix Interoperable Ecosystem.</span></a>
+            <a href="/partners/snowflake">– Snowflake</a>
+            <a href="/partners/databricks">– Databricks</a>
+            <a href="/partners/microsoft">– Power BI</a>
+            <a href="/partners/aws">– AWS</a>
+            <a href="/partners/alation">– Alation</a>
+            <a href="/partners/collibra">– Collibra</a>
+          </div>
+        </div>
+        <div class="nav__item"><a href="/pricing" class="nav__link"><span class="nav__swap"><span>Pricing</span><span aria-hidden="true">Pricing</span></span></a></div>
+        <div class="nav__item">
+          <a href="/resources" class="nav__link"><span class="nav__swap"><span>Resources</span><span aria-hidden="true">Resources</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/resources" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Resources available to existing and potential customers.</span></a>
+            <a href="/resource-library">– Resource Library</a>
+            <a href="/blog">– The TrustLogix Blog</a>
+            <a href="https://docs.trustlogix.io/">– Documentation</a>
+            <a href="/newsletter">– Newsletter</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/about" class="nav__link"><span class="nav__swap"><span>About</span><span aria-hidden="true">About</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/about" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">About TrustLogix – our culture, values, and more.</span></a>
+            <a href="/events">– Events</a>
+            <a href="/newsroom">– Newsroom</a>
+            <a href="/newsroom/press-releases">– Press Releases</a>
+            <a href="/careers">– Careers</a>
+            <a href="/contact">– Contact</a>
+          </div>
+        </div>
+      </nav>
+      <div class="nav__actions">
+        <a href="/get-started" class="btn btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+        <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="wp-hero">
+      <div class="wp-hero__glow"></div><div class="wp-hero__glow2"></div>
+      <div class="container wp-hero__inner">
+        <span class="wp-badge">Press Releases</span>
+        <h1 class="wp-hero__title">TrustLogix <span class="ds">Press Releases</span></h1>
+        <p class="wp-hero__desc">Official company announcements, product launches, and milestones.</p>
+      </div>
+    </section>
+
+    <section class="wp-sec">
+      <div class="container">
+        <div class="wp-head"><p class="wp-eyebrow">Featured Release</p><h2 class="wp-h2">Latest from <b>TrustLogix</b></h2></div>
+
+        <article class="nw-feat reveal">
+          <div class="nw-feat__body">
+            <span class="nw-feat__tag">Press Release · 2026</span>
+            <h3 class="nw-feat__title">TrustLogix Gives Enterprises a Kill Switch for AI Agents</h3>
+            <p class="nw-feat__source">Industry-first capability lets enterprises instantly revoke data access for any AI agent or autonomous workflow — a foundational control as organizations operationalize generative AI in regulated environments.</p>
+            <span class="nw-feat__cta">Read the announcement →</span>
+          </div>
+          <div class="nw-feat__visual"><img src="../../logos/live/news/pr-trustai.png" alt="TrustLogix TrustAI Press Release" /></div>
+        </article>
+
+        <div class="nw-filt" id="nw-filt">
+          <button class="is-active" data-cat="all">All <span class="ct">4</span></button>
+          <button data-cat="2026">2026 <span class="ct">3</span></button>
+          <button data-cat="2025">2025 <span class="ct">1</span></button>
+        </div>
+
+        <div class="nw-grid" id="nw-grid">
+          <article class="nw-card" data-cat="2026">
+            <div class="nw-card__thumb"><img src="../../logos/live/news/pr-dbta100.png" alt="" /></div>
+            <div class="nw-card__body">
+              <div class="nw-card__meta"><span class="nw-card__tag">Press Release</span><span class="nw-card__date">2026</span></div>
+              <h3 class="nw-card__title">TrustLogix Named to DBTA Magazine's Annual DBTA100 List</h3>
+              <p class="nw-card__source">TrustLogix has been named to the DBTA 100 2026, recognizing the top 100 companies shaping the future of data. Learn why enterprises trust TrustLogix for AI agent data security.</p>
+              <span class="nw-card__more">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </article>
+          <article class="nw-card" data-cat="2026">
+            <div class="nw-card__thumb"><img src="../../logos/live/news/pr-snowflake.png" alt="" /></div>
+            <div class="nw-card__body">
+              <div class="nw-card__meta"><span class="nw-card__tag">Press Release</span><span class="nw-card__date">2026</span></div>
+              <h3 class="nw-card__title">TrustLogix Launches TrustAI Integration with Snowflake AI Data Cloud</h3>
+              <p class="nw-card__source">TrustLogix and Snowflake joint customers can now enforce fine-grained, attribute-based access control for AI agents built in Snowflake Cortex AI, with continuous data access monitoring through the TrustLogix platform.</p>
+              <span class="nw-card__more">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </article>
+          <article class="nw-card" data-cat="2026">
+            <div class="nw-card__thumb"><img src="../../logos/live/news/pr-trustai.png" alt="" /></div>
+            <div class="nw-card__body">
+              <div class="nw-card__meta"><span class="nw-card__tag">Press Release</span><span class="nw-card__date">2026</span></div>
+              <h3 class="nw-card__title">TrustLogix Gives Enterprises a Kill Switch for AI Agents</h3>
+              <p class="nw-card__source">Introducing the next generation of TrustAI: a unified control plane for the data layer featuring IBAC, MCP Data Gateway, Guardian Agent, real-time behavioral oversight, and identity propagation across every AI agent and data platform.</p>
+              <span class="nw-card__more">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </article>
+          <article class="nw-card" data-cat="2025">
+            <div class="nw-card__thumb"><img src="../../logos/live/news/pr-trustai-2025.png" alt="" /></div>
+            <div class="nw-card__body">
+              <div class="nw-card__meta"><span class="nw-card__tag">Press Release</span><span class="nw-card__date">2025</span></div>
+              <h3 class="nw-card__title">TrustLogix Launches TrustAI for Data Security in the Age of AI Agents</h3>
+              <p class="nw-card__source">TrustLogix introduces TrustAI, extending the unified data control platform with AI-native security and governance — purpose-built to give enterprises visibility, policy enforcement, and audit-readiness across every AI agent and data interaction.</p>
+              <span class="nw-card__more">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </article>
+        </div>
+
+        <script>
+          (function(){
+            var filt=document.getElementById('nw-filt');
+            var grid=document.getElementById('nw-grid');
+            if(!filt||!grid)return;
+            filt.addEventListener('click',function(e){
+              var btn=e.target.closest('button[data-cat]');
+              if(!btn)return;
+              filt.querySelectorAll('button').forEach(function(b){b.classList.remove('is-active');});
+              btn.classList.add('is-active');
+              var cat=btn.getAttribute('data-cat');
+              grid.querySelectorAll('.nw-card').forEach(function(c){
+                var show=(cat==='all'||c.getAttribute('data-cat')===cat);
+                c.style.display=show?'':'none';
+              });
+            });
+          })();
+          document.addEventListener('click',function(e){
+            var s=e.target.closest('.nw-card__source');
+            if(s) s.classList.toggle('is-open');
+          });
+        </script>
+
+      </div>
+    </section>
+
+    <section class="cta-final">
+      <div class="cta-final__card reveal">
+        <div class="cta-final__bg"></div>
+        <img class="cta-final__graphic" src="../../logos/cta-bg-graphic.svg" alt="" aria-hidden="true" />
+        <div class="cta-final__content">
+          <div class="cta-final__left"><h2 class="cta-final__title">Experience TrustLogix in Action</h2></div>
+          <div class="cta-final__right">
+            <p class="cta-final__sub">Schedule a call to discover how TrustLogix can accelerate your AI initiatives with faster, safer data access.</p>
+            <div class="cta-final__buttons">
+              <a href="/get-started" class="btn cta-final__btn cta-final__btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+              <a href="/platform" class="btn cta-final__btn cta-final__btn--secondary"><span class="btn__swap"><span>Our Platform</span><span aria-hidden="true">Our Platform</span></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-final__strip"></div>
+    </section>
+  </main>
+
+  <footer class="footer footer--brand footer--light">
+    <div class="container">
+      <div class="footer__top">
+        <a href="/" class="footer__logo" aria-label="TrustLogix"><img src="../../trustlogix-logo.svg" alt="TrustLogix" width="180" height="31" /></a>
+        <p class="footer__tagline">Unified, secure access to the data that drives AI—so innovation moves quickly, safely.</p>
+        <div class="footer__social">
+          <a href="https://x.com/TrustLogix" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="none"><path d="M17.1761 4H19.9362L13.9061 10.7774L21 20H15.4456L11.0951 14.4066L6.11723 20H3.35544L9.80517 12.7508L3 4H8.69545L12.6279 9.11262L17.1761 4ZM16.2073 18.3754H17.7368L7.86441 5.53928H6.2232L16.2073 18.3754Z" fill="currentColor"/></svg></a>
+          <a href="https://www.linkedin.com/company/trustlogix/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 3C3.67157 3 3 3.67157 3 4.5V19.5C3 20.3284 3.67157 21 4.5 21H19.5C20.3284 21 21 20.3284 21 19.5V4.5C21 3.67157 20.3284 3 19.5 3H4.5ZM8.52076 7.00272C8.52639 7.95897 7.81061 8.54819 6.96123 8.54397C6.16107 8.53975 5.46357 7.90272 5.46779 7.00413C5.47201 6.15897 6.13998 5.47975 7.00764 5.49944C7.88795 5.51913 8.52639 6.1646 8.52076 7.00272ZM12.2797 9.76176H9.7583V18.3216H12.4217V16.9819C12.4203 15.9674 12.4194 14.9532 12.4246 13.9397C12.426 13.6936 12.4372 13.4377 12.5005 13.2028C12.7381 12.3253 13.5271 11.7586 14.4074 11.8979C14.9727 11.9864 15.3467 12.3141 15.5042 12.8471C15.6013 13.1803 15.6449 13.5389 15.6491 13.8863C15.6589 15.9815 15.6573 17.0294 15.6561 18.1388V18.3202H18.328V16.7591C18.327 15.6293 18.3264 14.5001 18.3294 13.3702C18.3308 12.8597 18.276 12.3563 18.1508 11.8627C17.9638 11.1286 17.5771 10.5211 16.9485 10.0824C16.5027 9.77019 16.0133 9.5691 15.4663 9.5466C15.404 9.54401 14.7141 9.50673 14.4467 9.56066C13.6817 9.71394 13.0096 10.0641 12.5019 10.6814C12.4429 10.7522 12.3852 10.8241 12.2991 10.9315L12.2797 10.9557V9.76176ZM5.68164 18.3244H8.33242V9.76733H5.68164V18.3244Z" fill="currentColor"/></svg></a>
+          <a href="http://www.youtube.com/@trustlogix" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.5686 4.77345C21.5163 5.02692 22.2555 5.76903 22.5118 6.71673C23.1821 9.42042 23.1385 14.5321 22.5259 17.278C22.2724 18.2257 21.5303 18.965 20.5826 19.2213C17.9071 19.8831 5.92356 19.8015 3.40294 19.2213C2.45524 18.9678 1.71595 18.2257 1.45966 17.278C0.827391 14.7011 0.871044 9.25144 1.44558 6.73081C1.69905 5.78311 2.44116 5.04382 3.38886 4.78753C6.96561 4.0412 19.2956 4.282 20.5686 4.77345ZM9.86682 8.70227L15.6122 11.9974L9.86682 15.2925V8.70227Z" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col"><h5>Platform</h5><a href="/platform">Platform Overview</a><a href="/platform/trustdspm">TrustDSPM</a><a href="/platform/trustaccess">TrustAccess</a><a href="/platform/trustai">TrustAI</a></div>
+        <div class="footer__col"><h5>Partners</h5><a href="/partners">Partners Overview</a><a href="/partners/snowflake">Snowflake</a><a href="/partners/databricks">Databricks</a><a href="/partners/microsoft">Power BI</a><a href="/partners/aws">AWS</a><a href="/partners/alation">Alation</a><a href="/partners/collibra">Collibra</a></div>
+        <div class="footer__col"><h5>Resources</h5><a href="/resources">Resources Overview</a><a href="/resource-library">Resource Library</a><a href="/blog">The TrustLogix Blog</a><a href="https://docs.trustlogix.io/">Documentation</a><a href="/newsletter">Newsletter</a></div>
+        <div class="footer__col"><h5>About</h5><a href="/about">About TrustLogix</a><a href="/newsroom">Newsroom</a><a href="/newsroom/press-releases">Press Releases</a><a href="/contact">Contact</a><a href="#">Cookie Preferences</a></div>
+      </div>
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <span class="footer__credit">© 2026 TrustLogix. All rights reserved.</span>
+        <div class="footer__legal"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-service">Terms of Service</a><a href="/security-pledge">Security Pledge</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+  <script>(function(){var nav=document.getElementById('nav');function onScroll(){nav.classList.toggle('nav--solid',window.scrollY>20);}window.addEventListener('scroll',onScroll,{passive:true});onScroll();})();</script>
+</body>
+</html>

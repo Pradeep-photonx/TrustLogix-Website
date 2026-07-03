@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrustLogix — Accelerate Your Enterprise with AI-Ready Data Access</title>
+  <meta name="description" content="Enterprises need to move faster with AI, but fragmented access and inconsistent data controls slow progress and add risk. TrustLogix gives teams unified, secure access to the data that drives AI—so innovation moves quickly, safely." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=268" />
+</head>
+<body>
+
+  <!-- ============ ANNOUNCEMENT STRIP ============ -->
+  <style>
+    .ann-strip { background:linear-gradient(110deg,#08aac3 0%,#23ad9c 48%,#6fbe46 100%); color:#fff; font-family:var(--font-heading); font-weight:700; font-size:14px; text-align:center; padding:.7rem 1rem; letter-spacing:.01em; }
+  </style>
+  <div class="ann-strip">Meet us at Databricks Data + AI Summit June 15 - 18 | Booth 219</div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="TrustLogix home">
+        <img src="trustlogix-logo.svg" alt="TrustLogix" class="nav__logo-img" width="200" height="34" />
+      </a>
+
+      <nav class="nav__menu" aria-label="Primary">
+        <div class="nav__item">
+          <a href="/platform" class="nav__link"><span class="nav__swap"><span>Platform</span><span aria-hidden="true">Platform</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/platform" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Our platform architecture, core modules, and benefits.</span></a>
+            <a href="/platform/trustai">– TrustAI</a>
+            <a href="/platform/trustapp">– TrustApp</a>
+            <a href="/platform/trustdspm">– TrustDSPM</a>
+            <a href="/platform/trustaccess">– TrustAccess</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/partners" class="nav__link"><span class="nav__swap"><span>Partners</span><span aria-hidden="true">Partners</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/partners" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Introduction to the TrustLogix Interoperable Ecosystem.</span></a>
+            <a href="/partners/snowflake">– Snowflake</a>
+            <a href="/partners/databricks">– Databricks</a>
+            <a href="/partners/microsoft">– Power BI</a>
+            <a href="/partners/aws">– AWS</a>
+            <a href="/partners/alation">– Alation</a>
+            <a href="/partners/collibra">– Collibra</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/pricing" class="nav__link"><span class="nav__swap"><span>Pricing</span><span aria-hidden="true">Pricing</span></span></a>
+        </div>
+        <div class="nav__item">
+          <a href="/resources" class="nav__link"><span class="nav__swap"><span>Resources</span><span aria-hidden="true">Resources</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/resources" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Resources available to existing and potential customers.</span></a>
+            <a href="/resource-library">– Resource Library</a>
+            <a href="/blog">– The TrustLogix Blog</a>
+            <a href="https://docs.trustlogix.io/">– Documentation</a>
+            <a href="/newsletter">– Newsletter</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/about" class="nav__link"><span class="nav__swap"><span>About</span><span aria-hidden="true">About</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/about" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">About TrustLogix – our culture, values, and more.</span></a>
+            <a href="/events">– Events</a>
+            <a href="/newsroom">– Newsroom</a>
+            <a href="/newsroom/press-releases">– Press Releases</a>
+            <a href="/careers">– Careers</a>
+            <a href="/contact">– Contact</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="nav__actions">
+        <a href="/get-started" class="btn btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+        <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero__glow"></div>
+      <div class="container hero__inner">
+        <span class="hero__badge reveal"><b>AI-Ready</b> · Data Security Platform</span>
+        <h1 class="hero__title reveal" data-delay="1">Accelerate Your Enterprise with <span class="grad">AI-Ready Data Access</span></h1>
+        <p class="hero__sub reveal" data-delay="2">Enterprises need to move faster with AI, but fragmented access and inconsistent data controls slow progress and add risk. TrustLogix gives teams unified, secure access to the data that drives AI—so innovation moves quickly, safely.</p>
+        <div class="hero__cta reveal" data-delay="3">
+          <a href="/get-started" class="btn btn--primary btn--lg"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="hero__graphic reveal" data-delay="3">
+          <img src="hero-home.svg" alt="TrustLogix unified data security control plane across data platforms and AI agents" class="hero__graphic-img" width="1532" height="869" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PLATFORM OVERVIEW STATEMENT ============ -->
+    <section class="section scheme-light">
+      <div class="container statement">
+        <div class="statement__col">
+          <h2 class="statement__title reveal">The <b>Data Security Platform</b> for Faster, Safer Access Across Sharing, Analytics and AI</h2>
+        </div>
+        <div class="statement__col">
+          <p class="statement__desc reveal" data-delay="1">TrustLogix delivers a patented, AI-powered data security platform that unifies data visibility, policy enforcement, and AI protection across every data system. It continuously detects inappropriate access, right-sizes entitlements, and enforces least-privilege controls across Snowflake, Databricks, Power BI, and AI agents—keeping policies aligned as users, data, and platforms evolve.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRUSTED LOGOS ============ -->
+    <section class="logos-section scheme-light">
+      <div class="container">
+        <p class="logos__label reveal">Trusted by <b>Leading Enterprises</b></p>
+      </div>
+      <div class="logos-marquee reveal" data-delay="1">
+        <div class="logos-track">
+          <img class="logos-logo" src="logos/snowflake.webp" alt="Snowflake" />
+          <img class="logos-logo" src="logos/aws.png" alt="AWS" />
+          <img class="logos-logo" src="logos/databricks.webp" alt="Databricks" />
+          <img class="logos-logo" src="logos/power-bi.webp" alt="Microsoft Power BI" />
+          <img class="logos-logo" src="logos/azure.webp" alt="Microsoft Azure" />
+          <img class="logos-logo" src="logos/azure-ai-foundry.png" alt="Azure AI Foundry" />
+          <img class="logos-logo" src="logos/bedrock.png" alt="Amazon Bedrock" />
+          <img class="logos-logo" src="logos/langgraph.png" alt="LangGraph" />
+          <img class="logos-logo" src="logos/nvidia-nemo.png" alt="NVIDIA NeMo" />
+          <!-- duplicate set for seamless loop -->
+          <img class="logos-logo" src="logos/snowflake.webp" alt="" aria-hidden="true" />
+          <img class="logos-logo" src="logos/aws.png" alt="" aria-hidden="true" />
+          <img class="logos-logo" src="logos/databricks.webp" alt="" aria-hidden="true" />
+          <img class="logos-logo" src="logos/power-bi.webp" alt="" aria-hidden="true" />
+          <img class="logos-logo" src="logos/azure.webp" alt="" aria-hidden="true" />
+          <img class="logos-logo" src="logos/azure-ai-foundry.png" alt="" aria-hidden="true" />
+          <img class="logos-logo" src="logos/bedrock.png" alt="" aria-hidden="true" />
+          <img class="logos-logo" src="logos/langgraph.png" alt="" aria-hidden="true" />
+          <img class="logos-logo" src="logos/nvidia-nemo.png" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AI-POWERED FEATURES (3 products) ============ -->
+    <section class="section bg-pattern">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <span class="eyebrow reveal">The Platform</span>
+          <h2 class="section-head__title reveal" data-delay="1">AI-Powered <b>Data Security</b> that Adapts as Your Business Moves</h2>
+        </div>
+        <div class="cards-grid cards-grid--3">
+          <!-- TrustDSPM -->
+          <article class="product-card reveal">
+            <div class="product-card__head"><div class="product-card__icon" style="--icon:url('logos/trustdspm.svg')" aria-hidden="true"></div><h3 class="product-card__name">TrustDSPM</h3></div>
+            <p class="product-card__sub">Data Security Posture Management with Business Context</p>
+            <p class="product-card__desc">Continuously discover risks, recommend least-privilege policies, and simplify compliance based on the business context of your data.</p>
+            <a href="/platform/trustdspm" class="link-arrow product-card__link">Learn More
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </article>
+          <!-- TrustAccess -->
+          <article class="product-card reveal" data-delay="1">
+            <div class="product-card__head"><div class="product-card__icon" style="--icon:url('logos/trustaccess.svg')" aria-hidden="true"></div><h3 class="product-card__name">TrustAccess</h3></div>
+            <p class="product-card__sub">Dynamic Access Controls with Metadata-Aware Policies</p>
+            <p class="product-card__desc">Enforce granular, business-aware access controls across platforms and dynamically adjust entitlements as roles and classifications change.</p>
+            <a href="/platform/trustaccess" class="link-arrow product-card__link">Learn More
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </article>
+          <!-- TrustAI -->
+          <article class="product-card reveal" data-delay="2">
+            <div class="product-card__head"><div class="product-card__icon" style="--icon:url('logos/trustai.svg')" aria-hidden="true"></div><h3 class="product-card__name">TrustAI</h3></div>
+            <p class="product-card__sub">AI Data Security with Business Classification Awareness</p>
+            <p class="product-card__desc">Enforce business-aware access for AI agents, automatically apply data sensitivity policies in training and inference, and monitor activity to prevent misuse or leakage.</p>
+            <a href="/platform/trustai" class="link-arrow product-card__link">Learn More
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BUSINESS VALUE / PERSONAS (carousel) ============ -->
+    <section class="section bg-pattern">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <span class="eyebrow reveal">Business Value</span>
+          <h2 class="section-head__title reveal" data-delay="1">Turn Data Access from a Security Risk into a <b>Business Accelerator</b></h2>
+          <p class="section-head__sub reveal" data-delay="2">TrustLogix unifies security and data teams to deliver faster, safer access across on-premises databases, data clouds, analytics and AI Agents — eliminating risk and enabling innovation.</p>
+        </div>
+        <div class="bv bv--cine reveal" data-delay="1" id="bv-carousel">
+          <div class="bv__viewport">
+            <div class="bv__track">
+              <!-- Slide 1: CISOs -->
+              <div class="bv__slide">
+                <img class="bv__img" src="logos/persona-a.webp" alt="" aria-hidden="true" />
+                <div class="bv__header">How TrustLogix Helps CISOs and Security Leaders</div>
+                <div class="bv__qa">
+                  <div class="bv__q"><b>Q:</b> How can I stop AI Agents from exposing sensitive data or using excessive privileges?</div>
+                  <div class="bv__a"><b>A:</b> With TrustAI, agents only access the data their end-users are authorized to see — preventing data leakage, privilege abuse, and over-sharing.</div>
+                </div>
+              </div>
+              <!-- Slide 2: CDOs -->
+              <div class="bv__slide">
+                <img class="bv__img" src="logos/persona-b.webp" alt="" aria-hidden="true" />
+                <div class="bv__header">How TrustLogix Helps CDOs and Data Architects</div>
+                <div class="bv__qa">
+                  <div class="bv__q"><b>Q:</b> How do I deliver fast, compliant, least-privilege access across all my data platforms?</div>
+                  <div class="bv__a"><b>A:</b> TrustLogix enforces fine-grained, attribute-based controls once and applies them everywhere, giving teams rapid, least-privilege access without policy drift.</div>
+                </div>
+              </div>
+              <!-- Slide 3: Security & Data Platform Architects -->
+              <div class="bv__slide">
+                <img class="bv__img" src="logos/persona-c.webp" alt="" aria-hidden="true" />
+                <div class="bv__header">How TrustLogix Helps Security and Data Platform Architects</div>
+                <div class="bv__qa">
+                  <div class="bv__q"><b>Q:</b> How can I scale secure data access without adding infrastructure or role chaos?</div>
+                  <div class="bv__a"><b>A:</b> TrustLogix is cloud-native, proxyless, and agentless — activating in under an hour with zero disruption. It enforces policies at the data source, eliminating spaghetti roles.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bv__nav">
+            <div class="bv__dots">
+              <button class="bv__dot is-active" data-i="0" aria-label="Slide 1"></button>
+              <button class="bv__dot" data-i="1" aria-label="Slide 2"></button>
+              <button class="bv__dot" data-i="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="bv__arrows">
+              <button class="bv__arrow" data-dir="-1" aria-label="Previous">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"/></svg>
+              </button>
+              <button class="bv__arrow" data-dir="1" aria-label="Next">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CORE CAPABILITIES ============ -->
+    <section class="section scheme-light">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <span class="eyebrow reveal">Why TrustLogix</span>
+          <h2 class="section-head__title reveal" data-delay="1">Unlock AI, Analytics, and Data <br>Sharing — <b>Securely</b></h2>
+          <p class="section-head__sub reveal" data-delay="2">Most vendors stop at visibility or static controls. TrustLogix goes further — combining continuous discovery, dynamic least-privilege enforcement, and AI-aware security. The result: enterprises adopt AI confidently, accelerate analytics, and share data safely, while always staying compliant.</p>
+        </div>
+        <div class="cards-grid cards-grid--3">
+          <article class="capability reveal">
+            <div class="capability__icon" aria-hidden="true"><svg viewBox="0 0 682.66669 682.66669" fill="none" stroke="currentColor" stroke-width="30" stroke-linecap="butt" stroke-linejoin="round" stroke-miterlimit="10"><g transform="matrix(1.3333333,0,0,-1.3333333,0,682.66667)"><g transform="translate(166.99,134.14)"><path d="m 0,0 c -17.39,0 -31.49,14.1 -31.49,31.48 0,16.2 12.24,29.54 27.97,31.3 1.16,0.12 2.33,0.19 3.52,0.19 17.39,0 31.48,-14.1 31.48,-31.49 C 31.48,16.33 20.78,3.68 6.51,0.68 4.41,0.23 2.23,0 0,0 Z m 178.02,240.29 c 17.39,0 31.49,-14.1 31.49,-31.49 0,-16.09 -12.07,-29.35 -27.64,-31.25 -1.26,-0.15 -2.55,-0.23 -3.85,-0.23 -17.39,0 -31.48,14.09 -31.48,31.48 0,15.42 11.07,28.25 25.71,30.96 1.87,0.35 3.8,0.53 5.77,0.53 z M 313.84,208.8 c -34.87,90.14 -122.38,154.06 -224.83,154.06 -53.23,0 -102.43,-17.26 -142.31,-46.49 2.02,-4.16 3.16,-8.83 3.16,-13.76 0,-17.39 -14.1,-31.49 -31.49,-31.49 -5.58,0 -10.82,1.45 -15.36,3.99 -16.27,-19.72 -29.46,-42.06 -38.83,-66.31 -10.45,-26.97 -16.17,-56.29 -16.17,-86.94 0,-31.96 6.22,-62.47 17.52,-90.38 35.75,-88.32 122.34,-150.62 223.48,-150.62 53.23,0 102.43,17.26 142.31,46.49 -2.02,4.16 -3.16,8.83 -3.16,13.76 0,17.39 14.1,31.49 31.49,31.49 5.58,0 10.82,-1.45 15.36,-3.99 15.5,18.78 28.2,39.95 37.48,62.87 11.3,27.91 17.52,58.42 17.52,90.38 0,30.65 -5.72,59.97 -16.17,86.94 z"/></g><g transform="translate(351.4199,256)"><path d="M 0,0 C 0,-31.96 -2.46,-62.47 -6.94,-90.38 -21.09,-178.7 -55.37,-241 -95.42,-241 c -35.21,0 -65.96,48.16 -82.5,119.82 14.27,3 24.97,15.65 24.97,30.8 0,17.39 -14.09,31.49 -31.48,31.49 -1.19,0 -2.36,-0.07 -3.52,-0.19 -1.89,18.9 -2.89,38.7 -2.89,59.08 0,30.65 2.27,59.97 6.4,86.94 13.81,90.14 48.46,154.06 89.02,154.06 35.74,0 66.9,-49.63 83.24,-123.1 -14.64,-2.71 -25.71,-15.54 -25.71,-30.96 0,-17.39 14.09,-31.48 31.48,-31.48 1.3,0 2.59,0.08 3.85,0.23 C -0.89,37.82 0,19.17 0,0 Z"/></g><g transform="translate(376.5,342.9399)"><path d="m 0,0 c 0,-16.09 -12.07,-29.35 -27.64,-31.25 -1.26,-0.15 -2.55,-0.23 -3.85,-0.23 -17.39,0 -31.48,14.09 -31.48,31.48 0,15.42 11.07,28.25 25.71,30.96 1.87,0.35 3.8,0.53 5.77,0.53 C -14.1,31.49 0,17.39 0,0 Z"/></g><g transform="translate(484.05,342.94)"><path d="M 0,0 H -3.22 -107.55"/></g><g transform="translate(313.53,342.94)"><path d="m 0,0 h -146.55 -135.81 -3.22"/></g><g transform="translate(484.05,165.62)"><path d="m 0,0 h -4.57 -135 -146.01"/></g><g transform="translate(135.5,165.62)"><path d="m 0,0 h -102.98 -4.57"/></g><g transform="translate(198.47,165.62)"><path d="m 0,0 c 0,-15.15 -10.7,-27.8 -24.97,-30.8 -2.1,-0.45 -4.28,-0.68 -6.51,-0.68 -17.39,0 -31.49,14.1 -31.49,31.48 0,16.2 12.24,29.54 27.97,31.3 1.16,0.12 2.33,0.19 3.52,0.19 C -14.09,31.49 0,17.39 0,0 Z"/></g><g transform="translate(116.85,436.75)"><path d="m 0,0 c 0,-17.39 -14.1,-31.49 -31.49,-31.49 -5.58,0 -10.82,1.45 -15.36,3.99 -9.62,5.39 -16.13,15.69 -16.13,27.5 0,17.39 14.1,31.49 31.49,31.49 12.46,0 23.22,-7.23 28.33,-17.73 C -1.14,9.6 0,4.93 0,0 Z"/></g><g transform="translate(458.13,75.25)"><path d="m 0,0 c 0,-17.39 -14.1,-31.49 -31.49,-31.49 -12.46,0 -23.22,7.23 -28.33,17.73 -2.02,4.16 -3.16,8.83 -3.16,13.76 0,17.39 14.1,31.49 31.49,31.49 5.58,0 10.82,-1.45 15.36,-3.99 C -6.51,22.11 0,11.81 0,0 Z"/></g></g></svg></div>
+            <h3 class="capability__title">Govern Access Everywhere</h3>
+            <span class="capability__divider"></span>
+            <ul class="capability__list">
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 24 24" fill="currentColor"><g clip-rule="evenodd" fill-rule="evenodd"><path d="m8.92306 4.54286c-1.27451 0-2.30769 1.03614-2.30769 2.31428 0 1.27815 1.03318 2.31429 2.30769 2.31429 1.27454 0 2.30764-1.03614 2.30764-2.31429 0-1.27814-1.0331-2.31428-2.30764-2.31428zm-3.84616 2.31428c0-2.13024 1.72199-3.85714 3.84616-3.85714 2.12414 0 3.84614 1.7269 3.84614 3.85714s-1.722 3.85716-3.84614 3.85716c-2.12417 0-3.84616-1.72692-3.84616-3.85716z"/><path d="m2 6.85726c0-.42605.3444-.77143.76923-.77143h3.07692c.42484 0 .76922.34526.76922.77131s-.34438.77154-.76922.77154h-3.07692c-.42483 0-.76923-.34538-.76923-.77142z"/><path d="m11.2307 6.85714c0-.42605.3444-.7712.7692-.7712h9.2308c.4248 0 .7692.34538.7692.77143 0 .42604-.3444.77142-.7692.77142h-9.2308c-.4248 0-.7692-.3456-.7692-.77165z"/><path d="m15.0769 14.8285c1.2745 0 2.3077 1.0361 2.3077 2.3143 0 1.2781-1.0332 2.3143-2.3077 2.3143s-2.3077-1.0362-2.3077-2.3143c0-1.2782 1.0332-2.3143 2.3077-2.3143zm3.8461 2.3143c0-2.1303-1.7219-3.8572-3.8461-3.8572s-3.8462 1.7269-3.8462 3.8572c0 2.1302 1.722 3.8571 3.8462 3.8571s3.8461-1.7269 3.8461-3.8571z"/><path d="m22 17.1429c0-.426-.3444-.7714-.7693-.7714h-3.0769c-.4248 0-.7692.3452-.7692.7713 0 .426.3444.7716.7692.7716h3.0769c.4249 0 .7693-.3454.7693-.7715z"/><path d="m12.7692 17.1428c0-.4261-.3443-.7712-.7692-.7712h-9.23075c-.42483 0-.76923.3454-.76923.7714 0 .4261.3444.7714.76923.7714h9.23075c.4249 0 .7692-.3456.7692-.7716z"/></g></svg></span>
+                <div class="cap-item__body"><div class="cap-item__label">Centralized policies</div><p class="cap-item__desc">Define and manage policies in one place.</p></div>
+              </li>
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 512 512" fill="currentColor"><path d="m361.05 330.923h60.95c49.626 0 90-40.374 90-90 0-45.11-33.363-82.575-76.708-89.021-6.607-68.274-64.313-121.825-134.292-121.825-44.46 0-85.317 21.57-110.393 57.308-50.209-31.312-115.771 5.116-115.102 64.704-42.757 6.953-75.505 44.141-75.505 88.834 0 49.626 40.374 90 90 90h60.95v38.787l-26.196 26.196c-5.702-2.614-12.033-4.083-18.704-4.083-24.84 0-45.05 20.209-45.05 45.05s20.209 45.05 45.05 45.05 45.05-20.209 45.05-45.05c0-7.231-1.722-14.063-4.763-20.125l30.219-30.219c2.813-2.813 4.394-6.628 4.394-10.606v-45h60.05v63.478c-17.487 6.194-30.05 22.89-30.05 42.472 0 24.841 20.209 45.05 45.05 45.05s45.05-20.209 45.05-45.05c0-19.583-12.563-36.278-30.05-42.472v-63.478h60.05v45c0 3.979 1.581 7.794 4.394 10.606l30.219 30.219c-3.04 6.062-4.763 12.894-4.763 20.125 0 24.841 20.209 45.05 45.05 45.05 24.84 0 45.05-20.209 45.05-45.05s-20.209-45.05-45.05-45.05c-6.672 0-13.003 1.469-18.704 4.083l-26.196-26.196zm-255 121c-8.298 0-15.05-6.751-15.05-15.05s6.751-15.05 15.05-15.05 15.05 6.751 15.05 15.05-6.751 15.05-15.05 15.05zm149.95 0c-8.298 0-15.05-6.751-15.05-15.05s6.751-15.05 15.05-15.05 15.05 6.751 15.05 15.05-6.752 15.05-15.05 15.05zm-226-211c0-33.084 26.916-60 60-60h2.326c9.755 0 16.93-9.189 14.546-18.661-7.227-28.721 14.602-56.339 43.878-56.339 12.551 0 24.226 5.035 32.871 14.177 7.072 7.479 19.449 5.769 24.209-3.392 18.148-34.931 53.848-56.631 93.17-56.631 57.854 0 104.923 47.068 104.923 104.923l-.011.827c-.053 8.319 6.681 15.096 15 15.096h1.088c33.084 0 60 26.916 60 60s-26.916 60-60 60h-332c-33.084 0-60-26.916-60-60zm391 195.95c0 8.299-6.751 15.05-15.05 15.05s-15.05-6.751-15.05-15.05 6.751-15.05 15.05-15.05 15.05 6.751 15.05 15.05z"/></svg></span>
+                <div class="cap-item__body"><div class="cap-item__label">Cross-platform enforcement</div><p class="cap-item__desc">Consistent controls across data and AI.</p></div>
+              </li>
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 24 24" fill="currentColor"><g clip-rule="evenodd" fill-rule="evenodd"><path d="m10 2.75c-1.79493 0-3.25 1.45507-3.25 3.25s1.45507 3.25 3.25 3.25c1.7949 0 3.25-1.45507 3.25-3.25s-1.4551-3.25-3.25-3.25zm-4.75 3.25c0-2.62335 2.12665-4.75 4.75-4.75 2.6234 0 4.75 2.12665 4.75 4.75s-2.1266 4.75-4.75 4.75c-2.62335 0-4.75-2.12665-4.75-4.75zm-2.4474 13.25c.4269-3.0295 3.40489-5.5 7.1974-5.5.6351 0 1.25.0704 1.8352.2022l.3296-1.4633c-.6933-.1562-1.4187-.2389-2.1648-.2389-4.73529 0-8.75 3.3789-8.75 7.75v.75h10.75v-1.5z"/><path d="m15.8022 13.913c.5567-.2891 1.2765-.663 2.1978-.663.9252 0 1.6458.3745 2.2031.6642.013.0068.0259.0135.0388.0202.5948.3089 1.0165.5156 1.5417.5156h.5871l.141.57c.46 1.8606.2416 3.6119-.5492 5.001-.7931 1.3933-2.1352 2.3719-3.8127 2.7139l-.1498.0305-.1498-.0305c-1.6775-.342-3.0196-1.3206-3.8127-2.7139-.7907-1.3891-1.0092-3.1404-.5491-5.001l.1409-.57h.5872c.5263 0 .9498-.207 1.5447-.5157.0136-.0071.0273-.0142.041-.0213zm-.9645 1.9799c-.2236 1.3261-.0072 2.489.5034 3.3861.5502.9666 1.4665 1.6702 2.6589 1.9531 1.1925-.2829 2.1087-.9865 2.6589-1.9531.5107-.8971.7271-2.06.5034-3.3862-.6276-.1155-1.1443-.3842-1.5668-.6038-.0151-.0079-.0301-.0157-.0449-.0234-.5928-.3078-1.0186-.5156-1.5506-.5156-.5288 0-.9537.2074-1.548.5157-.0143.0074-.0287.0149-.0432.0225-.4236.22-.9418.4892-1.5711.6047z"/></g></svg></span>
+                <div class="cap-item__body"><div class="cap-item__label">AI + Human identities</div><p class="cap-item__desc">Secure human and non-human identities.</p></div>
+              </li>
+            </ul>
+          </article>
+          <article class="capability reveal" data-delay="1">
+            <div class="capability__icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="currentColor"><path clip-rule="evenodd" fill-rule="evenodd" d="m40 2c.9337 0 1.7432.64607 1.9502 1.55654l1.1066 4.8664c.5118 2.25086 2.2694 4.00846 4.5203 4.52026l4.8664 1.1066c.9104.207 1.5565 1.0165 1.5565 1.9502s-.6461 1.7432-1.5565 1.9502l-4.8664 1.1066c-.1803.041-.3574.09-.531.1466 2.7592 2.8805 5.1847 5.8815 7.2352 8.8993.9827-1.9138 1.7788-3.7881 2.3787-5.5876 2.1903-6.5711 1.5971-11.5065-1.0357-14.13936-.7811-.78105-.7811-2.04738 0-2.82843.781-.78105 2.0473-.78105 2.8284 0 4.2813 4.28134 4.3427 11.21059 2.002 18.23269-.887 2.661-2.1438 5.4285-3.7376 8.22 1.5938 2.7915 2.8506 5.559 3.7376 8.22 2.3407 7.0221 2.2793 13.9514-2.002 18.2327s-11.2106 4.3427-18.2327 2.002c-2.661-.887-5.4285-2.1438-8.22-3.7376-2.7915 1.5938-5.559 2.8506-8.22 3.7376-7.0221 2.3407-13.95135 2.2793-18.23269-2.002-2.59131-2.5913-3.63669-6.1527-3.53921-10.1175.03015-1.2264 1.23346-2.029 2.4184-1.7115.95757.2566 1.57242 1.1696 1.57157 2.161-.00257 2.9771.83944 5.3013 2.37767 6.8396 2.63286 2.6328 7.56826 3.226 14.13936 1.0357 1.7995-.5999 3.6738-1.396 5.5876-2.3787-3.4171-2.3219-6.8127-5.1244-10.0361-8.3478-3.2235-3.2235-6.026-6.6191-8.3479-10.0362-.61952 1.2064-1.16486 2.3972-1.63361 3.5634-.3936.9793-1.44573 1.5443-2.46514 1.2711-1.11738-.2994-1.75445-1.4806-1.32873-2.5562.80042-2.0223 1.80217-4.0922 2.99164-6.1756-1.59379-2.7915-2.85056-5.559-3.73754-8.22-2.3407-7.0221-2.27934-13.95135 2.002-18.23269 4.28133-4.28133 11.21058-4.3427 18.23268-2.00199 4.0349 1.34497 8.3149 3.54018 12.552 6.47148.2747-.49207.4824-1.02734.6112-1.59386l1.1066-4.8664c.207-.91047 1.0165-1.55654 1.9502-1.55654zm3.0568 21.5771c.1574-.6923.4326-1.3378.8038-1.9149 3.2626 3.3644 6.011 6.876 8.1919 10.3378-2.3472 3.7259-5.3519 7.5095-8.9475 11.105-3.5955 3.5956-7.3791 6.6003-11.105 8.9475-3.7259-2.3472-7.5095-5.3519-11.105-8.9475-3.5956-3.5955-6.6003-7.3791-8.9475-11.105 2.3472-3.7259 5.3519-7.5095 8.9475-11.105.781-.7811.781-2.0474 0-2.8285-.7811-.781-2.0474-.781-2.8284 0-3.2235 3.2235-6.026 6.6191-8.3479 10.0362-.98274-1.9138-1.77881-3.7881-2.37864-5.5876-2.19037-6.5711-1.59717-11.5065 1.03568-14.13936 2.63286-2.63285 7.56826-3.22606 14.13936-1.03569 3.3717 1.12391 7.0061 2.93675 10.6709 5.37565-.2469.0918-.5017.1681-.7631.2275l-4.8664 1.1066c-.9104.207-1.5565 1.0165-1.5565 1.9502s.6461 1.7432 1.5565 1.9502l4.8664 1.1066c2.2509.5118 4.0085 2.2694 4.5203 4.5203l1.1066 4.8664c.207.9104 1.0165 1.5565 1.9502 1.5565s1.7432-.6461 1.9502-1.5565zm-3.0568-11.9387c-.9573 1.8758-2.4858 3.4043-4.3616 4.3616 1.8758.9573 3.4043 2.4858 4.3616 4.3616.9573-1.8758 2.4858-3.4043 4.3616-4.3616-1.8758-.9573-3.4043-2.4858-4.3616-4.3616zm5.9335 34.2951c3.2234-3.2235 6.0259-6.6191 8.3478-10.0362.9827 1.9138 1.7788 3.7881 2.3787 5.5876 2.1903 6.5711 1.5971 11.5065-1.0357 14.1394-2.6329 2.6328-7.5683 3.226-14.1394 1.0357-1.7995-.5999-3.6738-1.396-5.5876-2.3787 3.4171-2.3219 6.8127-5.1244 10.0362-8.3478z"/></svg></div>
+            <h3 class="capability__title">Confident AI Adoption</h3>
+            <span class="capability__divider"></span>
+            <ul class="capability__list">
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 24 24" fill="currentColor"><g clip-rule="evenodd" fill-rule="evenodd"><path d="m10 2.75c-1.79493 0-3.25 1.45507-3.25 3.25s1.45507 3.25 3.25 3.25c1.7949 0 3.25-1.45507 3.25-3.25s-1.4551-3.25-3.25-3.25zm-4.75 3.25c0-2.62335 2.12665-4.75 4.75-4.75 2.6234 0 4.75 2.12665 4.75 4.75s-2.1266 4.75-4.75 4.75c-2.62335 0-4.75-2.12665-4.75-4.75zm-2.4474 13.25c.4269-3.0295 3.40489-5.5 7.1974-5.5.6351 0 1.25.0704 1.8352.2022l.3296-1.4633c-.6933-.1562-1.4187-.2389-2.1648-.2389-4.73529 0-8.75 3.3789-8.75 7.75v.75h10.75v-1.5z"/><path d="m15.8022 13.913c.5567-.2891 1.2765-.663 2.1978-.663.9252 0 1.6458.3745 2.2031.6642.013.0068.0259.0135.0388.0202.5948.3089 1.0165.5156 1.5417.5156h.5871l.141.57c.46 1.8606.2416 3.6119-.5492 5.001-.7931 1.3933-2.1352 2.3719-3.8127 2.7139l-.1498.0305-.1498-.0305c-1.6775-.342-3.0196-1.3206-3.8127-2.7139-.7907-1.3891-1.0092-3.1404-.5491-5.001l.1409-.57h.5872c.5263 0 .9498-.207 1.5447-.5157.0136-.0071.0273-.0142.041-.0213zm-.9645 1.9799c-.2236 1.3261-.0072 2.489.5034 3.3861.5502.9666 1.4665 1.6702 2.6589 1.9531 1.1925-.2829 2.1087-.9865 2.6589-1.9531.5107-.8971.7271-2.06.5034-3.3862-.6276-.1155-1.1443-.3842-1.5668-.6038-.0151-.0079-.0301-.0157-.0449-.0234-.5928-.3078-1.0186-.5156-1.5506-.5156-.5288 0-.9537.2074-1.548.5157-.0143.0074-.0287.0149-.0432.0225-.4236.22-.9418.4892-1.5711.6047z"/></g></svg></span>
+                <div class="cap-item__body"><div class="cap-item__label">Real-time policy enforcement</div><p class="cap-item__desc">Context-aware policies at runtime.</p></div>
+              </li>
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 512 512" fill="none" stroke="currentColor" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"><polygon points="384.533,15 288.133,207.8 368.467,207.8 127.467,497 207.8,239.933 127.467,239.933 239.933,15 "/></svg></span>
+                <div class="cap-item__body"><div class="cap-item__label">Built for performance</div><p class="cap-item__desc">Proxyless access at machine speed.</p></div>
+              </li>
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 511.999 511.999" fill="currentColor"><path d="M508.745,246.041c-4.574-6.257-113.557-153.206-252.748-153.206S7.818,239.784,3.249,246.035c-4.332,5.936-4.332,13.987,0,19.923c4.569,6.257,113.557,153.206,252.748,153.206s248.174-146.95,252.748-153.201C513.083,260.028,513.083,251.971,508.745,246.041z M255.997,385.406c-102.529,0-191.33-97.533-217.617-129.418c26.253-31.913,114.868-129.395,217.617-129.395c102.524,0,191.319,97.516,217.617,129.418C447.361,287.923,358.746,385.406,255.997,385.406z"/><path d="M255.997,154.725c-55.842,0-101.275,45.433-101.275,101.275s45.433,101.275,101.275,101.275s101.275-45.433,101.275-101.275S311.839,154.725,255.997,154.725z M255.997,323.516c-37.23,0-67.516-30.287-67.516-67.516s30.287-67.516,67.516-67.516s67.516,30.287,67.516,67.516S293.227,323.516,255.997,323.516z"/></svg></span>
+                <div class="cap-item__body"><div class="cap-item__label">Continuous visibility</div><p class="cap-item__desc">Full audit trails and observability.</p></div>
+              </li>
+            </ul>
+          </article>
+          <article class="capability reveal" data-delay="2">
+            <div class="capability__icon" aria-hidden="true"><svg viewBox="0 0 512 512" fill="currentColor"><path d="m511.4 38.222c-1.109-20.338-17.284-36.511-37.622-37.621-41.038-2.242-121.342-.061-198.13 39.656-39.145 20.248-80.545 54.577-113.584 94.185-.407.488-.803.979-1.207 1.468l-74.98 5.792c-12.342.954-23.335 7.423-30.161 17.747l-51.154 77.372c-5.177 7.83-6 17.629-2.203 26.212 3.798 8.584 11.602 14.566 20.877 16.003l63.171 9.784c-.223 1.228-.447 2.455-.652 3.683-2.103 12.58 2.065 25.514 11.151 34.599l87.992 87.993c7.533 7.533 17.712 11.686 28.142 11.686 2.148 0 4.308-.177 6.458-.536 1.228-.205 2.455-.429 3.683-.652l9.784 63.172c1.437 9.275 7.419 17.08 16.001 20.877 3.571 1.58 7.35 2.36 11.112 2.36 5.283-.001 10.529-1.539 15.101-4.562l77.372-51.155c10.325-6.827 16.793-17.82 17.745-30.161l5.792-74.979c.489-.404.981-.8 1.469-1.207 39.609-33.039 73.939-74.439 94.186-113.585 39.719-76.791 41.896-157.096 39.657-198.131zm-175.394 393.037-74.011 48.933-9.536-61.565c31.28-9.197 62.223-23.927 91.702-43.66l-3.773 48.845c-.235 3.047-1.833 5.762-4.382 7.447zm-129.895-37.377-87.993-87.993c-2.245-2.246-3.283-5.401-2.774-8.44 2.616-15.643 6.681-30.534 11.713-44.562l132.028 132.028c-16.848 6.035-31.939 9.635-44.534 11.741-3.044.506-6.195-.529-8.44-2.774zm-117.923-222.269 48.844-3.773c-19.734 29.479-34.464 60.422-43.661 91.702l-61.564-9.535 48.934-74.012c1.686-2.55 4.401-4.147 7.447-4.382zm270.155 155.286c-24.233 20.213-47.756 34.833-69.438 45.412l-149.221-149.221c13.858-28.304 30.771-51.873 45.417-69.431 30.575-36.655 68.602-68.276 104.331-86.756 70.474-36.453 144.725-38.416 182.713-36.348 5.028.274 9.027 4.273 9.301 9.302 2.071 37.988.104 112.238-36.349 182.713-18.479 35.728-50.1 73.754-86.754 104.329z"/><path d="m350.721 236.243c19.202-.002 38.412-7.312 53.031-21.931 14.166-14.165 21.966-32.999 21.966-53.031s-7.801-38.866-21.966-53.031c-29.242-29.243-76.822-29.241-106.062 0-14.166 14.165-21.967 32.999-21.967 53.031s7.802 38.866 21.967 53.031c14.622 14.622 33.822 21.933 53.031 21.931zm-31.82-106.781c8.772-8.773 20.295-13.159 31.818-13.159 11.524 0 23.047 4.386 31.819 13.159 8.499 8.499 13.179 19.799 13.179 31.818s-4.68 23.32-13.179 31.819c-17.544 17.545-46.093 17.544-63.638 0-8.499-8.499-13.18-19.799-13.18-31.818s4.682-23.32 13.181-31.819z"/><path d="m15.301 421.938c3.839 0 7.678-1.464 10.606-4.394l48.973-48.973c5.858-5.858 5.858-15.355 0-21.213-5.857-5.858-15.355-5.858-21.213 0l-48.972 48.973c-5.858 5.858-5.858 15.355 0 21.213 2.928 2.929 6.767 4.394 10.606 4.394z"/><path d="m119.761 392.239c-5.857-5.858-15.355-5.858-21.213 0l-94.154 94.155c-5.858 5.858-5.858 15.355 0 21.213 2.929 2.929 6.767 4.393 10.606 4.393s7.678-1.464 10.606-4.394l94.154-94.154c5.859-5.858 5.859-15.355.001-21.213z"/><path d="m143.429 437.12-48.973 48.973c-5.858 5.858-5.858 15.355 0 21.213 2.929 2.929 6.768 4.394 10.606 4.394s7.678-1.464 10.606-4.394l48.973-48.973c5.858-5.858 5.858-15.355 0-21.213-5.857-5.858-15.355-5.858-21.212 0z"/></svg></div>
+            <h3 class="capability__title">Faster Analytics at Scale</h3>
+            <span class="capability__divider"></span>
+            <ul class="capability__list">
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 32 32" fill="currentColor"><path d="m10.4306641 11.2392578c1.8828735-1.9746704 4.4223022-3.0621948 7.1513672-3.0632935.0014038 0 .0025024.0007935.0039062.0007935.0013428 0 .0025024-.0007935.0038452-.0007935 5.460144.0020752 9.9024048 4.4503174 9.9024048 9.9168091 0 5.4628906-4.4443359 9.9072266-9.90625 9.9072266-2.7275391 0-5.2695312-1.0849609-7.1572266-3.0546875-.1966553-.2041626-.4587402-.3032227-.7215576-.3032837-.2487793 0-.498291.0883179-.6925049.2739868-.3984375.3818359-.4121094 1.0146484-.0292969 1.4140625 2.2353516 2.3320313 5.3701173 3.6699219 8.600586 3.6699219 6.5654297 0 11.90625-5.3417969 11.90625-11.9072266 0-2.9254761-1.0628662-5.604126-2.8167725-7.6802979l1.5238037-1.5238037c.390625-.390625.390625-1.0234375 0-1.4140625s-1.0234375-.390625-1.4140625 0l-1.5230712 1.5230714c-1.835144-1.5541382-4.1433105-2.5588989-6.6761475-2.7711792v-2.2265015h1.5820312c.5527344 0 1-.4472656 1-1s-.4472656-1-1-1h-5.1650391c-.5527344 0-1 .4472656-1 1s.4472656 1 1 1h1.5830078v2.227356c-2.8740234.2459717-5.6021729 1.5335083-7.6025391 3.6310425-.3808594.4003906-.3662109 1.0332031.0332031 1.4140625.1942749.1843262.4429321.2718506.6905518.2722168.2640382.0004272.5269777-.098816.7235109-.30542z"/><path d="m19.5859375 19.0888672h2.3417969c.5527344 0 1-.4472656 1-1s-.4472656-1-1-1h-2.3417969c-.5517578 0-1-.4482422-1-1v-2.5341797c0-.5527344-.4472656-1-1-1s-1 .4472656-1 1v2.5341797c0 1.6542969 1.3457031 3 3 3z"/><path d="m12.9951172 18.0888672c0-.5527344-.4472656-1-1-1h-6.3320313c-.5527344 0-1 .4472656-1 1s.4472656 1 1 1h6.3320312c.5527345 0 1.0000001-.4472656 1.0000001-1z"/><path d="m10.8398438 13.7773438c0-.5527344-.4472656-1-1-1h-6.3320313c-.5527344 0-1 .4472656-1 1s.4472656 1 1 1h6.3320312c.5527344 0 1.0000001-.4472657 1.0000001-1z"/><path d="m10.8398438 22.3994141c0-.5527344-.4472656-1-1-1h-6.3320313c-.5527344 0-1 .4472656-1 1s.4472656 1 1 1h6.3320312c.5527344 0 1.0000001-.4472657 1.0000001-1z"/></svg></span>
+                <div class="cap-item__body"><div class="cap-item__label">Faster time to insights</div><p class="cap-item__desc">No proxies or slow manual approvals.</p></div>
+              </li>
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 1024 1024" fill="currentColor"><path d="m224.8 614.3c-.6-3.7-1.2-7.5-1.7-11.3.4 2.7.7 5.3 1.1 8-3.6-28.2-3.6-56.7 0-84.8-.4 2.7-.7 5.3-1.1 8 3.8-28.3 11.3-55.9 22.4-82.2-1 2.4-2 4.8-3 7.2 6.3-14.8 13.6-29.1 22-42.8 4.1-6.7 8.5-13.3 13.1-19.6 1.1-1.5 2.2-3 3.3-4.5.7-.9 1.3-2 2.1-2.8 0 0-5 6.3-2.1 2.8 2.6-3.2 5.2-6.5 7.9-9.6 10.1-11.9 21.2-23.2 32.9-33.5 2.8-2.4 5.6-4.8 8.4-7.2 1.4-1.2 2.9-2.3 4.3-3.5.7-.6 1.5-1.1 2.2-1.7-7.5 6-3.5 2.7-1.7 1.3 6.3-4.7 12.7-9.2 19.4-13.4 15.3-9.8 31.4-18.3 48.1-25.4-2.4 1-4.8 2-7.2 3 4.3-1.8 8.7-3.5 13.1-5.2 7.5-2.8 13.8-6.7 17.9-13.8 3.8-6.4 5.4-15.9 3-23.1-4.6-14.3-21.2-26.8-36.9-21-56.8 21.3-108.3 55.9-147.3 102.5-39.1 46.7-66.9 102.7-77.6 162.9-7.4 41.9-7.4 83.6-.4 125.6 1.2 7 7.9 14.5 13.8 17.9 6.4 3.8 15.9 5.4 23.1 3 7.3-2.3 14.3-6.8 17.9-13.8 4-7.4 4.4-14.6 3-23z"/><path d="m695.2 794.5c-1.6 1.3-3.3 2.7-4.9 4-.8.7-1.7 1.3-2.5 2 3.8-2.9 4.7-3.7 2.9-2.3-3.2 2.4-6.4 4.8-9.6 7-6.1 4.3-12.3 8.4-18.7 12.2-13.3 8-27.1 15-41.4 21.1 2.4-1 4.8-2 7.2-3-25.7 10.7-52.7 18.1-80.3 21.9 2.7-.4 5.3-.7 8-1.1-29.1 3.9-58.5 3.9-87.6 0 2.7.4 5.3.7 8 1.1-27.6-3.8-54.6-11.2-80.3-21.9 2.4 1 4.8 2 7.2 3-14.3-6-28.1-13.1-41.4-21.1-6.4-3.8-12.6-7.9-18.7-12.2-3-2.1-6-4.4-9-6.6-2.5-1.9-1.7-1.3 2.3 1.8-.8-.7-1.7-1.3-2.5-2-1.7-1.3-3.3-2.7-4.9-4-6.3-5.2-12.7-8.8-21.2-8.8-7.4 0-16.1 3.3-21.2 8.8-10.1 11-12.9 31.8 0 42.4 48.3 39.8 106 67.9 168.1 77.5 63.8 9.9 129.7 3.9 189.5-21.1 34.2-14.3 65-32.9 93.6-56.4 5.6-4.6 8.8-14.3 8.8-21.2 0-7.4-3.3-16.1-8.8-21.2-5.7-5.2-13.2-9.1-21.2-8.8-8.6.5-15 3.6-21.4 8.9z"/><path d="m615.7 297.1c4.4 1.6 8.7 3.4 13.1 5.2-2.4-1-4.8-2-7.2-3 14.8 6.3 29.1 13.6 42.8 22 6.7 4.1 13.3 8.5 19.6 13.1 1.5 1.1 3 2.2 4.5 3.3.9.7 2 1.3 2.8 2.1 0 0-6.3-5-2.8-2.1 3.2 2.6 6.5 5.2 9.6 7.9 11.9 10.1 23.2 21.2 33.5 32.9 2.4 2.8 4.8 5.6 7.2 8.4 1.2 1.4 2.3 2.9 3.5 4.3.6.7 1.1 1.5 1.7 2.2-6-7.5-2.7-3.5-1.3-1.7 4.7 6.3 9.2 12.7 13.4 19.4 9.8 15.3 18.3 31.4 25.4 48.1-1-2.4-2-4.8-3-7.2 11.1 26.3 18.6 54 22.4 82.2-.4-2.7-.7-5.3-1.1-8 3.7 28.2 3.7 56.7 0 84.8.4-2.7.7-5.3 1.1-8-.5 3.8-1.1 7.5-1.7 11.3-1.4 8.2-1.3 15.7 3 23.1 3.6 6.2 10.8 12.2 17.9 13.8 14.5 3.3 34.2-4.4 36.9-21 6.4-38.5 6.7-76.3 1.3-114.9-4.4-30.8-13.6-60-25.9-88.5-23.9-55.6-63.4-102.8-111.4-139.3-27.2-20.7-57.4-36.3-89.3-48.3-6.9-2.6-17-.6-23.1 3-6.2 3.6-12.2 10.8-13.8 17.9-3.9 17.1 5.2 31.1 20.9 37z"/><path d="m595.5 248.2c0 4.9-.3 9.8-.9 14.6.4-2.7.7-5.3 1.1-8-1.4 10-3.9 19.7-7.8 29.1 1-2.4 2-4.8 3-7.2-2.8 6.6-6.2 13-10.2 19-1 1.5-2 2.9-3.1 4.4-2.9 4.1 5.3-6.5.6-.8-2.3 2.7-4.7 5.4-7.2 7.9s-5.2 4.9-7.9 7.2c-5.7 4.7 4.9-3.4.8-.6-1.5 1-2.9 2.1-4.4 3.1-6 4-12.4 7.3-19 10.1l7.2-3c-9 3.7-18.3 6.2-27.9 7.6 2.7-.4 5.3-.7 8-1.1-10.4 1.4-20.8 1.4-31.2 0 2.7.4 5.3.7 8 1.1-9.6-1.4-18.9-3.9-27.9-7.6l7.2 3c-6.6-2.8-13-6.2-19-10.1-1.5-1-2.9-2-4.4-3.1-4.1-2.9 6.5 5.3.8.6-2.8-2.3-5.4-4.7-7.9-7.2s-4.9-5.2-7.2-7.9c-4.7-5.7 3.5 4.9.6.8-1-1.5-2.1-2.9-3.1-4.4-4-6-7.4-12.4-10.2-19 1 2.4 2 4.8 3 7.2-3.8-9.4-6.4-19-7.8-29.1.4 2.7.7 5.3 1.1 8-1.2-10-1.2-20 .1-29.9-.4 2.7-.7 5.3-1.1 8 1.4-9.8 4-19.4 7.8-28.6-1 2.4-2 4.8-3 7.2 2.8-6.5 6.1-12.7 10-18.6 1-1.5 2-2.9 3-4.3 2.3-3.3-2.3 2.9-2.3 2.9.1-.5 1.3-1.6 1.6-2 2.4-2.9 4.9-5.6 7.5-8.2 2.5-2.5 5.1-4.8 7.7-7.1.7-.6 1.4-1.1 2-1.7 2.6-2.2-5.8 4.2-2.9 2.3 1.5-1 2.8-2 4.3-3 6.1-4.1 12.5-7.5 19.2-10.3-2.4 1-4.8 2-7.2 3 9.2-3.8 18.7-6.4 28.6-7.8-2.7.4-5.3.7-8 1.1 10.2-1.3 20.4-1.3 30.6 0-2.7-.4-5.3-.7-8-1.1 9.8 1.4 19.4 4 28.6 7.8-2.4-1-4.8-2-7.2-3 6.5 2.8 12.7 6.1 18.6 10 1.5 1 2.9 2 4.3 3 3.3 2.3-2.9-2.3-2.9-2.3.5.1 1.6 1.3 2 1.6 2.9 2.4 5.6 4.9 8.2 7.5 2.5 2.5 4.8 5.1 7.1 7.7.6.7 1.1 1.4 1.7 2 2.2 2.6-4.2-5.8-2.3-2.9 1 1.5 2 2.8 3 4.3 4.1 6.1 7.5 12.5 10.3 19.2-1-2.4-2-4.8-3-7.2 3.8 9.2 6.4 18.7 7.8 28.6-.4-2.7-.7-5.3-1.1-8 .3 5 .6 10 .7 15.2.1 15.7 13.7 30.7 30 30 16.2-.7 30.1-13.2 30-30-.2-28-8.3-56.7-24.3-79.8-17.3-25-40.4-43-68.6-54.3-52.9-21.2-117.5-5.4-155.7 36.5-18.6 20.4-32.2 46.2-36.2 73.7-4.7 32.7 0 65.3 16.2 94.3 13.4 24.1 34.9 45 59.6 57.3 28.8 14.2 59.5 18.3 91.1 13.4 56-8.8 104.2-56.2 114.7-111.7 1.8-9.6 3-19.5 3.1-29.3.1-15.7-13.9-30.7-30-30-16.3.6-29.8 13-29.9 29.9z"/><path d="m862 770.6c-1.7 2.8-3.4 5.6-5.3 8.3-.8 1.1-1.6 2.2-2.4 3.4 5.5-7.8 2.8-3.5 1.3-1.8-3.9 4.7-8.2 9-12.7 13-.7.7-2.6 2.9-3.6 3 1.3-.1 6.6-4.9 1.8-1.5-2.3 1.7-4.7 3.3-7.2 4.8-5.1 3.1-10.3 5.8-15.8 8.1 2.4-1 4.8-2 7.2-3-9.3 3.8-19 6.4-29 7.8 2.7-.4 5.3-.7 8-1.1-10.1 1.3-20.2 1.2-30.3-.1 2.7.4 5.3.7 8 1.1-9.9-1.4-19.4-4.1-28.6-7.9l7.2 3c-6.5-2.8-12.8-6.2-18.8-10.1-1-.7-2-1.4-3-2.1-2.6-1.9-2-1.4 1.7 1.4-.9-1.2-2.8-2.2-3.9-3.2-2.6-2.2-5-4.6-7.4-7-2.3-2.4-4.5-5-6.7-7.6-3.6-4.3 4.3 6.1 1.2 1.5-1.1-1.6-2.2-3.1-3.2-4.7-3.6-5.6-6.7-11.4-9.3-17.5 1 2.4 2 4.8 3 7.2-4-9.6-6.7-19.6-8.1-29.9.4 2.7.7 5.3 1.1 8-1.2-9.9-1.2-19.9.1-29.8-.4 2.7-.7 5.3-1.1 8 1.4-10.1 4.2-19.9 8.1-29.4-1 2.4-2 4.8-3 7.2 3-6.8 6.5-13.3 10.7-19.5 1-1.5 2.1-3.4 3.4-4.7-1 1.3-2 2.5-2.9 3.8.6-.7 1.2-1.5 1.8-2.2 2.3-2.7 4.7-5.3 7.2-7.8 2.5-2.4 5.1-4.7 7.8-7 4.2-3.6-6.2 4.4-1.7 1.3 1.5-1.1 3-2.1 4.5-3.2 5.7-3.8 11.8-7 18-9.7-2.4 1-4.8 2-7.2 3 9.7-4.1 19.7-6.8 30.1-8.3-2.7.4-5.3.7-8 1.1 10-1.3 20.1-1.2 30.1.1-2.7-.4-5.3-.7-8-1.1 9.7 1.4 19 4 28.1 7.7-2.4-1-4.8-2-7.2-3 7.5 3.2 14.7 7.1 21.4 11.8 2 1.4 7 6-.5-.6 1.4 1.2 2.8 2.3 4.2 3.5 2.5 2.2 5 4.6 7.3 7s4.4 5.1 6.6 7.6c-6.7-7.5-2.2-2.8-.7-.8.9 1.3 1.8 2.5 2.6 3.8 3.7 5.7 6.8 11.8 9.5 18-1-2.4-2-4.8-3-7.2 3.8 9.3 6.4 19 7.8 29-.4-2.7-.7-5.3-1.1-8 1.3 10.1 1.2 20.2-.1 30.3.4-2.7.7-5.3 1.1-8-1.4 9.9-4.1 19.4-7.9 28.6 1-2.4 2-4.8 3-7.2-1.9 4.4-3.9 8.5-6.2 12.6-7.8 13.6-3.7 33.4 10.8 41 14.2 7.5 32.8 3.8 41-10.8 27.5-48.3 25.6-111.5-8.3-156.3-19.6-25.8-45.9-45.1-77.4-53.9-26.9-7.5-57.1-7-83.5 2.1-29.6 10.2-53.9 28.7-72.3 53.9-17.4 23.8-26.5 54.6-26 84 1.1 62.9 44 119.2 104.7 136.4 53 14.9 114.3-3 148.8-46.4 5.1-6.4 9.9-12.8 14.1-19.9 7.9-13.6 3.6-33.5-10.8-41-14.5-7.5-32.7-3.6-41.1 10.9z"/><path d="m286.4 794.5c-.5.4-5.2 4.2-1.2 1 3.9-3-.5.3-1.4.9-2.5 1.8-5.1 3.4-7.8 4.9-4 2.3-8.2 4.4-12.5 6.2l7.2-3c-9.2 3.8-18.7 6.5-28.6 7.9 2.7-.4 5.3-.7 8-1.1-10.1 1.3-20.2 1.4-30.3.1 2.7.4 5.3.7 8 1.1-10-1.4-19.7-4-29-7.8l7.2 3c-6.5-2.7-12.7-6-18.6-9.8-1.5-1-2.9-2-4.4-3-6-4.3 4.6 3.9.8.6-2.6-2.2-5.1-4.4-7.5-6.7-2.4-2.4-4.7-4.8-6.9-7.4-1.6-1.9-5.2-7.5.4.7-1-1.5-2.2-3-3.2-4.5-4.2-6.2-7.7-12.7-10.7-19.6 1 2.4 2 4.8 3 7.2-3.8-9.2-6.5-18.7-7.9-28.6.4 2.7.7 5.3 1.1 8-1.3-10.1-1.4-20.2-.1-30.3-.4 2.7-.7 5.3-1.1 8 1.4-10 4-19.7 7.8-29-1 2.4-2 4.8-3 7.2 2.6-6.1 5.6-11.9 9.1-17.5.9-1.5 1.9-3 3-4.4 1.5-2.1 6-6.7-.7.8 2.2-2.5 4.3-5.1 6.6-7.6 2.3-2.4 4.8-4.8 7.3-7 1.4-1.2 2.8-2.3 4.2-3.5-7.3 6.4-3.1 2.4-1.1 1 6.9-4.9 14.3-8.9 22-12.2-2.4 1-4.8 2-7.2 3 9.1-3.7 18.4-6.3 28.1-7.7-2.7.4-5.3.7-8 1.1 10-1.3 20.1-1.3 30.1-.1-2.7-.4-5.3-.7-8-1.1 10.4 1.4 20.5 4.2 30.1 8.3-2.4-1-4.8-2-7.2-3 6.3 2.7 12.3 6 18 9.7 1.5 1 3 2.1 4.5 3.2 4.1 2.9-5.8-4.8-1.7-1.3 2.7 2.3 5.3 4.5 7.8 7s4.9 5.1 7.2 7.8c1.5 1.7 4.1 6-1.1-1.6 1.1 1.6 2.3 3.1 3.4 4.7 4.2 6.1 7.7 12.7 10.7 19.5-1-2.4-2-4.8-3-7.2 4 9.4 6.7 19.2 8.1 29.4-.4-2.7-.7-5.3-1.1-8 1.3 9.9 1.3 19.8.1 29.8.4-2.7.7-5.3 1.1-8-1.4 10.3-4.1 20.3-8.1 29.9l3-7.2c-3.4 7.9-7.6 15.2-12.5 22.2-2.3 3.3 1.7-2.3 2.1-2.6-.7.6-1.2 1.5-1.8 2.2-1.4 1.7-2.8 3.3-4.3 4.9-3.1 3.3-6.5 6.5-10 9.5-12 10.2-11.3 32.1 0 42.4 12.8 11.7 29.6 10.9 42.4 0 44.6-38.1 61.7-105.4 39.1-159.8-12.2-29.3-31.8-54-59.1-70.7-23.6-14.5-52.6-22.1-80.3-20.7-61.3 3.1-115.2 44.9-132.1 104.1-15.9 55.6 4.4 117 50 152.3 45.4 35.1 108.4 40 158.6 11.8 8.5-4.8 16.3-10.7 23.8-17 5.6-4.6 8.8-14.2 8.8-21.2 0-7.4-3.3-16.1-8.8-21.2-5.7-5.2-13.2-9.1-21.2-8.8-8.4.4-14.8 3.4-21.2 8.8z"/></svg></span>
+                <div class="cap-item__body"><div class="cap-item__label">Native integrations</div><p class="cap-item__desc">Metadata-driven policies in your stack.</p></div>
+              </li>
+              <li class="cap-item">
+                <span class="cap-item__icon"><svg viewBox="0 0 32 32" fill="currentColor"><path d="m8.812 26.392c-1.651.948-3.512 1.288-4.614 1.41.122-1.102.462-2.963 1.409-4.615.248-.431.099-.981-.332-1.229-.435-.249-.982-.098-1.229.333-1.696 2.958-1.716 6.336-1.716 6.479 0 .497.403.9.9.9.143 0 3.521-.02 6.479-1.716.431-.248.58-.797.332-1.229-.246-.431-.795-.581-1.229-.333z"/><path d="m30.909 3.275c.011-.591-.212-1.145-.628-1.56-.415-.415-1.015-.62-1.557-.625-2.492.047-9.214.762-15.574 6.471-1.134-.441-2.843-1.096-4.14-.929-1.908.245-4.727 2.841-7.488 5.611-.366.367-.512.887-.389 1.391.122.506.492.903.988 1.062l4.39 1.41c-.331.604-.657 1.222-.972 1.874-.396.82-.228 1.805.418 2.449l5.613 5.613c.412.413.964.631 1.521.631.315 0 .633-.069.929-.212.652-.315 1.27-.641 1.872-.971l1.411 4.389c.159.496.556.866 1.063.989.117.028.235.042.353.042.385 0 .756-.151 1.038-.432 2.77-2.761 5.366-5.579 5.61-7.486.169-1.309-.488-3.008-.929-4.142 5.708-6.36 6.424-13.082 6.471-15.575zm-27.741 9.868c1.465-1.459 4.647-4.542 6.071-4.725.635-.081 1.632.22 2.474.525-1.487 1.537-2.931 3.379-4.277 5.57zm10.069 11.697c-.127.062-.29.034-.394-.07l-5.614-5.614c-.103-.103-.132-.265-.069-.394 6.991-14.481 18.299-15.809 21.599-15.871h.008c.119 0 .197.053.243.099.038.038.103.122.101.252-.064 3.3-1.393 14.608-15.874 21.598zm10.345-2.078c-.183 1.423-3.266 4.606-4.725 6.07l-1.372-4.267c2.193-1.346 4.035-2.791 5.572-4.278.306.841.607 1.836.525 2.475z"/><path d="m24.128 13.214c1.472-1.473 1.472-3.869 0-5.342-1.428-1.426-3.916-1.426-5.342 0-.713.713-1.106 1.662-1.106 2.671s.394 1.958 1.106 2.671c.713.713 1.662 1.106 2.671 1.106s1.957-.393 2.671-1.106zm-1.274-1.273c-.747.748-2.05.748-2.795 0-.374-.373-.58-.87-.58-1.398s.206-1.024.58-1.398c.373-.373.869-.579 1.397-.579.527 0 1.024.206 1.397.579.772.771.772 2.025.001 2.796z"/></svg></span>
+                <div class="cap-item__body"><div class="cap-item__label">Scale with speed</div><p class="cap-item__desc">Delivering access in hours, not weeks.</p></div>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ METRICS ============ -->
+    <section class="section scheme-light">
+      <div class="container bynum">
+        <div class="section-head bynum__intro">
+          <span class="eyebrow reveal">By the Numbers</span>
+          <h2 class="section-head__title reveal" data-delay="1">Enterprise Scale. <b>Proven Trust.</b></h2>
+          <p class="section-head__sub reveal" data-delay="2">The world's largest enterprises rely on TrustLogix to protect sensitive data, accelerate access, and enforce policy at scale — enabling faster innovation.</p>
+        </div>
+        <div class="metrics bynum__cards">
+          <div class="metric reveal">
+            <div class="metric__value" data-count="27" data-suffix=" TB+">27 TB+</div>
+            <p class="metric__title">Enterprise Data Secured</p>
+            <p class="metric__sub">across cloud and on-prem platforms</p>
+          </div>
+          <div class="metric reveal" data-delay="1">
+            <div class="metric__value" data-count="350" data-suffix="K+">350K+</div>
+            <p class="metric__title">Employees Protected</p>
+            <p class="metric__sub">through access policies</p>
+          </div>
+          <div class="metric reveal" data-delay="2">
+            <div class="metric__value" data-count="10" data-suffix=" M+">10 M+</div>
+            <p class="metric__title">Automated Permissions</p>
+            <p class="metric__sub">across multiple cloud ecosystems</p>
+          </div>
+          <div class="metric reveal" data-delay="3">
+            <div class="metric__value" data-count="99" data-suffix="%">99%</div>
+            <p class="metric__title">Reduction</p>
+            <p class="metric__sub">in manual policy implementation across platforms</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="section" style="background:#fff;">
+      <div class="container">
+        <div class="reviews-head">
+          <div class="reviews-head__left">
+            <h2 class="reviews-head__title">Gartner Peer Insights™ <b>Customer Reviews</b></h2>
+          </div>
+          <a href="https://www.gartner.com/reviews/market/data-security-posture-management/vendor/trustlogix" class="btn reviews-cta">Read All Testimonials
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div class="reviews-track" id="reviews-track">
+          <figure class="review review--rating">
+            <div class="review-rating__score">4.8</div>
+            <div class="review-rating__stars">★★★★★</div>
+            <div class="review-rating__count">Customer Reviews</div>
+            <div class="review-rating__sources">On Gartner Peer Insights™</div>
+          </figure>
+          <figure class="review">
+            <svg class="review__quote" viewBox="0 0 38 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 29V16C1 7.5 6 2 16 1v5C10 7 7 10 7 14h9v15H1Zm20 0V16C21 7.5 26 2 36 1v5c-6 1-9 4-9 8h9v15H21Z"/></svg>
+            <blockquote class="review__text">TrustLogix provides a seamless and efficient data security solution. The platform is intuitive and integrates well.</blockquote>
+            <figcaption class="review__foot">
+              <div class="review__avatar"></div>
+              <div class="review__person">
+                <div class="review__company">Finance (non-banking)</div>
+              <div class="review__role">Associate, Data &amp; Analytics</div>
+                <div class="review__stars">★★★★★</div>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="review">
+            <svg class="review__quote" viewBox="0 0 38 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 29V16C1 7.5 6 2 16 1v5C10 7 7 10 7 14h9v15H1Zm20 0V16C21 7.5 26 2 36 1v5c-6 1-9 4-9 8h9v15H21Z"/></svg>
+            <blockquote class="review__text">TrustLogix provides a unique solution for multi-cloud data security. They provide a single pane of glass for managing fine grained access controls in data lakes, data warehouses and RDBMS, in addition to this they also provide data security posture management.</blockquote>
+            <figcaption class="review__foot">
+              <div class="review__avatar"></div>
+              <div class="review__person">
+                <div class="review__company">Software</div>
+              <div class="review__role">Solutions Architect</div>
+                <div class="review__stars">★★★★★</div>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="review">
+            <svg class="review__quote" viewBox="0 0 38 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 29V16C1 7.5 6 2 16 1v5C10 7 7 10 7 14h9v15H1Zm20 0V16C21 7.5 26 2 36 1v5c-6 1-9 4-9 8h9v15H21Z"/></svg>
+            <blockquote class="review__text">The platform automates managing access controls to multiple data platforms. We have a multi cloud multi data platform environment.</blockquote>
+            <figcaption class="review__foot">
+              <div class="review__avatar"></div>
+              <div class="review__person">
+                <div class="review__company">Software</div>
+              <div class="review__role">Director of Engineering</div>
+                <div class="review__stars">★★★★★</div>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="review">
+            <svg class="review__quote" viewBox="0 0 38 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 29V16C1 7.5 6 2 16 1v5C10 7 7 10 7 14h9v15H1Zm20 0V16C21 7.5 26 2 36 1v5c-6 1-9 4-9 8h9v15H21Z"/></svg>
+            <blockquote class="review__text">TrustLogix provides a robust and scalable data security governance solutions for Azure, GCP and other service like Redshift, Snowflakes and Databricks. Really awesome product for cloud-agnostic solutions. Now they are focusing on Data storage for GenAI applications too. Easy to use and made data security Admins job easier.</blockquote>
+            <figcaption class="review__foot">
+              <div class="review__avatar"></div>
+              <div class="review__person">
+                <div class="review__company">IT Services</div>
+              <div class="review__role">Architect</div>
+                <div class="review__stars">★★★★★</div>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="review">
+            <svg class="review__quote" viewBox="0 0 38 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 29V16C1 7.5 6 2 16 1v5C10 7 7 10 7 14h9v15H1Zm20 0V16C21 7.5 26 2 36 1v5c-6 1-9 4-9 8h9v15H21Z"/></svg>
+            <blockquote class="review__text">TrustLogix solution has helped us implement complex access control requirements, ensure regulatory compliance and optimize data management processes. The DSPM features strengthen data protection and a 60% reduction in operational costs through automated analysis and streamlined data access processes.</blockquote>
+            <figcaption class="review__foot">
+              <div class="review__avatar"></div>
+              <div class="review__person">
+                <div class="review__company">Banking</div>
+              <div class="review__role">Global Head of Cloud Engineering</div>
+                <div class="review__stars">★★★★★</div>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="review">
+            <svg class="review__quote" viewBox="0 0 38 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 29V16C1 7.5 6 2 16 1v5C10 7 7 10 7 14h9v15H1Zm20 0V16C21 7.5 26 2 36 1v5c-6 1-9 4-9 8h9v15H21Z"/></svg>
+            <blockquote class="review__text">TrustLogix Scalable Architecture, particularly hybrid database environments, does not impact the data workers performance because it operates outside the business access path. Entitlements are pushed down to the target database. This provides a single point of visibility and control over all data objects across the cloud and on-prem.</blockquote>
+            <figcaption class="review__foot">
+              <div class="review__avatar"></div>
+              <div class="review__person">
+                <div class="review__company">IT Services</div>
+              <div class="review__role">Engineer</div>
+                <div class="review__stars">★★★★★</div>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="review">
+            <svg class="review__quote" viewBox="0 0 38 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 29V16C1 7.5 6 2 16 1v5C10 7 7 10 7 14h9v15H1Zm20 0V16C21 7.5 26 2 36 1v5c-6 1-9 4-9 8h9v15H21Z"/></svg>
+            <blockquote class="review__text">Flexibility and Adaptability, Ease of Use, Better insights into data usage, Streamlined Access control.</blockquote>
+            <figcaption class="review__foot">
+              <div class="review__avatar"></div>
+              <div class="review__person">
+                <div class="review__company">Banking</div>
+              <div class="review__role">Head of Data, Analytics and Reg Technology</div>
+                <div class="review__stars">★★★★★</div>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="review">
+            <svg class="review__quote" viewBox="0 0 38 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 29V16C1 7.5 6 2 16 1v5C10 7 7 10 7 14h9v15H1Zm20 0V16C21 7.5 26 2 36 1v5c-6 1-9 4-9 8h9v15H21Z"/></svg>
+            <blockquote class="review__text">TrustLogix enhances data security with seamless access controls. It provides real-time monitoring and compliance enforcement. The tool simplifies policy management and reduces enterprise risk exposure. Creating security policies can be independent of the underlying database chosen. It efficiently integrates with any cloud platform for secure data handling. It provides an easy, user-friendly interface, taking governance and auditing to the next level.</blockquote>
+            <figcaption class="review__foot">
+              <div class="review__avatar"></div>
+              <div class="review__person">
+                <div class="review__company">Healthcare and Biotech</div>
+              <div class="review__role">Director</div>
+                <div class="review__stars">★★★★★</div>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="review">
+            <svg class="review__quote" viewBox="0 0 38 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 29V16C1 7.5 6 2 16 1v5C10 7 7 10 7 14h9v15H1Zm20 0V16C21 7.5 26 2 36 1v5c-6 1-9 4-9 8h9v15H21Z"/></svg>
+            <blockquote class="review__text">The onboarding experience was very smooth, using the product and the constant evolution of features is why we are continuing with Trustlogix.</blockquote>
+            <figcaption class="review__foot">
+              <div class="review__avatar"></div>
+              <div class="review__person">
+                <div class="review__company">Banking</div>
+              <div class="review__role">VP, Cloud Operations</div>
+                <div class="review__stars">★★★★★</div>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="reviews-nav">
+          <div class="reviews-dots" id="reviews-dots"></div>
+          <div class="reviews-arrows">
+            <button class="reviews-arrow" data-dir="-1" aria-label="Previous reviews">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"/></svg>
+            </button>
+            <button class="reviews-arrow" data-dir="1" aria-label="Next reviews">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="reviews-disclaimer">
+          <div class="reviews-disclaimer__title">Disclaimer</div>
+          <p>Gartner® and Peer Insights™ are trademarks of Gartner, Inc. and/or its affiliates. All rights reserved. Gartner Peer Insights content consists of the opinions of individual end users based on their own experiences, and should not be construed as statements of fact, nor do they represent the views of Gartner or its affiliates. Gartner does not endorse any vendor, product or service depicted in this content nor makes any warranties, expressed or implied, with respect to this content, about its accuracy or completeness, including any warranties of merchantability or fitness for a particular purpose.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PARTNER ECOSYSTEM ============ -->
+    <section class="section scheme-light">
+      <div class="container eco">
+        <div class="eco__head">
+          <div class="eco__head-left">
+            <span class="eyebrow">Ecosystem</span>
+            <h2 class="eco__title">The TrustLogix <b>Interoperable Ecosystem</b></h2>
+          </div>
+          <div class="eco__head-right">
+            <p class="eco__desc">Seamlessly extend security and access control across your existing data stack—no architecture changes required.</p>
+            <a href="/partners" class="eco__link">Learn More
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="eco__right">
+          <div class="eco__col eco__col--a">
+            <div class="eco__card"><img src="logos/eco/snowflake.png" alt="Snowflake" /></div>
+            <div class="eco__card"><img src="logos/eco/databricks.png" alt="Databricks" /></div>
+            <div class="eco__card"><img src="logos/eco/aws.png" alt="AWS" /></div>
+            <div class="eco__card"><img src="logos/eco/aws-s3.png" alt="AWS S3" /></div>
+            <div class="eco__card"><img src="logos/eco/aws-rds.png" alt="AWS RDS" /></div>
+            <div class="eco__card"><img src="logos/eco/aws-redshift.png" alt="AWS Redshift" /></div>
+            <div class="eco__card"><img src="logos/eco/power-bi.png" alt="Power BI" /></div>
+            <div class="eco__card"><img src="logos/eco/oracle.png" alt="Oracle" /></div>
+            <div class="eco__card"><img src="logos/eco/mysql.png" alt="MySQL" /></div>
+            <div class="eco__card"><img src="logos/eco/mssql.png" alt="MS SQL Server" /></div>
+            <div class="eco__card"><img src="logos/eco/column.png" alt="Column" /></div>
+            <div class="eco__card"><img src="logos/eco/azure-ad.png" alt="Azure Active Directory" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/snowflake.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/databricks.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/aws.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/aws-s3.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/aws-rds.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/aws-redshift.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/power-bi.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/oracle.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/mysql.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/mssql.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/column.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/azure-ad.png" alt="" /></div>
+          </div>
+          <div class="eco__col eco__col--b">
+            <div class="eco__card"><img src="logos/eco/okta.png" alt="Okta" /></div>
+            <div class="eco__card"><img src="logos/eco/alation.png" alt="Alation" /></div>
+            <div class="eco__card"><img src="logos/eco/atlan.png" alt="Atlan" /></div>
+            <div class="eco__card"><img src="logos/eco/splunk.png" alt="Splunk" /></div>
+            <div class="eco__card"><img src="logos/eco/rapid7.png" alt="Rapid7" /></div>
+            <div class="eco__card"><img src="logos/eco/slack.png" alt="Slack" /></div>
+            <div class="eco__card"><img src="logos/eco/teams.png" alt="Teams" /></div>
+            <div class="eco__card"><img src="logos/eco/mcp.png" alt="MCP Server" /></div>
+            <div class="eco__card"><img src="logos/eco/tableau.png" alt="Tableau" /></div>
+            <div class="eco__card"><img src="logos/eco/sailpoint.png" alt="SailPoint" /></div>
+            <div class="eco__card"><img src="logos/eco/collibra.png" alt="Collibra" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/okta.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/alation.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/atlan.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/splunk.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/rapid7.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/slack.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/teams.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/mcp.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/tableau.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/sailpoint.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="logos/eco/collibra.png" alt="" /></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CUSTOMER QUOTE (dark) ============ -->
+    <section class="section quote-section quote--card">
+      <div class="container">
+        <figure class="quote reveal">
+          <img class="quote__icon" src="logos/quote-icon.svg" alt="" aria-hidden="true" />
+          <blockquote class="quote__text">The <b>TrustLogix Data Security Platform</b> yielded <b>immediate visibility and prescriptive recommendations</b>, which helped us <b>automate and operationalize</b> our access controls, audit, and compliance processes and respond to data access requests and issues, so the customers always have <b>access to the right data at the right time</b>.</blockquote>
+          <figcaption class="quote__foot">
+            <img class="quote__avatar" src="logos/customer-avatar-1.jpg" alt="Bharat Goyal" />
+            <div class="quote__info">
+              <div class="quote__author">Bharat Goyal</div>
+              <div class="quote__role">EVP, Head of Engineering, Zeta Global</div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED RESOURCES ============ -->
+    <section class="section scheme-light">
+      <div class="container">
+        <div class="res-head">
+          <div>
+            <span class="eyebrow reveal">Resources</span>
+            <h2 class="section-head__title reveal" data-delay="1" style="margin-bottom:0.5rem;">Featured <b>Resources</b></h2>
+            <p class="section-head__sub reveal" data-delay="2">Unlock innovation with our latest insights and thought leadership.</p>
+          </div>
+          <a href="/resource-library" class="btn reviews-cta reveal" data-delay="2">Browse Our Resource Library
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="res-track" id="res-track">
+          <a class="res-card reveal" href="/case-studies/modern-data-mesh-in-snowflake-cloud">
+            <div class="res-card__thumb"><img class="res-card__img" src="logos/article-01.webp" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Case Study</span><span class="res-card__date">JAN 15, 2025</span></div>
+              <h3 class="res-card__title">Securing a Modern Data Mesh in the Snowflake Data Cloud</h3>
+              <p class="res-card__desc">A global mobility vendor used TrustLogix to modernize data, protect sensitive information, and improve compliance and analytics.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/datasheets/why-security-teams-replacing-ibm-guardium-trustlogix">
+            <div class="res-card__thumb"><img class="res-card__img" src="logos/article-02.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Data Sheet</span><span class="res-card__date">FEB 8, 2025</span></div>
+              <h3 class="res-card__title">Why Security Teams Are Replacing IBM Guardium with TrustLogix</h3>
+              <p class="res-card__desc">IBM Guardium&#x27;s agent-based architecture wasn&#x27;t built for cloud. See how TrustLogix replaces legacy data activity monitoring with a single, agentless platform covering on-prem, hybrid, and cloud.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/datasheets/solution-brief-preemptive-data-security-for-ai-agents">
+            <div class="res-card__thumb"><img class="res-card__img" src="logos/article-03.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Data Sheet</span><span class="res-card__date">MAR 22, 2025</span></div>
+              <h3 class="res-card__title">Solution Brief: Preemptive Data Security for the Age of AI Agents</h3>
+              <p class="res-card__desc">Stop AI data leaks before they happen. TrustAI by TrustLogix provides preemptive security and JIT access control for AI agents, ensuring PII/PHI protection across multi-cloud environments. Secure your AI innovation today.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/datasheets/about-trustlogix">
+            <div class="res-card__thumb"><img class="res-card__img" src="logos/article-04.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Data Sheet</span><span class="res-card__date">APR 3, 2025</span></div>
+              <h3 class="res-card__title">About TrustLogix</h3>
+              <p class="res-card__desc">Enterprises need to move faster with AI, but fragmented access and inconsistent data controls slow progress and add risk. TrustLogix gives teams unified, secure access to the data that drives AI—so innovation moves quickly, safely.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/ebooks/data-security-agentic-ai-ebook">
+            <div class="res-card__thumb"><img class="res-card__img" src="logos/article-05.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Ebook</span><span class="res-card__date">MAY 14, 2025</span></div>
+              <h3 class="res-card__title">Data Security for Agentic AI</h3>
+              <p class="res-card__desc">See how data and security leaders can govern AI data access with clarity and speed. Understand the real risks, the new architectural requirements, and the practical steps enterprises are using today to make AI safe at scale.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/reports/gartner-report-agile-adaptive-ai-data-security-governance">
+            <div class="res-card__thumb"><img class="res-card__img" src="logos/article-06.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Report</span><span class="res-card__date">JUN 19, 2025</span></div>
+              <h3 class="res-card__title">Get the Gartner Report: Use Agile, Adaptive, AI-Ready (3A) Data Security Governance to Secure Shadow AI</h3>
+              <p class="res-card__desc">This recent Gartner® report outlines a practical framework for evolving data security controls to match AI&#x27;s pace: just-in-time access, automated scanning, adaptive policy enforcement, and AI agent monitoring. Required reading for CISOs navigating the gap between AI adoption and data security.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/reports/ai-agents-blind-spot-governing-agentic-ai-gigaom">
+            <div class="res-card__thumb"><img class="res-card__img" src="logos/article-07.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Report</span><span class="res-card__date">JUL 7, 2025</span></div>
+              <h3 class="res-card__title">AI Agents Are Your New Blind Spot: A CISO&#x27;s Framework for Governing Agentic AI - GigaOm</h3>
+              <p class="res-card__desc">GigaOm&#x27;s independent analyst brief gives CISOs a practical framework for evaluating AI agent data security, covering identity propagation, least-privilege enforcement, audit at scale, and continuous monitoring.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/reports/navigating-the-ai-data-security-landscape">
+            <div class="res-card__thumb"><img class="res-card__img" src="logos/article-08.webp" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Report</span><span class="res-card__date">AUG 28, 2025</span></div>
+              <h3 class="res-card__title">AI Data Security: Risks, Best Practices &amp; How to Protect Your AI Systems</h3>
+              <p class="res-card__desc">Learn how to secure data and AI assets with best practices for AI/ML risks, LLM protection, and future-proofing AI security.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/videos/securing-ai-agents-before-become-biggest-liability">
+            <div class="res-card__thumb"><img class="res-card__img" src="logos/article-09.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span><span class="res-card__date">SEP 11, 2025</span></div>
+              <h3 class="res-card__title">Securing Your AI Agents Before They Become Your Biggest Liability</h3>
+              <p class="res-card__desc">Learn why AI agents are creating a &quot;governance gap&quot; in the enterprise. GigaOm’s Whit Walters shares 5 essential capabilities to secure your AI infrastructure and prevent agents from becoming a major data liability. Watch the full breakdown.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/videos/closing-ai-velocity-gap-why-enterprises-need-proactive-trust-layer">
+            <div class="res-card__thumb"><img class="res-card__img" src="logos/article-10.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span><span class="res-card__date">OCT 2, 2025</span></div>
+              <h3 class="res-card__title">Closing the AI Velocity Gap: Why Enterprises Need a Proactive Trust Layer</h3>
+              <p class="res-card__desc">Is the race for AI ROI forcing your organization to compromise on security? In this featured session, Scott Raynovich, Principal Analyst at Futuriom, and Ron Longo, CEO of TrustLogix, discuss how to eliminate the &quot;Velocity Gap&quot;—the friction between the urgent need to deploy AI and the complex task of securing it.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/videos/building-policy-control-plane-architecture-behind-trustai">
+            <div class="res-card__thumb"><img class="res-card__img" src="logos/article-11.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span><span class="res-card__date">NOV 17, 2025</span></div>
+              <h3 class="res-card__title">Building the Policy Control Plane: The Architecture Behind TrustAI</h3>
+              <p class="res-card__desc">Learn how TrustLogix&#x27;s unified Policy Control Plane governs autonomous AI agents at machine speed—enabling innovation while protecting sensitive enterprise data.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/videos/data-security-for-ai-agents-with-trustai">
+            <div class="res-card__thumb"><img class="res-card__img" src="logos/article-12.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span><span class="res-card__date">DEC 5, 2024</span></div>
+              <h3 class="res-card__title">Data Security for AI Agents with TrustAI</h3>
+              <p class="res-card__desc">Organizations can confidently scale AI initiatives by securing sensitive data, controlling AI agent access, and monitoring how data is used.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/videos/resilient-data-security-in-multi-cloud-environments">
+            <div class="res-card__thumb"><img class="res-card__img" src="logos/article-13.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span><span class="res-card__date">OCT 30, 2024</span></div>
+              <h3 class="res-card__title">Resilient Data Security in Multi-Cloud Environments</h3>
+              <p class="res-card__desc">Explore resilient multi-cloud data security with TrustLogix CEO Ganesh Kirti on Tech4Sight—Zero Trust, access control &amp; AI.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/videos/secure-data-access-from-source-to-dashboard">
+            <div class="res-card__thumb"><img class="res-card__img" src="logos/article-14.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span><span class="res-card__date">SEP 25, 2024</span></div>
+              <h3 class="res-card__title">Secure Data Access from Source to Dashboard</h3>
+              <p class="res-card__desc">Extend Snowflake &amp; Databricks access controls to Power BI with TrustAccess—no code, no duplication, no data exposure.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/videos/trustlogix-collibra-integration">
+            <div class="res-card__thumb"><img class="res-card__img" src="logos/article-15.webp" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span><span class="res-card__date">AUG 12, 2024</span></div>
+              <h3 class="res-card__title">TrustLogix-Collibra Integration</h3>
+              <p class="res-card__desc">See how TrustLogix integrates with Collibra to simplify Snowflake data security, policy creation, and access governance.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+        </div>
+        <div class="res-nav">
+          <div class="res-dots" id="res-dots"></div>
+          <div class="res-arrows">
+            <button class="res-arrow" data-dir="-1" aria-label="Previous resources">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"/></svg>
+            </button>
+            <button class="res-arrow" data-dir="1" aria-label="Next resources">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="cta-final">
+      <div class="cta-final__card reveal">
+        <div class="cta-final__bg"></div>
+        <img class="cta-final__graphic" src="logos/cta-bg-graphic.svg" alt="" aria-hidden="true" />
+        <div class="cta-final__content">
+          <div class="cta-final__left">
+            <h2 class="cta-final__title">Experience TrustLogix in Action</h2>
+          </div>
+          <div class="cta-final__right">
+            <p class="cta-final__sub">Schedule a call to discover how TrustLogix can accelerate your AI initiatives with faster, safer data access.</p>
+            <div class="cta-final__buttons">
+              <a href="/get-started" class="btn cta-final__btn cta-final__btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+              <a href="/platform" class="btn cta-final__btn cta-final__btn--secondary"><span class="btn__swap"><span>Our Platform</span><span aria-hidden="true">Our Platform</span></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-final__strip"></div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer footer--brand footer--light">
+    <div class="container">
+      <div class="footer__top">
+        <a href="/" class="footer__logo" aria-label="TrustLogix">
+          <img src="trustlogix-logo.svg" alt="TrustLogix" width="180" height="31" />
+        </a>
+        <p class="footer__tagline">Unified, secure access to the data that drives AI—so innovation moves quickly, safely.</p>
+        <div class="footer__social">
+          <a href="https://x.com/TrustLogix" target="_blank" rel="noopener" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.1761 4H19.9362L13.9061 10.7774L21 20H15.4456L11.0951 14.4066L6.11723 20H3.35544L9.80517 12.7508L3 4H8.69545L12.6279 9.11262L17.1761 4ZM16.2073 18.3754H17.7368L7.86441 5.53928H6.2232L16.2073 18.3754Z" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/trustlogix/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 3C3.67157 3 3 3.67157 3 4.5V19.5C3 20.3284 3.67157 21 4.5 21H19.5C20.3284 21 21 20.3284 21 19.5V4.5C21 3.67157 20.3284 3 19.5 3H4.5ZM8.52076 7.00272C8.52639 7.95897 7.81061 8.54819 6.96123 8.54397C6.16107 8.53975 5.46357 7.90272 5.46779 7.00413C5.47201 6.15897 6.13998 5.47975 7.00764 5.49944C7.88795 5.51913 8.52639 6.1646 8.52076 7.00272ZM12.2797 9.76176H9.7583V18.3216H12.4217V16.9819C12.4203 15.9674 12.4194 14.9532 12.4246 13.9397C12.426 13.6936 12.4372 13.4377 12.5005 13.2028C12.7381 12.3253 13.5271 11.7586 14.4074 11.8979C14.9727 11.9864 15.3467 12.3141 15.5042 12.8471C15.6013 13.1803 15.6449 13.5389 15.6491 13.8863C15.6589 15.9815 15.6573 17.0294 15.6561 18.1388V18.3202H18.328V16.7591C18.327 15.6293 18.3264 14.5001 18.3294 13.3702C18.3308 12.8597 18.276 12.3563 18.1508 11.8627C17.9638 11.1286 17.5771 10.5211 16.9485 10.0824C16.5027 9.77019 16.0133 9.5691 15.4663 9.5466C15.404 9.54401 14.7141 9.50673 14.4467 9.56066C13.6817 9.71394 13.0096 10.0641 12.5019 10.6814C12.4429 10.7522 12.3852 10.8241 12.2991 10.9315L12.2797 10.9557V9.76176ZM5.68164 18.3244H8.33242V9.76733H5.68164V18.3244Z" fill="currentColor"/></svg>
+          </a>
+          <a href="http://www.youtube.com/@trustlogix" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.5686 4.77345C21.5163 5.02692 22.2555 5.76903 22.5118 6.71673C23.1821 9.42042 23.1385 14.5321 22.5259 17.278C22.2724 18.2257 21.5303 18.965 20.5826 19.2213C17.9071 19.8831 5.92356 19.8015 3.40294 19.2213C2.45524 18.9678 1.71595 18.2257 1.45966 17.278C0.827391 14.7011 0.871044 9.25144 1.44558 6.73081C1.69905 5.78311 2.44116 5.04382 3.38886 4.78753C6.96561 4.0412 19.2956 4.282 20.5686 4.77345ZM9.86682 8.70227L15.6122 11.9974L9.86682 15.2925V8.70227Z" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__links">
+        <div class="footer__col">
+          <h5>Platform</h5>
+          <a href="/platform">Platform Overview</a>
+          <a href="/platform/trustdspm">TrustDSPM</a>
+          <a href="/platform/trustaccess">TrustAccess</a>
+          <a href="/platform/trustai">TrustAI</a>
+        </div>
+        <div class="footer__col">
+          <h5>Partners</h5>
+          <a href="/partners">Partners Overview</a>
+          <a href="/partners/snowflake">Snowflake</a>
+          <a href="/partners/databricks">Databricks</a>
+          <a href="/partners/microsoft">Power BI</a>
+          <a href="/partners/aws">AWS</a>
+          <a href="/partners/alation">Alation</a>
+          <a href="/partners/collibra">Collibra</a>
+        </div>
+        <div class="footer__col">
+          <h5>Resources</h5>
+          <a href="/resources">Resources Overview</a>
+          <a href="/resource-library">Resource Library</a>
+          <a href="/blog">The TrustLogix Blog</a>
+          <a href="https://docs.trustlogix.io/">Documentation</a>
+          <a href="/newsletter">Newsletter</a>
+        </div>
+        <div class="footer__col">
+          <h5>About</h5>
+          <a href="/about">About TrustLogix</a>
+          <a href="/newsroom">Newsroom</a>
+          <a href="/newsroom/press-releases">Press Releases</a>
+          <a href="/contact">Contact</a>
+          <a href="#">Cookie Preferences</a>
+        </div>
+      </div>
+
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <span class="footer__credit">© 2026 TrustLogix. All rights reserved.</span>
+        <div class="footer__legal">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-of-service">Terms of Service</a>
+          <a href="/security-pledge">Security Pledge</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

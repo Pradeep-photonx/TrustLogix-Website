@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Platform — The Data Security Platform for AI | TrustLogix</title>
+  <meta name="description" content="Unify data visibility, policy enforcement, and AI protection through a proxyless, agentless, cloud-native architecture that activates in minutes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css?v=268" />
+  <style>
+    /* ─── Platform page styles ─── */
+    .quote--flat {
+      background-color: var(--eden) !important;
+      background-image: url("../logos/rhombus-tile.svg") !important;
+      background-size: 26px 26px !important;
+      background-repeat: repeat !important;
+      background-position: top left !important;
+      padding: 80px 0 !important;
+    }
+    .quote--flat::before { display: none !important; }
+    .quote--flat .quote {
+      position: relative;
+      background: #134749;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      padding: 54px 60px;
+      overflow: hidden;
+    }
+    .quote--flat .quote > * { position: relative; z-index: 1; }
+    .quote--flat .quote__icon { width: 50px; }
+    .quote--flat .quote__text {
+      font-weight: 400 !important;
+      color: rgba(255,255,255,.85) !important;
+      font-size: 24px;
+      line-height: 1.6;
+    }
+    .quote--flat .quote__text b { font-weight: 700 !important; color: #fff !important; }
+
+    /* transparent nav handled by .nav--transparent component in styles.css */
+
+    /* HERO — full 100vh */
+    .plat-hero {
+      background: linear-gradient(110deg, #08aac3 0%, #23ad9c 48%, #6fbe46 100%);
+      color: #fff;
+      min-height: calc(100vh - 83px);
+      padding: 60px 0;
+      position: relative; overflow: hidden;
+      display: flex; align-items: center;
+    }
+    .plat-hero::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .28;
+      background-image: radial-gradient(circle, #fff 1.2px, transparent 1.2px);
+      background-size: 24px 24px;
+    }
+    .plat-hero__inner { position: relative; z-index: 2; display: flex; align-items: center; gap: 80px; justify-content: space-between; padding-left: 0; padding-right: 0; }
+    .plat-hero__badge {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-family: var(--font-heading); font-weight: 700; font-size: 16px;
+      letter-spacing: .1em; text-transform: uppercase;
+      background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35);
+      padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 16px;
+      color: #ffffff; backdrop-filter: blur(4px);
+    }
+    .plat-hero__badge b { color: #fff; }
+    .plat-hero__title {
+      font-family: var(--font-heading); font-weight: 800;
+      font-size: clamp(2.4rem, 4vw, 3.5rem); line-height: 1.1;
+      letter-spacing: -.02em; margin-bottom: 1.5rem; color: #fff;
+    }
+    .plat-hero__title .grad { background: linear-gradient(120deg,#6fbe46,#23ad9c 50%,#08aac3); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .plat-hero__desc { font-size: 16px; line-height: 1.7; color: #ffffff; margin-bottom: 2.5rem; }
+    .plat-hero__cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .plat-hero__cta .btn-w { background: #fff; color: var(--eden); font-family: var(--font-heading); font-weight: 700; padding: .9rem 2rem; border-radius: var(--r-btn); text-decoration: none; }
+    .plat-hero__cta .btn-g { background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.3); font-family: var(--font-heading); font-weight: 700; padding: .9rem 2rem; border-radius: var(--r-btn); text-decoration: none; }
+    .plat-hero__img { flex: none; width: min(540px, calc(100vh - 200px)); aspect-ratio: 1 / 1; box-sizing: border-box; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 28px; padding: 0; box-shadow: 0 30px 70px rgba(0,0,0,.22); outline: 5px solid rgba(255,255,255,.1); }
+    .plat-hero__img img { width: 88%; max-width: 480px; height: auto; }
+    @media (max-width: 1100px) { .plat-hero__img { width: min(420px, calc(100vh - 220px)); } .plat-hero__img img { width: 86%; } }
+    @media (max-width: 768px) { .plat-hero__img { display: none; } }
+
+    /* SHARED — STANDARDIZED SPACING */
+    .plat-section { padding: 5rem 0; }
+    .plat-diagram { margin-top: 2rem; background: #fff; padding: 42px; border-radius: 24px; border: 1px solid #e5edee; }
+    .plat-diagram img { width: 100%; max-width: none; height: auto; display: block; border-radius: 12px; }
+    .plat-section--alt { background: #f4f8f8; }
+    .plat-eyebrow { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; letter-spacing: .15em; text-transform: uppercase; color: var(--pine-green); margin-bottom: 16px; }
+    .plat-h2 { font-family: var(--font-heading); font-weight: 800; font-size: clamp(2rem, 2.8vw, 2.75rem); letter-spacing: -.02em; line-height: 1.12; color: var(--neutral-darkest); margin-bottom: 1rem; }
+    .plat-lead { font-size: 1.125rem; line-height: 1.7; color: var(--neutral); max-width: 52rem; margin-top: 0; }
+    .plat-section-head { margin-bottom: 2rem; }
+    .plat-section-head--c { text-align: center; }
+    .plat-section-head--c .plat-lead { margin: 0 auto; }
+
+    /* MODULES — gradient-tile icon with white glyph */
+    .product-card__head { display: flex; align-items: center; gap: .9rem; margin-bottom: .75rem; }
+    .product-card__head .product-card__name { margin: 0; font-size: 24px; }
+    .product-card__icon {
+      width: 60px; height: 60px; border-radius: 16px; margin-bottom: 0;
+      background: linear-gradient(135deg,#6fbe46,#23ad9c 50%,#08aac3) !important;
+      -webkit-mask-image: none !important; mask-image: none !important;
+      display: grid; place-items: center;
+    }
+    .product-card__icon::before {
+      content: ""; width: 34px; height: 34px; background: #fff;
+      -webkit-mask-image: var(--icon); mask-image: var(--icon);
+      -webkit-mask-size: contain; mask-size: contain;
+      -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+      -webkit-mask-position: center; mask-position: center;
+    }
+    .modules-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .mod-card {
+      background: var(--eden); border-radius: 20px; padding: 2.25rem 2rem;
+      display: flex; flex-direction: column; gap: 1rem; position: relative; overflow: hidden;
+      transition: transform .3s;
+    }
+    .mod-card:hover { transform: translateY(-5px); }
+    .mod-card--access { background: linear-gradient(135deg, #08aac3 0%, #6fbe46 100%); }
+    .mod-card__icon { width: 52px; height: 52px; }
+    .mod-card__name { font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; color: #fff; }
+    .mod-card__subtitle { font-family: var(--font-heading); font-weight: 600; font-size: 1rem; color: #ffffff; line-height: 1.4; }
+    .mod-card__desc { font-size: 1rem; color: #ffffff; line-height: 1.6; flex: 1; }
+    .mod-card__link { margin-top: .5rem; font-family: var(--font-heading); font-weight: 700; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; color: #ffffff; text-decoration: none; display: inline-flex; align-items: center; gap: .4rem; }
+    .mod-card__link:hover { color: #fff; }
+
+    /* TESTIMONIAL — new design */
+    .testi-new {
+      background: #fff; border: 1px solid #e5edee; border-radius: 24px;
+      padding: 3rem 3.5rem; display: grid; grid-template-columns: 1fr auto;
+      gap: 3rem; align-items: center; position: relative; overflow: hidden;
+    }
+    .testi-new::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: linear-gradient(180deg,#6fbe46,#23ad9c,#08aac3); border-radius: 4px 0 0 4px; }
+    .testi-new__quote { font-family: var(--font-heading); font-weight: 800; font-size: 4rem; line-height: .8; color: #e5edee; margin-bottom: 1rem; }
+    .testi-new__text { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 600; line-height: 1.5; color: var(--eden); margin-bottom: 1.5rem; letter-spacing: -.01em; }
+    .testi-new__attr { font-size: 1rem; color: var(--muted); font-style: italic; }
+    .testi-new__badge {
+      flex: none; background: #f4f8f8; border: 1px solid #e5edee;
+      border-radius: 16px; padding: 1.5rem; text-align: center;
+      min-width: 200px;
+    }
+    .testi-new__badge-label { font-family: var(--font-heading); font-weight: 700; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--pine-green); margin-bottom: .5rem; }
+    .testi-new__badge-name { font-family: var(--font-heading); font-weight: 800; font-size: 1rem; color: var(--eden); line-height: 1.3; }
+    .testi-new__badge-year { font-size: .85rem; color: var(--neutral); margin-top: .25rem; }
+
+    /* ENTERPRISE DATA PROTECTION — capability card style (like our Why TrustLogix) */
+    .protect-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .protect-card {
+      border: 1.5px solid transparent; border-radius: 18px;
+      background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg, rgba(111,190,70,.45), rgba(35,173,156,.45) 45%, rgba(8,170,195,.45)) border-box;
+      padding: 2rem; display: flex; flex-direction: column; gap: 1rem;
+      align-items: center; text-align: center;
+    }
+    .protect-card__icon-wrap { background: transparent; display: grid; place-items: center; }
+    .protect-card__icon-wrap svg { width: 40px; height: 40px; }
+    .protect-card__title { font-family: var(--font-heading); font-weight: 700; font-size: 20px; color: var(--neutral-darkest); }
+    .protect-card__desc { font-size: 1rem; color: var(--neutral-darkest); line-height: 1.65; }
+
+    /* ECOSYSTEM — new design */
+    .eco-new { background: var(--eden); color: #fff; position: relative; overflow: hidden; }
+    .eco-new::before { content: ""; position: absolute; inset: 0; opacity: .06; background-image: radial-gradient(circle,#fff 1.2px,transparent 1.2px); background-size: 24px 24px; pointer-events: none; }
+    .eco-new .plat-eyebrow { color: #08aac3; }
+    .eco-new .plat-h2 { color: #fff; }
+    .eco-new .plat-lead { color: #ffffff; }
+    .eco-cats { display: flex; flex-direction: column; gap: 2rem; margin-top: 3rem; }
+    .eco-cat__label { font-family: var(--font-heading); font-weight: 700; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: .85rem; }
+    .eco-cat__chips { display: flex; flex-wrap: wrap; gap: .65rem; }
+    .eco-chip {
+      font-family: var(--font-heading); font-weight: 600; font-size: .9rem;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+      padding: .5rem 1.1rem; border-radius: 99px; color: rgba(255,255,255,.88);
+      margin-bottom: 16px;
+    }
+
+    /* SECURITY ARCHITECTURE — 3-col grid of feature tiles */
+    .arch-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+    .arch-card {
+      border: 1px solid #e5edee; border-radius: 18px; padding: 2rem;
+      background: #fff; display: flex; flex-direction: column; gap: 1rem;
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+    .arch-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 44px rgba(12,63,65,.12);
+      border-color: transparent;
+    }
+    .arch-card__icon { transition: transform .28s ease; }
+    .arch-card:hover .arch-card__icon { transform: scale(1.06); }
+    .arch-card__icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--eden); display: grid; place-items: center; color: #fff;
+    }
+    .arch-card__title { font-family: var(--font-heading); font-weight: 700; font-size: 1.125rem; color: var(--neutral-darkest); }
+    .arch-card__desc { font-size: 1rem; color: var(--neutral-darkest); line-height: 1.6; }
+
+    /* SECURITY VALUE — ref style */
+    .sec-band { background: linear-gradient(110deg, #08aac3 0%, #23ad9c 48%, #6fbe46 100%); position: relative; overflow: hidden; }
+    .sec-band::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .28; background-image: radial-gradient(circle, #fff 1.2px, transparent 1.2px); background-size: 24px 24px; }
+    .sec-band__inner { padding: 70px 100px; position: relative; z-index: 1; }
+    .sec-card { background: #fff; border: 1px solid #e5edee; border-radius: 20px; padding: 90px; display: grid; grid-template-columns: 1fr auto; gap: 3.5rem; align-items: center; box-shadow: 0 24px 60px rgba(12,63,65,.10); }
+    @media (max-width: 768px) { .sec-band__inner { padding: 40px 20px; } }
+    .sec-card__eyebrow { display: inline-flex; align-items: center; gap: .6rem; font-family: var(--font-heading); font-weight: 700; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pine-green); background: #f4f8f8; padding: .5rem 1rem; border-radius: 8px; margin-bottom: 16px; }
+    .sec-card__eyebrow i { width: 10px; height: 10px; border-radius: 2px; background: linear-gradient(135deg,#6fbe46,#23ad9c 45%,#08aac3); }
+    .sec-card__title { font-family: var(--font-heading); font-weight: 500; font-size: clamp(2rem, 2.8vw, 2.5rem); color: var(--neutral-darkest); margin-bottom: 1rem; letter-spacing: -.02em; line-height: 1.1; }
+    .sec-card__title b { font-weight: 800; }
+    .sec-card__text { font-size: 18px; color: var(--neutral); line-height: 1.7; margin-bottom: 16px; max-width: none; }
+    .sec-card__link { color: var(--pine-green); font-weight: 700; }
+    .sec-card__right { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding-left: 0; }
+    .sec-card__badge { display: flex; flex-direction: column; align-items: center; gap: .85rem; }
+    .sec-card__badge img { width: 210px; height: auto; }
+    .sec-card__badge-label { font-family: var(--font-heading); font-weight: 700; font-size: .9rem; letter-spacing: .08em; text-transform: uppercase; color: var(--eden); }
+    .sec-card__chips { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; }
+    .sec-card__chips span { font-family: var(--font-heading); font-weight: 600; font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; color: var(--pine-green); background: rgba(0,115,115,.07); padding: .4rem .8rem; border-radius: 99px; margin-bottom: 16px; }
+    @media (max-width: 768px) { .sec-card { grid-template-columns: 1fr; padding: 2.25rem; } .sec-card__right { border-left: 0; border-top: 1px dashed #d8d9d9; padding-left: 0; padding-top: 2rem; } }
+
+    /* FAQS — new accordion design */
+    .faq-list { display: flex; flex-direction: column; gap: .75rem; }
+    .faq-item { border: 1.5px solid #e5edee; border-radius: 14px; overflow: hidden; background: #fff; transition: border-color .25s; }
+    .faq-item.open { border-color: transparent; background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#6fbe46,#23ad9c 45%,#08aac3) border-box; }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 24px; cursor: pointer; user-select: none;
+    }
+    .faq-q__text { font-family: var(--font-heading); font-weight: 700; font-size: 1.05rem; color: var(--neutral-darkest); }
+    .faq-q__icon {
+      flex: none; width: 24px; height: 24px; border-radius: 50%;
+      background: transparent; border: 0;
+      display: grid; place-items: center; color: var(--pine-green); transition: all .25s;
+    }
+    .faq-q__icon svg { width: 24px; height: 24px; stroke-width: 1.5; }
+    .faq-item.open .faq-q__icon { background: transparent; color: var(--pine-green); transform: rotate(180deg); }
+    .faq-item.open .faq-q { border-bottom: 0; }
+    .faq-a { display: none; padding: 1.25rem 1.6rem; font-size: 1rem; color: var(--neutral-darkest); line-height: 1.7; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a ul { padding-left: 1.25rem; margin-top: .5rem; display: flex; flex-direction: column; gap: .4rem; }
+    .faq-a ul li { font-size: 1rem; line-height: 1.6; }
+    .faq-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .faq-col__intro .plat-lead { margin-bottom: 1.5rem; }
+
+    @media (max-width: 900px) {
+      .modules-grid, .protect-grid, .arch-grid { grid-template-columns: 1fr; }
+      .testi-new, .sec-value, .faq-col { grid-template-columns: 1fr; }
+      .testi-new__badge { min-width: unset; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="TrustLogix home">
+        <img src="../trustlogix-logo.svg" alt="TrustLogix" class="nav__logo-img" width="200" height="34" />
+      </a>
+      <nav class="nav__menu" aria-label="Primary">
+        <div class="nav__item">
+          <a href="/platform" class="nav__link"><span class="nav__swap"><span>Platform</span><span aria-hidden="true">Platform</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/platform" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Our platform architecture, core modules, and benefits.</span></a>
+            <a href="/platform/trustai">– TrustAI</a>
+            <a href="/platform/trustapp">– TrustApp</a>
+            <a href="/platform/trustdspm">– TrustDSPM</a>
+            <a href="/platform/trustaccess">– TrustAccess</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/partners" class="nav__link"><span class="nav__swap"><span>Partners</span><span aria-hidden="true">Partners</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/partners" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Introduction to the TrustLogix Interoperable Ecosystem.</span></a>
+            <a href="/partners/snowflake">– Snowflake</a>
+            <a href="/partners/databricks">– Databricks</a>
+            <a href="/partners/microsoft">– Power BI</a>
+            <a href="/partners/aws">– AWS</a>
+            <a href="/partners/alation">– Alation</a>
+            <a href="/partners/collibra">– Collibra</a>
+          </div>
+        </div>
+        <div class="nav__item"><a href="/pricing" class="nav__link"><span class="nav__swap"><span>Pricing</span><span aria-hidden="true">Pricing</span></span></a></div>
+        <div class="nav__item">
+          <a href="/resources" class="nav__link"><span class="nav__swap"><span>Resources</span><span aria-hidden="true">Resources</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/resources" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Resources available to existing and potential customers.</span></a>
+            <a href="/resource-library">– Resource Library</a>
+            <a href="/blog">– The TrustLogix Blog</a>
+            <a href="https://docs.trustlogix.io/">– Documentation</a>
+            <a href="/newsletter">– Newsletter</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/about" class="nav__link"><span class="nav__swap"><span>About</span><span aria-hidden="true">About</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/about" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">About TrustLogix – our culture, values, and more.</span></a>
+            <a href="/events">– Events</a>
+            <a href="/newsroom">– Newsroom</a>
+            <a href="/newsroom/press-releases">– Press Releases</a>
+            <a href="/careers">– Careers</a>
+            <a href="/contact">– Contact</a>
+          </div>
+        </div>
+      </nav>
+      <div class="nav__actions">
+        <a href="/get-started" class="btn btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+        <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="plat-hero">
+      <div class="container plat-hero__inner reveal">
+        <div style="flex:1;min-width:0;">
+          <span class="plat-hero__badge"><b>Platform</b> · AI-Native Data Security</span>
+          <h1 class="plat-hero__title"><span style="font-weight:400;">The Data Security Platform for</span> <span style="color:#fff;font-weight:800;">AI and the Modern Cloud</span></h1>
+          <p class="plat-hero__desc">Unify data visibility, policy enforcement, and AI protection through a proxyless, agentless, cloud-native architecture that activates in minutes. Powered by patented, AI-driven intelligence, the <strong>TrustLogix AI-Native Data Security Platform</strong> continuously detects risk, right-sizes entitlements, and keeps policies aligned as users, data, and platforms evolve—accelerating secure data access, compliance, and innovation.</p>
+        </div>
+        <div class="plat-hero__img">
+          <img src="../../logos/ecosystem-wheel.svg" alt="TrustLogix Interoperable Ecosystem" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MODULES (homepage product-card design) ============ -->
+    <section class="section bg-pattern" id="modules">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <span class="eyebrow reveal">Platform Modules</span>
+          <h2 class="section-head__title reveal" data-delay="1">Explore <b>TrustLogix Modules</b></h2>
+        </div>
+        <div class="cards-grid cards-grid--3">
+          <!-- TrustDSPM -->
+          <article class="product-card reveal">
+            <div class="product-card__head"><div class="product-card__icon" style="--icon:url('../logos/trustdspm.svg')" aria-hidden="true"></div><h3 class="product-card__name">TrustDSPM</h3></div>
+            <p class="product-card__sub">Data Security Posture Management with Business Context</p>
+            <p class="product-card__desc">Continuously discover risks, recommend least-privilege policies, and simplify compliance based on the business context of your data.</p>
+            <a href="/platform/trustdspm" class="link-arrow product-card__link">Learn More
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </article>
+          <!-- TrustAccess -->
+          <article class="product-card reveal" data-delay="1">
+            <div class="product-card__head"><div class="product-card__icon" style="--icon:url('../logos/trustaccess.svg')" aria-hidden="true"></div><h3 class="product-card__name">TrustAccess</h3></div>
+            <p class="product-card__sub">Dynamic Access Controls with Metadata-Aware Policies</p>
+            <p class="product-card__desc">Enforce granular, business-aware access controls across platforms and dynamically adjust entitlements as roles and classifications change.</p>
+            <a href="/platform/trustaccess" class="link-arrow product-card__link">Learn More
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </article>
+          <!-- TrustAI -->
+          <article class="product-card reveal" data-delay="2">
+            <div class="product-card__head"><div class="product-card__icon" style="--icon:url('../logos/trustai.svg')" aria-hidden="true"></div><h3 class="product-card__name">TrustAI</h3></div>
+            <p class="product-card__sub">AI Data Security with Business Classification Awareness</p>
+            <p class="product-card__desc">Enforce business-aware access for AI agents, automatically apply data sensitivity policies in training and inference, and monitor activity to prevent misuse or leakage.</p>
+            <a href="/platform/trustai" class="link-arrow product-card__link">Learn More
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIAL — homepage dark quote design ============ -->
+    <section class="section quote-section quote--card">
+      <div class="container">
+        <figure class="quote reveal">
+          <img class="quote__icon" src="../logos/quote-icon.svg" alt="" aria-hidden="true" />
+          <blockquote class="quote__text">TrustLogix has been recognized as a <b>leader</b> due to its innovative data-centric <b>security</b> solution that provides a <b>non-intrusive</b> architecture with broad <b>data protection</b> capabilities, AI-driven <b>policy recommendations</b>, and comprehensive security and <b>compliance</b> management across <b>multi-cloud</b> environments.</blockquote>
+          <figcaption class="quote__foot">
+            <img class="quote__avatar" src="../logos/analyst-avatar.jpg" alt="KuppingerCole Analyst" />
+            <div class="quote__info">
+              <div class="quote__author">KuppingerCole Analysts</div>
+              <div class="quote__role">Leadership Compass 2025</div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ ENTERPRISE-GRADE DATA PROTECTION — Why TrustLogix style ============ -->
+    <section class="plat-section">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Enterprise-Grade Data Protection</span>
+          <h2 class="section-head__title">Built to scale. <b>Built to protect.</b> Built to activate fast.</h2>
+        </div>
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="iconGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6fbe46"/><stop offset="0.5" stop-color="#23ad9c"/><stop offset="1" stop-color="#08aac3"/></linearGradient></defs></svg>
+        <div class="protect-grid">
+          <div class="protect-card reveal">
+            <div class="protect-card__icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 512 512" fill="none" stroke="url(#iconGrad)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"><polygon points="497,127.467 384.533,15 272.067,127.467 336.333,127.467 336.333,497 432.733,497 432.733,127.467"/><rect x="175.667" y="223.867" width="96.4" height="273.133"/><rect x="15" y="352.4" width="96.4" height="144.6"/></svg>
+            </div><div class="protect-card__title">Scale Without Disruption</div>
+            <p class="protect-card__desc">Enforce policies natively with no proxies, agents, or infrastructure changes — ensuring zero performance impact as you grow.</p>
+          </div>
+          <div class="protect-card reveal" data-delay="1">
+            <div class="protect-card__icon-wrap">
+              <svg width="27" height="27" viewBox="0 0 682.66669 682.66669" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><clipPath clipPathUnits="userSpaceOnUse" id="shieldClip"><path d="M 0,512 H 512 V 0 H 0 Z"/></clipPath></defs><g transform="matrix(1.3333333,0,0,-1.3333333,0,682.66667)"><g transform="translate(155.9277,302.0356)"><path d="M 0,0 80,-80 200,40" style="fill:none;stroke:url(#iconGrad);stroke-width:40;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10"/></g><g><g clip-path="url(#shieldClip)"><g transform="translate(455.9277,317.4419)"><path d="M 0,0 C 0,-130.098 -79.207,-247.589 -200,-295.906 -320.793,-247.589 -400,-130.098 -400,0 v 134.594 l 200,39.5 200,-39.5 z" style="fill:none;stroke:url(#iconGrad);stroke-width:40;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10"/></g></g></g></g></svg>
+            </div><div class="protect-card__title">Protect Data Without Touching It</div>
+            <p class="protect-card__desc">Operate entirely on metadata and enforce policies natively, ensuring zero overhead and no vendor lock-in as you scale.</p>
+          </div>
+          <div class="protect-card reveal" data-delay="2">
+            <div class="protect-card__icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 512 512" fill="none" stroke="url(#iconGrad)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"><polygon points="384.533,15 288.133,207.8 368.467,207.8 127.467,497 207.8,239.933 127.467,239.933 239.933,15"/></svg>
+            </div><div class="protect-card__title">Activate in Minutes</div>
+            <p class="protect-card__desc">Get up and running fast across on-premises, multi-cloud, and hybrid environments without long projects or heavy setup.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ECOSYSTEM — homepage marquee design ============ -->
+    <section class="section scheme-light">
+      <div class="container eco">
+        <div class="eco__head">
+          <div class="eco__head-left">
+            <span class="eyebrow">Integrations</span>
+            <h2 class="eco__title">The TrustLogix <b>Interoperable Ecosystem</b></h2>
+          </div>
+          <div class="eco__head-right">
+            <p class="eco__desc">TrustLogix integrates seamlessly with your existing data stack—extending security and access control across every data platform without changing your architecture. Your stack stays flexible, future-proof, and fully under your control.</p>
+            <a href="/partners" class="eco__link">Learn More
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="eco__right">
+          <div class="eco__col eco__col--a">
+            <div class="eco__card"><img src="../logos/eco/snowflake.png" alt="Snowflake" /></div>
+            <div class="eco__card"><img src="../logos/eco/databricks.png" alt="Databricks" /></div>
+            <div class="eco__card"><img src="../logos/eco/aws.png" alt="AWS" /></div>
+            <div class="eco__card"><img src="../logos/eco/aws-s3.png" alt="AWS S3" /></div>
+            <div class="eco__card"><img src="../logos/eco/aws-rds.png" alt="AWS RDS" /></div>
+            <div class="eco__card"><img src="../logos/eco/aws-redshift.png" alt="AWS Redshift" /></div>
+            <div class="eco__card"><img src="../logos/eco/power-bi.png" alt="Power BI" /></div>
+            <div class="eco__card"><img src="../logos/eco/oracle.png" alt="Oracle" /></div>
+            <div class="eco__card"><img src="../logos/eco/mysql.png" alt="MySQL" /></div>
+            <div class="eco__card"><img src="../logos/eco/mssql.png" alt="MS SQL Server" /></div>
+            <div class="eco__card"><img src="../logos/eco/column.png" alt="Column" /></div>
+            <div class="eco__card"><img src="../logos/eco/azure-ad.png" alt="Azure Active Directory" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/snowflake.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/databricks.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/aws.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/aws-s3.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/aws-rds.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/aws-redshift.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/power-bi.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/oracle.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/mysql.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/mssql.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/column.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/azure-ad.png" alt="" /></div>
+          </div>
+          <div class="eco__col eco__col--b">
+            <div class="eco__card"><img src="../logos/eco/okta.png" alt="Okta" /></div>
+            <div class="eco__card"><img src="../logos/eco/alation.png" alt="Alation" /></div>
+            <div class="eco__card"><img src="../logos/eco/atlan.png" alt="Atlan" /></div>
+            <div class="eco__card"><img src="../logos/eco/splunk.png" alt="Splunk" /></div>
+            <div class="eco__card"><img src="../logos/eco/rapid7.png" alt="Rapid7" /></div>
+            <div class="eco__card"><img src="../logos/eco/slack.png" alt="Slack" /></div>
+            <div class="eco__card"><img src="../logos/eco/teams.png" alt="Teams" /></div>
+            <div class="eco__card"><img src="../logos/eco/mcp.png" alt="MCP Server" /></div>
+            <div class="eco__card"><img src="../logos/eco/tableau.png" alt="Tableau" /></div>
+            <div class="eco__card"><img src="../logos/eco/sailpoint.png" alt="SailPoint" /></div>
+            <div class="eco__card"><img src="../logos/eco/collibra.png" alt="Collibra" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/okta.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/alation.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/atlan.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/splunk.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/rapid7.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/slack.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/teams.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/mcp.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/tableau.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/sailpoint.png" alt="" /></div>
+            <div class="eco__card" aria-hidden="true"><img src="../logos/eco/collibra.png" alt="" /></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SUPPORTED PLATFORMS ============ -->
+    <section class="plat-section bg-pattern">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Unified Platform</span>
+          <h2 class="section-head__title">Supported <b>Platforms</b></h2>
+          <p class="section-head__sub" style="font-size:16px;color:var(--neutral);max-width:48rem;margin:0 auto;">TrustLogix protects data across leading on-premises and cloud data platforms and AI agent platforms.</p>
+        </div>
+        <div class="plat-diagram reveal">
+          <img src="../logos/platform-diagram.svg" alt="TrustLogix Data Security Platform — unified across cloud, on-premises, and AI agent platforms" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECURITY ARCHITECTURE — reference style ============ -->
+    <section class="plat-section">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Architecture</span>
+          <h2 class="section-head__title">Enterprise-Grade <b>Security Architecture</b></h2>
+          <p class="section-head__sub" style="font-size:16px;color:var(--neutral);max-width:48rem;margin:0 auto;">Every layer of the TrustLogix platform is designed for enterprise-scale security, data residency, and operational control.</p>
+        </div>
+        <div class="arch-grid">
+          <div class="arch-card reveal">
+            <div class="arch-card__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div><div class="arch-card__title">Flexible Deployment</div>
+            <p class="arch-card__desc">Choose a fully hosted TrustLogix deployment or run the data plane in your own cloud. Full control over where your data processing happens.</p>
+          </div>
+          <div class="arch-card reveal" data-delay="1">
+            <div class="arch-card__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg>
+            </div><div class="arch-card__title">Bring Your Own Key (BYOK)</div>
+            <p class="arch-card__desc">Encrypt all metadata with your own keys to maintain complete security ownership and satisfy the strictest data sovereignty requirements.</p>
+          </div>
+          <div class="arch-card reveal" data-delay="2">
+            <div class="arch-card__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div><div class="arch-card__title">Private Connectivity</div>
+            <p class="arch-card__desc">Use private links for all API calls between TrustLogix and your data platforms — ensuring traffic never traverses the public internet.</p>
+          </div>
+          <div class="arch-card reveal">
+            <div class="arch-card__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div><div class="arch-card__title">Controlled Access</div>
+            <p class="arch-card__desc">Service accounts connect via OAuth client secrets stored in a secure secrets manager, with IP restrictions for added protection.</p>
+          </div>
+          <div class="arch-card reveal" data-delay="1">
+            <div class="arch-card__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div><div class="arch-card__title">Global Availability</div>
+            <p class="arch-card__desc">Deployed across US and EU regions to meet data residency and compliance requirements wherever your business operates.</p>
+          </div>
+          <div class="arch-card reveal" data-delay="2">
+            <div class="arch-card__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div><div class="arch-card__title">Tenant Isolation by Design</div>
+            <p class="arch-card__desc">Serverless compute always runs within the customer's network boundary to enforce strong isolation between tenants.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECURITY COMPANY VALUE — light card on gradient ============ -->
+    <section class="sec-band">
+      <div class="sec-band__inner">
+        <div class="sec-card reveal">
+          <div class="sec-card__left">
+            <span class="eyebrow" style="margin-bottom:16px;">Security and Compliance</span>
+            <h2 class="sec-card__title"><b>Security</b> is a Core Company Value</h2>
+            <p class="sec-card__text">TrustLogix meets rigorous SOC 2 Type II standards, providing independent assurance that your data is protected with continuously operating controls for security, availability, and confidentiality.</p>
+            <a href="/security-pledge" class="link-arrow sec-card__link">Read Our Security Pledge
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <div class="sec-card__right">
+            <div class="sec-card__badge">
+              <img src="../logos/aicpa-soc.webp" alt="AICPA SOC certified — SOC for Service Organizations" />
+              <span class="sec-card__badge-label">SOC 2 Type II</span>
+            </div>
+            <div class="sec-card__chips">
+              <span>GDPR</span><span>HIPAA</span><span>NIST AI RMF</span><span>ISO 42001</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQS — new accordion ============ -->
+    <section class="plat-section">
+      <div class="container">
+        <div class="faq-col">
+          <div>
+            <div class="section-head reveal" style="margin-bottom:0;">
+              <span class="eyebrow">FAQ</span>
+              <h2 class="section-head__title">Platform <b>Module FAQs</b></h2>
+              <p class="section-head__sub" style="font-size:16px;color:var(--neutral);margin-bottom:2rem;">Discover the answers to your most pressing questions about the TrustLogix platform.</p>
+              <a href="/get-started" class="btn btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+            </div>
+          </div>
+          <div class="faq-list reveal" data-delay="1">
+            <div class="faq-item open">
+              <div class="faq-q" onclick="this.closest('.faq-item').classList.toggle('open')">
+                <span class="faq-q__text">What is TrustLogix?</span>
+                <div class="faq-q__icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+              <div class="faq-a">TrustLogix is a patented, AI-powered data security platform that unifies DSPM, access governance, and AI data protection in one control plane. It continuously detects excessive permissions, right-sizes entitlements, and enforces least-privilege policies across platforms like Snowflake, Databricks, Power BI, and AI agents.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="this.closest('.faq-item').classList.toggle('open')">
+                <span class="faq-q__text">How does it work?</span>
+                <div class="faq-q__icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+              <div class="faq-a">TrustLogix delivers unified, AI-powered data security through consistent, least-privilege enforcement across cloud, analytics, and AI environments. It provides continuous visibility into which data is most critical, who's accessing it, and where risks exist — using AI-driven insights to recommend remediations and refine policies. With automated, audit-ready compliance reporting and native, no-proxy integration, TrustLogix activates in minutes to hours.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="this.closest('.faq-item').classList.toggle('open')">
+                <span class="faq-q__text">Who can benefit?</span>
+                <div class="faq-q__icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+              <div class="faq-a">
+                <ul>
+                  <li><strong>Modern data enterprises</strong> with multi-platform analytics, AI, and BI stacks gain unified governance and consistent security across Snowflake, Databricks, and Power BI.</li>
+                  <li><strong>Regulated industries</strong> such as healthcare, finance, and telecom protect PHI and PII with fine-grained, compliant access controls.</li>
+                  <li><strong>Security and data leaders</strong> — CISOs, CDOs, and their teams — get visibility, accountability, and control in a single platform.</li>
+                  <li><strong>Modernization programs</strong> migrating to the cloud, ensuring seamless policy continuity across legacy, hybrid, and cloud environments.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="this.closest('.faq-item').classList.toggle('open')">
+                <span class="faq-q__text">What are the features?</span>
+                <div class="faq-q__icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+              <div class="faq-a">TrustLogix delivers AI-powered data security through three integrated modules: TrustDSPM provides continuous visibility into sensitive data and access risks. TrustAccess enforces fine-grained, least-privilege policies across platforms with intuitive no-code controls. TrustAI secures AI and agent workflows by applying policy-based access and monitoring data interactions. Together, they deliver unified visibility, control, and protection.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="this.closest('.faq-item').classList.toggle('open')">
+                <span class="faq-q__text">How do I get started?</span>
+                <div class="faq-q__icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+              <div class="faq-a">Getting started is easy. Simply contact us to discuss your challenges with a data security expert and explore our platform. Our team will guide you through setup and answer any questions you have. Most customers are up and running within minutes.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RESOURCES — our new carousel style ============ -->
+    <section class="section scheme-light">
+      <div class="container">
+        <div class="res-head reveal">
+          <div class="section-head" style="margin-bottom:0;">
+            <span class="eyebrow">Resources</span>
+            <h2 class="section-head__title">Featured <b>Resources</b></h2>
+            <p class="section-head__sub" style="font-size:16px;color:var(--neutral);">Unlock innovation with our latest insights and thought leadership.</p>
+          </div>
+          <a href="/resource-library" class="btn reviews-cta reveal" data-delay="2">Browse Our Resource Library
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="res-track" id="res-track">
+          <a class="res-card reveal" href="/webinars/self-service-analytics-without-the-chaos-governing-insights-at-scale">
+            <div class="res-card__thumb"><img class="res-card__img" src="https://cdn.prod.website-files.com/689b764263ddedfde6bbf845/6a020bf372cf2acf5cf448c4_WBR%20-%20DBTA%20BI.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Webinar</span><span class="res-card__date">NOV 12, 2025</span></div>
+              <h3 class="res-card__title">Self-Service Analytics Without the Chaos: Governing Insights at Scale</h3>
+              <p class="res-card__desc">TrustLogix Field CTO Simon Thornell joins industry experts for a DBTA roundtable on delivering governed, analytics-ready data at scale.</p>
+              <span class="link-arrow res-card__link">Read More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/datasheets/why-security-teams-replacing-ibm-guardium-trustlogix">
+            <div class="res-card__thumb"><img class="res-card__img" src="https://cdn.prod.website-files.com/689b764263ddedfde6bbf845/69e25c538a17ac757ef07c68_Solution%20Brief%20-%20IBM%20Guardium.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Data Sheet</span><span class="res-card__date">FEB 8, 2025</span></div>
+              <h3 class="res-card__title">Why Security Teams Are Replacing IBM Guardium with TrustLogix</h3>
+              <p class="res-card__desc">IBM Guardium's agent-based architecture wasn't built for cloud. See how TrustLogix replaces legacy data activity monitoring with a single, agentless platform covering on-prem, hybrid, and cloud.</p>
+              <span class="link-arrow res-card__link">Read More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/reports/gartner-report-agile-adaptive-ai-data-security-governance">
+            <div class="res-card__thumb"><img class="res-card__img" src="https://cdn.prod.website-files.com/689b764263ddedfde6bbf845/69d95e1c29283ff4b1846733_Report%20-%20Gartner%2026%20Q2%203A.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Report</span><span class="res-card__date">JUN 19, 2025</span></div>
+              <h3 class="res-card__title">Get the Gartner Report: Use Agile, Adaptive, AI-Ready (3A) Data Security Governance to Secure Shadow AI</h3>
+              <p class="res-card__desc">This recent Gartner® report outlines a practical framework for evolving data security controls to match AI's pace: just-in-time access, automated scanning, adaptive policy enforcement, and AI agent monitoring. Required reading for CISOs navigating the gap between AI adoption and data security.</p>
+              <span class="link-arrow res-card__link">Read More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/datasheets/solution-brief-preemptive-data-security-for-ai-agents">
+            <div class="res-card__thumb"><img class="res-card__img" src="https://cdn.prod.website-files.com/689b764263ddedfde6bbf845/6965288c244ee733f1a2adf7_Solution%20Brief%20-%20TrustAI.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Solution Brief</span><span class="res-card__date">MAR 22, 2025</span></div>
+              <h3 class="res-card__title">Solution Brief: Preemptive Data Security for the Age of AI Agents</h3>
+              <p class="res-card__desc">Stop AI data leaks before they happen with preemptive security and JIT access control across multi-cloud environments.</p>
+              <span class="link-arrow res-card__link">Read More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/ebooks/data-security-agentic-ai-ebook">
+            <div class="res-card__thumb"><img class="res-card__img" src="https://cdn.prod.website-files.com/689b764263ddedfde6bbf845/6931a98248ce63cb420ebd5f_eBook%20-%20Agentic%20AI%20(1).png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Ebook</span><span class="res-card__date">MAY 14, 2025</span></div>
+              <h3 class="res-card__title">Data Security for Agentic AI</h3>
+              <p class="res-card__desc">See how data and security leaders can govern AI data access with clarity and speed.</p>
+              <span class="link-arrow res-card__link">Read More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/reports/ai-agents-blind-spot-governing-agentic-ai-gigaom">
+            <div class="res-card__thumb"><img class="res-card__img" src="https://cdn.prod.website-files.com/689b764263ddedfde6bbf845/69b84be280bbb489cb24d9df_Report%20-%20GigaOm%20Perspective%20Brief.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Report</span><span class="res-card__date">JUL 7, 2025</span></div>
+              <h3 class="res-card__title">AI Agents Are Your New Blind Spot: A CISO's Framework for Governing Agentic AI</h3>
+              <p class="res-card__desc">GigaOm's independent analyst brief gives CISOs a practical framework for evaluating AI agent data security.</p>
+              <span class="link-arrow res-card__link">Read More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+        </div>
+        <div class="res-nav">
+          <div class="res-dots" id="res-dots"></div>
+          <div class="res-arrows">
+            <button class="res-arrow" data-dir="-1" aria-label="Previous resources">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"/></svg>
+            </button>
+            <button class="res-arrow" data-dir="1" aria-label="Next resources">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta-final">
+      <div class="cta-final__card reveal">
+        <div class="cta-final__bg"></div>
+        <img class="cta-final__graphic" src="../logos/cta-bg-graphic.svg" alt="" aria-hidden="true" />
+        <div class="cta-final__content">
+          <div class="cta-final__left">
+            <h2 class="cta-final__title">Experience TrustLogix in Action</h2>
+          </div>
+          <div class="cta-final__right">
+            <p class="cta-final__sub">Schedule a call to discover how TrustLogix can accelerate your AI initiatives with faster, safer data access.</p>
+            <div class="cta-final__buttons">
+              <a href="/get-started" class="btn cta-final__btn cta-final__btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+              <a href="/partners" class="btn cta-final__btn cta-final__btn--secondary"><span class="btn__swap"><span>Our Partners</span><span aria-hidden="true">Our Partners</span></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-final__strip"></div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer footer--brand footer--light">
+    <div class="container">
+      <div class="footer__top">
+        <a href="/" class="footer__logo" aria-label="TrustLogix">
+          <img src="../trustlogix-logo.svg" alt="TrustLogix" width="180" height="31" />
+        </a>
+        <p class="footer__tagline">Unified, secure access to the data that drives AI—so innovation moves quickly, safely.</p>
+        <div class="footer__social">
+          <a href="https://x.com/TrustLogix" target="_blank" rel="noopener" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M17.1761 4H19.9362L13.9061 10.7774L21 20H15.4456L11.0951 14.4066L6.11723 20H3.35544L9.80517 12.7508L3 4H8.69545L12.6279 9.11262L17.1761 4ZM16.2073 18.3754H17.7368L7.86441 5.53928H6.2232L16.2073 18.3754Z" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/trustlogix/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 3C3.67157 3 3 3.67157 3 4.5V19.5C3 20.3284 3.67157 21 4.5 21H19.5C20.3284 21 21 20.3284 21 19.5V4.5C21 3.67157 20.3284 3 19.5 3H4.5ZM8.52076 7.00272C8.52639 7.95897 7.81061 8.54819 6.96123 8.54397C6.16107 8.53975 5.46357 7.90272 5.46779 7.00413C5.47201 6.15897 6.13998 5.47975 7.00764 5.49944C7.88795 5.51913 8.52639 6.1646 8.52076 7.00272ZM12.2797 9.76176H9.7583V18.3216H12.4217V16.9819C12.4203 15.9674 12.4194 14.9532 12.4246 13.9397C12.426 13.6936 12.4372 13.4377 12.5005 13.2028C12.7381 12.3253 13.5271 11.7586 14.4074 11.8979C14.9727 11.9864 15.3467 12.3141 15.5042 12.8471C15.6013 13.1803 15.6449 13.5389 15.6491 13.8863C15.6589 15.9815 15.6573 17.0294 15.6561 18.1388V18.3202H18.328V16.7591C18.327 15.6293 18.3264 14.5001 18.3294 13.3702C18.3308 12.8597 18.276 12.3563 18.1508 11.8627C17.9638 11.1286 17.5771 10.5211 16.9485 10.0824C16.5027 9.77019 16.0133 9.5691 15.4663 9.5466C15.404 9.54401 14.7141 9.50673 14.4467 9.56066C13.6817 9.71394 13.0096 10.0641 12.5019 10.6814C12.4429 10.7522 12.3852 10.8241 12.2991 10.9315L12.2797 10.9557V9.76176ZM5.68164 18.3244H8.33242V9.76733H5.68164V18.3244Z" fill="currentColor"/></svg>
+          </a>
+          <a href="http://www.youtube.com/@trustlogix" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.5686 4.77345C21.5163 5.02692 22.2555 5.76903 22.5118 6.71673C23.1821 9.42042 23.1385 14.5321 22.5259 17.278C22.2724 18.2257 21.5303 18.965 20.5826 19.2213C17.9071 19.8831 5.92356 19.8015 3.40294 19.2213C2.45524 18.9678 1.71595 18.2257 1.45966 17.278C0.827391 14.7011 0.871044 9.25144 1.44558 6.73081C1.69905 5.78311 2.44116 5.04382 3.38886 4.78753C6.96561 4.0412 19.2956 4.282 20.5686 4.77345ZM9.86682 8.70227L15.6122 11.9974L9.86682 15.2925V8.70227Z" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col">
+          <h5>Platform</h5>
+          <a href="/platform">Platform Overview</a>
+          <a href="/platform/trustdspm">TrustDSPM</a>
+          <a href="/platform/trustaccess">TrustAccess</a>
+          <a href="/platform/trustai">TrustAI</a>
+        </div>
+        <div class="footer__col">
+          <h5>Partners</h5>
+          <a href="/partners">Partners Overview</a>
+          <a href="/partners/snowflake">Snowflake</a>
+          <a href="/partners/databricks">Databricks</a>
+          <a href="/partners/microsoft">Power BI</a>
+          <a href="/partners/aws">AWS</a>
+          <a href="/partners/alation">Alation</a>
+          <a href="/partners/collibra">Collibra</a>
+        </div>
+        <div class="footer__col">
+          <h5>Resources</h5>
+          <a href="/resources">Resources Overview</a>
+          <a href="/resource-library">Resource Library</a>
+          <a href="/blog">The TrustLogix Blog</a>
+          <a href="https://docs.trustlogix.io/">Documentation</a>
+          <a href="/newsletter">Newsletter</a>
+        </div>
+        <div class="footer__col">
+          <h5>About</h5>
+          <a href="/about">About TrustLogix</a>
+          <a href="/newsroom">Newsroom</a>
+          <a href="/newsroom/press-releases">Press Releases</a>
+          <a href="/contact">Contact</a>
+          <a href="#">Cookie Preferences</a>
+        </div>
+      </div>
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <span class="footer__credit">© 2026 TrustLogix. All rights reserved.</span>
+        <div class="footer__legal">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-of-service">Terms of Service</a>
+          <a href="/security-pledge">Security Pledge</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    (function(){
+      var nav = document.getElementById('nav');
+      function onScroll(){
+        nav.classList.toggle('nav--solid', window.scrollY > 20);
+      }
+      window.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+    })();
+  </script>
+</body>
+</html>

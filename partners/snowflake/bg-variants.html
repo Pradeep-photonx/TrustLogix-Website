@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Snowflake screenshot bg — variants</title>
+  <link rel="stylesheet" href="../../styles.css?v=268" />
+  <style>
+    body { background:#fff; }
+    .qv-wrap { max-width:780px; margin:0 auto; padding:3rem 1.5rem 6rem; }
+    .qv-lab { font-family:var(--font-heading); font-weight:700; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--pine-green); margin:2.5rem 0 1rem; display:flex; align-items:center; gap:.6rem; }
+    .qv-lab::after { content:""; flex:1; height:1px; background:#e1e9e9; }
+
+    /* Shared frame */
+    .frame { position:relative; width:100%; max-width:540px; height:345px; margin:0 auto; padding:24px; border-radius:24px; overflow:hidden; display:flex; align-items:center; justify-content:center; box-shadow:0 20px 50px rgba(12,63,65,.16); }
+    .frame > img { position:relative; z-index:1; display:block; max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.18); }
+
+    /* === V1 — Soft mint w/ subtle dot grid === */
+    .v1 { background:#f4f8f8; border:1px solid #d9e6e3; }
+    .v1::before { content:""; position:absolute; inset:0; opacity:.55; background-image:radial-gradient(circle,#c5d6d2 1px,transparent 1px); background-size:18px 18px; pointer-events:none; }
+
+    /* === V2 — Eden dark w/ sparkle === */
+    .v2 { background:#0c3f41; }
+    .v2::before { content:""; position:absolute; inset:0; opacity:.18; background-image:url("../../logos/star-pattern.svg"); background-size:16px 16px; background-repeat:repeat; pointer-events:none; }
+    .v2::after { content:""; position:absolute; bottom:-120px; left:-120px; width:340px; height:340px; border-radius:99px; background:radial-gradient(circle,rgba(35,173,156,.45),transparent 70%); pointer-events:none; }
+
+    /* === V3 — White mesh w/ corner glows === */
+    .v3 { background:#fff; border:1px solid #e5edee; }
+    .v3::before { content:""; position:absolute; top:-160px; left:-120px; width:380px; height:380px; border-radius:99px; background:radial-gradient(circle closest-side,rgba(8,170,195,.28),transparent); pointer-events:none; }
+    .v3::after { content:""; position:absolute; bottom:-180px; right:-140px; width:420px; height:420px; border-radius:99px; background:radial-gradient(circle closest-side,rgba(111,190,70,.30),transparent); pointer-events:none; }
+
+    /* === V4 — Solid pine green w/ subtle dot === */
+    .v4 { background:#007373; }
+    .v4::before { content:""; position:absolute; inset:0; opacity:.22; background-image:radial-gradient(circle,#fff 1.2px,transparent 1.2px); background-size:24px 24px; pointer-events:none; }
+
+    /* === V5 — Diagonal pinstripe on mint === */
+    .v5 { background:#eaf4f3; border:1px solid #cfe0dc; }
+    .v5::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.55; background-image:repeating-linear-gradient(-45deg,rgba(12,63,65,.07) 0 1px,transparent 1px 14px); }
+    .v5::after { content:""; position:absolute; top:-100px; right:-100px; width:280px; height:280px; border-radius:99px; background:radial-gradient(circle,rgba(111,190,70,.22),transparent 70%); pointer-events:none; }
+  </style>
+</head>
+<body>
+  <main class="qv-wrap">
+    <h1 style="font-family:var(--font-heading);font-weight:400;font-size:1.7rem;color:var(--eden);margin:0 0 .35rem;">Screenshot frame — <b style="font-weight:800;">pick a background</b></h1>
+    <p style="font-size:14px;color:var(--neutral);margin:0;">Same screenshot, 5 backgrounds. Tell me which number and I'll apply it to the Snowflake partner page.</p>
+
+    <div class="qv-lab">Variant 1 · Soft mint with dot grid</div>
+    <div class="frame v1"><img src="../../logos/live/ref/snowflake-mod1.webp" alt="" /></div>
+
+    <div class="qv-lab">Variant 2 · Eden dark with sparkle &amp; glow</div>
+    <div class="frame v2"><img src="../../logos/live/ref/snowflake-mod1.webp" alt="" /></div>
+
+    <div class="qv-lab">Variant 3 · White with corner glows</div>
+    <div class="frame v3"><img src="../../logos/live/ref/snowflake-mod1.webp" alt="" /></div>
+
+    <div class="qv-lab">Variant 4 · Solid pine-green dots</div>
+    <div class="frame v4"><img src="../../logos/live/ref/snowflake-mod1.webp" alt="" /></div>
+
+    <div class="qv-lab">Variant 5 · Mint pinstripe with corner glow</div>
+    <div class="frame v5"><img src="../../logos/live/ref/snowflake-mod1.webp" alt="" /></div>
+  </main>
+</body>
+</html>

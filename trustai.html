@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrustAI — Your AI Control Plane. With a Kill Switch. | TrustLogix</title>
+  <meta name="description" content="Govern every agent, every MCP, every tool, every data request — at machine speed. TrustAI is the central control point for AI security." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=268" />
+  <style>
+    /* ── TrustAI page-specific styles ── */
+    :root {
+      --kill-red: #e53e3e;
+      --kill-red-light: #fff5f5;
+    }
+
+    /* HERO */
+    .tai-hero {
+      background: var(--eden);
+      background-image:
+        radial-gradient(circle at 15% 40%, rgba(8,170,195,.28), transparent 45%),
+        radial-gradient(circle at 85% 20%, rgba(111,190,70,.18), transparent 40%),
+        radial-gradient(circle at 60% 90%, rgba(8,170,195,.15), transparent 38%);
+      color: #fff;
+      padding: 7rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .tai-hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      opacity: .07;
+      background-image: radial-gradient(circle, #fff 1.2px, transparent 1.2px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+    .tai-hero__inner { position: relative; z-index: 2; max-width: 780px; }
+    .tai-hero__badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      padding: .4rem 1rem; border-radius: 99px; margin-bottom: 1.5rem;
+      color: rgba(255,255,255,.9);
+    }
+    .tai-hero__badge b { color: #08aac3; }
+    .tai-hero__title {
+      font-family: var(--font-heading); font-weight: 800;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1.05; letter-spacing: -.03em;
+      margin-bottom: 1.25rem; color: #fff;
+    }
+    .tai-hero__title .kill { background: linear-gradient(135deg,#6fbe46,#23ad9c 45%,#08aac3); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .tai-hero__govern {
+      font-family: var(--font-body); font-size: 1.15rem;
+      color: rgba(255,255,255,.75); margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .tai-hero__desc {
+      font-size: 1.05rem; line-height: 1.7;
+      color: rgba(255,255,255,.82); max-width: 680px; margin-bottom: 2.5rem;
+    }
+    .tai-hero__cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .tai-hero__cta .btn--primary {
+      background: #fff; color: var(--eden);
+      font-family: var(--font-heading); font-weight: 700;
+      padding: .85rem 2rem; border-radius: var(--r-btn); text-decoration: none;
+      display: inline-flex; align-items: center; gap: .5rem;
+    }
+    .tai-hero__cta .btn--ghost {
+      background: rgba(255,255,255,.1); color: #fff;
+      border: 1px solid rgba(255,255,255,.3);
+      font-family: var(--font-heading); font-weight: 700;
+      padding: .85rem 2rem; border-radius: var(--r-btn); text-decoration: none;
+    }
+
+    /* 4 PILLARS STRIP */
+    .pillars {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid #e5edee; border-bottom: 1px solid #e5edee;
+      background: #fff;
+    }
+    .pillar {
+      padding: 2rem 1.75rem; border-right: 1px solid #e5edee;
+      display: flex; flex-direction: column; gap: .75rem;
+    }
+    .pillar:last-child { border-right: 0; }
+    .pillar__num {
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--cerulean);
+    }
+    .pillar__name {
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: 1.15rem; color: var(--eden); line-height: 1.3;
+    }
+    .pillar__desc { font-size: .9rem; color: var(--neutral); line-height: 1.55; }
+
+    /* SECTION SHARED */
+    .tai-section { padding: 5rem 0; }
+    .tai-section--alt { background: #f4f8f8; }
+    .tai-section--dark {
+      background: var(--eden);
+      background-image: radial-gradient(circle at 10% 50%, rgba(8,170,195,.2), transparent 40%), radial-gradient(circle at 90% 50%, rgba(111,190,70,.15), transparent 40%);
+      color: #fff;
+    }
+    .tai-eyebrow {
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--pine-green); margin-bottom: .75rem;
+    }
+    .tai-section--dark .tai-eyebrow { color: #08aac3; }
+    .tai-h2 {
+      font-family: var(--font-heading); font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -.02em;
+      line-height: 1.15; margin-bottom: 1rem; color: var(--eden);
+    }
+    .tai-section--dark .tai-h2 { color: #fff; }
+    .tai-lead {
+      font-size: 1.08rem; line-height: 1.7; color: var(--neutral);
+      max-width: 52rem;
+    }
+    .tai-section--dark .tai-lead { color: rgba(255,255,255,.8); }
+    .tai-section-head { margin-bottom: 3.5rem; }
+    .tai-section-head--center { text-align: center; }
+    .tai-section-head--center .tai-lead { margin: 0 auto; }
+
+    /* LOGOS STRIP */
+    .platform-logos {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+      gap: 2rem 3.5rem; padding: 3rem 0;
+    }
+    .platform-logo {
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: 1rem; color: var(--neutral); letter-spacing: -.01em;
+      opacity: .6;
+    }
+
+    /* CHALLENGE CARDS */
+    .challenge-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+    }
+    .challenge-card {
+      background: #fff; border: 1px solid #e5edee; border-radius: 16px;
+      padding: 2rem; display: flex; flex-direction: column; gap: .75rem;
+    }
+    .challenge-card__icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, #08aac3, #007373);
+      display: grid; place-items: center; color: #fff;
+    }
+    .challenge-card__title {
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: 1.1rem; color: var(--eden);
+    }
+    .challenge-card__desc { font-size: .95rem; color: var(--neutral); line-height: 1.6; }
+
+    /* LANDSCAPE / COMPARE TABLE */
+    .compare-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; }
+    .compare-table th {
+      font-family: var(--font-heading); font-weight: 700; font-size: .85rem;
+      padding: 1rem 1.25rem; text-align: left;
+      background: var(--eden); color: #fff; border-right: 1px solid rgba(255,255,255,.1);
+    }
+    .compare-table th:first-child { border-radius: 12px 0 0 0; }
+    .compare-table th:last-child { border-radius: 0 12px 0 0; border-right: 0; }
+    .compare-table td {
+      padding: .85rem 1.25rem; font-size: .9rem; color: var(--neutral);
+      border-bottom: 1px solid #e5edee; border-right: 1px solid #e5edee;
+      vertical-align: top; line-height: 1.5;
+    }
+    .compare-table td:last-child { border-right: 0; }
+    .compare-table tr:last-child td { border-bottom: 0; }
+    .compare-table tr:nth-child(even) td { background: #f9fbfb; }
+    .compare-table .cross { color: #e53e3e; font-weight: 700; }
+    .compare-table .category { font-family: var(--font-heading); font-weight: 700; font-size: .9rem; color: var(--eden); }
+    .compare-callout {
+      background: linear-gradient(135deg, var(--eden), #0a8f86);
+      color: #fff; border-radius: 14px; padding: 1.5rem 2rem;
+      font-family: var(--font-heading); font-weight: 700; font-size: 1.05rem;
+      margin-top: 2rem; line-height: 1.5;
+    }
+
+    /* BENEFITS GRID */
+    .benefits-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+    }
+    .benefit-card {
+      background: #fff; border-radius: 16px; padding: 2rem;
+      display: flex; gap: 1.25rem; align-items: flex-start;
+    }
+    .benefit-card__icon {
+      flex: none; width: 48px; height: 48px; border-radius: 12px;
+      background: linear-gradient(135deg,#6fbe46,#23ad9c 50%,#08aac3);
+      display: grid; place-items: center; color: #fff;
+    }
+    .benefit-card__title {
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: 1.1rem; color: var(--eden); margin-bottom: .4rem;
+    }
+    .benefit-card__desc { font-size: .95rem; color: var(--neutral); line-height: 1.6; }
+
+    /* LAYERS */
+    .layer { margin-bottom: 5rem; }
+    .layer:last-child { margin-bottom: 0; }
+    .layer__header {
+      display: grid; grid-template-columns: 1fr 1.6fr; gap: 4rem;
+      align-items: start; margin-bottom: 2.5rem;
+    }
+    .layer__num {
+      font-family: var(--font-heading); font-weight: 800;
+      font-size: 4rem; line-height: 1; color: #e5edee; display: block; margin-bottom: .5rem;
+    }
+    .layer__label {
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--cerulean); margin-bottom: .5rem;
+    }
+    .layer__title {
+      font-family: var(--font-heading); font-weight: 800;
+      font-size: 1.75rem; letter-spacing: -.015em; color: var(--eden);
+      margin-bottom: .75rem; line-height: 1.2;
+    }
+    .layer__desc { font-size: 1rem; color: var(--neutral); line-height: 1.7; }
+    .layer__features {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+    }
+    .feat-card {
+      background: #fff; border: 1px solid #e5edee; border-radius: 14px;
+      padding: 1.5rem; display: flex; flex-direction: column; gap: .6rem;
+    }
+    .feat-card--kill {
+      background: linear-gradient(135deg, var(--eden), #0a7070);
+      border-color: transparent; color: #fff;
+    }
+    .feat-card__title {
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: 1rem; color: var(--eden);
+    }
+    .feat-card--kill .feat-card__title { color: #fff; }
+    .feat-card__desc { font-size: .88rem; color: var(--neutral); line-height: 1.55; }
+    .feat-card--kill .feat-card__desc { color: rgba(255,255,255,.8); }
+    .feat-card__bullets { list-style: none; padding: 0; margin: .5rem 0 0; display: flex; flex-direction: column; gap: .4rem; }
+    .feat-card__bullets li {
+      font-size: .85rem; color: var(--neutral); padding-left: 1.1rem; position: relative; line-height: 1.4;
+    }
+    .feat-card--kill .feat-card__bullets li { color: rgba(255,255,255,.8); }
+    .feat-card__bullets li::before {
+      content: "→"; position: absolute; left: 0;
+      color: var(--cerulean); font-size: .75rem; top: .05rem;
+    }
+    .feat-card--kill .feat-card__bullets li::before { color: rgba(255,255,255,.6); }
+
+    /* KILL SWITCH BANNER */
+    .kill-banner {
+      background: var(--eden); border-radius: 20px;
+      padding: 2.5rem 3rem; display: flex; align-items: center; gap: 2.5rem;
+      margin-top: 2rem;
+    }
+    .kill-banner__icon {
+      flex: none; width: 64px; height: 64px; border-radius: 16px;
+      background: rgba(229,62,62,.2); border: 2px solid rgba(229,62,62,.4);
+      display: grid; place-items: center;
+    }
+    .kill-banner__title {
+      font-family: var(--font-heading); font-weight: 800;
+      font-size: 1.5rem; color: #fff; margin-bottom: .4rem;
+    }
+    .kill-banner__desc { font-size: 1rem; color: rgba(255,255,255,.8); line-height: 1.6; }
+
+    /* UNIFIED PLATFORM */
+    .unified-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .unified-tags { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+    .unified-tag {
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: .72rem; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--pine-green); background: rgba(0,115,115,.08);
+      padding: .35rem .85rem; border-radius: 99px;
+    }
+    .unified-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .unified-list li {
+      display: flex; gap: 1rem; align-items: flex-start;
+      font-size: .95rem; color: var(--neutral); line-height: 1.5;
+    }
+    .unified-list li::before {
+      content: "✓"; flex: none; width: 22px; height: 22px;
+      border-radius: 50%; background: var(--pine-green);
+      color: #fff; font-size: .75rem; font-weight: 700;
+      display: grid; place-items: center; margin-top: .1rem;
+    }
+
+    @media (max-width: 900px) {
+      .pillars { grid-template-columns: repeat(2, 1fr); }
+      .challenge-grid, .benefits-grid, .unified-grid { grid-template-columns: 1fr; }
+      .layer__header { grid-template-columns: 1fr; gap: 1.5rem; }
+      .layer__features { grid-template-columns: 1fr; }
+      .layer__num { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="TrustLogix home">
+        <img src="trustlogix-logo.svg" alt="TrustLogix" class="nav__logo-img" width="200" height="34" />
+      </a>
+      <nav class="nav__menu" aria-label="Primary">
+        <div class="nav__item">
+          <a href="/platform" class="nav__link"><span class="nav__swap"><span>Platform</span><span aria-hidden="true">Platform</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/platform" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Our platform architecture, core modules, and benefits.</span></a>
+            <a href="/platform/trustai">– TrustAI</a>
+            <a href="/platform/trustapp">– TrustApp</a>
+            <a href="/platform/trustdspm">– TrustDSPM</a>
+            <a href="/platform/trustaccess">– TrustAccess</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/partners" class="nav__link"><span class="nav__swap"><span>Partners</span><span aria-hidden="true">Partners</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/partners" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Introduction to the TrustLogix Interoperable Ecosystem.</span></a>
+            <a href="/partners/snowflake">– Snowflake</a>
+            <a href="/partners/databricks">– Databricks</a>
+            <a href="/partners/microsoft">– Power BI</a>
+            <a href="/partners/aws">– AWS</a>
+            <a href="/partners/alation">– Alation</a>
+            <a href="/partners/collibra">– Collibra</a>
+          </div>
+        </div>
+        <div class="nav__item"><a href="/pricing" class="nav__link"><span class="nav__swap"><span>Pricing</span><span aria-hidden="true">Pricing</span></span></a></div>
+        <div class="nav__item">
+          <a href="/resources" class="nav__link"><span class="nav__swap"><span>Resources</span><span aria-hidden="true">Resources</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/resources" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Resources available to existing and potential customers.</span></a>
+            <a href="/resource-library">– Resource Library</a>
+            <a href="/blog">– The TrustLogix Blog</a>
+            <a href="https://docs.trustlogix.io/">– Documentation</a>
+            <a href="/newsletter">– Newsletter</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/about" class="nav__link"><span class="nav__swap"><span>About</span><span aria-hidden="true">About</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/about" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">About TrustLogix – our culture, values, and more.</span></a>
+            <a href="/events">– Events</a>
+            <a href="/newsroom">– Newsroom</a>
+            <a href="/newsroom/press-releases">– Press Releases</a>
+            <a href="/careers">– Careers</a>
+            <a href="/contact">– Contact</a>
+          </div>
+        </div>
+      </nav>
+      <div class="nav__actions">
+        <a href="/get-started" class="btn btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+        <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="tai-hero">
+      <div class="container tai-hero__inner reveal">
+        <span class="tai-hero__badge"><b>TrustAI</b> · For Agentic Enterprises</span>
+        <h1 class="tai-hero__title">Your AI Control Plane.<br>With a <span class="kill">Kill Switch.</span></h1>
+        <p class="tai-hero__govern">Govern every agent, every MCP, every tool, every data request — at machine speed.</p>
+        <p class="tai-hero__desc">Enterprises don't just need visibility, they need positive control over AI agents in their environment. TrustAI is the central control point for defining granular entitlements, enforcing runtime control, and continuous auditability whether built with LangGraph, LangChain, or Strands, and deployed on Amazon Bedrock AgentCore, Azure AI Foundry, Databricks AgentBricks, Snowflake Cortex, or developer machines. When something goes wrong, TrustAI's kill switch pauses or severs any agent's access in seconds.</p>
+        <div class="tai-hero__cta">
+          <a href="/get-started" class="btn--primary">Get a Demo →</a>
+          <a href="#layers" class="btn--ghost">See How It Works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4 PILLARS ============ -->
+    <div class="pillars reveal">
+      <div class="pillar">
+        <span class="pillar__num">01 · Visibility</span>
+        <div class="pillar__name">Monitor Every Agent and User</div>
+        <p class="pillar__desc">Register AI agents, service accounts, MCP servers and tools across the enterprise. Propagate user identity all the way to the data layer.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar__num">02 · Prevention</span>
+        <div class="pillar__name">Block Shadow AI</div>
+        <p class="pillar__desc">Prevent unauthorized AI agents from accessing sensitive data — whether on-prem, in the cloud, or distributed globally.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar__num">03 · Control</span>
+        <div class="pillar__name">Apply Least-Privilege Granularly</div>
+        <p class="pillar__desc">Intent-based controls limit agents to only the tools and data required for each approved task. Across the AI stack — from MCP servers to the data itself.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar__num">04 · Containment</span>
+        <div class="pillar__name">AI Kill Switch</div>
+        <p class="pillar__desc">Cut off high-risk agents instantly, across every data platform in your environment — without redeploying or rewriting policy.</p>
+      </div>
+    </div>
+
+    <!-- ============ TRUSTED PLATFORMS ============ -->
+    <section class="tai-section" style="padding: 3rem 0;">
+      <div class="container">
+        <p class="tai-eyebrow" style="text-align:center; margin-bottom:1.5rem;">Trusted Across the Modern AI &amp; Data Stack</p>
+        <div class="platform-logos">
+          <span class="platform-logo">Snowflake</span>
+          <span class="platform-logo">AWS</span>
+          <span class="platform-logo">Databricks</span>
+          <span class="platform-logo">Power BI</span>
+          <span class="platform-logo">Azure</span>
+          <span class="platform-logo">Azure AI Foundry</span>
+          <span class="platform-logo">Amazon Bedrock</span>
+          <span class="platform-logo">LangGraph</span>
+          <span class="platform-logo">NVIDIA NeMo</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE CHALLENGE ============ -->
+    <section class="tai-section tai-section--alt">
+      <div class="container">
+        <div class="tai-section-head reveal">
+          <p class="tai-eyebrow">The Challenge</p>
+          <h2 class="tai-h2">Why enterprises are struggling<br>with AI security</h2>
+          <p class="tai-lead">Enterprise AI is moving faster than your controls to secure it. The result is a widening gap between what your AI teams want to deploy and what security and compliance can safely allow into production.</p>
+        </div>
+        <div class="challenge-grid">
+          <div class="challenge-card reveal">
+            <div class="challenge-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            </div>
+            <div class="challenge-card__title">Agent Sprawl</div>
+            <p class="challenge-card__desc">Increased risk from AI agents deployed directly against data stores — without the visibility, access control, and governance enterprises require.</p>
+          </div>
+          <div class="challenge-card reveal" data-delay="1">
+            <div class="challenge-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+            </div>
+            <div class="challenge-card__title">Unmanaged Scale</div>
+            <p class="challenge-card__desc">AI operates at machine speed and scale that legacy security frameworks were never built to handle — making it difficult to manage AI governance at enterprise scale.</p>
+          </div>
+          <div class="challenge-card reveal" data-delay="2">
+            <div class="challenge-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div class="challenge-card__title">Inadequate Controls &amp; No Kill Switch</div>
+            <p class="challenge-card__desc">Most solutions today provide only broad, coarse permissions at the data layer — leaving sensitive rows, columns, and files exposed to any agent with access.</p>
+          </div>
+          <div class="challenge-card reveal" data-delay="3">
+            <div class="challenge-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div class="challenge-card__title">Audit and Compliance Gaps</div>
+            <p class="challenge-card__desc">Inability to demonstrate who accessed what, on whose behalf, and under which policy means failing audits across SOC 2, GDPR, HIPAA, NIST AI RMF, and the EU AI Act.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE LANDSCAPE ============ -->
+    <section class="tai-section">
+      <div class="container">
+        <div class="tai-section-head reveal">
+          <p class="tai-eyebrow">The Landscape</p>
+          <h2 class="tai-h2">Why point solutions are not sufficient</h2>
+          <p class="tai-lead">Existing tools were built for a different era — before AI agents, before MCP, before data access happened at machine speed. Each category solves only part of the problem, leaving critical gaps in governance, enforcement, and audit.</p>
+        </div>
+        <div class="reveal">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>DSPM</th>
+                <th>IAM</th>
+                <th>AI Platforms &amp; MCP Gateways</th>
+                <th style="background:var(--pine-green)">TrustAI ✓</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="category">Fine-grained authorization at data layer</td>
+                <td><span class="cross">✗</span> Shallow, coarse-grained</td>
+                <td><span class="cross">✗</span> Identity only</td>
+                <td><span class="cross">✗</span> Limited &amp; siloed</td>
+                <td style="color:var(--pine-green);font-weight:700">✓ Row &amp; column level</td>
+              </tr>
+              <tr>
+                <td class="category">Runtime PDP for agent + tool calls</td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="cross">✗</span></td>
+                <td style="color:var(--pine-green);font-weight:700">✓ Real-time</td>
+              </tr>
+              <tr>
+                <td class="category">MCP data gateway enforcement (PEP)</td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="cross">✗</span> Partial only</td>
+                <td style="color:var(--pine-green);font-weight:700">✓ Full enforcement</td>
+              </tr>
+              <tr>
+                <td class="category">Cross-platform policy fabric</td>
+                <td><span class="cross">✗</span> Partial</td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="cross">✗</span> Per-platform only</td>
+                <td style="color:var(--pine-green);font-weight:700">✓ Unified</td>
+              </tr>
+              <tr>
+                <td class="category">ISO 42001-ready audit evidence</td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="cross">✗</span> Incomplete</td>
+                <td><span class="cross">✗</span></td>
+                <td style="color:var(--pine-green);font-weight:700">✓ On demand</td>
+              </tr>
+              <tr>
+                <td class="category">Real-time Kill Switch at data layer</td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="cross">✗</span></td>
+                <td style="color:var(--pine-green);font-weight:700">✓ Instant</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="compare-callout">
+            None of them give you a kill switch. TrustAI works with and complements your existing DSPM, IAM, AI, and Data Platforms.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT YOU GET ============ -->
+    <section class="tai-section tai-section--alt">
+      <div class="container">
+        <div class="tai-section-head reveal">
+          <p class="tai-eyebrow">What You Get</p>
+          <h2 class="tai-h2">Unblock data access to accelerate Agentic AI at scale</h2>
+          <p class="tai-lead">TrustAI gives security, data owners, and AI teams a shared control plane — so innovation moves fast without trading away protection or compliance.</p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card reveal">
+            <div class="benefit-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div class="benefit-card__title">Secure AI Innovation</div>
+              <p class="benefit-card__desc">Let teams build and deploy AI agents without opening uncontrolled access paths into your most sensitive data.</p>
+            </div>
+          </div>
+          <div class="benefit-card reveal" data-delay="1">
+            <div class="benefit-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+            </div>
+            <div>
+              <div class="benefit-card__title">Control AI Sprawl &amp; Shadow AI</div>
+              <p class="benefit-card__desc">Security defines the framework. Data owners govern their data. AI teams move faster with clear, enforceable guardrails.</p>
+            </div>
+          </div>
+          <div class="benefit-card reveal" data-delay="2">
+            <div class="benefit-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div>
+              <div class="benefit-card__title">Scale at AI Speed</div>
+              <p class="benefit-card__desc">Deploy enterprise AI agents at machine speed while automatically applying data security controls and policies with just a couple of clicks.</p>
+            </div>
+          </div>
+          <div class="benefit-card reveal" data-delay="3">
+            <div class="benefit-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div>
+              <div class="benefit-card__title">Audit-Ready AI Operations</div>
+              <p class="benefit-card__desc">Demonstrate who accessed what, why it was allowed, and which policy governed the decision — every time, every agent.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4 LAYERS ============ -->
+    <section class="tai-section" id="layers">
+      <div class="container">
+        <div class="tai-section-head--center tai-section-head reveal">
+          <p class="tai-eyebrow">Four Layers of Control</p>
+          <h2 class="tai-h2">One connected platform, plus a Kill Switch</h2>
+          <p class="tai-lead">From visibility to runtime enforcement to audit — TrustAI provides the full data access control plane purpose-built for enterprise AI.</p>
+        </div>
+
+        <!-- Layer 1 -->
+        <div class="layer reveal">
+          <div class="layer__header">
+            <div>
+              <span class="layer__num">01</span>
+              <div class="layer__label">Layer 1 — Visibility</div>
+              <h3 class="layer__title">Monitor every agent and user.</h3>
+              <p class="layer__desc">Gain full visibility into AI agents, MCP servers and tools, access patterns, and which agents are acting on behalf of which users.</p>
+            </div>
+            <div></div>
+          </div>
+          <div class="layer__features">
+            <div class="feat-card">
+              <div class="feat-card__title">AI Visibility &amp; Monitoring</div>
+              <ul class="feat-card__bullets">
+                <li>Map human and non-human identities to business context</li>
+                <li>Catalog attributes — role, purpose, geography, project, sensitivity</li>
+                <li>Surface over-privileged agents before they become incidents</li>
+              </ul>
+            </div>
+            <div class="feat-card">
+              <div class="feat-card__title">MCP &amp; Tools Governance</div>
+              <ul class="feat-card__bullets">
+                <li>Broker MCP and A2A traffic from a single control point</li>
+                <li>Discover agents and tools across the enterprise</li>
+                <li>Govern entitlements: allow, deny, redact</li>
+              </ul>
+            </div>
+            <div class="feat-card">
+              <div class="feat-card__title">Identity Propagation</div>
+              <ul class="feat-card__bullets">
+                <li>Relays On-Behalf-Of (OBO) credentials end-to-end</li>
+                <li>Enforces data policies based on user attributes</li>
+                <li>Supports OAuth 2.0, OIDC, JWT, and SAML assertions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layer 2 -->
+        <div class="layer reveal">
+          <div class="layer__header">
+            <div>
+              <span class="layer__num">02</span>
+              <div class="layer__label">Layer 2 — Policy Definition</div>
+              <h3 class="layer__title">Define policies once. Enforce them everywhere.</h3>
+              <p class="layer__desc">A central Policy Decision Point that delivers least-privilege access for AI agents — defined once and enforced every time data is accessed.</p>
+            </div>
+            <div></div>
+          </div>
+          <div class="layer__features">
+            <div class="feat-card">
+              <div class="feat-card__title">Fine-Grained Entitlements</div>
+              <ul class="feat-card__bullets">
+                <li>ABAC, PBAC, and RBAC in one policy model</li>
+                <li>Row- and column-level masking and filtering</li>
+                <li>Consistent controls across Snowflake, Databricks, SQL, files, BI</li>
+              </ul>
+            </div>
+            <div class="feat-card">
+              <div class="feat-card__title">Self-Service for Business</div>
+              <ul class="feat-card__bullets">
+                <li>Intuitive graphical UI simplifies policy management</li>
+                <li>Abstracts code-level complexity of native data sources</li>
+                <li>Direct control for owners over who can access what</li>
+              </ul>
+            </div>
+            <div class="feat-card">
+              <div class="feat-card__title">Intent-Based Access Control</div>
+              <ul class="feat-card__bullets">
+                <li>Bind every agent to a documented business purpose</li>
+                <li>Evaluate whether each request matches that purpose</li>
+                <li>Deny or escalate requests outside declared intent</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layer 3 -->
+        <div class="layer reveal">
+          <div class="layer__header">
+            <div>
+              <span class="layer__num">03</span>
+              <div class="layer__label">Layer 3 — Runtime Enforcement</div>
+              <h3 class="layer__title">Decide and enforce before the agent touches the data.</h3>
+              <p class="layer__desc">The Policy Enforcement Point evaluates agent requests in real time using dynamic context and risk scoring — for just-in-time, contextual authorization.</p>
+            </div>
+            <div></div>
+          </div>
+          <div class="layer__features" style="grid-template-columns: repeat(2,1fr);">
+            <div class="feat-card">
+              <div class="feat-card__title">Dynamic Runtime Enforcement</div>
+              <ul class="feat-card__bullets">
+                <li>Evaluate requests in real time at the data layer</li>
+                <li>Dynamic contextual policy engine</li>
+                <li>Adaptive policy-based enforcement for MCP and APIs</li>
+              </ul>
+            </div>
+            <div class="feat-card">
+              <div class="feat-card__title">MCP Gateway</div>
+              <ul class="feat-card__bullets">
+                <li>Block Shadow AI access to data</li>
+                <li>Dynamic access control to MCP servers, tools, data stores</li>
+                <li>Supports BYOA and enterprise assistants like ChatGPT &amp; Claude</li>
+              </ul>
+            </div>
+            <div class="feat-card">
+              <div class="feat-card__title">Ephemeral &amp; Risk-Based Access</div>
+              <ul class="feat-card__bullets">
+                <li>Just-In-Time (JIT) access scoped to a specific task</li>
+                <li>Continuously evaluates identity risk in real time</li>
+                <li>Adjusts data permissions dynamically by risk threshold</li>
+              </ul>
+            </div>
+            <div class="feat-card feat-card--kill">
+              <div class="feat-card__title">⚡ AI Kill Switch</div>
+              <p class="feat-card__desc">Pause or terminate any agent's data access instantly — at the data layer, not just the API. No redeployment. No policy rewrite.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layer 4 -->
+        <div class="layer reveal">
+          <div class="layer__header">
+            <div>
+              <span class="layer__num">04</span>
+              <div class="layer__label">Layer 4 — Audit, Monitor, Comply</div>
+              <h3 class="layer__title">Provable evidence for every agent, decision, and data path.</h3>
+              <p class="layer__desc">Detect excessive privileges, dark data, policy conflicts, risky data movement, and unusual agent behavior. Preserve complete evidence for compliance, operations, and incident response.</p>
+            </div>
+            <div></div>
+          </div>
+          <div class="layer__features">
+            <div class="feat-card">
+              <div class="feat-card__title">Continuous Audit</div>
+              <ul class="feat-card__bullets">
+                <li>Correlate activity across users, agents, queries, tools, data</li>
+                <li>Surface data sprawl, policy gaps, excessive privileges</li>
+                <li>Stream to SIEM — Splunk, Sentinel, Chronicle, XSOAR</li>
+              </ul>
+            </div>
+            <div class="feat-card">
+              <div class="feat-card__title">Guardian Agent</div>
+              <ul class="feat-card__bullets">
+                <li>Proactive detection of anomalous agent behavior</li>
+                <li>Real-time alerts for suspected misuse</li>
+                <li>Natural-language investigation and root-cause analysis</li>
+              </ul>
+            </div>
+            <div class="feat-card">
+              <div class="feat-card__title">Compliance-Ready</div>
+              <ul class="feat-card__bullets">
+                <li>SOC 2, GDPR, HIPAA, NIST AI RMF</li>
+                <li>ISO 42001 and EU AI Act evidence on demand</li>
+                <li>Automated policy recommendations and remediation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ UNIFIED PLATFORM ============ -->
+    <section class="tai-section tai-section--alt">
+      <div class="container">
+        <div class="unified-grid">
+          <div class="reveal">
+            <p class="tai-eyebrow">Built for the Agentic Enterprise</p>
+            <h2 class="tai-h2">TrustAI is the data access control plane for enterprise AI — nothing else does all of this in one place.</h2>
+            <p class="tai-lead">Every other category solves part of the picture. TrustAI unifies agent identity, fine-grained policy, runtime enforcement, and continuous audit in a single platform that activates in minutes.</p>
+            <div class="unified-tags">
+              <span class="unified-tag">Patented · AI-Powered</span>
+              <span class="unified-tag">Proxyless &amp; Agentless</span>
+              <span class="unified-tag">SaaS or Private Cloud</span>
+              <span class="unified-tag">SOC 2</span>
+              <span class="unified-tag">GDPR</span>
+              <span class="unified-tag">HIPAA</span>
+              <span class="unified-tag">NIST AI RMF</span>
+              <span class="unified-tag">ISO 42001</span>
+              <span class="unified-tag">EU AI Act</span>
+            </div>
+          </div>
+          <div class="reveal" data-delay="1">
+            <ul class="unified-list">
+              <li>Agent identity, inventory, and entitlement management</li>
+              <li>Fine-grained policy at row, column, and file level</li>
+              <li>Runtime enforcement with dynamic risk scoring</li>
+              <li>MCP gateway and A2A traffic brokerage</li>
+              <li>Just-In-Time access for ephemeral tasks</li>
+              <li>Continuous audit and compliance evidence</li>
+              <li>AI Kill Switch — pause or terminate in seconds</li>
+              <li>Works with Snowflake, Databricks, AWS, Azure, and more</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="cta-final">
+      <div class="cta-final__card reveal">
+        <div class="cta-final__bg"></div>
+        <img class="cta-final__graphic" src="logos/cta-bg-graphic.svg" alt="" aria-hidden="true" />
+        <div class="cta-final__content">
+          <div class="cta-final__left">
+            <h2 class="cta-final__title">Experience TrustAI in action.</h2>
+          </div>
+          <div class="cta-final__right">
+            <p class="cta-final__sub">Schedule a 30-minute walkthrough — see how TrustAI inventories your agents, enforces fine-grained policy at the data layer, and gives you a working kill switch.</p>
+            <div class="cta-final__buttons">
+              <a href="/get-started" class="btn cta-final__btn cta-final__btn--primary"><span class="btn__swap"><span>Get a Demo</span><span aria-hidden="true">Get a Demo</span></span></a>
+              <a href="/platform" class="btn cta-final__btn cta-final__btn--secondary"><span class="btn__swap"><span>Our Platform</span><span aria-hidden="true">Our Platform</span></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-final__strip"></div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer footer--brand footer--light">
+    <div class="container">
+      <div class="footer__top">
+        <a href="/" class="footer__logo" aria-label="TrustLogix">
+          <img src="trustlogix-logo.svg" alt="TrustLogix" width="180" height="31" />
+        </a>
+        <p class="footer__tagline">Unified, secure access to the data that drives AI—so innovation moves quickly, safely.</p>
+        <div class="footer__social">
+          <a href="https://x.com/TrustLogix" target="_blank" rel="noopener" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.1761 4H19.9362L13.9061 10.7774L21 20H15.4456L11.0951 14.4066L6.11723 20H3.35544L9.80517 12.7508L3 4H8.69545L12.6279 9.11262L17.1761 4ZM16.2073 18.3754H17.7368L7.86441 5.53928H6.2232L16.2073 18.3754Z" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/trustlogix/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 3C3.67157 3 3 3.67157 3 4.5V19.5C3 20.3284 3.67157 21 4.5 21H19.5C20.3284 21 21 20.3284 21 19.5V4.5C21 3.67157 20.3284 3 19.5 3H4.5ZM8.52076 7.00272C8.52639 7.95897 7.81061 8.54819 6.96123 8.54397C6.16107 8.53975 5.46357 7.90272 5.46779 7.00413C5.47201 6.15897 6.13998 5.47975 7.00764 5.49944C7.88795 5.51913 8.52639 6.1646 8.52076 7.00272ZM12.2797 9.76176H9.7583V18.3216H12.4217V16.9819C12.4203 15.9674 12.4194 14.9532 12.4246 13.9397C12.426 13.6936 12.4372 13.4377 12.5005 13.2028C12.7381 12.3253 13.5271 11.7586 14.4074 11.8979C14.9727 11.9864 15.3467 12.3141 15.5042 12.8471C15.6013 13.1803 15.6449 13.5389 15.6491 13.8863C15.6589 15.9815 15.6573 17.0294 15.6561 18.1388V18.3202H18.328V16.7591C18.327 15.6293 18.3264 14.5001 18.3294 13.3702C18.3308 12.8597 18.276 12.3563 18.1508 11.8627C17.9638 11.1286 17.5771 10.5211 16.9485 10.0824C16.5027 9.77019 16.0133 9.5691 15.4663 9.5466C15.404 9.54401 14.7141 9.50673 14.4467 9.56066C13.6817 9.71394 13.0096 10.0641 12.5019 10.6814C12.4429 10.7522 12.3852 10.8241 12.2991 10.9315L12.2797 10.9557V9.76176ZM5.68164 18.3244H8.33242V9.76733H5.68164V18.3244Z" fill="currentColor"/></svg>
+          </a>
+          <a href="http://www.youtube.com/@trustlogix" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.5686 4.77345C21.5163 5.02692 22.2555 5.76903 22.5118 6.71673C23.1821 9.42042 23.1385 14.5321 22.5259 17.278C22.2724 18.2257 21.5303 18.965 20.5826 19.2213C17.9071 19.8831 5.92356 19.8015 3.40294 19.2213C2.45524 18.9678 1.71595 18.2257 1.45966 17.278C0.827391 14.7011 0.871044 9.25144 1.44558 6.73081C1.69905 5.78311 2.44116 5.04382 3.38886 4.78753C6.96561 4.0412 19.2956 4.282 20.5686 4.77345ZM9.86682 8.70227L15.6122 11.9974L9.86682 15.2925V8.70227Z" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col">
+          <h5>Platform</h5>
+          <a href="/platform">Platform Overview</a>
+          <a href="/platform/trustdspm">TrustDSPM</a>
+          <a href="/platform/trustaccess">TrustAccess</a>
+          <a href="/platform/trustai">TrustAI</a>
+        </div>
+        <div class="footer__col">
+          <h5>Partners</h5>
+          <a href="/partners">Partners Overview</a>
+          <a href="/partners/snowflake">Snowflake</a>
+          <a href="/partners/databricks">Databricks</a>
+          <a href="/partners/microsoft">Power BI</a>
+          <a href="/partners/aws">AWS</a>
+          <a href="/partners/alation">Alation</a>
+          <a href="/partners/collibra">Collibra</a>
+        </div>
+        <div class="footer__col">
+          <h5>Resources</h5>
+          <a href="/resources">Resources Overview</a>
+          <a href="/resource-library">Resource Library</a>
+          <a href="/blog">The TrustLogix Blog</a>
+          <a href="https://docs.trustlogix.io/">Documentation</a>
+          <a href="/newsletter">Newsletter</a>
+        </div>
+        <div class="footer__col">
+          <h5>About</h5>
+          <a href="/about">About TrustLogix</a>
+          <a href="/newsroom">Newsroom</a>
+          <a href="/newsroom/press-releases">Press Releases</a>
+          <a href="/contact">Contact</a>
+          <a href="#">Cookie Preferences</a>
+        </div>
+      </div>
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <span class="footer__credit">© 2026 TrustLogix. All rights reserved.</span>
+        <div class="footer__legal">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-of-service">Terms of Service</a>
+          <a href="/security-pledge">Security Pledge</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

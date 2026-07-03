@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrustAccess — Least-Privilege Control for Secure Data Access | TrustLogix</title>
+  <meta name="description" content="Achieve least-privilege access for all your data with TrustAccess. Unified access governance with no-code policies across Snowflake, Databricks, and Power BI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css?v=268" />
+  <style>
+    /* ── TrustAccess page-specific styles ── */
+    :root {
+      --dspm-purple: #6f42c1;
+      --dspm-light: #f8f9ff;
+    }
+
+    /* HERO — Reference home page hero styling */
+    .tdspm-hero {
+      position: relative;
+      padding-top: 4rem;
+      padding-bottom: 6rem;
+      text-align: center;
+      overflow: hidden;
+      background-image:
+        url("../../hero-bg.svg"),
+        linear-gradient(#fff, #f4faf8 60%, #eaf4f3 101%);
+      background-position: 50% 0, 0 0;
+      background-size: 70px, auto;
+      background-repeat: repeat, no-repeat;
+      color: var(--neutral-darkest);
+    }
+    .tdspm-hero__glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      bottom: -130px; left: -250px;
+      background-image: radial-gradient(circle closest-side, rgba(111,190,70,.28), transparent);
+      pointer-events: none;
+    }
+    .tdspm-hero__inner {
+      position: relative;
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+    .tdspm-hero__logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .tdspm-hero__logo img {
+      height: 40px;
+      width: auto;
+    }
+    .tdspm-hero__title {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--neutral-darkest);
+    }
+    .tdspm-hero__title .ds {
+      font-weight: 700;
+      background: var(--grad-brand);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .tdspm-hero__desc {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--neutral-darkest);
+      max-width: 46.5rem;
+      margin: 0 auto 2.4rem;
+    }
+    .tdspm-hero__cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .tdspm-hero__graphic {
+      width: 100%;
+      max-width: 80rem;
+      margin: 3.5rem auto 0;
+    }
+
+    /* Lightbox styling - matches production */
+    .header_lightbox {
+      display: block;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+    .header_lightbox.is-outline {
+      border: 1px solid rgba(0, 6, 6, 0.04);
+    }
+    .header_lightbox.img-shadow {
+      box-shadow: 2px 6px 20px rgba(0, 0, 0, 0.13);
+    }
+    .header_lightbox-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      background: #eef5f5;
+      min-height: 200px;
+    }
+    .lightbox-play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 72px;
+      height: 72px;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: #fff;
+      z-index: 10;
+      transition: transform 0.3s ease;
+    }
+    .lightbox-play-icon.is-green {
+      background-color: #fff;
+      color: var(--eden);
+    }
+    .header_lightbox:hover .lightbox-play-icon {
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+    .header_lightbox:hover .header_lightbox-image {
+      opacity: 0.95;
+    }
+    .icon-embed-large {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon-embed-large svg {
+      width: 100%;
+      height: 100%;
+    }
+    .video-overlay-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: transparent;
+      z-index: 5;
+    }
+    .video-overlay-layer.no-color {
+      background: transparent;
+    }
+
+    /* FAQ - Platform page exact styling */
+    .faq-list { display: flex; flex-direction: column; gap: .75rem; }
+    .faq-item { border: 1.5px solid #e5edee; border-radius: 14px; overflow: hidden; background: #fff; transition: border-color .25s; }
+    .faq-item.open { border-color: transparent; background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#6fbe46,#23ad9c 45%,#08aac3) border-box; }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 20px; cursor: pointer; user-select: none;
+    }
+    .faq-q__text { font-family: var(--font-heading); font-weight: 700; font-size: 1.05rem; color: var(--neutral-darkest); }
+    .faq-q__icon {
+      flex: none; width: 24px; height: 24px; border-radius: 50%;
+      background: transparent; border: 0;
+      display: grid; place-items: center; color: var(--pine-green); transition: all .25s;
+    }
+    .faq-q__icon svg { width: 24px; height: 24px; stroke-width: 1.5; }
+    .faq-item.open .faq-q__icon { background: transparent; color: var(--pine-green); transform: rotate(180deg); }
+    .faq-item.open .faq-q { border-bottom: 0; }
+    .faq-a { display: none; padding: 0 20px 20px; font-size: 1rem; color: var(--neutral-darkest); line-height: 1.7; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+
+    /* QUOTE SECTION — from platform page */
+    .quote--flat {
+      background-color: var(--eden) !important;
+      background-image: url("../../logos/rhombus-tile.svg") !important;
+      background-size: 26px 26px !important;
+      background-repeat: repeat !important;
+      background-position: top left !important;
+      padding: 80px 0 !important;
+    }
+    .quote--flat::before { display: none !important; }
+    .quote--flat .quote {
+      position: relative;
+      background: #134749;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      padding: 54px 60px;
+      overflow: hidden;
+    }
+    .quote--flat .quote > * { position: relative; z-index: 1; }
+    .quote--flat .quote__icon { width: 50px; }
+    .quote--flat .quote__text {
+      font-weight: 400 !important;
+      color: rgba(255,255,255,.85) !important;
+      font-size: 24px;
+      line-height: 1.6;
+    }
+    .quote--flat .quote__text b { font-weight: 700 !important; color: #fff !important; }
+
+    /* SPLIT SECTION — text + image side by side */
+    .section.bg-pattern { padding-top: 48px; padding-bottom: 48px; }
+    .dspm-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .dspm-split--reverse .dspm-split__text { order: 2; }
+    .dspm-split--reverse .dspm-split__img { order: 1; }
+    .dspm-split__text .section-head__title {
+      text-align: left;
+      font-size: 40px;
+      margin-bottom: 1.5rem;
+    }
+    .dspm-split__text .section-head__sub {
+      text-align: left;
+      max-width: none;
+      margin: 0;
+    }
+    .dspm-split__img {
+      position: relative;
+      width: 100%;
+      max-width: 540px;
+      height: 345px;
+      margin: 0 auto;
+      padding: 24px;
+      border-radius: 24px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(110deg, #08aac3 0%, #23ad9c 48%, #6fbe46 100%);
+      box-shadow: 0 20px 50px rgba(12, 63, 65, 0.16);
+    }
+    .dspm-split__img::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .28;
+      background-image: radial-gradient(circle, #fff 1.2px, transparent 1.2px);
+      background-size: 24px 24px;
+    }
+    .dspm-split__img img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(12, 63, 65, 0.18);
+    }
+    @media (max-width: 900px) {
+      .dspm-split__img { height: auto; max-width: none; padding: 20px; }
+    }
+    @media (max-width: 900px) {
+      .dspm-split { grid-template-columns: 1fr; gap: 2rem; }
+      .dspm-split--reverse .dspm-split__text { order: 1; }
+      .dspm-split--reverse .dspm-split__img { order: 2; }
+    }
+
+    /* PROTECT GRID — Platform page card style */
+    .plat-section {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    .protect-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .protect-card {
+      border: 1.5px solid transparent; border-radius: 18px;
+      background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg, rgba(111,190,70,.45), rgba(35,173,156,.45) 45%, rgba(8,170,195,.45)) border-box;
+      padding: 2rem; display: flex; flex-direction: column; gap: 1rem;
+      align-items: center; text-align: center;
+    }
+    .protect-card__icon-wrap { background: transparent; display: grid; place-items: center; }
+    .protect-card__icon-wrap svg { width: 40px; height: 40px; }
+    .protect-card__title { font-family: var(--font-heading); font-weight: 700; font-size: 20px; color: var(--neutral-darkest); }
+    .protect-card__desc { font-size: 1rem; color: var(--neutral-darkest); line-height: 1.65; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .tdspm-hero { padding: 4rem 0 3rem; }
+      .tdspm-hero__title { font-size: 2rem; }
+      .protect-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="TrustLogix home">
+        <img src="../../trustlogix-logo.svg" alt="TrustLogix" class="nav__logo-img" width="200" height="34" />
+      </a>
+
+      <nav class="nav__menu" aria-label="Primary">
+        <div class="nav__item">
+          <a href="/platform" class="nav__link"><span class="nav__swap"><span>Platform</span><span aria-hidden="true">Platform</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/platform" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Our platform architecture, core modules, and benefits.</span></a>
+            <a href="/platform/trustai">– TrustAI</a>
+            <a href="/platform/trustapp">– TrustApp</a>
+            <a href="/platform/trustdspm">– TrustDSPM</a>
+            <a href="/platform/trustaccess">– TrustAccess</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/partners" class="nav__link"><span class="nav__swap"><span>Partners</span><span aria-hidden="true">Partners</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/partners" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Introduction to the TrustLogix Interoperable Ecosystem.</span></a>
+            <a href="/partners/snowflake">– Snowflake</a>
+            <a href="/partners/databricks">– Databricks</a>
+            <a href="/partners/microsoft">– Power BI</a>
+            <a href="/partners/aws">– AWS</a>
+            <a href="/partners/alation">– Alation</a>
+            <a href="/partners/collibra">– Collibra</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/pricing" class="nav__link"><span class="nav__swap"><span>Pricing</span><span aria-hidden="true">Pricing</span></span></a>
+        </div>
+        <div class="nav__item">
+          <a href="/resources" class="nav__link"><span class="nav__swap"><span>Resources</span><span aria-hidden="true">Resources</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/resources" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Resources available to existing and potential customers.</span></a>
+            <a href="/resource-library">– Resource Library</a>
+            <a href="/blog">– The TrustLogix Blog</a>
+            <a href="https://docs.trustlogix.io/">– Documentation</a>
+            <a href="/newsletter">– Newsletter</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/about" class="nav__link"><span class="nav__swap"><span>About</span><span aria-hidden="true">About</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/about" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">About TrustLogix – our culture, values, and more.</span></a>
+            <a href="/events">– Events</a>
+            <a href="/newsroom">– Newsroom</a>
+            <a href="/newsroom/press-releases">– Press Releases</a>
+            <a href="/careers">– Careers</a>
+            <a href="/contact">– Contact</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="nav__actions">
+        <a href="/get-started" class="btn btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+        <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="tdspm-hero">
+      <div class="tdspm-hero__glow"></div>
+      <div class="plat-container tdspm-hero__inner">
+        <div class="tdspm-hero__logo">
+          <img src="https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68eeca61cdd38637b2339130_Layer_1-3.svg" alt="TrustAccess" />
+        </div>
+        <h1 class="tdspm-hero__title">Achieve Least-Privilege Access for <span class="ds">All Your Data</span></h1>
+        <p class="tdspm-hero__desc">
+          Gain enterprise-wide control over data with unified access governance that simplifies complex role hierarchies and enforces least-privilege access at scale. TrustAccess accelerates data analytics projects by extending consistent access controls from source to dashboard across Snowflake, Databricks, and Power BI—using an intuitive, no-code policy builder.
+        </p>
+        <div class="tdspm-hero__cta">
+          <a href="/get-started" class="btn btn--primary btn--lg"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+        </div>
+      </div>
+
+      <div class="plat-container">
+        <div class="tdspm-hero__graphic">
+          <a href="#" class="header_lightbox is-outline img-shadow w-inline-block w-lightbox">
+            <img sizes="100vw" srcset="https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68f00eb75ff3aea764700f9a_trustaccess-hero-1600x900-p-500.webp 500w, https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68f00eb75ff3aea764700f9a_trustaccess-hero-1600x900-p-800.webp 800w, https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68f00eb75ff3aea764700f9a_trustaccess-hero-1600x900-p-1080.webp 1080w, https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68f00eb75ff3aea764700f9a_trustaccess-hero-1600x900.webp 1600w" alt="" src="https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68f00eb75ff3aea764700f9a_trustaccess-hero-1600x900.webp" loading="eager" fetchpriority="high" class="header_lightbox-image"/>
+            <div class="lightbox-play-icon is-green">
+              <div class="icon-embed-large w-embed">
+                <svg width="100%" height="100%" viewBox="6 6 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M5.33301 32C5.33301 17.2724 17.2721 5.33334 31.9997 5.33334C39.0721 5.33334 45.8549 8.14286 50.8559 13.1438C55.8568 18.1448 58.6663 24.9276 58.6663 32C58.6663 46.7276 46.7273 58.6667 31.9997 58.6667C17.2721 58.6667 5.33301 46.7276 5.33301 32ZM27.1198 43.4134L42.6664 33.7067C43.2482 33.3341 43.6001 32.6909 43.6001 32C43.6001 31.3092 43.2482 30.6659 42.6664 30.2934L27.0664 20.5867C26.452 20.1993 25.6758 20.1755 25.0388 20.5244C24.4018 20.8734 24.004 21.5403 23.9998 22.2667V41.7334C23.9912 42.4774 24.3963 43.1647 25.0514 43.5174C25.7065 43.8702 26.5033 43.8301 27.1198 43.4134Z" fill="currentColor"/>
+                </svg>
+              </div>
+            </div>
+            <div class="video-overlay-layer no-color"></div>
+            <script type="application/json" class="w-json">{
+              "items": [
+                {
+                  "url": "https://www.youtube.com/watch?v=eT55bgJjCpY&rel=0",
+                  "originalUrl": "https://www.youtube.com/watch?v=eT55bgJjCpY&rel=0",
+                  "width": 940,
+                  "height": 528,
+                  "thumbnailUrl": "https://i.ytimg.com/vi/eT55bgJjCpY/hqdefault.jpg",
+                  "html": "<iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FeT55bgJjCpY%3Ffeature%3Doembed%26rel%3D0&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DeT55bgJjCpY&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FeT55bgJjCpY%2Fhqdefault.jpg&type=text%2Fhtml&schema=youtube\" width=\"940\" height=\"528\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\"></iframe>",
+                  "type": "video"
+                }
+              ],
+              "group": ""
+            }</script>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY CAPABILITIES -->
+    <section class="plat-section">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="eyebrow">Key Capabilities</span>
+          <h2 class="section-head__title">Control Data <b>Access Everywhere</b></h2>
+        </div>
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="dspmIconGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6fbe46"/><stop offset="0.5" stop-color="#23ad9c"/><stop offset="1" stop-color="#08aac3"/></linearGradient></defs></svg>
+        <div class="protect-grid">
+          <div class="protect-card reveal">
+            <div class="protect-card__icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#dspmIconGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="protect-card__title">Unify and Enforce Consistent Policies</div>
+            <p class="protect-card__desc">Align users with functional roles and eliminate tangled, overlapping permissions to streamline your path to least privilege. Maintain consistent rules across data platforms and Microsoft Power BI.</p>
+          </div>
+          <div class="protect-card reveal" data-delay="1">
+            <div class="protect-card__icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#dspmIconGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="protect-card__title">Accelerate Data Projects with No-Code Policies</div>
+            <p class="protect-card__desc">Create fine-grained access policies by user, role, geography, or purpose in minutes—using intuitive, no-code controls to meet complex business requirements and deploy them natively to any data platform.</p>
+          </div>
+          <div class="protect-card reveal" data-delay="2">
+            <div class="protect-card__icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#dspmIconGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="protect-card__title">Empower Collaboration with Guardrails</div>
+            <p class="protect-card__desc">Enable security and data teams to collaborate effectively—delivering faster, safer access to the data that powers analytics and AI while maintaining centralized visibility and consistent policy enforcement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE CAPABILITIES -->
+    <section class="section bg-pattern">
+      <div class="container">
+        <div class="dspm-split">
+          <div class="dspm-split__text reveal">
+            <h2 class="section-head__title">Enforce Access Policies as Data <b>Moves into Power BI</b></h2>
+            <p class="section-head__sub">When data moves from platforms like Snowflake or Databricks into Power BI, source-level security controls often break—exposing sensitive data and creating compliance risk. TrustLogix removes this complexity by enforcing consistent, natively deployed access policies across Snowflake, Databricks, and Power BI, ensuring continuous protection from source to dashboard.</p>
+          </div>
+          <div class="dspm-split__img reveal" data-delay="1">
+            <img src="https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68eea391dc1c0601c78a60d7_trustaccess-source-to-dashboard.webp" alt="TrustAccess source to dashboard" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-pattern">
+      <div class="container">
+        <div class="dspm-split dspm-split--reverse">
+          <div class="dspm-split__text reveal">
+            <h2 class="section-head__title">Simplify Access Control While <b>Ensuring Global Compliance</b></h2>
+            <p class="section-head__sub">Reduce complexity by replacing rigid, role-based access with fine-grained controls applied consistently across your environment. TrustAccess supports RBAC, ABAC, and ReBAC access control models to ensure every user receives only the entitlements they need—at scale and with least privilege. A centralized control plane unifies policy management, including regional and jurisdictional compliance.</p>
+          </div>
+          <div class="dspm-split__img reveal" data-delay="1">
+            <img src="https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68ee9e35c683a497b86f5c69_trustaccess-masking-policy.webp" alt="TrustAccess masking policy" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-pattern">
+      <div class="container">
+        <div class="dspm-split">
+          <div class="dspm-split__text reveal">
+            <h2 class="section-head__title">Provision Data Access at the <b>Speed of Business</b></h2>
+            <p class="section-head__sub">TrustLogix enables faster, more secure data access by combining self-service provisioning with federated governance. Data owners can organize domains, define policies, and collaborate across teams without waiting on IT, while centralized oversight ensures consistency and compliance. Native integrations and automated workflows streamline approvals—so users get access quickly, without broad permissions or developer bottlenecks.</p>
+          </div>
+          <div class="dspm-split__img reveal" data-delay="1">
+            <img src="https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68ee9e7bf9cc402711441a5d_trustaccess-policy-administrator.webp" alt="TrustAccess policy administrator" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE / RECOGNITION -->
+    <section class="section quote-section quote--card">
+      <div class="container">
+        <figure class="quote reveal">
+          <img class="quote__icon" src="../../logos/quote-icon.svg" alt="" aria-hidden="true" />
+          <blockquote class="quote__text">TrustLogix has been recognized as a <b>leader</b> due to its innovative data-centric <b>security</b> solution that provides a <b>non-intrusive</b> architecture with broad <b>data protection</b> capabilities, AI-driven <b>policy recommendations</b>, and comprehensive security and <b>compliance</b> management across <b>multi-cloud</b> environments.</blockquote>
+          <figcaption class="quote__foot">
+            <img class="quote__avatar" src="../../logos/analyst-avatar.jpg" alt="KuppingerCole Analyst" />
+            <div class="quote__info">
+              <div class="quote__author">KuppingerCole Analysts</div>
+              <div class="quote__role">Leadership Compass 2025</div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="dspm-split dspm-split--reverse">
+          <div class="dspm-split__text reveal">
+            <h2 class="section-head__title">Streamline Policy Creation for <b>Faster, More Secure Access</b></h2>
+            <p class="section-head__sub">Simplify and accelerate access policy implementation with a no-code approach that eliminates complexity and developer dependency. Define policies once and deploy them consistently across any data source. Create masking rules, row-level access, and object-level controls tailored to business needs—the platform automatically generates the underlying SQL, so no custom coding is required.</p>
+          </div>
+          <div class="dspm-split__img reveal" data-delay="1">
+            <img src="https://cdn.prod.website-files.com/689aca9a00606d8ac05c62da/68ee9edc377ad83f344cddef_trustaccess-policy-builder.webp" alt="TrustAccess policy builder" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container">
+        <div class="faq-col">
+          <div>
+            <div class="section-head reveal" style="margin-bottom:0;">
+              <span class="eyebrow">FAQ</span>
+              <h2 class="section-head__title">TrustAccess <b>FAQs</b></h2>
+              <p class="section-head__sub" style="font-size:16px;color:var(--neutral);margin-bottom:2rem;">Discover the answers to your most pressing questions about TrustAccess and least-privilege access.</p>
+              <a href="/get-started" class="btn btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+            </div>
+          </div>
+          <div class="faq-list reveal" data-delay="1">
+            <div class="faq-item open">
+              <div class="faq-q" onclick="this.closest('.faq-item').classList.toggle('open')">
+                <span class="faq-q__text">How do I manage consistent least-privilege policies across Snowflake, Databricks, and Power BI?</span>
+                <div class="faq-q__icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+              <div class="faq-a">TrustLogix ensures consistent least-privilege policies across Snowflake, Databricks, Power BI, and beyond by extending source-level controls everywhere your data lives. With the TrustAccess policy framework, RBAC and ABAC rules are defined once and applied consistently across cloud, on-premises, and analytics platforms.</div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q" onclick="this.closest('.faq-item').classList.toggle('open')">
+                <span class="faq-q__text">How can I speed up access without sacrificing compliance?</span>
+                <div class="faq-q__icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+              <div class="faq-a">TrustLogix enforces fine-grained, attribute-based controls that balance innovation with regulatory requirements — so your teams move fast and stay safe.</div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q" onclick="this.closest('.faq-item').classList.toggle('open')">
+                <span class="faq-q__text">Can I support hundreds of data workers without creating overlapping roles?</span>
+                <div class="faq-q__icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+              <div class="faq-a">With automated RBAC/ABAC policy generation, TrustLogix provisions only the right entitlements — at scale, and with least privilege.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RELATED RESOURCES ============ -->
+    <section class="section scheme-light">
+      <div class="container">
+        <div class="res-head reveal">
+          <div class="section-head" style="margin-bottom:0;">
+            <span class="eyebrow">Resources</span>
+            <h2 class="section-head__title">Related <b>Resources</b></h2>
+            <p class="section-head__sub" style="font-size:16px;color:var(--neutral);">Unlock innovation with our latest insights and thought leadership.</p>
+          </div>
+          <a href="/resource-library" class="btn reviews-cta reveal" data-delay="2">Browse Our Resource Library
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="res-track" id="res-track">
+          <a class="res-card reveal" href="https://www.youtube.com/watch?v=eT55bgJjCpY" target="_blank" rel="noopener">
+            <div class="res-card__thumb"><img class="res-card__img" src="https://cdn.prod.website-files.com/689b764263ddedfde6bbf845/68f6bbb83bfaca9ad2485849_video-snowflake-strengthening-data-access.webp" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span></div>
+              <h3 class="res-card__title">Strengthening Data Access Security with Snowflake and TrustLogix</h3>
+              <p class="res-card__desc">See how TrustLogix extends least-privilege access controls across the Snowflake Data Cloud.</p>
+              <span class="link-arrow res-card__link">Watch Now<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/resource-library" target="_blank" rel="noopener">
+            <div class="res-card__thumb"><img class="res-card__img" src="https://cdn.prod.website-files.com/689b764263ddedfde6bbf845/6903dd0aa6dee871b6ee49bf_poster-trustaccess.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span></div>
+              <h3 class="res-card__title">Secure Data Access from Source to Dashboard</h3>
+              <p class="res-card__desc">Enforce consistent access policies from your data source all the way to Power BI dashboards.</p>
+              <span class="link-arrow res-card__link">Watch Now<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/resource-library">
+            <div class="res-card__thumb"><img class="res-card__img" src="https://cdn.prod.website-files.com/689b764263ddedfde6bbf845/68f6ad4290c87b3f0a077451_CaseStudy_Healthcare.webp" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Case Study</span></div>
+              <h3 class="res-card__title">Scaling Secure Data Access: A Fortune 500 Healthcare Success Story</h3>
+              <p class="res-card__desc">How a Fortune 500 healthcare leader scaled secure, compliant data access with TrustLogix.</p>
+              <span class="link-arrow res-card__link">Read More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/resource-library">
+            <div class="res-card__thumb"><img class="res-card__img" src="https://cdn.prod.website-files.com/689b764263ddedfde6bbf845/68f6ad78450cf402c24356c7_CaseStudy_Martech%20Vendor%20Streamlined%20Compliance.webp" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Case Study</span></div>
+              <h3 class="res-card__title">Top Martech Vendor Streamlines Data Access Management and Compliance with TrustLogix</h3>
+              <p class="res-card__desc">A leading martech vendor simplified access management and compliance across its data stack.</p>
+              <span class="link-arrow res-card__link">Read More<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+        </div>
+        <div class="res-nav">
+          <div class="res-dots" id="res-dots"></div>
+          <div class="res-arrows">
+            <button class="res-arrow" data-dir="-1" aria-label="Previous resources">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"/></svg>
+            </button>
+            <button class="res-arrow" data-dir="1" aria-label="Next resources">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="cta-final">
+    <div class="cta-final__card reveal">
+      <div class="cta-final__bg"></div>
+      <img class="cta-final__graphic" src="../../logos/cta-bg-graphic.svg" alt="" aria-hidden="true" />
+      <div class="cta-final__content">
+        <div class="cta-final__left">
+          <h2 class="cta-final__title">Experience TrustAccess in Action</h2>
+        </div>
+        <div class="cta-final__right">
+          <p class="cta-final__sub">Schedule a call to discover how TrustAccess can deliver least-privilege access and faster, safer data provisioning across your enterprise.</p>
+          <div class="cta-final__buttons">
+            <a href="/get-started" class="btn cta-final__btn cta-final__btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+            <a href="/platform" class="btn cta-final__btn cta-final__btn--secondary"><span class="btn__swap"><span>Our Platform</span><span aria-hidden="true">Our Platform</span></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-final__strip"></div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer footer--brand footer--light">
+    <div class="container">
+      <div class="footer__top">
+        <a href="/" class="footer__logo" aria-label="TrustLogix">
+          <img src="../../trustlogix-logo.svg" alt="TrustLogix" width="180" height="31" />
+        </a>
+        <p class="footer__tagline">Unified, secure access to the data that drives AI—so innovation moves quickly, safely.</p>
+        <div class="footer__social">
+          <a href="https://x.com/TrustLogix" target="_blank" rel="noopener" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.1761 4H19.9362L13.9061 10.7774L21 20H15.4456L11.0951 14.4066L6.11723 20H3.35544L9.80517 12.7508L3 4H8.69545L12.6279 9.11262L17.1761 4ZM16.2073 18.3754H17.7368L7.86441 5.53928H6.2232L16.2073 18.3754Z" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/trustlogix/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 3C3.67157 3 3 3.67157 3 4.5V19.5C3 20.3284 3.67157 21 4.5 21H19.5C20.3284 21 21 20.3284 21 19.5V4.5C21 3.67157 20.3284 3 19.5 3H4.5ZM8.52076 7.00272C8.52639 7.95897 7.81061 8.54819 6.96123 8.54397C6.16107 8.53975 5.46357 7.90272 5.46779 7.00413C5.47201 6.15897 6.13998 5.47975 7.00764 5.49944C7.88795 5.51913 8.52639 6.1646 8.52076 7.00272ZM12.2797 9.76176H9.7583V18.3216H12.4217V16.9819C12.4203 15.9674 12.4194 14.9532 12.4246 13.9397C12.426 13.6936 12.4372 13.4377 12.5005 13.2028C12.7381 12.3253 13.5271 11.7586 14.4074 11.8979C14.9727 11.9864 15.3467 12.3141 15.5042 12.8471C15.6013 13.1803 15.6449 13.5389 15.6491 13.8863C15.6589 15.9815 15.6573 17.0294 15.6561 18.1388V18.3202H18.328V16.7591C18.327 15.6293 18.3264 14.5001 18.3294 13.3702C18.3308 12.8597 18.276 12.3563 18.1508 11.8627C17.9638 11.1286 17.5771 10.5211 16.9485 10.0824C16.5027 9.77019 16.0133 9.5691 15.4663 9.5466C15.404 9.54401 14.7141 9.50673 14.4467 9.56066C13.6817 9.71394 13.0096 10.0641 12.5019 10.6814C12.4429 10.7522 12.3852 10.8241 12.2991 10.9315L12.2797 10.9557V9.76176ZM5.68164 18.3244H8.33242V9.76733H5.68164V18.3244Z" fill="currentColor"/></svg>
+          </a>
+          <a href="http://www.youtube.com/@trustlogix" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.5686 4.77345C21.5163 5.02692 22.2555 5.76903 22.5118 6.71673C23.1821 9.42042 23.1385 14.5321 22.5259 17.278C22.2724 18.2257 21.5303 18.965 20.5826 19.2213C17.9071 19.8831 5.92356 19.8015 3.40294 19.2213C2.45524 18.9678 1.71595 18.2257 1.45966 17.278C0.827391 14.7011 0.871044 9.25144 1.44558 6.73081C1.69905 5.78311 2.44116 5.04382 3.38886 4.78753C6.96561 4.0412 19.2956 4.282 20.5686 4.77345ZM9.86682 8.70227L15.6122 11.9974L9.86682 15.2925V8.70227Z" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__links">
+        <div class="footer__col">
+          <h5>Platform</h5>
+          <a href="/platform">Platform Overview</a>
+          <a href="/platform/trustdspm">TrustDSPM</a>
+          <a href="/platform/trustaccess">TrustAccess</a>
+          <a href="/platform/trustai">TrustAI</a>
+        </div>
+        <div class="footer__col">
+          <h5>Partners</h5>
+          <a href="/partners">Partners Overview</a>
+          <a href="/partners/snowflake">Snowflake</a>
+          <a href="/partners/databricks">Databricks</a>
+          <a href="/partners/microsoft">Power BI</a>
+          <a href="/partners/aws">AWS</a>
+          <a href="/partners/alation">Alation</a>
+          <a href="/partners/collibra">Collibra</a>
+        </div>
+        <div class="footer__col">
+          <h5>Resources</h5>
+          <a href="/resources">Resources Overview</a>
+          <a href="/resource-library">Resource Library</a>
+          <a href="/blog">The TrustLogix Blog</a>
+          <a href="https://docs.trustlogix.io/">Documentation</a>
+          <a href="/newsletter">Newsletter</a>
+        </div>
+        <div class="footer__col">
+          <h5>About</h5>
+          <a href="/about">About TrustLogix</a>
+          <a href="/newsroom">Newsroom</a>
+          <a href="/newsroom/press-releases">Press Releases</a>
+          <a href="/careers">Careers</a>
+          <a href="/contact">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <span class="footer__credit">&copy; 2026 TrustLogix. All rights reserved.</span>
+        <div class="footer__legal">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-of-service">Terms of Service</a>
+          <a href="/security-pledge">Security Pledge</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

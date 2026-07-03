@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resource Library — TrustLogix | TrustLogix</title>
+  <meta name="description" content="Case studies, data sheets, eBooks, reports, videos, and webinars on AI-ready data access and data security." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css?v=268" />
+  <style>
+    .mp-hero { background: linear-gradient(110deg, #08aac3 0%, #23ad9c 48%, #6fbe46 100%);
+      color:#fff; position:relative; overflow:hidden; padding: 112px 0; text-align:center; }
+    .mp-hero::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.28; background-image: radial-gradient(circle,#fff 1.2px,transparent 1.2px); background-size:24px 24px; }
+    .mp-hero__inner { position:relative; z-index:2; max-width: 54rem; margin:0 auto; }
+    .mp-badge { display:inline-flex; align-items:center; gap:.5rem; font-family:var(--font-heading); font-weight:700; font-size:16px; letter-spacing:.1em; text-transform:uppercase; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35); backdrop-filter:blur(4px); padding:.5rem 1rem; border-radius:20px; margin-bottom:16px; color:#fff; }
+    .mp-hero__title { font-family:var(--font-heading); font-weight:400; font-size:clamp(2.4rem,4vw,3.5rem); line-height:1.1; letter-spacing:-.02em; margin-bottom:1.5rem; color:#fff; }
+    .mp-hero__title .grad { font-weight:800; color:#fff; }
+    .mp-hero__desc { font-size:16px; line-height:1.7; color:#ffffff; margin-bottom:2.5rem; }
+    .mp-hero__cta { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .mp-btn-w { background:#fff; color:var(--eden); font-family:var(--font-heading); font-weight:700; padding:.9rem 2rem; border-radius:var(--r-btn); text-decoration:none; transition:transform .2s var(--ease); }
+    .mp-btn-g { background:rgba(255,255,255,.1); color:#fff; border:1px solid rgba(255,255,255,.3); font-family:var(--font-heading); font-weight:700; padding:.9rem 2rem; border-radius:var(--r-btn); text-decoration:none; }
+    .mp-btn-w:hover,.mp-btn-g:hover { transform:translateY(-2px); }
+    .mp-sec { padding:5rem 0; }
+    .mp-sec--alt { background:#f4f8f8; }
+    .mp-eyebrow { font-family:var(--font-heading); font-weight:700; font-size:1rem; letter-spacing:.15em; text-transform:uppercase; color:var(--pine-green); margin-bottom:1rem; }
+    .mp-h2 { font-family:var(--font-heading); font-weight:800; font-size:clamp(1.9rem,2.6vw,2.5rem); letter-spacing:-.02em; line-height:1.15; color:var(--neutral-darkest); margin-bottom:1rem; }
+    .mp-h2 b { color:var(--pine-green); }
+    .mp-lead { font-size:1.125rem; line-height:1.7; color:var(--neutral); max-width:52rem; }
+    .mp-head { margin-bottom:2.5rem; }
+    .mp-head--c { text-align:center; } .mp-head--c .mp-lead { margin:0 auto; }
+    .rl-filters { display:flex; flex-wrap:wrap; gap:.65rem; margin-top:2rem; }
+    .rl-filter { font-family:var(--font-heading); font-weight:600; font-size:.9rem; background:#fff; border:1px solid #e5edee; padding:.55rem 1.2rem; border-radius:99px; color:var(--neutral-darkest); cursor:pointer; }
+    .rl-filter.is-active { background:var(--eden); color:#fff; border-color:var(--eden); }
+    .rl-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.5rem; }
+    .rl-card { background:#fff; border:1px solid #e5edee; border-radius:18px; overflow:hidden; display:flex; flex-direction:column; transition:transform .25s var(--ease), box-shadow .25s var(--ease); }
+    .rl-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-card); }
+    .rl-card__thumb { height:160px; background:linear-gradient(135deg,#0c3f41,#08aac3); position:relative; }
+    .rl-card__thumb::before { content:""; position:absolute; inset:0; opacity:.12; background-image:radial-gradient(circle,#fff 1.2px,transparent 1.2px); background-size:20px 20px; }
+    .rl-card__type { position:absolute; top:1rem; left:1rem; font-family:var(--font-heading); font-weight:700; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; background:#fff; color:var(--pine-green); padding:.35rem .8rem; border-radius:99px; }
+    .rl-card__body { padding:1.5rem; display:flex; flex-direction:column; flex:1; }
+    .rl-card__title { font-family:var(--font-heading); font-weight:700; font-size:1.05rem; line-height:1.4; color:var(--neutral-darkest); margin-bottom:.75rem; }
+    .rl-card__date { font-size:.85rem; color:var(--neutral); margin-top:auto; }
+    .rl-card__meta { font-size:.85rem; color:var(--neutral); margin-bottom:.6rem; }
+    @media (max-width:900px){ .rl-grid{ grid-template-columns:1fr; } }
+
+    /* === Documentation callout — split card (V2) === */
+    .rl-docs__card { display:grid; grid-template-columns:1.2fr .8fr; background:#fff; border:1px solid #e5edee; border-radius:24px; overflow:hidden; box-shadow:0 22px 50px rgba(12,63,65,.06); }
+    .rl-docs__body { padding:3rem 2.75rem; display:flex; flex-direction:column; justify-content:center; }
+    .rl-docs__eyebrow { display:inline-block; font-family:var(--font-heading); font-weight:700; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--pine-green); background:#eef7f1; padding:.35rem .7rem; border-radius:99px; margin-bottom:.85rem; align-self:flex-start; }
+    .rl-docs__title { font-family:var(--font-heading); font-weight:400; font-size:clamp(1.5rem,2.4vw,2rem); line-height:1.2; letter-spacing:-.015em; color:var(--neutral-darkest); margin:0 0 .65rem; }
+    .rl-docs__title b { font-weight:800; }
+    .rl-docs__lead { font-size:15.5px; line-height:1.65; color:var(--neutral); margin:0 0 1.6rem; }
+    .rl-docs__btn { align-self:flex-start; display:inline-flex; align-items:center; gap:.55rem; background:var(--pine-green); color:#fff; font-family:var(--font-heading); font-weight:700; font-size:14px; letter-spacing:.06em; text-transform:uppercase; padding:1rem 1.6rem; border-radius:12px; text-decoration:none; transition:transform .2s var(--ease),background .2s var(--ease); }
+    .rl-docs__btn:hover { background:var(--eden); transform:translateY(-2px); }
+    .rl-docs__art { background:linear-gradient(135deg,#6fbe46,#23ad9c 45%,#08aac3); position:relative; overflow:hidden; display:grid; place-items:center; padding:2rem; }
+    .rl-docs__art::before { content:""; position:absolute; inset:0; opacity:.18; background-image:url("../logos/star-pattern.svg"); background-size:14px 14px; pointer-events:none; }
+    .rl-docs__art svg { position:relative; z-index:1; width:140px; height:140px; color:#fff; }
+    @media (max-width:860px){ .rl-docs__card { grid-template-columns:1fr; } .rl-docs__body { padding:2rem 1.5rem; } .rl-docs__art { min-height:200px; } .rl-docs__art svg { width:100px; height:100px; } }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="TrustLogix home">
+        <img src="../trustlogix-logo.svg" alt="TrustLogix" class="nav__logo-img" width="200" height="34" />
+      </a>
+      <nav class="nav__menu" aria-label="Primary">
+        <div class="nav__item">
+          <a href="/platform" class="nav__link"><span class="nav__swap"><span>Platform</span><span aria-hidden="true">Platform</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/platform" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Our platform architecture, core modules, and benefits.</span></a>
+            <a href="/platform/trustai">– TrustAI</a>
+            <a href="/platform/trustdspm">– TrustDSPM</a>
+            <a href="/platform/trustaccess">– TrustAccess</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/partners" class="nav__link"><span class="nav__swap"><span>Partners</span><span aria-hidden="true">Partners</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/partners" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Introduction to the TrustLogix Interoperable Ecosystem.</span></a>
+            <a href="/partners/snowflake">– Snowflake</a>
+            <a href="/partners/databricks">– Databricks</a>
+            <a href="/partners/microsoft">– Power BI</a>
+            <a href="/partners/aws">– AWS</a>
+            <a href="/partners/alation">– Alation</a>
+            <a href="/partners/collibra">– Collibra</a>
+          </div>
+        </div>
+        <div class="nav__item"><a href="/pricing" class="nav__link"><span class="nav__swap"><span>Pricing</span><span aria-hidden="true">Pricing</span></span></a></div>
+        <div class="nav__item">
+          <a href="/resources" class="nav__link"><span class="nav__swap"><span>Resources</span><span aria-hidden="true">Resources</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/resources" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Resources available to existing and potential customers.</span></a>
+            <a href="/resource-library">– Resource Library</a>
+            <a href="/blog">– The TrustLogix Blog</a>
+            <a href="https://docs.trustlogix.io/">– Documentation</a>
+            <a href="/newsletter">– Newsletter</a>
+          </div>
+        </div>
+        <div class="nav__item">
+          <a href="/about" class="nav__link"><span class="nav__swap"><span>About</span><span aria-hidden="true">About</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/about" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">About TrustLogix – our culture, values, and more.</span></a>
+            <a href="/events">– Events</a>
+            <a href="/newsroom">– Newsroom</a>
+            <a href="/newsroom/press-releases">– Press Releases</a>
+            <a href="/careers">– Careers</a>
+            <a href="/contact">– Contact</a>
+          </div>
+        </div>
+      </nav>
+      <div class="nav__actions">
+        <a href="/get-started" class="btn btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+        <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="mp-hero">
+      <div class="container mp-hero__inner">
+        <span class="mp-badge">Resources</span>
+        <h1 class="mp-hero__title">TrustLogix <span class="grad">Thought Leadership</span></h1>
+        <p class="mp-hero__desc">Dive into our comprehensive library of blogs, reports, webinars, and more. Discover valuable insights and tools to enhance your data security and compliance strategies.</p>
+      </div>
+    </section>
+
+    <section class="section scheme-light">
+      <div class="container">
+        <div class="res-head">
+          <div>
+            <span class="eyebrow reveal">Resources</span>
+            <h2 class="section-head__title reveal" data-delay="1" style="margin-bottom:0.5rem;">Featured <b>Resources</b></h2>
+            <p class="section-head__sub reveal" data-delay="2">Unlock innovation with our latest insights and thought leadership.</p>
+          </div>
+          <a href="/resource-library" class="btn reviews-cta reveal" data-delay="2">Browse Our Resource Library
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="res-track">
+
+          <a class="res-card reveal" href="/case-studies/modern-data-mesh-in-snowflake-cloud">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-01.webp" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Case Study</span><span class="res-card__date">JAN 15, 2025</span></div>
+              <h3 class="res-card__title">Securing a Modern Data Mesh in the Snowflake Data Cloud</h3>
+              <p class="res-card__desc">A global mobility vendor used TrustLogix to modernize data, protect sensitive information, and improve compliance and analytics.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/datasheets/why-security-teams-replacing-ibm-guardium-trustlogix">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-02.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Data Sheet</span><span class="res-card__date">FEB 8, 2025</span></div>
+              <h3 class="res-card__title">Why Security Teams Are Replacing IBM Guardium with TrustLogix</h3>
+              <p class="res-card__desc">IBM Guardium&#x27;s agent-based architecture wasn&#x27;t built for cloud. See how TrustLogix replaces legacy data activity monitoring with a single, agentless platform covering on-prem, hybrid, and cloud.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/datasheets/solution-brief-preemptive-data-security-for-ai-agents">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-03.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Data Sheet</span><span class="res-card__date">MAR 22, 2025</span></div>
+              <h3 class="res-card__title">Solution Brief: Preemptive Data Security for the Age of AI Agents</h3>
+              <p class="res-card__desc">Stop AI data leaks before they happen. TrustAI by TrustLogix provides preemptive security and JIT access control for AI agents, ensuring PII/PHI protection across multi-cloud environments. Secure your AI innovation today.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/datasheets/about-trustlogix">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-04.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Data Sheet</span><span class="res-card__date">APR 3, 2025</span></div>
+              <h3 class="res-card__title">About TrustLogix</h3>
+              <p class="res-card__desc">Enterprises need to move faster with AI, but fragmented access and inconsistent data controls slow progress and add risk. TrustLogix gives teams unified, secure access to the data that drives AI—so innovation moves quickly, safely.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/ebooks/data-security-agentic-ai-ebook">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-05.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Ebook</span><span class="res-card__date">MAY 14, 2025</span></div>
+              <h3 class="res-card__title">Data Security for Agentic AI</h3>
+              <p class="res-card__desc">See how data and security leaders can govern AI data access with clarity and speed. Understand the real risks, the new architectural requirements, and the practical steps enterprises are using today to make AI safe at scale.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/reports/gartner-report-agile-adaptive-ai-data-security-governance">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-06.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Report</span><span class="res-card__date">JUN 19, 2025</span></div>
+              <h3 class="res-card__title">Get the Gartner Report: Use Agile, Adaptive, AI-Ready (3A) Data Security Governance to Secure Shadow AI</h3>
+              <p class="res-card__desc">This recent Gartner® report outlines a practical framework for evolving data security controls to match AI&#x27;s pace: just-in-time access, automated scanning, adaptive policy enforcement, and AI agent monitoring. Required reading for CISOs navigating the gap between AI adoption and data security.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/reports/ai-agents-blind-spot-governing-agentic-ai-gigaom">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-07.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Report</span><span class="res-card__date">JUL 7, 2025</span></div>
+              <h3 class="res-card__title">AI Agents Are Your New Blind Spot: A CISO&#x27;s Framework for Governing Agentic AI - GigaOm</h3>
+              <p class="res-card__desc">GigaOm&#x27;s independent analyst brief gives CISOs a practical framework for evaluating AI agent data security, covering identity propagation, least-privilege enforcement, audit at scale, and continuous monitoring.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/reports/navigating-the-ai-data-security-landscape">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-08.webp" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Report</span><span class="res-card__date">AUG 28, 2025</span></div>
+              <h3 class="res-card__title">AI Data Security: Risks, Best Practices &amp; How to Protect Your AI Systems</h3>
+              <p class="res-card__desc">Learn how to secure data and AI assets with best practices for AI/ML risks, LLM protection, and future-proofing AI security.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/videos/securing-ai-agents-before-become-biggest-liability">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-09.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span><span class="res-card__date">SEP 11, 2025</span></div>
+              <h3 class="res-card__title">Securing Your AI Agents Before They Become Your Biggest Liability</h3>
+              <p class="res-card__desc">Learn why AI agents are creating a &quot;governance gap&quot; in the enterprise. GigaOm’s Whit Walters shares 5 essential capabilities to secure your AI infrastructure and prevent agents from becoming a major data liability. Watch the full breakdown.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/videos/closing-ai-velocity-gap-why-enterprises-need-proactive-trust-layer">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-10.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span><span class="res-card__date">OCT 2, 2025</span></div>
+              <h3 class="res-card__title">Closing the AI Velocity Gap: Why Enterprises Need a Proactive Trust Layer</h3>
+              <p class="res-card__desc">Is the race for AI ROI forcing your organization to compromise on security? In this featured session, Scott Raynovich, Principal Analyst at Futuriom, and Ron Longo, CEO of TrustLogix, discuss how to eliminate the &quot;Velocity Gap&quot;—the friction between the urgent need to deploy AI and the complex task of securing it.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/videos/building-policy-control-plane-architecture-behind-trustai">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-11.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span><span class="res-card__date">NOV 17, 2025</span></div>
+              <h3 class="res-card__title">Building the Policy Control Plane: The Architecture Behind TrustAI</h3>
+              <p class="res-card__desc">Learn how TrustLogix&#x27;s unified Policy Control Plane governs autonomous AI agents at machine speed—enabling innovation while protecting sensitive enterprise data.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/videos/data-security-for-ai-agents-with-trustai">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-12.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span><span class="res-card__date">DEC 5, 2024</span></div>
+              <h3 class="res-card__title">Data Security for AI Agents with TrustAI</h3>
+              <p class="res-card__desc">Organizations can confidently scale AI initiatives by securing sensitive data, controlling AI agent access, and monitoring how data is used.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/videos/resilient-data-security-in-multi-cloud-environments">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-13.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span><span class="res-card__date">OCT 30, 2024</span></div>
+              <h3 class="res-card__title">Resilient Data Security in Multi-Cloud Environments</h3>
+              <p class="res-card__desc">Explore resilient multi-cloud data security with TrustLogix CEO Ganesh Kirti on Tech4Sight—Zero Trust, access control &amp; AI.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/videos/secure-data-access-from-source-to-dashboard">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-14.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span><span class="res-card__date">SEP 25, 2024</span></div>
+              <h3 class="res-card__title">Secure Data Access from Source to Dashboard</h3>
+              <p class="res-card__desc">Extend Snowflake &amp; Databricks access controls to Power BI with TrustAccess—no code, no duplication, no data exposure.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/videos/trustlogix-collibra-integration">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-15.webp" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Video</span><span class="res-card__date">AUG 12, 2024</span></div>
+              <h3 class="res-card__title">TrustLogix-Collibra Integration</h3>
+              <p class="res-card__desc">See how TrustLogix integrates with Collibra to simplify Snowflake data security, policy creation, and access governance.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/webinars/self-service-analytics-without-the-chaos-governing-insights-at-scale">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-16.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Webinar</span><span class="res-card__date">MAY 11, 2026</span></div>
+              <h3 class="res-card__title">Self-Service Analytics Without the Chaos: Governing Insights at Scale</h3>
+              <p class="res-card__desc">TrustLogix Field CTO Simon Thornell joins industry experts for a DBTA roundtable on delivering governed, analytics-ready data at scale.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/webinars/ai-native-telcos-building-secure-data-foundation-autonomous-networks">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-17.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Webinar</span><span class="res-card__date">JAN 22, 2026</span></div>
+              <h3 class="res-card__title">AI-Native Telcos: Building the Secure Data Foundation for Autonomous Networks</h3>
+              <p class="res-card__desc">In this webinar, experts from Ericsson, Snowflake, and TrustLogix explore how telecom providers can build secure, scalable data foundations for autonomous networks.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/webinars/managing-data-sharing-data-security-and-entitlements-in-financial-markets">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/article-18.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">Webinar</span><span class="res-card__date">JAN 16, 2025</span></div>
+              <h3 class="res-card__title">Managing Data Sharing, Data Security and Entitlements in Financial Markets</h3>
+              <p class="res-card__desc">Financial leaders share strategies for balancing data security, innovation, and access in this expert webinar.</p>
+              <span class="link-arrow res-card__link">Watch Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+        </div>
+        <div class="res-nav">
+          <div class="res-dots"></div>
+          <div class="res-arrows">
+            <button class="res-arrow" data-dir="-1" aria-label="Previous">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"/></svg>
+            </button>
+            <button class="res-arrow" data-dir="1" aria-label="Next">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section scheme-light">
+      <div class="container">
+        <div class="res-head">
+          <div>
+            <span class="eyebrow reveal">Blog</span>
+            <h2 class="section-head__title reveal" data-delay="1" style="margin-bottom:0.5rem;">Featured <b>Blog Posts</b></h2>
+            <p class="section-head__sub reveal" data-delay="2">Stay informed on data security and access control trends.</p>
+          </div>
+          <a href="/resource-library" class="btn reviews-cta reveal" data-delay="2">See All Blogs
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="res-track">
+          <a class="res-card reveal" href="/blog/why-many-ai-companies-cant-solve-agentic-ai-security-problem-trustlogix-can">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/blog-01.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">4 min read</span><span class="res-card__date">MAY 8, 2026</span></div>
+              <h3 class="res-card__title">Why Many AI Companies Can't Solve Your Agentic AI Security Problem. But TrustLogix Can.</h3>
+              <p class="res-card__desc">Why do so many AI security vendors fail in real enterprise environments? TrustLogix CEO Ron Longo explains what to ask before you buy — and why it matters.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/blog/helping-partners-solve-data-security-problems">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/blog-02.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">3 min read</span><span class="res-card__date">APR 28, 2026</span></div>
+              <h3 class="res-card__title">Every Enterprise AI Conversation Has a Data Security Problem. Here's How We're Helping Partners Solve It.</h3>
+              <p class="res-card__desc">TrustLogix Head of Partnerships Thomas St. Onge announces the TrustLogix Partner Program, built to help technology and services partners win the enterprise AI security opportunity with dedicated tooling, joint go-to-market support, and a free 30-day proof of concept.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/blog/claude-code-leak-enterprises-need-kill-switch-ai-agent-data-access">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/blog-03.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">4 min read</span><span class="res-card__date">APR 9, 2026</span></div>
+              <h3 class="res-card__title">After the Claude Code Leak: Why Enterprises Desperately Need a Kill Switch for AI Agent Data Access</h3>
+              <p class="res-card__desc">The Claude Code leak exposed a critical gap: enterprises have no kill switch for AI agent data access. Learn how TrustAI provides real-time control at the data layer.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/blog/ai-agents-access-context">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/blog-04.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">3 min read</span><span class="res-card__date">APR 22, 2026</span></div>
+              <h3 class="res-card__title">For AI Agents to Work at Scale, Access Context Can't Be Optional</h3>
+              <p class="res-card__desc">When AI agents access enterprise data without security context, risk accumulates fast. TrustLogix Field CTO Simon Thornell on why the context layer and security context must work together — and what happens when they don't.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/blog/now-in-public-preview-securing-agentic-ai-with-trustlogix-trustai-and-mcp">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/blog-05.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">5 min read</span><span class="res-card__date">JAN 13, 2025</span></div>
+              <h3 class="res-card__title">Now in Public Preview: Securing Agentic AI with TrustLogix TrustAI and MCP</h3>
+              <p class="res-card__desc">Leveraging MCP, TrustAI replaces fragmented, hardcoded agent connectors with a standardized security control plane that centralizes authentication, externalizes policy enforcement, and delivers unified auditability across all AI-to-data interactions.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/blog/strengthen-data-security-snowflake-trust-center-trustlogix">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/blog-06.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">3 min read</span><span class="res-card__date">NOV 25, 2025</span></div>
+              <h3 class="res-card__title">Strengthen Data Security with Snowflake Trust Center and TrustLogix</h3>
+              <p class="res-card__desc">TrustLogix’s new Trust Center integration lets Snowflake users expand their data security with deeper visibility, more fine-grained access controls, and an AI-driven workflow where security teams and data stewards can collaborate to remediate issues much faster.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/blog/trustai-non-negotiable-data-security-ai-agents">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/blog-07.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">4 min read</span><span class="res-card__date">NOV 12, 2025</span></div>
+              <h3 class="res-card__title">TrustAI: The Non-Negotiable Data Security Layer for AI Agents</h3>
+              <p class="res-card__desc">Don't let AI agent data security be a barrier to unlocking the full potential of AI. With TrustAI by TrustLogix, you can confidently drive innovation, knowing your most valuable asset, your data, is always protected, governed, and compliant.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/blog/kuppingercole-2025-leadership-compass">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/blog-08.png" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">1 min read</span><span class="res-card__date">APR 3, 2025</span></div>
+              <h3 class="res-card__title">KuppingerCole Names TrustLogix a Leader in Data Security Platforms: Validating Enterprise Trust</h3>
+              <p class="res-card__desc">Maintaining consistent access policies has become complex and siloed, with data dispersed across various cloud environments, warehouses, and analytics tools.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/blog/empowering-healthcare-organization">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/blog-09.webp" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">3 min read</span><span class="res-card__date">SEP 24, 2024</span></div>
+              <h3 class="res-card__title">Empowering Healthcare Enterprise: Achieve Dynamic Access and Robust Security</h3>
+              <p class="res-card__desc">We'll delve into how TrustLogix helps Healthcare organizaton meet Data Access Control needs.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/blog/rbac-or-abac-which-is-better-for-risk-adaptive-access-control">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/blog-10.webp" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">7 min read</span><span class="res-card__date">JUL 24, 2023</span></div>
+              <h3 class="res-card__title">RBAC or ABAC: Which is Better? Enforcing Risk-Adaptive Access Control in the Cloud</h3>
+              <p class="res-card__desc">Which is better RBAC or ABAC? Learn how to implement risk-adaptive access control best suited to the demands of your organization's data workloads.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/blog/what-identity-management-teaches-csos-and-cdos-about-data-centric-security">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/blog-11.webp" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">6 min read</span><span class="res-card__date">JAN 18, 2022</span></div>
+              <h3 class="res-card__title">What Identity Management Teaches CSOs/CDOs about Data-Centric Security</h3>
+              <p class="res-card__desc">20 years ago, identity proliferation launched Identity Management. Just so, data proliferation today requires a new Data-Centric Security approach.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+          <a class="res-card reveal" href="/blog/trustlogix-snowflake">
+            <div class="res-card__thumb"><img class="res-card__img" src="../logos/blog-12.webp" alt="" loading="lazy" /></div>
+            <div class="res-card__body">
+              <div class="res-card__meta"><span class="res-card__type">3 min read</span><span class="res-card__date">NOV 3, 2021</span></div>
+              <h3 class="res-card__title">How the TrustLogix Platform Simplifies Data Security in Snowflake</h3>
+              <p class="res-card__desc">Learn how TrustLogix, a Snowflake Data Cloud Partner, helps teams monitor data usage, identify security issues, and more with access control policies.</p>
+              <span class="link-arrow res-card__link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+        </div>
+        <div class="res-nav">
+          <div class="res-dots"></div>
+          <div class="res-arrows">
+            <button class="res-arrow" data-dir="-1" aria-label="Previous">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"/></svg>
+            </button>
+            <button class="res-arrow" data-dir="1" aria-label="Next">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section rl-docs">
+      <div class="container">
+        <div class="rl-docs__card reveal">
+          <div class="rl-docs__body">
+            <span class="rl-docs__eyebrow">Documentation</span>
+            <h2 class="rl-docs__title">Explore Our <b>Production Documentation</b></h2>
+            <p class="rl-docs__lead">Access comprehensive guides and resources to enhance your understanding of our platform's capabilities.</p>
+            <a class="rl-docs__btn" href="https://docs.trustlogix.io/" target="_blank" rel="noopener">
+              Documentation Portal
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <div class="rl-docs__art" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none">
+              <rect x="10" y="6" width="44" height="52" rx="6" stroke="currentColor" stroke-width="2.5"/>
+              <path d="M18 18h28M18 26h28M18 34h22M18 42h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="48" cy="50" r="9" fill="currentColor" opacity=".25"/>
+              <path d="M48 46v8M44 50h8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-final">
+      <div class="cta-final__card reveal">
+        <div class="cta-final__bg"></div>
+        <img class="cta-final__graphic" src="../logos/cta-bg-graphic.svg" alt="" aria-hidden="true" />
+        <div class="cta-final__content">
+          <div class="cta-final__left"><h2 class="cta-final__title">Experience TrustLogix in Action</h2></div>
+          <div class="cta-final__right">
+            <p class="cta-final__sub">Schedule a call to discover how TrustLogix can accelerate your AI initiatives with faster, safer data access.</p>
+            <div class="cta-final__buttons">
+              <a href="/get-started" class="btn cta-final__btn cta-final__btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+              <a href="/platform" class="btn cta-final__btn cta-final__btn--secondary"><span class="btn__swap"><span>Our Platform</span><span aria-hidden="true">Our Platform</span></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-final__strip"></div>
+    </section>
+  </main>
+
+  <footer class="footer footer--brand footer--light">
+    <div class="container">
+      <div class="footer__top">
+        <a href="/" class="footer__logo" aria-label="TrustLogix"><img src="../trustlogix-logo.svg" alt="TrustLogix" width="180" height="31" /></a>
+        <p class="footer__tagline">Unified, secure access to the data that drives AI—so innovation moves quickly, safely.</p>
+        <div class="footer__social">
+          <a href="https://x.com/TrustLogix" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="none"><path d="M17.1761 4H19.9362L13.9061 10.7774L21 20H15.4456L11.0951 14.4066L6.11723 20H3.35544L9.80517 12.7508L3 4H8.69545L12.6279 9.11262L17.1761 4ZM16.2073 18.3754H17.7368L7.86441 5.53928H6.2232L16.2073 18.3754Z" fill="currentColor"/></svg></a>
+          <a href="https://www.linkedin.com/company/trustlogix/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 3C3.67157 3 3 3.67157 3 4.5V19.5C3 20.3284 3.67157 21 4.5 21H19.5C20.3284 21 21 20.3284 21 19.5V4.5C21 3.67157 20.3284 3 19.5 3H4.5ZM8.52076 7.00272C8.52639 7.95897 7.81061 8.54819 6.96123 8.54397C6.16107 8.53975 5.46357 7.90272 5.46779 7.00413C5.47201 6.15897 6.13998 5.47975 7.00764 5.49944C7.88795 5.51913 8.52639 6.1646 8.52076 7.00272ZM12.2797 9.76176H9.7583V18.3216H12.4217V16.9819C12.4203 15.9674 12.4194 14.9532 12.4246 13.9397C12.426 13.6936 12.4372 13.4377 12.5005 13.2028C12.7381 12.3253 13.5271 11.7586 14.4074 11.8979C14.9727 11.9864 15.3467 12.3141 15.5042 12.8471C15.6013 13.1803 15.6449 13.5389 15.6491 13.8863C15.6589 15.9815 15.6573 17.0294 15.6561 18.1388V18.3202H18.328V16.7591C18.327 15.6293 18.3264 14.5001 18.3294 13.3702C18.3308 12.8597 18.276 12.3563 18.1508 11.8627C17.9638 11.1286 17.5771 10.5211 16.9485 10.0824C16.5027 9.77019 16.0133 9.5691 15.4663 9.5466C15.404 9.54401 14.7141 9.50673 14.4467 9.56066C13.6817 9.71394 13.0096 10.0641 12.5019 10.6814C12.4429 10.7522 12.3852 10.8241 12.2991 10.9315L12.2797 10.9557V9.76176ZM5.68164 18.3244H8.33242V9.76733H5.68164V18.3244Z" fill="currentColor"/></svg></a>
+          <a href="http://www.youtube.com/@trustlogix" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.5686 4.77345C21.5163 5.02692 22.2555 5.76903 22.5118 6.71673C23.1821 9.42042 23.1385 14.5321 22.5259 17.278C22.2724 18.2257 21.5303 18.965 20.5826 19.2213C17.9071 19.8831 5.92356 19.8015 3.40294 19.2213C2.45524 18.9678 1.71595 18.2257 1.45966 17.278C0.827391 14.7011 0.871044 9.25144 1.44558 6.73081C1.69905 5.78311 2.44116 5.04382 3.38886 4.78753C6.96561 4.0412 19.2956 4.282 20.5686 4.77345ZM9.86682 8.70227L15.6122 11.9974L9.86682 15.2925V8.70227Z" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col"><h5>Platform</h5><a href="/platform">Platform Overview</a><a href="/platform/trustdspm">TrustDSPM</a><a href="/platform/trustaccess">TrustAccess</a><a href="/platform/trustai">TrustAI</a></div>
+        <div class="footer__col"><h5>Partners</h5><a href="/partners">Partners Overview</a><a href="/partners/snowflake">Snowflake</a><a href="/partners/databricks">Databricks</a><a href="/partners/microsoft">Power BI</a><a href="/partners/aws">AWS</a><a href="/partners/alation">Alation</a><a href="/partners/collibra">Collibra</a></div>
+        <div class="footer__col"><h5>Resources</h5><a href="/resources">Resources Overview</a><a href="/resource-library">Resource Library</a><a href="/blog">The TrustLogix Blog</a><a href="https://docs.trustlogix.io/">Documentation</a><a href="/newsletter">Newsletter</a></div>
+        <div class="footer__col"><h5>About</h5><a href="/about">About TrustLogix</a><a href="/newsroom">Newsroom</a><a href="/newsroom/press-releases">Press Releases</a><a href="/contact">Contact</a><a href="#">Cookie Preferences</a></div>
+      </div>
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <span class="footer__credit">© 2026 TrustLogix. All rights reserved.</span>
+        <div class="footer__legal"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-service">Terms of Service</a><a href="/security-pledge">Security Pledge</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js?v=259"></script>
+  <script>(function(){var nav=document.getElementById('nav');function onScroll(){nav.classList.toggle('nav--solid',window.scrollY>20);}window.addEventListener('scroll',onScroll,{passive:true});onScroll();})();</script>
+</body>
+</html>
