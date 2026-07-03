@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrustApp — Centralized Control Plane for Application Access Control | TrustLogix</title>
+  <meta name="description" content="TrustApp provides a centralized control plane for managing and enforcing access policies for applications and agents that require access to enterprise data." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css?v=268" />
+  <style>
+    /* =========================================================
+       TrustApp v2 — bento + dark-hero + tabs design
+       ========================================================= */
+
+    :root { --tapp1-ink: #0c3f41; --tapp1-line: #e5edee; }
+
+    /* ---------- HERO — dark, asymmetric two-column ---------- */
+    .tapp1-hero {
+      position: relative;
+      background: var(--eden);
+      color: #fff;
+      padding: 6rem 0 5rem;
+      overflow: hidden;
+    }
+    .tapp1-hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(8,170,195,.28), transparent 42%),
+        radial-gradient(circle at 88% 10%, rgba(111,190,70,.20), transparent 40%),
+        radial-gradient(circle at 60% 90%, rgba(35,173,156,.22), transparent 44%);
+      pointer-events: none;
+    }
+    .tapp1-hero::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      opacity: .05;
+      background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+    .tapp1-hero__grid {
+      position: relative; z-index: 2;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .tapp1-hero__col { min-width: 0; }
+    .tapp1-hero__kicker {
+      display: inline-flex; align-items: center; gap: .55rem;
+      padding: .4rem 1rem; border-radius: 999px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.85);
+      font-family: var(--font-heading); font-weight: 700; font-size: .75rem;
+      letter-spacing: .14em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .tapp1-hero__kicker::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: linear-gradient(135deg,#6fbe46,#08aac3);
+    }
+    .tapp1-hero__kicker b { color: #08aac3; font-weight: 800; }
+    .tapp1-hero__title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 3.8vw, 3.6rem);
+      font-weight: 800; line-height: 1.05; letter-spacing: -.02em;
+      color: #fff; margin: 0 0 1.5rem;
+    }
+    .tapp1-hero__title .grad {
+      background: linear-gradient(120deg,#6fbe46,#23ad9c 45%,#08aac3);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .tapp1-hero__sub {
+      font-family: var(--font-heading); font-weight: 600;
+      font-size: 1.05rem; color: rgba(255,255,255,.75);
+      line-height: 1.55; margin: 0 0 1.4rem; letter-spacing: -.005em;
+    }
+    .tapp1-hero__desc {
+      font-size: 1rem; color: rgba(255,255,255,.72);
+      line-height: 1.75; margin: 0 0 2.2rem; max-width: 44rem;
+    }
+    .tapp1-hero__cta { display: flex; gap: .85rem; flex-wrap: wrap; }
+    .tapp1-btn-w {
+      background: #fff; color: var(--eden);
+      font-family: var(--font-heading); font-weight: 700;
+      padding: .85rem 1.75rem; border-radius: 8px;
+      text-decoration: none; transition: transform .2s;
+      display: inline-flex; align-items: center; gap: .5rem;
+    }
+    .tapp1-btn-w:hover { transform: translateY(-2px); }
+    .tapp1-btn-g {
+      background: rgba(255,255,255,.08); color: #fff;
+      border: 1px solid rgba(255,255,255,.24);
+      font-family: var(--font-heading); font-weight: 700;
+      padding: .85rem 1.75rem; border-radius: 8px;
+      text-decoration: none; transition: background .2s;
+      display: inline-flex; align-items: center; gap: .5rem;
+    }
+    .tapp1-btn-g:hover { background: rgba(255,255,255,.14); }
+
+    /* Metrics strip under CTA */
+    .tapp1-hero__stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2rem; margin-top: 2.75rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .tapp1-hero__stat b {
+      display: block;
+      font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem;
+      background: linear-gradient(120deg,#6fbe46,#23ad9c 45%,#08aac3);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1; margin-bottom: .35rem;
+    }
+    .tapp1-hero__stat span { font-size: .82rem; color: rgba(255,255,255,.65); }
+
+    /* Right column: elevated diagram card */
+    .tapp1-hero__panel {
+      position: relative;
+      background: linear-gradient(160deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 22px;
+      backdrop-filter: blur(6px);
+    }
+    .tapp1-hero__panel-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 4px 8px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 16px;
+    }
+    .tapp1-hero__panel-head .dots i {
+      display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,.15); margin-right: 6px;
+    }
+    .tapp1-hero__panel-head .dots i:first-child { background: #6fbe46; }
+    .tapp1-hero__panel-head .live {
+      font-family: var(--font-heading); font-weight: 700; font-size: .72rem;
+      color: #6fbe46; letter-spacing: .1em; text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: .35rem;
+    }
+    .tapp1-hero__panel-head .live::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%; background: #6fbe46;
+      animation: livepulse 1.6s ease-in-out infinite;
+    }
+    @keyframes livepulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+    .tapp1-hero__panel svg { display: block; width: 100%; height: auto; border-radius: 12px; }
+
+    /* ---------- SECTION SCAFFOLDING ---------- */
+    .tapp1-section { padding: 5.5rem 0; position: relative; }
+    .tapp1-section--tight { padding: 4rem 0; }
+    .tapp1-section--grey { background: #f4f8f8; }
+    .tapp1-eyebrow {
+      display: inline-block;
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--pine-green); margin-bottom: .85rem;
+    }
+    .tapp1-h2 {
+      font-family: var(--font-heading); font-weight: 800;
+      font-size: clamp(2rem, 3vw, 2.6rem); line-height: 1.12; letter-spacing: -.02em;
+      color: var(--eden); margin: 0 0 1rem;
+    }
+    .tapp1-h2 .grad {
+      background: var(--grad-brand);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .tapp1-lead { color: var(--neutral); font-size: 1.05rem; line-height: 1.7; max-width: 50rem; }
+    .tapp1-head--center { text-align: center; margin: 0 auto 3rem; max-width: 52rem; }
+    .tapp1-head--center .tapp1-lead { margin: 0 auto; }
+
+    /* ---------- BENTO GRID (TrustApp Is) ---------- */
+    .tapp1-bento {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 16px;
+    }
+    .tapp1-bento__cell {
+      background: #fff; border: 1px solid var(--tapp1-line);
+      border-radius: 20px; padding: 2rem;
+      position: relative; overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .tapp1-bento__cell:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(12,63,65,.08); }
+    .tapp1-bento__cell--dark {
+      background: var(--eden); color: #fff;
+      grid-column: span 2;
+    }
+    .tapp1-bento__cell--dark::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(circle at 100% 0%, rgba(8,170,195,.35), transparent 55%);
+      pointer-events: none;
+    }
+    .tapp1-bento__cell--dark > * { position: relative; z-index: 1; }
+    .tapp1-bento__cell--dark .tapp1-eyebrow { color: #08aac3; }
+    .tapp1-bento__cell--dark .tapp1-h2 { color: #fff; font-size: 1.75rem; margin-bottom: .5rem; }
+    .tapp1-bento__cell--dark .tapp1-lead { color: rgba(255,255,255,.75); font-size: .95rem; }
+
+    .tapp1-pill {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .tapp1-pill__num {
+      font-family: var(--font-heading); font-weight: 800;
+      font-size: 2.5rem; line-height: 1;
+      background: var(--grad-brand);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .tapp1-pill__title { font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: var(--eden); margin: 0; }
+    .tapp1-pill__desc { color: var(--neutral); font-size: .95rem; line-height: 1.65; margin: 0; }
+    .tapp1-pill__icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(111,190,70,.14), rgba(8,170,195,.14));
+      color: var(--pine-green);
+      display: grid; place-items: center;
+    }
+    .tapp1-pill__icon svg { width: 22px; height: 22px; }
+
+    /* ---------- CHALLENGE — comparison two-panel ---------- */
+    .tapp1-vs {
+      display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.5rem;
+      align-items: stretch;
+    }
+    .tapp1-vs__card {
+      background: #fff; border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--tapp1-line);
+      display: flex; flex-direction: column;
+    }
+    .tapp1-vs__head {
+      padding: 1.35rem 1.75rem;
+      font-family: var(--font-heading); font-weight: 800;
+      display: flex; align-items: center; gap: .65rem;
+      border-bottom: 1px solid var(--tapp1-line);
+    }
+    .tapp1-vs__card--good .tapp1-vs__head { background: var(--mantis-lighter); color: #3e7a26; }
+    .tapp1-vs__card--bad  .tapp1-vs__head { background: #fbeceb; color: #b23b33; }
+    .tapp1-vs__head-tag {
+      font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+      padding: .25rem .55rem; border-radius: 4px;
+      background: rgba(255,255,255,.55);
+    }
+    .tapp1-vs__list {
+      padding: 1.5rem 1.75rem; display: grid; gap: 1rem;
+    }
+    .tapp1-vs__item {
+      display: grid; grid-template-columns: 24px 1fr; gap: .75rem;
+      align-items: start;
+    }
+    .tapp1-vs__item svg { width: 22px; height: 22px; margin-top: 2px; flex: none; }
+    .tapp1-vs__item b { font-family: var(--font-heading); font-weight: 700; color: var(--eden); font-size: .98rem; display: block; margin-bottom: .15rem; }
+    .tapp1-vs__item span { font-size: .88rem; color: var(--neutral); line-height: 1.55; }
+    .tapp1-vs__arrow {
+      display: grid; place-items: center; width: 56px;
+      color: var(--pine-green);
+    }
+    .tapp1-vs__arrow svg { width: 42px; height: 42px; }
+
+    /* ---------- HOW IT WORKS — tab component ---------- */
+    .tapp1-tabs {
+      background: #fff; border: 1px solid var(--tapp1-line);
+      border-radius: 24px; overflow: hidden;
+    }
+    .tapp1-tabs__nav {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      background: linear-gradient(180deg, #f4f8f8, #f9fafa);
+      border-bottom: 1px solid var(--tapp1-line);
+    }
+    .tapp1-tab-btn {
+      appearance: none; border: 0; background: transparent;
+      padding: 1.5rem 1.5rem;
+      text-align: left; cursor: pointer;
+      display: flex; flex-direction: column; gap: .35rem;
+      border-right: 1px solid var(--tapp1-line);
+      transition: background .2s;
+      position: relative;
+    }
+    .tapp1-tab-btn:last-child { border-right: 0; }
+    .tapp1-tab-btn:hover { background: rgba(255,255,255,.6); }
+    .tapp1-tab-btn__num {
+      font-family: var(--font-heading); font-weight: 800; font-size: .72rem;
+      letter-spacing: .18em; color: var(--neutral);
+    }
+    .tapp1-tab-btn__title {
+      font-family: var(--font-heading); font-weight: 800; font-size: 1.05rem;
+      color: var(--eden);
+    }
+    .tapp1-tab-btn.is-active {
+      background: #fff;
+    }
+    .tapp1-tab-btn.is-active::before {
+      content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px;
+      background: var(--grad-brand);
+    }
+    .tapp1-tab-btn.is-active .tapp1-tab-btn__num {
+      background: var(--grad-brand);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .tapp1-tab-pane {
+      display: none;
+      padding: 3rem;
+      grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: center;
+    }
+    .tapp1-tab-pane.is-active { display: grid; }
+    .tapp1-tab-pane__text h3 {
+      font-family: var(--font-heading); font-weight: 800;
+      font-size: 1.75rem; color: var(--eden); line-height: 1.2; margin: 0 0 1rem;
+    }
+    .tapp1-tab-pane__text p {
+      color: var(--neutral-darkest); font-size: 1rem; line-height: 1.7; margin: 0;
+    }
+    .tapp1-tab-pane__text ul {
+      list-style: none; padding: 0; margin: 1.5rem 0 0;
+      display: grid; gap: .65rem;
+    }
+    .tapp1-tab-pane__text li {
+      display: flex; align-items: flex-start; gap: .6rem;
+      font-size: .95rem; color: var(--eden);
+    }
+    .tapp1-tab-pane__text li svg { width: 18px; height: 18px; flex: none; color: var(--pine-green); margin-top: 3px; }
+    .tapp1-tab-pane__visual {
+      background: linear-gradient(140deg, #f4fbf8 0%, #eaf4f3 100%);
+      border-radius: 18px; padding: 24px;
+      border: 1px solid var(--tapp1-line);
+    }
+    .tapp1-tab-pane__visual svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+
+    /* ---------- BENEFITS — big numbered rows ---------- */
+    .tapp1-benefits {
+      display: grid; gap: 1rem;
+    }
+    .tapp1-benefit {
+      display: grid; grid-template-columns: 88px 1fr auto; gap: 2rem;
+      align-items: center;
+      padding: 2rem 2.25rem;
+      background: #fff; border: 1px solid var(--tapp1-line);
+      border-radius: 20px;
+      position: relative; overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .tapp1-benefit::before {
+      content: "";
+      position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      background: var(--grad-brand); opacity: 0; transition: opacity .25s;
+    }
+    .tapp1-benefit:hover { transform: translateX(4px); box-shadow: 0 8px 30px rgba(12,63,65,.06); }
+    .tapp1-benefit:hover::before { opacity: 1; }
+    .tapp1-benefit__num {
+      font-family: var(--font-heading); font-weight: 800; font-size: 3rem;
+      background: var(--grad-brand);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .tapp1-benefit__text h4 {
+      font-family: var(--font-heading); font-weight: 800; font-size: 1.4rem;
+      color: var(--eden); margin: 0 0 .5rem;
+    }
+    .tapp1-benefit__text p {
+      color: var(--neutral); font-size: 1rem; line-height: 1.65; margin: 0;
+    }
+    .tapp1-benefit__glyph {
+      width: 56px; height: 56px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(111,190,70,.14), rgba(8,170,195,.14));
+      color: var(--pine-green);
+      display: grid; place-items: center;
+    }
+    .tapp1-benefit__glyph svg { width: 28px; height: 28px; }
+
+    /* ---------- QUOTE STRIP ---------- */
+    .tapp1-quote {
+      background: var(--eden); color: #fff;
+      padding: 4.5rem 0;
+      position: relative; overflow: hidden;
+    }
+    .tapp1-quote::before {
+      content: ""; position: absolute; inset: 0; opacity: .06;
+      background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+    .tapp1-quote__body {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: auto 1fr; gap: 2.5rem;
+      align-items: center; max-width: 68rem; margin: 0 auto;
+    }
+    .tapp1-quote__mark {
+      font-family: var(--font-heading); font-weight: 800; font-size: 6rem;
+      line-height: .75;
+      background: var(--grad-brand);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .tapp1-quote__text {
+      font-family: var(--font-heading); font-weight: 600;
+      font-size: 1.6rem; line-height: 1.4; color: #fff;
+      margin: 0 0 1.25rem;
+    }
+    .tapp1-quote__text b { font-weight: 800; color: #6fbe46; }
+    .tapp1-quote__foot { color: rgba(255,255,255,.6); font-size: .95rem; }
+    .tapp1-quote__foot b { color: #fff; font-weight: 700; }
+
+    /* ---------- FAQ ---------- */
+    .tapp1-faq {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: start;
+    }
+    .tapp1-faq__list { display: flex; flex-direction: column; gap: .75rem; }
+    .tapp1-faq__item {
+      border: 1px solid var(--tapp1-line); border-radius: 14px;
+      background: #fff; overflow: hidden;
+      transition: border-color .25s;
+    }
+    .tapp1-faq__item.open {
+      border-color: transparent;
+      background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#6fbe46,#23ad9c 45%,#08aac3) border-box;
+    }
+    .tapp1-faq__q {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 20px; cursor: pointer; user-select: none;
+      font-family: var(--font-heading); font-weight: 700; font-size: 1.05rem;
+      color: var(--eden);
+    }
+    .tapp1-faq__q .plus {
+      width: 24px; height: 24px; border-radius: 50%;
+      display: grid; place-items: center; color: var(--pine-green);
+      transition: transform .25s;
+    }
+    .tapp1-faq__q .plus svg { width: 15px; height: 15px; }
+    .tapp1-faq__item.open .tapp1-faq__q .plus { transform: rotate(180deg); }
+    .tapp1-faq__a {
+      display: none; padding: 0 20px 20px;
+      font-size: 1rem; color: var(--neutral-darkest); line-height: 1.7;
+    }
+    .tapp1-faq__item.open .tapp1-faq__a { display: block; }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1024px) {
+      .tapp1-hero__grid { grid-template-columns: 1fr; gap: 3rem; }
+      .tapp1-bento { grid-template-columns: 1fr 1fr; }
+      .tapp1-bento__cell--dark { grid-column: span 2; }
+      .tapp1-vs { grid-template-columns: 1fr; }
+      .tapp1-vs__arrow { justify-self: center; }
+      .tapp1-vs__arrow svg { transform: rotate(90deg); }
+      .tapp1-tab-pane { grid-template-columns: 1fr; gap: 2rem; }
+      .tapp1-tabs__nav { grid-template-columns: repeat(2, 1fr); }
+      .tapp1-tab-btn:nth-child(2) { border-right: 0; }
+      .tapp1-tab-btn:nth-child(-n+2) { border-bottom: 1px solid var(--tapp1-line); }
+      .tapp1-faq { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 720px) {
+      .tapp1-hero { padding: 4rem 0 3rem; }
+      .tapp1-hero__stats { grid-template-columns: 1fr; gap: 1rem; }
+      .tapp1-bento, .tapp1-bento__cell--dark { grid-column: auto; }
+      .tapp1-bento { grid-template-columns: 1fr; }
+      .tapp1-tabs__nav { grid-template-columns: 1fr; }
+      .tapp1-tab-btn { border-right: 0; border-bottom: 1px solid var(--tapp1-line); }
+      .tapp1-benefit { grid-template-columns: 64px 1fr; }
+      .tapp1-benefit__glyph { display: none; }
+      .tapp1-benefit__num { font-size: 2.25rem; }
+      .tapp1-quote__body { grid-template-columns: 1fr; text-align: left; }
+      .tapp1-quote__text { font-size: 1.25rem; }
+      .tapp1-tab-pane { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="TrustLogix home">
+        <img src="../../trustlogix-logo.svg" alt="TrustLogix" class="nav__logo-img" width="200" height="34" />
+      </a>
+      <nav class="nav__menu" aria-label="Primary">
+        <div class="nav__item">
+          <a href="/platform" class="nav__link"><span class="nav__swap"><span>Platform</span><span aria-hidden="true">Platform</span></span>
+            <svg class="nav__chevron" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M255.998 406.054C246.292 406.054 237.469 402.524 230.41 395.466L9.81896 166.051C-3.41649 151.933 -3.41649 129.874 10.7013 115.756C24.8191 102.521 46.8782 102.521 60.996 116.639L255.998 319.582L451 116.639C464.236 102.521 487.177 102.521 501.295 115.756C515.413 128.992 515.413 151.933 502.178 166.051L281.587 395.466C274.528 402.524 265.704 406.054 255.998 406.054Z"/></svg>
+          </a>
+          <div class="nav__dropdown">
+            <a href="/platform" class="nav__dropdown-overview"><span class="nav__menu-label">Overview</span><span class="nav__dropdown-desc">Our platform architecture, core modules, and benefits.</span></a>
+            <a href="/platform/trustai">– TrustAI</a>
+            <a href="/platform/trustapp">– TrustApp</a>
+            <a href="/platform/trustdspm">– TrustDSPM</a>
+            <a href="/platform/trustaccess">– TrustAccess</a>
+          </div>
+        </div>
+        <div class="nav__item"><a href="/partners" class="nav__link"><span class="nav__swap"><span>Partners</span><span aria-hidden="true">Partners</span></span></a></div>
+        <div class="nav__item"><a href="/pricing" class="nav__link"><span class="nav__swap"><span>Pricing</span><span aria-hidden="true">Pricing</span></span></a></div>
+        <div class="nav__item"><a href="/resources" class="nav__link"><span class="nav__swap"><span>Resources</span><span aria-hidden="true">Resources</span></span></a></div>
+        <div class="nav__item"><a href="/about" class="nav__link"><span class="nav__swap"><span>About</span><span aria-hidden="true">About</span></span></a></div>
+      </nav>
+      <div class="nav__actions">
+        <a href="/get-started" class="btn btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+        <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO (dark, asymmetric) ============ -->
+    <section class="tapp1-hero">
+      <div class="container tapp1-hero__grid">
+        <div class="tapp1-hero__col">
+          <span class="tapp1-hero__kicker"><b>TrustApp</b> · Application Access Control</span>
+          <h1 class="tapp1-hero__title">Centralized Control Plane for <span class="grad">Every App &amp; AI Agent</span></h1>
+          <p class="tapp1-hero__sub">Unified security and governance for all application and agent deployment scenarios.</p>
+          <p class="tapp1-hero__desc">Organizations are increasingly building custom applications and AI agents that interact directly with critical business systems and APIs to ensure low latency and high architectural flexibility. TrustApp provides a centralized control plane for managing and enforcing access policies for every application and agent that touches enterprise data.</p>
+          <div class="tapp1-hero__cta">
+            <a href="/get-started" class="tapp1-btn-w">Get Started
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#how" class="tapp1-btn-g">See how it works</a>
+          </div>
+          <div class="tapp1-hero__stats">
+            <div class="tapp1-hero__stat"><b>Proxyless</b><span>No latency, no data-path hop</span></div>
+            <div class="tapp1-hero__stat"><b>Unified</b><span>One policy, every application</span></div>
+            <div class="tapp1-hero__stat"><b>Real-time</b><span>Decisions in milliseconds</span></div>
+          </div>
+        </div>
+
+        <!-- Right column: dashboard panel -->
+        <div class="tapp1-hero__col">
+          <div class="tapp1-hero__panel">
+            <div class="tapp1-hero__panel-head">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="live">Live · 3,214 dec/min</span>
+            </div>
+            <svg viewBox="0 0 540 400" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="tapp1HeroG" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#08aac3"/><stop offset="0.5" stop-color="#23ad9c"/><stop offset="1" stop-color="#6fbe46"/>
+                </linearGradient>
+              </defs>
+              <rect x="0" y="0" width="540" height="400" fill="#0f4a4d"/>
+
+              <!-- LEFT column: apps -->
+              <g font-family="Manrope, sans-serif">
+                <text x="20" y="26" font-weight="800" font-size="10" letter-spacing="2" fill="rgba(255,255,255,.5)">APPS &amp; AGENTS</text>
+                <g>
+                  <rect x="16" y="40" width="150" height="52" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.12)"/>
+                  <circle cx="34" cy="66" r="8" fill="#08aac3"/>
+                  <text x="52" y="62" font-weight="800" font-size="12" fill="#fff">order-svc</text>
+                  <text x="52" y="80" font-size="10" fill="rgba(255,255,255,.5)">REST</text>
+                  <text x="158" y="72" text-anchor="end" font-weight="700" font-size="9" fill="#6fbe46">✓</text>
+                </g>
+                <g>
+                  <rect x="16" y="104" width="150" height="52" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.12)"/>
+                  <circle cx="34" cy="130" r="8" fill="#23ad9c"/>
+                  <text x="52" y="126" font-weight="800" font-size="12" fill="#fff">insights</text>
+                  <text x="52" y="144" font-size="10" fill="rgba(255,255,255,.5)">SDK</text>
+                  <text x="158" y="136" text-anchor="end" font-weight="700" font-size="9" fill="#6fbe46">✓</text>
+                </g>
+                <g>
+                  <rect x="16" y="168" width="150" height="52" rx="10" fill="rgba(216,88,79,.12)" stroke="rgba(216,88,79,.35)"/>
+                  <circle cx="34" cy="194" r="8" fill="#d8584f"/>
+                  <text x="52" y="190" font-weight="800" font-size="12" fill="#fff">support</text>
+                  <text x="52" y="208" font-size="10" fill="rgba(255,255,255,.5)">SDK</text>
+                  <text x="158" y="200" text-anchor="end" font-weight="700" font-size="9" fill="#d8584f">✗</text>
+                </g>
+                <g>
+                  <rect x="16" y="232" width="150" height="52" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.12)"/>
+                  <circle cx="34" cy="258" r="8" fill="#08aac3"/>
+                  <text x="52" y="254" font-weight="800" font-size="12" fill="#fff">reporting</text>
+                  <text x="52" y="272" font-size="10" fill="rgba(255,255,255,.5)">gRPC</text>
+                  <text x="158" y="264" text-anchor="end" font-weight="700" font-size="9" fill="#6fbe46">✓</text>
+                </g>
+              </g>
+
+              <!-- CENTER: TrustApp core -->
+              <g>
+                <rect x="188" y="60" width="164" height="270" rx="20" fill="url(#tapp1HeroG)" opacity="0.14" stroke="rgba(35,173,156,.55)" stroke-width="1.5"/>
+                <rect x="202" y="74" width="136" height="242" rx="14" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.16)"/>
+                <text x="270" y="102" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="15" fill="#fff">TrustApp</text>
+                <text x="270" y="122" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="700" font-size="8.5" letter-spacing="2" fill="#08aac3">POLICY DECISION POINT</text>
+                <line x1="216" y1="140" x2="324" y2="140" stroke="rgba(255,255,255,.12)"/>
+                <g font-family="Roboto Mono, monospace" font-size="9" fill="rgba(255,255,255,.75)">
+                  <text x="270" y="160" text-anchor="middle">actor + app + resource</text>
+                  <text x="270" y="180" text-anchor="middle">↓ policy eval</text>
+                </g>
+                <!-- Central circle -->
+                <circle cx="270" cy="230" r="34" fill="rgba(111,190,70,.12)"/>
+                <circle cx="270" cy="230" r="24" fill="rgba(111,190,70,.28)"/>
+                <circle cx="270" cy="230" r="14" fill="#6fbe46"/>
+                <path d="M263 230 L268 235 L278 224" stroke="#0c3f41" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="270" y="288" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="10" fill="#6fbe46">11 ms · avg</text>
+              </g>
+
+              <!-- RIGHT column: enterprise -->
+              <g font-family="Manrope, sans-serif">
+                <text x="374" y="26" font-weight="800" font-size="10" letter-spacing="2" fill="rgba(255,255,255,.5)">ENTERPRISE</text>
+                <g>
+                  <rect x="374" y="40" width="150" height="52" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.12)"/>
+                  <text x="390" y="62" font-weight="800" font-size="12" fill="#fff">Entra · Okta</text>
+                  <text x="390" y="80" font-size="10" fill="rgba(255,255,255,.5)">Identity</text>
+                </g>
+                <g>
+                  <rect x="374" y="104" width="150" height="52" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.12)"/>
+                  <text x="390" y="126" font-weight="800" font-size="12" fill="#fff">Snowflake</text>
+                  <text x="390" y="144" font-size="10" fill="rgba(255,255,255,.5)">Enterprise data</text>
+                </g>
+                <g>
+                  <rect x="374" y="168" width="150" height="52" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.12)"/>
+                  <text x="390" y="190" font-weight="800" font-size="12" fill="#fff">Databricks</text>
+                  <text x="390" y="208" font-size="10" fill="rgba(255,255,255,.5)">Lakehouse</text>
+                </g>
+                <g>
+                  <rect x="374" y="232" width="150" height="52" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.12)"/>
+                  <text x="390" y="254" font-weight="800" font-size="12" fill="#fff">Splunk</text>
+                  <text x="390" y="272" font-size="10" fill="rgba(255,255,255,.5)">SIEM · audit</text>
+                </g>
+              </g>
+
+              <!-- Arrows -->
+              <g stroke="rgba(255,255,255,.22)" stroke-width="1.4" fill="none">
+                <path d="M170 66 L188 140"/>
+                <path d="M170 130 L188 170"/>
+                <path d="M170 194 L188 200"/>
+                <path d="M170 258 L188 220"/>
+              </g>
+              <g stroke="rgba(255,255,255,.22)" stroke-width="1.4" fill="none">
+                <path d="M352 140 L374 66"/>
+                <path d="M352 170 L374 130"/>
+                <path d="M352 200 L374 194"/>
+                <path d="M352 220 L374 258"/>
+              </g>
+
+              <!-- Footer -->
+              <line x1="16" y1="322" x2="524" y2="322" stroke="rgba(255,255,255,.08)"/>
+              <text x="20" y="348" font-family="Manrope, sans-serif" font-weight="800" font-size="9" letter-spacing="2" fill="rgba(255,255,255,.5)">PROXYLESS  ·  UNIFIED POLICY  ·  REAL-TIME  ·  AUDIT-READY</text>
+              <text x="520" y="348" text-anchor="end" font-family="Manrope, sans-serif" font-weight="800" font-size="9" fill="#6fbe46">● ONLINE</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRUSTAPP IS — BENTO ============ -->
+    <section class="tapp1-section tapp1-section--grey">
+      <div class="container">
+        <div class="tapp1-bento">
+          <!-- Big dark cell -->
+          <div class="tapp1-bento__cell tapp1-bento__cell--dark">
+            <span class="tapp1-eyebrow">TrustApp Is</span>
+            <h2 class="tapp1-h2">Three principles. <span class="grad" style="background:linear-gradient(120deg,#6fbe46,#23ad9c 45%,#08aac3); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;">Every deployment.</span></h2>
+            <p class="tapp1-lead">Consistent security and governance across every application and agent deployment scenario—without an in-path proxy or per-app policy drift.</p>
+          </div>
+          <!-- Third top cell -->
+          <div class="tapp1-bento__cell" style="display:flex; align-items:center; justify-content:center; text-align:center;">
+            <div>
+              <div style="font-family:var(--font-heading); font-weight:800; font-size:3rem; line-height:1; background:var(--grad-brand); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:.35rem;">1</div>
+              <div style="font-family:var(--font-heading); font-weight:800; font-size:1.1rem; color:var(--eden);">Control plane</div>
+              <div style="font-size:.9rem; color:var(--neutral); margin-top:.35rem;">Every app, every agent, every request.</div>
+            </div>
+          </div>
+          <!-- Bottom row: 3 pillar cards -->
+          <div class="tapp1-bento__cell tapp1-pill">
+            <div class="tapp1-pill__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7v8l10-12h-7z"/></svg>
+            </div>
+            <h3 class="tapp1-pill__title">Proxyless</h3>
+            <p class="tapp1-pill__desc">No latency and deployment complexity. Nothing sits inline between your applications and their data path.</p>
+          </div>
+          <div class="tapp1-bento__cell tapp1-pill">
+            <div class="tapp1-pill__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg>
+            </div>
+            <h3 class="tapp1-pill__title">Unified Policy</h3>
+            <p class="tapp1-pill__desc">Centralized enforcement integrating with IAM, SIEM, and data governance platforms—one rule set, every application.</p>
+          </div>
+          <div class="tapp1-bento__cell tapp1-pill">
+            <div class="tapp1-pill__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7v5c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V7l-8-4z"/></svg>
+            </div>
+            <h3 class="tapp1-pill__title">Built for Enterprise</h3>
+            <p class="tapp1-pill__desc">Designed to support modern application and agent deployment scenarios—direct-to-data services and multi-agent workflows alike.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE CHALLENGE — comparison ============ -->
+    <section class="tapp1-section">
+      <div class="container">
+        <div class="tapp1-head--center">
+          <span class="tapp1-eyebrow">The Challenge</span>
+          <h2 class="tapp1-h2">Pitfalls of <span class="grad">Direct-to-Data Architecture</span></h2>
+          <p class="tapp1-lead">Many organizations deliberately avoid MCP or proxy architecture for production applications to gain speed and simplicity. Without a governance layer, those benefits come with real disadvantages:</p>
+        </div>
+        <div class="tapp1-vs">
+          <div class="tapp1-vs__card tapp1-vs__card--good">
+            <div class="tapp1-vs__head">
+              <span class="tapp1-vs__head-tag">Direct-to-Data</span>
+              What you gain
+            </div>
+            <div class="tapp1-vs__list">
+              <div class="tapp1-vs__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#3e7a26" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <div><b>Lower latency</b><span>No proxy in the request path.</span></div>
+              </div>
+              <div class="tapp1-vs__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#3e7a26" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <div><b>Simpler architecture</b><span>Fewer moving pieces, fewer failure modes.</span></div>
+              </div>
+              <div class="tapp1-vs__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#3e7a26" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <div><b>Fewer infrastructure components</b><span>Less to run, less to operate.</span></div>
+              </div>
+              <div class="tapp1-vs__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#3e7a26" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <div><b>Direct integration with enterprise systems</b><span>Apps talk straight to source.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="tapp1-vs__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+          <div class="tapp1-vs__card tapp1-vs__card--bad">
+            <div class="tapp1-vs__head">
+              <span class="tapp1-vs__head-tag">Without governance</span>
+              What you lose
+            </div>
+            <div class="tapp1-vs__list">
+              <div class="tapp1-vs__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#b23b33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+                <div><b>Embedded Security</b><span>Developers embed rules that become difficult to audit, modify, and govern.</span></div>
+              </div>
+              <div class="tapp1-vs__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#b23b33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+                <div><b>Fragmented Data Policies</b><span>Applications evolve independently, creating inconsistent policies across the enterprise.</span></div>
+              </div>
+              <div class="tapp1-vs__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#b23b33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+                <div><b>No Centralized Visibility</b><span>No unified insights into who accessed what data and why.</span></div>
+              </div>
+              <div class="tapp1-vs__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#b23b33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+                <div><b>Complex Policy Update</b><span>Security and compliance changes require updates to application code.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS — TABS ============ -->
+    <section class="tapp1-section tapp1-section--grey" id="how">
+      <div class="container">
+        <div class="tapp1-head--center">
+          <span class="tapp1-eyebrow">How It Works</span>
+          <h2 class="tapp1-h2">From access request to policy decision in <span class="grad">four easy steps</span></h2>
+          <p class="tapp1-lead">TrustApp serves as a centralized policy decision point for enterprise applications. Applications query TrustApp during every authorization request—ensuring consistent security across custom applications and enterprise data platforms.</p>
+        </div>
+
+        <div class="tapp1-tabs" role="tablist">
+          <div class="tapp1-tabs__nav">
+            <button class="tapp1-tab-btn is-active" role="tab" onclick="tapp1Tab(this, 1)">
+              <span class="tapp1-tab-btn__num">STEP 01</span>
+              <span class="tapp1-tab-btn__title">Register</span>
+            </button>
+            <button class="tapp1-tab-btn" role="tab" onclick="tapp1Tab(this, 2)">
+              <span class="tapp1-tab-btn__num">STEP 02</span>
+              <span class="tapp1-tab-btn__title">Define Policies</span>
+            </button>
+            <button class="tapp1-tab-btn" role="tab" onclick="tapp1Tab(this, 3)">
+              <span class="tapp1-tab-btn__num">STEP 03</span>
+              <span class="tapp1-tab-btn__title">Evaluate</span>
+            </button>
+            <button class="tapp1-tab-btn" role="tab" onclick="tapp1Tab(this, 4)">
+              <span class="tapp1-tab-btn__num">STEP 04</span>
+              <span class="tapp1-tab-btn__title">Audit</span>
+            </button>
+          </div>
+
+          <!-- PANE 1 -->
+          <div class="tapp1-tab-pane is-active" data-pane="1">
+            <div class="tapp1-tab-pane__text">
+              <h3>Register applications and enterprise resources</h3>
+              <p>Connect applications using REST APIs and register the relevant protected resources. TrustApp becomes the single source of truth for every application and every resource that needs governed access.</p>
+              <ul>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Connect via REST, SDK, or gRPC</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Register protected resources per app</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Onboards in minutes, not sprints</li>
+              </ul>
+            </div>
+            <div class="tapp1-tab-pane__visual">
+              <svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="480" height="320" fill="#fff" rx="10"/>
+                <rect x="0" y="0" width="480" height="40" fill="#f4fbf8"/>
+                <text x="20" y="26" font-family="Manrope, sans-serif" font-weight="800" font-size="13" fill="#0c3f41">Registered Apps &amp; Resources</text>
+                <text x="460" y="26" text-anchor="end" font-family="Manrope, sans-serif" font-weight="700" font-size="11" fill="#3e7a26">● 4 apps</text>
+
+                <g transform="translate(20, 56)" font-family="Roboto Mono, monospace" font-size="11">
+                  <rect x="0" y="0" width="440" height="46" rx="8" fill="#fff" stroke="#e5edee"/>
+                  <rect x="12" y="14" width="18" height="18" rx="4" fill="#e0f4f7"/>
+                  <text x="21" y="27" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="10" fill="#0e6d7a">O</text>
+                  <text x="42" y="22" font-family="Manrope, sans-serif" font-weight="800" fill="#0c3f41">order-service</text>
+                  <text x="42" y="38" fill="#5b6b6e" font-size="10">POST /authz  ·  orders.customer_pii</text>
+                  <text x="430" y="30" text-anchor="end" font-family="Manrope, sans-serif" font-weight="700" font-size="10" fill="#3e7a26">REST</text>
+
+                  <rect x="0" y="56" width="440" height="46" rx="8" fill="#fff" stroke="#e5edee"/>
+                  <rect x="12" y="70" width="18" height="18" rx="4" fill="#eef7f6"/>
+                  <text x="21" y="83" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="10" fill="#0e6d7a">I</text>
+                  <text x="42" y="78" font-family="Manrope, sans-serif" font-weight="800" fill="#0c3f41">insights-agent</text>
+                  <text x="42" y="94" fill="#5b6b6e" font-size="10">POST /authz  ·  sales.pipeline</text>
+                  <text x="430" y="86" text-anchor="end" font-family="Manrope, sans-serif" font-weight="700" font-size="10" fill="#3e7a26">SDK</text>
+
+                  <rect x="0" y="112" width="440" height="46" rx="8" fill="#fff" stroke="#e5edee"/>
+                  <rect x="12" y="126" width="18" height="18" rx="4" fill="#e0f4f7"/>
+                  <text x="21" y="139" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="10" fill="#0e6d7a">R</text>
+                  <text x="42" y="134" font-family="Manrope, sans-serif" font-weight="800" fill="#0c3f41">reporting-svc</text>
+                  <text x="42" y="150" fill="#5b6b6e" font-size="10">POST /authz  ·  finance.gl</text>
+                  <text x="430" y="142" text-anchor="end" font-family="Manrope, sans-serif" font-weight="700" font-size="10" fill="#3e7a26">gRPC</text>
+
+                  <rect x="0" y="168" width="440" height="46" rx="8" fill="#fff" stroke="#e5edee"/>
+                  <rect x="12" y="182" width="18" height="18" rx="4" fill="#eef7f6"/>
+                  <text x="21" y="195" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="10" fill="#0e6d7a">S</text>
+                  <text x="42" y="190" font-family="Manrope, sans-serif" font-weight="800" fill="#0c3f41">support-agent</text>
+                  <text x="42" y="206" fill="#5b6b6e" font-size="10">POST /authz  ·  billing.payments</text>
+                  <text x="430" y="198" text-anchor="end" font-family="Manrope, sans-serif" font-weight="700" font-size="10" fill="#3e7a26">SDK</text>
+                </g>
+
+                <g transform="translate(20, 288)">
+                  <text font-family="Manrope, sans-serif" font-weight="800" font-size="10" letter-spacing="2" fill="#5b6b6e">REGISTERED VIA REST API</text>
+                  <text x="440" text-anchor="end" font-family="Manrope, sans-serif" font-weight="800" font-size="10" fill="#3e7a26">4 APPS · 12 RESOURCES</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- PANE 2 -->
+          <div class="tapp1-tab-pane" data-pane="2">
+            <div class="tapp1-tab-pane__text">
+              <h3>Define centralized policies</h3>
+              <p>Connect users, applications, and resource attributes from identity providers such as Microsoft Entra or Okta, then define centralized authorization policies. Author policy once—every downstream application evaluates against the same rule set.</p>
+              <ul>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Attribute-based authorization (ABAC / RBAC / PBAC)</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Native integration with Entra &amp; Okta</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>One policy, every app</li>
+              </ul>
+            </div>
+            <div class="tapp1-tab-pane__visual">
+              <svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="480" height="320" fill="#fff" rx="10"/>
+                <rect x="0" y="0" width="480" height="40" fill="#f4fbf8"/>
+                <text x="20" y="26" font-family="Manrope, sans-serif" font-weight="800" font-size="13" fill="#0c3f41">Policy Editor · finance-read</text>
+                <text x="460" y="26" text-anchor="end" font-family="Manrope, sans-serif" font-weight="700" font-size="11" fill="#3e7a26">● SAVED</text>
+
+                <g transform="translate(20, 60)">
+                  <text font-family="Manrope, sans-serif" font-weight="800" font-size="10" letter-spacing="2" fill="#5b6b6e">SUBJECT</text>
+                  <rect x="0" y="10" width="440" height="40" rx="8" fill="#fff" stroke="#e5edee"/>
+                  <text x="14" y="34" font-family="JetBrains Mono, monospace" font-size="11" fill="#0c3f41">app == "order-service" &amp;&amp; role IN ["ops","support"]</text>
+                </g>
+                <g transform="translate(20, 118)">
+                  <text font-family="Manrope, sans-serif" font-weight="800" font-size="10" letter-spacing="2" fill="#5b6b6e">RESOURCE</text>
+                  <rect x="0" y="10" width="440" height="40" rx="8" fill="#fff" stroke="#e5edee"/>
+                  <text x="14" y="34" font-family="JetBrains Mono, monospace" font-size="11" fill="#0c3f41">resource == "orders.customer_pii" &amp;&amp; classif &lt;= "confidential"</text>
+                </g>
+                <g transform="translate(20, 176)">
+                  <text font-family="Manrope, sans-serif" font-weight="800" font-size="10" letter-spacing="2" fill="#5b6b6e">CONDITION</text>
+                  <rect x="0" y="10" width="440" height="40" rx="8" fill="#fff" stroke="#e5edee"/>
+                  <text x="14" y="34" font-family="JetBrains Mono, monospace" font-size="11" fill="#0c3f41">context.region == "US" &amp;&amp; time.hour BETWEEN 6 AND 22</text>
+                </g>
+                <g transform="translate(20, 240)">
+                  <text font-family="Manrope, sans-serif" font-weight="800" font-size="10" letter-spacing="2" fill="#3e7a26">DECISION</text>
+                  <rect x="0" y="10" width="440" height="46" rx="8" fill="#eef7f0" stroke="#c5e0b6"/>
+                  <text x="14" y="38" font-family="Manrope, sans-serif" font-weight="800" font-size="14" fill="#3e7a26">allow  ·  audit=verbose  ·  ttl=60s</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- PANE 3 -->
+          <div class="tapp1-tab-pane" data-pane="3">
+            <div class="tapp1-tab-pane__text">
+              <h3>Evaluate access requests in real-time</h3>
+              <p>Every application request is evaluated in real-time against centralized authorization policies. Decisions return in milliseconds—no proxy overhead, no divergence between apps, no runtime surprises.</p>
+              <ul>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Sub-15 ms decisions (P50)</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Real-time context evaluation</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Consistent decisions across every app</li>
+              </ul>
+            </div>
+            <div class="tapp1-tab-pane__visual">
+              <svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="480" height="320" fill="#fff" rx="10"/>
+                <rect x="0" y="0" width="480" height="40" fill="#f4fbf8"/>
+                <text x="20" y="26" font-family="Manrope, sans-serif" font-weight="800" font-size="13" fill="#0c3f41">Live Decisions</text>
+                <text x="460" y="26" text-anchor="end" font-family="Manrope, sans-serif" font-weight="700" font-size="11" fill="#3e7a26">● 3,214 / min</text>
+
+                <g transform="translate(20, 56)" font-family="Roboto, sans-serif" font-size="11">
+                  <g>
+                    <rect x="0" y="0" width="440" height="42" rx="10" fill="#f4fbf8" stroke="#d0eae6"/>
+                    <rect x="12" y="13" width="42" height="16" rx="4" fill="#e2f2da"/>
+                    <text x="33" y="24" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="8" fill="#3e7a26">ALLOW</text>
+                    <text x="66" y="26" fill="#0c3f41"><tspan font-weight="700">order-service</tspan> · orders.customer_pii</text>
+                    <text x="430" y="26" text-anchor="end" font-family="Manrope, sans-serif" font-weight="700" font-size="10" fill="#3e7a26">12 ms</text>
+                  </g>
+                  <g transform="translate(0, 54)">
+                    <rect x="0" y="0" width="440" height="42" rx="10" fill="#fbf4f3" stroke="#e5d1cf"/>
+                    <rect x="12" y="13" width="42" height="16" rx="4" fill="#f9e3e1"/>
+                    <text x="33" y="24" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="8" fill="#b23b33">DENY</text>
+                    <text x="66" y="26" fill="#0c3f41"><tspan font-weight="700">support-agent</tspan> · billing.payments</text>
+                    <text x="430" y="26" text-anchor="end" font-family="Manrope, sans-serif" font-weight="700" font-size="10" fill="#b23b33">9 ms</text>
+                  </g>
+                  <g transform="translate(0, 108)">
+                    <rect x="0" y="0" width="440" height="42" rx="10" fill="#f4fbf8" stroke="#d0eae6"/>
+                    <rect x="12" y="13" width="42" height="16" rx="4" fill="#e2f2da"/>
+                    <text x="33" y="24" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="8" fill="#3e7a26">ALLOW</text>
+                    <text x="66" y="26" fill="#0c3f41"><tspan font-weight="700">insights-agent</tspan> · sales.pipeline · EMEA</text>
+                    <text x="430" y="26" text-anchor="end" font-family="Manrope, sans-serif" font-weight="700" font-size="10" fill="#3e7a26">11 ms</text>
+                  </g>
+                  <g transform="translate(0, 162)">
+                    <rect x="0" y="0" width="440" height="42" rx="10" fill="#f4fbf8" stroke="#d0eae6"/>
+                    <rect x="12" y="13" width="42" height="16" rx="4" fill="#e2f2da"/>
+                    <text x="33" y="24" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="8" fill="#3e7a26">ALLOW</text>
+                    <text x="66" y="26" fill="#0c3f41"><tspan font-weight="700">reporting-svc</tspan> · finance.gl</text>
+                    <text x="430" y="26" text-anchor="end" font-family="Manrope, sans-serif" font-weight="700" font-size="10" fill="#3e7a26">14 ms</text>
+                  </g>
+                </g>
+
+                <g transform="translate(20, 240)">
+                  <text font-family="Manrope, sans-serif" font-weight="800" font-size="10" letter-spacing="2" fill="#5b6b6e">P50 LATENCY</text>
+                  <text x="440" text-anchor="end" font-family="Manrope, sans-serif" font-weight="800" font-size="12" fill="#0c3f41">11 ms</text>
+                  <rect x="0" y="10" width="440" height="7" rx="3.5" fill="#eef3f3"/>
+                  <rect x="0" y="10" width="105" height="7" rx="3.5" fill="#6fbe46"/>
+                  <text y="42" font-family="Manrope, sans-serif" font-weight="800" font-size="10" letter-spacing="2" fill="#5b6b6e">P99 LATENCY</text>
+                  <text x="440" y="42" text-anchor="end" font-family="Manrope, sans-serif" font-weight="800" font-size="12" fill="#0c3f41">28 ms</text>
+                  <rect x="0" y="52" width="440" height="7" rx="3.5" fill="#eef3f3"/>
+                  <rect x="0" y="52" width="245" height="7" rx="3.5" fill="#23ad9c"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- PANE 4 -->
+          <div class="tapp1-tab-pane" data-pane="4">
+            <div class="tapp1-tab-pane__text">
+              <h3>Audit every decision</h3>
+              <p>Log every request: who requested access, which application initiated the request, the target resource requested, and why access was granted or denied. Stream the full audit trail to Splunk, Sentinel, or Chronicle.</p>
+              <ul>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Immutable per-decision audit</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>SIEM-ready (Splunk, Sentinel, Chronicle)</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Full replay for compliance &amp; investigation</li>
+              </ul>
+            </div>
+            <div class="tapp1-tab-pane__visual">
+              <svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="480" height="320" fill="#fff" rx="10"/>
+                <rect x="0" y="0" width="480" height="40" fill="#f4fbf8"/>
+                <text x="20" y="26" font-family="Manrope, sans-serif" font-weight="800" font-size="13" fill="#0c3f41">Audit Trail</text>
+                <text x="460" y="26" text-anchor="end" font-family="Manrope, sans-serif" font-weight="700" font-size="11" fill="#08aac3">→ streaming SIEM</text>
+
+                <g transform="translate(20, 56)" font-family="Roboto, sans-serif" font-size="10">
+                  <rect x="0" y="0" width="440" height="26" rx="6" fill="#f4fbf8"/>
+                  <text x="12" y="17" font-family="Manrope, sans-serif" font-weight="800" font-size="9" letter-spacing="1.2" fill="#5b6b6e">TIME</text>
+                  <text x="82" y="17" font-family="Manrope, sans-serif" font-weight="800" font-size="9" letter-spacing="1.2" fill="#5b6b6e">APP</text>
+                  <text x="184" y="17" font-family="Manrope, sans-serif" font-weight="800" font-size="9" letter-spacing="1.2" fill="#5b6b6e">ACTOR</text>
+                  <text x="278" y="17" font-family="Manrope, sans-serif" font-weight="800" font-size="9" letter-spacing="1.2" fill="#5b6b6e">RESOURCE</text>
+                  <text x="392" y="17" font-family="Manrope, sans-serif" font-weight="800" font-size="9" letter-spacing="1.2" fill="#5b6b6e">DECISION</text>
+
+                  <g transform="translate(0, 34)" fill="#0c3f41">
+                    <rect x="0" y="0" width="440" height="26" rx="6" fill="#fff" stroke="#eef3f3"/>
+                    <text x="12" y="17">14:22:07</text><text x="82" y="17" font-weight="700">order-svc</text><text x="184" y="17">u.chen</text><text x="278" y="17">customer_pii</text><text x="392" y="17" font-weight="700" fill="#3e7a26">allow</text>
+                  </g>
+                  <g transform="translate(0, 66)" fill="#0c3f41">
+                    <rect x="0" y="0" width="440" height="26" rx="6" fill="#fff" stroke="#eef3f3"/>
+                    <text x="12" y="17">14:22:07</text><text x="82" y="17" font-weight="700">support</text><text x="184" y="17">sup-01</text><text x="278" y="17">payments</text><text x="392" y="17" font-weight="700" fill="#b23b33">deny</text>
+                  </g>
+                  <g transform="translate(0, 98)" fill="#0c3f41">
+                    <rect x="0" y="0" width="440" height="26" rx="6" fill="#fff" stroke="#eef3f3"/>
+                    <text x="12" y="17">14:22:08</text><text x="82" y="17" font-weight="700">insights</text><text x="184" y="17">ins-04</text><text x="278" y="17">sales.pipeline</text><text x="392" y="17" font-weight="700" fill="#3e7a26">allow</text>
+                  </g>
+                  <g transform="translate(0, 130)" fill="#0c3f41">
+                    <rect x="0" y="0" width="440" height="26" rx="6" fill="#fff" stroke="#eef3f3"/>
+                    <text x="12" y="17">14:22:09</text><text x="82" y="17" font-weight="700">reporting</text><text x="184" y="17">svc:rpt</text><text x="278" y="17">finance.gl</text><text x="392" y="17" font-weight="700" fill="#3e7a26">allow</text>
+                  </g>
+                  <g transform="translate(0, 162)" fill="#0c3f41">
+                    <rect x="0" y="0" width="440" height="26" rx="6" fill="#fff" stroke="#eef3f3"/>
+                    <text x="12" y="17">14:22:09</text><text x="82" y="17" font-weight="700">order-svc</text><text x="184" y="17">u.patel</text><text x="278" y="17">orders.status</text><text x="392" y="17" font-weight="700" fill="#3e7a26">allow</text>
+                  </g>
+                </g>
+
+                <g transform="translate(20, 264)">
+                  <rect x="0" y="0" width="104" height="24" rx="12" fill="#eef7f6" stroke="#d0eae6"/>
+                  <text x="52" y="15" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="10" fill="#007373">Splunk</text>
+                  <rect x="116" y="0" width="104" height="24" rx="12" fill="#eef7f6" stroke="#d0eae6"/>
+                  <text x="168" y="15" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="10" fill="#007373">Sentinel</text>
+                  <rect x="232" y="0" width="104" height="24" rx="12" fill="#eef7f6" stroke="#d0eae6"/>
+                  <text x="284" y="15" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="10" fill="#007373">Chronicle</text>
+                  <rect x="348" y="0" width="112" height="24" rx="12" fill="#eef7f6" stroke="#d0eae6"/>
+                  <text x="404" y="15" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="10" fill="#007373">Immutable</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BENEFITS — vertical numbered rows ============ -->
+    <section class="tapp1-section">
+      <div class="container">
+        <div class="tapp1-head--center">
+          <span class="tapp1-eyebrow">Benefits of TrustApp</span>
+          <h2 class="tapp1-h2">One control plane. <span class="grad">Every application.</span></h2>
+        </div>
+        <div class="tapp1-benefits">
+          <div class="tapp1-benefit">
+            <div class="tapp1-benefit__num">01</div>
+            <div class="tapp1-benefit__text">
+              <h4>Consistent security &amp; governance across all applications</h4>
+              <p>Define authorization policies once and enforce them consistently across applications, AI agents, and enterprise data platforms.</p>
+            </div>
+            <div class="tapp1-benefit__glyph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+          </div>
+          <div class="tapp1-benefit">
+            <div class="tapp1-benefit__num">02</div>
+            <div class="tapp1-benefit__text">
+              <h4>Full visibility into every access decision</h4>
+              <p>Gain a complete audit trail of who requested access, what resource was involved, and why access was granted or denied—across every connected application.</p>
+            </div>
+            <div class="tapp1-benefit__glyph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+          </div>
+          <div class="tapp1-benefit">
+            <div class="tapp1-benefit__num">03</div>
+            <div class="tapp1-benefit__text">
+              <h4>Faster policy changes without application rewrites</h4>
+              <p>Update access policies centrally without modifying application code, allowing security teams to respond quickly to business, compliance, and organizational changes.</p>
+            </div>
+            <div class="tapp1-benefit__glyph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7v8l10-12h-7z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ QUOTE STRIP ============ -->
+    <section class="tapp1-quote">
+      <div class="container">
+        <div class="tapp1-quote__body">
+          <span class="tapp1-quote__mark">"</span>
+          <div>
+            <p class="tapp1-quote__text">Our teams needed direct, low-latency paths to enterprise data—without giving up centralized control. TrustApp lets us <b>author policy once and enforce it everywhere</b>, from custom services to agentic workflows.</p>
+            <p class="tapp1-quote__foot"><b>Chief Information Security Officer</b>  ·  Global Enterprise Customer</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="tapp1-section">
+      <div class="container">
+        <div class="tapp1-faq">
+          <div>
+            <span class="tapp1-eyebrow">FAQ</span>
+            <h2 class="tapp1-h2">TrustApp <span class="grad">FAQs</span></h2>
+            <p class="tapp1-lead" style="margin-bottom:1.75rem;">Answers to the questions we hear most often about centralized application access control.</p>
+            <a href="/get-started" class="btn btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+          </div>
+          <div class="tapp1-faq__list">
+            <div class="tapp1-faq__item open">
+              <div class="tapp1-faq__q" onclick="this.closest('.tapp1-faq__item').classList.toggle('open')">
+                What is TrustApp?
+                <span class="plus"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+              <div class="tapp1-faq__a">TrustApp is a centralized control plane for managing and enforcing access policies for applications and agents that require access to enterprise data. It serves as a policy decision point that applications query during every authorization request.</div>
+            </div>
+            <div class="tapp1-faq__item">
+              <div class="tapp1-faq__q" onclick="this.closest('.tapp1-faq__item').classList.toggle('open')">
+                How is TrustApp proxyless?
+                <span class="plus"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+              <div class="tapp1-faq__a">Applications and agents call TrustApp for a policy decision, but nothing sits inline between the application and the data platform. No added hop, no traffic mirroring, no runtime shim—you get centralized control without the latency or deployment complexity of an in-path proxy.</div>
+            </div>
+            <div class="tapp1-faq__item">
+              <div class="tapp1-faq__q" onclick="this.closest('.tapp1-faq__item').classList.toggle('open')">
+                How do I integrate TrustApp with my applications?
+                <span class="plus"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+              <div class="tapp1-faq__a">Applications register with TrustApp using REST APIs and register the resources they need to protect. TrustApp then resolves user, application, and resource attributes from your identity provider—Microsoft Entra or Okta—evaluates centralized policy, and returns a decision on every request.</div>
+            </div>
+            <div class="tapp1-faq__item">
+              <div class="tapp1-faq__q" onclick="this.closest('.tapp1-faq__item').classList.toggle('open')">
+                How does TrustApp work with TrustAI?
+                <span class="plus"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+              <div class="tapp1-faq__a">Together with TrustAI, TrustLogix delivers a unified control plane that provides consistent security and governance across all applications and agents—for every data-access architecture and scenario.</div>
+            </div>
+            <div class="tapp1-faq__item">
+              <div class="tapp1-faq__q" onclick="this.closest('.tapp1-faq__item').classList.toggle('open')">
+                Can I change access policy without redeploying my apps?
+                <span class="plus"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+              <div class="tapp1-faq__a">Yes. Update access policies centrally in TrustApp without modifying application code—security teams can respond quickly to business, compliance, and organizational changes, and every downstream application picks up the new policy on the next evaluation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="cta-final">
+    <div class="cta-final__card reveal">
+      <div class="cta-final__bg"></div>
+      <img class="cta-final__graphic" src="../../logos/cta-bg-graphic.svg" alt="" aria-hidden="true" />
+      <div class="cta-final__content">
+        <div class="cta-final__left">
+          <h2 class="cta-final__title">Experience TrustApp in Action</h2>
+        </div>
+        <div class="cta-final__right">
+          <p class="cta-final__sub">Schedule a call to see how TrustApp brings unified authorization to your direct-to-data applications and AI agents.</p>
+          <div class="cta-final__buttons">
+            <a href="/get-started" class="btn cta-final__btn cta-final__btn--primary"><span class="btn__swap"><span>Get Started</span><span aria-hidden="true">Get Started</span></span></a>
+            <a href="/platform" class="btn cta-final__btn cta-final__btn--secondary"><span class="btn__swap"><span>Our Platform</span><span aria-hidden="true">Our Platform</span></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-final__strip"></div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer footer--brand footer--light">
+    <div class="container">
+      <div class="footer__top">
+        <a href="/" class="footer__logo" aria-label="TrustLogix">
+          <img src="../../trustlogix-logo.svg" alt="TrustLogix" width="180" height="31" />
+        </a>
+        <p class="footer__tagline">Unified, secure access to the data that drives AI—so innovation moves quickly, safely.</p>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col">
+          <h5>Platform</h5>
+          <a href="/platform">Platform Overview</a>
+          <a href="/platform/trustai">TrustAI</a>
+          <a href="/platform/trustapp">TrustApp</a>
+          <a href="/platform/trustdspm">TrustDSPM</a>
+          <a href="/platform/trustaccess">TrustAccess</a>
+        </div>
+        <div class="footer__col">
+          <h5>Partners</h5>
+          <a href="/partners">Partners Overview</a>
+          <a href="/partners/snowflake">Snowflake</a>
+          <a href="/partners/databricks">Databricks</a>
+          <a href="/partners/microsoft">Power BI</a>
+        </div>
+        <div class="footer__col">
+          <h5>Resources</h5>
+          <a href="/resources">Resources Overview</a>
+          <a href="/blog">The TrustLogix Blog</a>
+          <a href="https://docs.trustlogix.io/">Documentation</a>
+        </div>
+        <div class="footer__col">
+          <h5>About</h5>
+          <a href="/about">About TrustLogix</a>
+          <a href="/careers">Careers</a>
+          <a href="/contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <span class="footer__credit">&copy; 2026 TrustLogix. All rights reserved.</span>
+        <div class="footer__legal">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-of-service">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function tapp1Tab(btn, n) {
+      var tabs = btn.parentNode;
+      var container = tabs.parentNode;
+      tabs.querySelectorAll('.tapp1-tab-btn').forEach(function(b){ b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      container.querySelectorAll('.tapp1-tab-pane').forEach(function(p){ p.classList.remove('is-active'); });
+      var pane = container.querySelector('.tapp1-tab-pane[data-pane="' + n + '"]');
+      if (pane) pane.classList.add('is-active');
+    }
+  </script>
+  <script src="../../script.js"></script>
+</body>
+</html>
