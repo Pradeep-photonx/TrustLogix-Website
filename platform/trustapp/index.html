@@ -31,10 +31,10 @@
       color: var(--eden);
       padding: 5.5rem 0 4.5rem;
       /* overflow: hidden; */
-      height: 100vh !important;
-      /* display: flex;
+      height: 100% !important;
+      display: flex;
       justify-content: center;
-      align-items: center; */
+      align-items: center;
     }
 
     .container {
@@ -43,9 +43,10 @@
 
     .tapp-hero__grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 4rem;
       align-items: center;
+      text-align: center;
     }
 
     .tapp-hero__col {
@@ -101,8 +102,8 @@
       font-size: 1rem;
       line-height: 1.75;
       color: #3a4b4e;
-      margin: 0 0 2.25rem;
-      max-width: 34rem;
+      margin: 0 auto 0.85rem;
+      max-width: 46.5rem;
     }
 
     .tapp-hero__cta {
@@ -124,6 +125,7 @@
       overflow: hidden;
       transition: background .3s, color .3s;
       border: 1px solid #007373;
+      margin-top: 20px;
     }
 
     .tapp-hero__cta:hover {
@@ -284,9 +286,7 @@
       gap: 1.5rem;
       max-width: 80rem;
       margin: 0 auto;
-      position: relative;
-      top: 180px;
-      width: 100%;
+
     }
 
     .tapp-pillar {
@@ -432,7 +432,7 @@
       background-position: 50% 0;
       background-size: 60px;
       background-repeat: repeat;
-      padding: 5.5rem 5vw 6rem;
+      padding: 3.5rem 5vw 6rem;
     }
 
     .tapp-challenge__inner {
@@ -443,7 +443,7 @@
     .tapp-challenge__head {
       text-align: center;
       max-width: 48rem;
-      margin: 0 auto 3.5rem;
+      margin: 0 auto 0.5rem;
     }
 
     .tapp-eyebrow {
@@ -465,6 +465,7 @@
       color: var(--eden);
       letter-spacing: -.02em;
       margin: 0 0 1.15rem;
+      text-align: center;
     }
 
     .tapp-challenge__title b {
@@ -481,9 +482,9 @@
 
     .tapp-challenge__grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
-      margin-top: 3.5rem;
+      /* margin-top: 3.5rem; */
     }
 
     .tapp-ch-card {
@@ -614,7 +615,7 @@
 
     .tapp-how-card__head {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 10px;
       margin-bottom: 1.25rem;
     }
@@ -640,7 +641,7 @@
       font-weight: 700;
       font-size: 1.05rem;
       line-height: 1.3;
-      color: #007373;
+      color: #000;
       margin: 0;
     }
 
@@ -811,8 +812,13 @@
       border: 1px solid #d8d9d9;
       align-items: center;
       padding: 30px;
-      margin-top: 50px;
+      /* margin-top: 50px; */
       border-radius: 25px;
+      max-width: 80rem;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      background: #FFF;
     }
 
     /* ============ FLOW LAYOUT ============ */
@@ -1145,14 +1151,18 @@
 
     /* ============ FLOW DIAGRAM RESPONSIVE ============ */
     @media (max-width: 1699px) {
-      .tapp-pillars {
-        top: 80px !important;
+      /* .tapp-pillars {
+        top: 40px !important;
       }
 
       .tapp-logos {
         padding-top: 200px;
       }
 
+      .tapp-challenge {
+
+        padding: 20.5rem 5vw 6rem;
+      } */
     }
 
     @media (max-width: 1180px) {
@@ -1681,6 +1691,21 @@
       gap: 10px;
     }
 
+    .tapp-challenge__inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 40px;
+
+    }
+
+    .font-13 {
+      font-size: 20px;
+      color: #007373 !important;
+
+    }
+
     /* ============ RESPONSIVE ============ */
     @media (max-width: 1024px) {
       .tapp-hero__grid {
@@ -1823,21 +1848,23 @@
     <section class="tapp-hero">
       <div class="container tapp-hero__grid reveal">
         <div class="tapp-hero__col">
-          <span class="tapp-hero__badge">TrustApp · For Custom Applications</span>
+          <span class="tapp-hero__badge">TrustApp · Centralized Control Plane for Application Access Control</span>
           <h1 class="tapp-hero__title">
             Centralized Access Control for your
             <span class="grad">Custom Application</span>
           </h1>
           <!-- <p class="tapp-hero__sub">Govern every custom application, every access decision, every audit trail — at
             machine speed.</p> -->
-          <p class="tapp-hero__desc">
-            TrustApp is a centralized, proxyless control plane for managing and enforcing policy-based access across all
-            custom business applications—without accessing customer data.
-            It ensures every custom application consistently follows enterprise policy-based access controls (PBAC),
-            regardless of where data resides.
-            With centralized policy management, organizations can securely govern application access across cloud and
-            on-premises environments.
+          <p class="tapp-hero__desc">TrustApp provides a centralized control plane for managing and enforcing access
+            policies across custom business applications. It is proxyless, agentless, and never accesses customer data.
           </p>
+          <p class="tapp-hero__desc">
+            Many enterprises have multiple custom applications. While data stored in cloud and on-premises platforms can
+            be governed using policy-based access controls (PBAC), centralized data teams are often concerned that
+            custom applications do not consistently enforce those same policies.
+          </p>
+          <p class="tapp-hero__desc">TrustApp addresses this challenge by enabling organizations to define and centrally
+            manage policy-based access controls for all custom applications.</p>
           <a href="/get-started" class="tapp-hero__cta">
             <span class="btn-text-main">Get Started</span>
             <span class="btn-text-hover">Get Started</span>
@@ -1845,525 +1872,8 @@
         </div>
 
         <!-- Right-side illustration -->
+
         <div class="tapp-hero__col">
-          <div class="tapp-hero__viz"
-            aria-label="TrustApp connects custom applications to a centralized policy decision engine">
-            <svg viewBox="0 0 620 380" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-              <defs>
-                <linearGradient id="tappVizGrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#6fbe46" />
-                  <stop offset="0.5" stop-color="#23ad9c" />
-                  <stop offset="1" stop-color="#08aac3" />
-                </linearGradient>
-                <filter id="tappViz-blur">
-                  <feGaussianBlur stdDeviation="8" />
-                </filter>
-              </defs>
-
-              <!-- COLUMN HEADS -->
-              <text x="80" y="26" font-family="Manrope, sans-serif" font-weight="800" font-size="11" letter-spacing="3"
-                fill="#1f5a4a">CUSTOM APPS</text>
-              <text x="540" y="26" text-anchor="end" font-family="Manrope, sans-serif" font-weight="800" font-size="11"
-                letter-spacing="3" fill="#1f5a4a">DATA STACK</text>
-
-              <!-- LEFT COLUMN: application types (rows 34h, 42px between centers) -->
-              <g font-family="Manrope, sans-serif" font-size="12" fill="#0c3f41">
-                <g>
-                  <rect x="24" y="46" width="180" height="34" rx="12" fill="#fff" stroke="rgba(12,63,65,.08)" />
-                  <circle class="tapp-viz-dot" cx="46" cy="63" r="4" fill="#08aac3" />
-                  <text x="60" y="67" font-weight="700">Internal Portal</text>
-                </g>
-                <g>
-                  <rect x="24" y="88" width="180" height="34" rx="12" fill="#fff" stroke="rgba(12,63,65,.08)" />
-                  <circle class="tapp-viz-dot" cx="46" cy="105" r="4" fill="#08aac3" style="animation-delay: 0.3s;" />
-                  <text x="60" y="109" font-weight="700">B2B Client Portal</text>
-                </g>
-                <g>
-                  <rect x="24" y="130" width="180" height="34" rx="12" fill="#fff" stroke="rgba(12,63,65,.08)" />
-                  <circle class="tapp-viz-dot" cx="46" cy="147" r="4" fill="#08aac3" style="animation-delay: 0.6s;" />
-                  <text x="60" y="151" font-weight="700">Support Console</text>
-                </g>
-                <g>
-                  <rect x="24" y="172" width="180" height="34" rx="12" fill="#fff" stroke="rgba(12,63,65,.08)" />
-                  <circle class="tapp-viz-dot" cx="46" cy="189" r="4" fill="#08aac3" style="animation-delay: 0.9s;" />
-                  <text x="60" y="193" font-weight="700">Data Marketplace</text>
-                </g>
-                <g>
-                  <rect x="24" y="214" width="180" height="34" rx="12" fill="#fff" stroke="rgba(12,63,65,.08)" />
-                  <circle class="tapp-viz-dot" cx="46" cy="231" r="4" fill="#08aac3" style="animation-delay: 1.2s;" />
-                  <text x="60" y="235" font-weight="700">Admin Console</text>
-                </g>
-              </g>
-
-              <!-- RIGHT COLUMN: data stack -->
-              <g font-family="Manrope, sans-serif" font-size="12" fill="#0c3f41">
-                <g>
-                  <rect x="416" y="46" width="180" height="34" rx="12" fill="#fff" stroke="rgba(12,63,65,.08)" />
-                  <text x="560" y="67" text-anchor="end" font-weight="700">Snowflake</text>
-                  <circle class="tapp-viz-dot" cx="574" cy="63" r="4" fill="#6fbe46" style="animation-delay: 0.15s;" />
-                </g>
-                <g>
-                  <rect x="416" y="88" width="180" height="34" rx="12" fill="#fff" stroke="rgba(12,63,65,.08)" />
-                  <text x="560" y="109" text-anchor="end" font-weight="700">Databricks</text>
-                  <circle class="tapp-viz-dot" cx="574" cy="105" r="4" fill="#6fbe46" style="animation-delay: 0.45s;" />
-                </g>
-                <g>
-                  <rect x="416" y="130" width="180" height="34" rx="12" fill="#fff" stroke="rgba(12,63,65,.08)" />
-                  <text x="560" y="151" text-anchor="end" font-weight="700">Power BI</text>
-                  <circle class="tapp-viz-dot" cx="574" cy="147" r="4" fill="#6fbe46" style="animation-delay: 0.75s;" />
-                </g>
-                <g>
-                  <rect x="416" y="172" width="180" height="34" rx="12" fill="#fff" stroke="rgba(12,63,65,.08)" />
-                  <text x="560" y="193" text-anchor="end" font-weight="700">AWS S3</text>
-                  <circle class="tapp-viz-dot" cx="574" cy="189" r="4" fill="#6fbe46" style="animation-delay: 1.05s;" />
-                </g>
-                <g>
-                  <rect x="416" y="214" width="180" height="34" rx="12" fill="#fff" stroke="rgba(12,63,65,.08)" />
-                  <text x="560" y="235" text-anchor="end" font-weight="700">Azure</text>
-                  <circle class="tapp-viz-dot" cx="574" cy="231" r="4" fill="#6fbe46" style="animation-delay: 1.35s;" />
-                </g>
-              </g>
-
-              <!-- STATIC BASE LINES (subtle) -->
-              <g stroke="rgba(255,255,255,.30)" stroke-width="1.5" fill="none" stroke-linecap="round">
-                <path d="M204 63  Q280 63  310 148" />
-                <path d="M204 105 Q280 105 310 148" />
-                <path d="M204 147 L310 148" />
-                <path d="M204 189 Q280 189 310 148" />
-                <path d="M204 231 Q280 231 310 148" />
-
-                <path d="M310 148 Q365 63  416 63" />
-                <path d="M310 148 Q365 105 416 105" />
-                <path d="M310 148 L416 147" />
-                <path d="M310 148 Q365 189 416 189" />
-                <path d="M310 148 Q365 231 416 231" />
-              </g>
-
-              <!-- ANIMATED FLOW: same paths with traveling dashes -->
-              <g stroke="url(#tappVizGrad)" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.85">
-                <path class="tapp-viz-line" d="M204 63  Q280 63  310 148" />
-                <path class="tapp-viz-line" d="M204 105 Q280 105 310 148" style="animation-delay: 0.3s;" />
-                <path class="tapp-viz-line" d="M204 147 L310 148" style="animation-delay: 0.6s;" />
-                <path class="tapp-viz-line" d="M204 189 Q280 189 310 148" style="animation-delay: 0.9s;" />
-                <path class="tapp-viz-line" d="M204 231 Q280 231 310 148" style="animation-delay: 1.2s;" />
-
-                <path class="tapp-viz-line" d="M310 148 Q365 63  416 63" style="animation-delay: 0.15s;" />
-                <path class="tapp-viz-line" d="M310 148 Q365 105 416 105" style="animation-delay: 0.45s;" />
-                <path class="tapp-viz-line" d="M310 148 L416 147" style="animation-delay: 0.75s;" />
-                <path class="tapp-viz-line" d="M310 148 Q365 189 416 189" style="animation-delay: 1.05s;" />
-                <path class="tapp-viz-line" d="M310 148 Q365 231 416 231" style="animation-delay: 1.35s;" />
-              </g>
-
-              <!-- PULSE RINGS around center (SMIL) -->
-              <circle cx="310" cy="148" fill="none" stroke="url(#tappVizGrad)" stroke-width="1.5">
-                <animate attributeName="r" values="50;92" dur="5s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.6;0" dur="5s" repeatCount="indefinite" />
-              </circle>
-              <circle cx="310" cy="148" fill="none" stroke="url(#tappVizGrad)" stroke-width="1.5">
-                <animate attributeName="r" values="50;82" dur="5s" begin="2.5s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.45;0" dur="5s" begin="2.5s" repeatCount="indefinite" />
-              </circle>
-
-              <!-- CENTER CIRCLE — TrustApp mark -->
-              <g>
-                <circle cx="310" cy="148" r="62" fill="#fff" opacity="0.4" filter="url(#tappViz-blur)" />
-                <circle cx="310" cy="148" r="50" fill="#fff" />
-                <circle cx="310" cy="148" r="46" fill="url(#tappVizGrad)" opacity="0.05" />
-                <circle cx="310" cy="148" r="46" fill="none" stroke="url(#tappVizGrad)" stroke-width="1.5"
-                  stroke-opacity="0.4" />
-
-                <!-- Gear + arrows icon image -->
-                <image href="../../assets/clients/icon.png" x="272" y="110" width="76" height="76" border-radius="50%"
-                  preserveAspectRatio="xMidYMid meet" />
-
-                <text x="310" y="205" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800"
-                  font-size="13" fill="#0c3f41">TrustApp</text>
-              </g>
-
-
-
-              <!-- BOTTOM PILL — Live decision -->
-              <!-- <g class="tapp-viz-pill" transform="translate(170, 285)">
-                <rect x="0" y="0" width="280" height="30" rx="15" fill="#fff" stroke="rgba(12,63,65,.1)" />
-                <circle cx="18" cy="15" r="5" fill="#3e7a26">
-                  <animate attributeName="opacity" values="1;0.4;1" dur="3s" repeatCount="indefinite" />
-                </circle>
-                <text x="32" y="19" font-family="Manrope, sans-serif" font-weight="800" font-size="9" letter-spacing="2"
-                  fill="#0c3f41">POLICY DECISION · SUPPORT-AGENT · ALLOW</text>
-              </g> -->
-
-              <!-- Footer strip -->
-              <!-- <g transform="translate(24, 350)">
-                <text font-family="Manrope, sans-serif" font-weight="800" font-size="9" letter-spacing="2.5"
-                  fill="rgba(12,63,65,.55)">EVERY APP · EVERY REQUEST · EVERY DECISION LOGGED</text>
-                <text x="572" text-anchor="end" font-family="Manrope, sans-serif" font-weight="800" font-size="9"
-                  letter-spacing="2.5" fill="rgba(12,63,65,.55)">&lt; 10 ms · MACHINE SPEED</text>
-              </g> -->
-            </svg>
-          </div>
-        </div>
-
-      </div>
-      <div class="tapp-pillars reveal">
-        <div class="tapp-pillar">
-          <div class="card-flex">
-            <div class="tapp-pillar__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <path d="M9 12l2 2 4-4" />
-              </svg>
-            </div>
-            <span class="tapp-pillar__num">01 · Non-Intrusive</span>
-          </div>
-          <h3 class="tapp-pillar__title">Proxyless &amp; Agentless</h3>
-          <p class="tapp-pillar__desc">Proxyless, agentless, and designed with no customer data access. Nothing sits
-            inline between your applications and the data path.</p>
-        </div>
-        <div class="tapp-pillar">
-          <div class="card-flex">
-            <div class="tapp-pillar__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path
-                  d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3" />
-                <circle cx="12" cy="12" r="4" />
-              </svg>
-            </div>
-            <span class="tapp-pillar__num">02 · Interoperable</span>
-          </div>
-          <h3 class="tapp-pillar__title">Fits Your Existing Stack</h3>
-          <p class="tapp-pillar__desc">Integrates seamlessly with IAM, SIEM, and data governance platforms — Okta,
-            Microsoft Entra ID, Splunk, Sentinel, and more.</p>
-        </div>
-        <div class="tapp-pillar">
-          <div class="card-flex">
-            <div class="tapp-pillar__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M3 3v18h18" />
-                <path d="M7 15l4-6 4 4 5-8" />
-              </svg>
-            </div>
-            <span class="tapp-pillar__num">03 · Scalable</span>
-          </div>
-          <h3 class="tapp-pillar__title">Built for Enterprise Scale</h3>
-          <p class="tapp-pillar__desc">Cloud-native architecture built for enterprise-scale deployments — one control
-            plane covering every custom application.</p>
-        </div>
-      </div>
-    </section>
-
-
-
-    <!-- ============ TRUSTED LOGOS STRIP ============ -->
-    <section class="tapp-logos reveal">
-      <p class="tapp-logos__title">Trusted Across the <b>Enterprise Identity, SIEM &amp; Data Stack</b></p>
-      <div class="tapp-logos__row">
-
-        <img src="../../assets/clients/1.webp" alt="1" />
-        <img src="../../assets/clients/2.png" alt="2" />
-        <img src="../../assets/clients/3.png" alt="3" />
-        <img src="../../assets/clients/4.png" alt="4" />
-        <img src="../../assets/clients/5.png" alt="5" />
-        <img src="../../assets/clients/6.webp" alt="6" />
-        <img src="../../assets/clients/7.png" alt="7" />
-        <img src="../../assets/clients/8.webp" alt="8" />
-        <img src="../../assets/clients/9.webp" alt="9" />
-        <img src="../../assets/clients/1.webp" alt="1" />
-        <img src="../../assets/clients/2.png" alt="2" />
-        <img src="../../assets/clients/3.png" alt="3" />
-        <img src="../../assets/clients/4.png" alt="4" />
-        <img src="../../assets/clients/5.png" alt="5" />
-        <img src="../../assets/clients/6.webp" alt="6" />
-        <img src="../../assets/clients/7.png" alt="7" />
-        <img src="../../assets/clients/8.webp" alt="8" />
-        <img src="../../assets/clients/9.webp" alt="9" />
-
-
-      </div>
-    </section>
-
-    <!-- ============ THE CHALLENGE ============ -->
-    <section class="tapp-challenge reveal">
-      <div class="container">
-        <div class="tapp-challenge__inner">
-          <div class="tapp-challenge__head">
-            <p class="tapp-eyebrow">THE CHALLENGE</p>
-            <h2 class="tapp-challenge__title">Custom applications are a <b>Security Blind Spot</b></h2>
-            <p class="tapp-challenge__lead">Security logic is embedded within application code, making access controls
-              difficult to review, modify, or remediate without engineering involvement.</p>
-          </div>
-
-          <div class="tapp-challenge__grid">
-            <!-- Card 1 -->
-            <div class="tapp-ch-card reveal">
-              <div class="tapp-ch-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-              </div>
-              <h3 class="tapp-ch-card__title">Opaque Security</h3>
-              <p class="tapp-ch-card__desc">Custom applications multiply across the enterprise faster than governance
-                frameworks can adapt, spreading access decisions across disconnected teams and codebases.</p>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="tapp-ch-card reveal" data-delay="1">
-              <div class="tapp-ch-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path
-                    d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-10-8-10-8a19.77 19.77 0 0 1 5.06-6.06M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 10 8 10 8a19.8 19.8 0 0 1-2.16 3.19M1 1l22 22M14.12 14.12a4 4 0 1 1-5.66-5.66" />
-                </svg>
-              </div>
-              <h3 class="tapp-ch-card__title">Fragmented Access Controls</h3>
-              <p class="tapp-ch-card__desc">Business units manage access controls independently, leaving central teams
-                unable to consistently assess or align security policies.</p>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="tapp-ch-card reveal" data-delay="2">
-              <div class="tapp-ch-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <rect x="3" y="3" width="7" height="7" rx="1.5" />
-                  <rect x="14" y="3" width="7" height="7" rx="1.5" />
-                  <rect x="3" y="14" width="7" height="7" rx="1.5" />
-                  <path d="M14 17l3 3 4-5" />
-                </svg>
-              </div>
-              <h3 class="tapp-ch-card__title">Lack of Policy Consistency</h3>
-              <p class="tapp-ch-card__desc">Applications and data platforms operate under different access policies,
-                creating gaps
-                in enforcement and control.</p>
-            </div>
-
-            <!-- Card 4 -->
-            <!-- <div class="tapp-ch-card reveal" data-delay="3">
-              <div class="tapp-ch-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  <path d="M12 8v4M12 16h.01" />
-                </svg>
-              </div>
-              <h3 class="tapp-ch-card__title">Data Officers Lose Ground</h3>
-              <p class="tapp-ch-card__desc">Access policies refined over years still don't reach the custom applications
-                running outside data officer visibility — undermining a program built on hard-won governance.</p>
-            </div> -->
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ HOW IT WORKS ============ -->
-    <section class="tapp-how reveal">
-      <div class="container">
-        <div class="tapp-how__inner">
-
-          <div class="tapp-how__head">
-            <p class="tapp-eyebrow">HOW IT WORKS · TrustApp Overview</p>
-            <h2 class="tapp-how__title">From access request to decision — in <b>four steps</b></h2>
-            <p class="tapp-how__lead">TrustApp serves as a centralized policy decision point for enterprise
-              applications.
-              Applications query TrustApp to evaluate access policies and enforce decisions based on the permissions
-              defined centrally, ensuring consistent security across both custom applications and enterprise data
-              platforms.</p>
-          </div>
-
-          <!-- <p class="tapp-how__callout">
-            One REST call. One policy plane. Every access decision — governed.<br>
-            <b>TrustApp works with your existing identity, SIEM, and data governance stack.</b>
-          </p> -->
-
-          <div class="tapp-how__grid">
-
-            <!-- Step 01 · Connect Application -->
-            <div class="tapp-how-card reveal">
-              <div class="tapp-how-card__head">
-                <!-- <div class="tapp-how-card__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <rect x="3" y="5" width="18" height="13" rx="2" />
-                    <path d="M3 8h18" />
-                    <circle cx="6" cy="6.5" r="0.6" fill="currentColor" stroke="none" />
-                    <circle cx="8.5" cy="6.5" r="0.6" fill="currentColor" stroke="none" />
-                    <path d="M12 12h6M15 10l3 2-3 2" />
-                  </svg>
-                </div> -->
-                <h3 class="tapp-how-card__title">Connect Your Application and Define Resources</h3>
-              </div>
-              <p class="tapp-how-card__desc">Connect your custom application to TrustApp using REST APIs and register
-                the resources it exposes, such as URLs, database tables, dashboards, or files. TrustApp then becomes the
-                central policy authority for controlling access to those resources.</p>
-
-              <!-- <div class="tapp-how-card__divider"></div>
-              <p class="tapp-how-card__label">WHAT'S SENT</p>
-              <ul class="tapp-how-card__list">
-                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>Actor identity &amp; role</li>
-                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>Resource being requested</li>
-              </ul>
-              <div class="tapp-how-card__extra">
-                <ul class="tapp-how-card__list" style="margin-top:.6rem">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M20 6 9 17l-5-5" />
-                    </svg>Action &amp; request context</li>
-                </ul>
-              </div> -->
-
-            </div>
-
-            <!-- Step 02 · Identity Attributes -->
-            <div class="tapp-how-card reveal" data-delay="1">
-              <div class="tapp-how-card__head">
-                <!-- <div class="tapp-how-card__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <circle cx="12" cy="8" r="4" />
-                    <path d="M5 20c1-3.5 3.5-5 7-5s6 1.5 7 5" />
-                    <path d="M9 4l-1.5-1.5M15 4l1.5-1.5M12 2.5V1" />
-                  </svg>
-                </div> -->
-                <h3 class="tapp-how-card__title">Configure Attributes and Policies</h3>
-              </div>
-              <p class="tapp-how-card__desc">Link user and resource attributes directly to your identity source such as
-                Azure ID via user principal name. Define exactly who can access what, under which conditions, through
-                executable Rego policies evaluated by OPA.</p>
-
-              <!-- <div class="tapp-how-card__divider"></div>
-              <p class="tapp-how-card__label">SUPPORTS</p>
-              <ul class="tapp-how-card__list">
-                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>Okta &amp; Microsoft Entra ID</li>
-                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>Ping, Auth0, any OIDC IdP</li>
-              </ul>
-              <div class="tapp-how-card__extra">
-                <ul class="tapp-how-card__list" style="margin-top:.6rem">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M20 6 9 17l-5-5" />
-                    </svg>Role, group, geo attributes</li>
-                </ul>
-              </div> -->
-
-            </div>
-
-            <!-- Step 03 · Policy Decision Engine -->
-            <div class="tapp-how-card reveal" data-delay="2">
-              <div class="tapp-how-card__head">
-                <!-- <div class="tapp-how-card__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.8l-4.9 2.4.9-5.5L4 7.8l5.5-.8z" />
-                  </svg>
-                </div> -->
-                <h3 class="tapp-how-card__title">Evaluate Access Requests in Real Time</h3>
-              </div>
-              <p class="tapp-how-card__desc">Developers integrate applications with TrustApp's Policy APIs. Each access
-                request is evaluated against centralized policies, with allow or deny decisions returned in
-                milliseconds.</p>
-
-              <!-- <div class="tapp-how-card__divider"></div>
-              <p class="tapp-how-card__label">POWERED BY</p>
-              <ul class="tapp-how-card__list">
-                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>OPA (Open Policy Agent)</li>
-                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>Rego policy-as-code</li>
-              </ul>
-              <div class="tapp-how-card__extra">
-                <ul class="tapp-how-card__list" style="margin-top:.6rem">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M20 6 9 17l-5-5" />
-                    </svg>Versioned &amp; centrally managed</li>
-                </ul>
-              </div> -->
-
-            </div>
-
-            <!-- Step 04 · Decision returned & logged -->
-            <div class="tapp-how-card reveal" data-delay="3">
-              <div class="tapp-how-card__head">
-                <!-- <div class="tapp-how-card__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="9" />
-                    <path d="M8.5 12l2.5 2.5 4.5-4.5" />
-                  </svg>
-                </div> -->
-                <h3 class="tapp-how-card__title">Decision Returned, Logged &amp; Visible</h3>
-              </div>
-              <p class="tapp-how-card__desc">The moment a decision is made, it's recorded. Every access request
-                and its outcome — who asked, what they requested, and what TrustApp decided — is captured in a full
-                authorization audit log visible to central security teams.</p>
-
-              <!-- <div class="tapp-how-card__divider"></div>
-              <p class="tapp-how-card__label">STREAMS TO</p>
-              <ul class="tapp-how-card__list">
-                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>Splunk</li>
-                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>Microsoft Sentinel</li>
-              </ul>
-              <div class="tapp-how-card__extra">
-                <ul class="tapp-how-card__list" style="margin-top:.6rem">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M20 6 9 17l-5-5" />
-                    </svg>Any SIEM or data lake</li>
-                </ul>
-              </div> -->
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="py-">
-      <div class="container">
-        <div class="tapp-overview reveal" data-delay="4">
-          <!-- Header -->
-          <div class="tapp-overview__header">
-            <h2 class="tapp-overview__title">TrustApp <span class="grad">Overview</span></h2>
-            <p class="tapp-overview__subtitle">TrustApp is the control plane between your custom applications and your
-              enterprise data — governing every access request with policy, identity, and audit.</p>
-            <div class="tapp-overview__pill">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <path d="M9 12l2 2 4-4" />
-              </svg>
-              <span>TrustLogix Policy Plane</span><em>— proxyless-agentless</em>
-            </div>
-            <div class="tapp-overview__pill-arrow"></div>
-          </div>
-
-          <!-- FLOW DIAGRAM: 5-col grid (left panels · Policy Query · PDE · Logs · Audit) -->
           <div class="tapp-overview__grid">
 
             <!-- LEFT: Identity → Custom Apps → Protected Resources -->
@@ -2613,9 +2123,363 @@
         </div>
       </div>
     </section>
+    <section class="tapp-challenge reveal">
+      <div class="container">
+        <div class="tapp-challenge__inner">
+          <h2 class="tapp-challenge__title">Benefits of <b>TrustApp</b></h2>
+
+
+          <div class="tapp-pillars">
+            <div class="tapp-pillar">
+              <div class="card-flex">
+                <div class="tapp-pillar__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <path d="M9 12l2 2 4-4" />
+                  </svg>
+                </div>
+                <span class="tapp-pillar__num">01 · Non-Intrusive</span>
+              </div>
+              <h3 class="tapp-pillar__title">Proxyless &amp; Agentless</h3>
+              <p class="tapp-pillar__desc">Proxyless, agentless, and designed with no customer data access. Nothing sits
+                inline between your applications and the data path.</p>
+            </div>
+            <div class="tapp-pillar">
+              <div class="card-flex">
+                <div class="tapp-pillar__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path
+                      d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3" />
+                    <circle cx="12" cy="12" r="4" />
+                  </svg>
+                </div>
+                <span class="tapp-pillar__num">02 · Interoperable</span>
+              </div>
+              <h3 class="tapp-pillar__title">Fits Your Existing Stack</h3>
+              <p class="tapp-pillar__desc">Integrates seamlessly with IAM, SIEM, and data governance platforms — Okta,
+                Microsoft Entra ID, Splunk, Sentinel, and more.</p>
+            </div>
+            <div class="tapp-pillar">
+              <div class="card-flex">
+                <div class="tapp-pillar__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M3 3v18h18" />
+                    <path d="M7 15l4-6 4 4 5-8" />
+                  </svg>
+                </div>
+                <span class="tapp-pillar__num">03 · Scalable</span>
+              </div>
+              <h3 class="tapp-pillar__title">Built for Enterprise Scale</h3>
+              <p class="tapp-pillar__desc">Cloud-native architecture built for enterprise-scale deployments — one
+                control
+                plane covering every custom application.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ============ TRUSTED LOGOS STRIP ============ -->
+    <!-- <section class="tapp-logos reveal">
+      <p class="tapp-logos__title">Trusted Across the <b>Enterprise Identity, SIEM &amp; Data Stack</b></p>
+      <div class="tapp-logos__row">
+
+        <img src="../../assets/clients/1.webp" alt="1" />
+        <img src="../../assets/clients/2.png" alt="2" />
+        <img src="../../assets/clients/3.png" alt="3" />
+        <img src="../../assets/clients/4.png" alt="4" />
+        <img src="../../assets/clients/5.png" alt="5" />
+        <img src="../../assets/clients/6.webp" alt="6" />
+        <img src="../../assets/clients/7.png" alt="7" />
+        <img src="../../assets/clients/8.webp" alt="8" />
+        <img src="../../assets/clients/9.webp" alt="9" />
+        <img src="../../assets/clients/1.webp" alt="1" />
+        <img src="../../assets/clients/2.png" alt="2" />
+        <img src="../../assets/clients/3.png" alt="3" />
+        <img src="../../assets/clients/4.png" alt="4" />
+        <img src="../../assets/clients/5.png" alt="5" />
+        <img src="../../assets/clients/6.webp" alt="6" />
+        <img src="../../assets/clients/7.png" alt="7" />
+        <img src="../../assets/clients/8.webp" alt="8" />
+        <img src="../../assets/clients/9.webp" alt="9" />
+
+
+      </div>
+    </section> -->
+
+    <!-- ============ THE CHALLENGE ============ -->
+    <section class="tapp-challenge reveal">
+      <div class="container">
+        <div class="tapp-challenge__inner">
+          <div class="tapp-challenge__head">
+            <p class="tapp-eyebrow">THE CHALLENGE</p>
+            <h2 class="tapp-challenge__title">Custom applications are a <b>Security Blind Spot</b></h2>
+            <p class="tapp-challenge__lead">Security logic is embedded within application code, making access controls
+              difficult to review, modify, or remediate without engineering involvement.</p>
+          </div>
+
+          <div class="tapp-challenge__grid">
+            <!-- Card 1 · Embedded Security -->
+            <div class="tapp-ch-card reveal">
+              <div class="tapp-ch-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                  <line x1="14" y1="4" x2="10" y2="20" />
+                </svg>
+              </div>
+              <h3 class="tapp-ch-card__title">Embedded Security</h3>
+              <p class="tapp-ch-card__desc">Developers embed rules that become difficult to audit, modify, and govern.
+              </p>
+            </div>
+
+            <!-- Card 2 · Fragmented Data Policies -->
+            <div class="tapp-ch-card reveal" data-delay="1">
+              <div class="tapp-ch-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M12 2v6M12 22v-6" />
+                  <path d="M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24" />
+                  <path d="M2 12h6M22 12h-6" />
+                  <path d="M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24" />
+                </svg>
+              </div>
+              <h3 class="tapp-ch-card__title">Fragmented Data Policies</h3>
+              <p class="tapp-ch-card__desc">Applications evolve independently, creating inconsistent policies across the
+                enterprise.</p>
+            </div>
+
+            <!-- Card 3 · No Centralized Visibility -->
+            <div class="tapp-ch-card reveal" data-delay="2">
+              <div class="tapp-ch-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-10-8-10-8a19.77 19.77 0 0 1 5.06-6.06M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 10 8 10 8a19.8 19.8 0 0 1-2.16 3.19M1 1l22 22M14.12 14.12a4 4 0 1 1-5.66-5.66" />
+                </svg>
+              </div>
+              <h3 class="tapp-ch-card__title">No Centralized Visibility</h3>
+              <p class="tapp-ch-card__desc">No unified insights into who accessed what data and why.</p>
+            </div>
+
+            <!-- Card 4 · Complex Policy Update -->
+            <div class="tapp-ch-card reveal" data-delay="3">
+              <div class="tapp-ch-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M12 20h9" />
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
+                </svg>
+              </div>
+              <h3 class="tapp-ch-card__title">Complex Policy Update</h3>
+              <p class="tapp-ch-card__desc">Security and compliance changes require update of application code.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="tapp-how reveal">
+      <div class="container">
+        <div class="tapp-how__inner">
+
+          <div class="tapp-how__head">
+            <p class="tapp-eyebrow">HOW IT WORKS · TrustApp Overview</p>
+            <h2 class="tapp-how__title">From access request to decision — in <b>four steps</b></h2>
+            <p class="tapp-how__lead">TrustApp serves as a centralized policy decision point for enterprise
+              applications.
+              Applications query TrustApp to evaluate access policies and enforce decisions based on the permissions
+              defined centrally, ensuring consistent security across both custom applications and enterprise data
+              platforms.</p>
+          </div>
+
+          <!-- <p class="tapp-how__callout">
+            One REST call. One policy plane. Every access decision — governed.<br>
+            <b>TrustApp works with your existing identity, SIEM, and data governance stack.</b>
+          </p> -->
+
+          <div class="tapp-how__grid">
+
+            <!-- Step 01 · Connect Application -->
+            <div class="tapp-how-card reveal">
+              <div class="tapp-how-card__head">
+                <!-- <div class="tapp-how-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="3" y="5" width="18" height="13" rx="2" />
+                    <path d="M3 8h18" />
+                    <circle cx="6" cy="6.5" r="0.6" fill="currentColor" stroke="none" />
+                    <circle cx="8.5" cy="6.5" r="0.6" fill="currentColor" stroke="none" />
+                    <path d="M12 12h6M15 10l3 2-3 2" />
+                  </svg>
+                </div> -->
+                <h4 class="font-13">01</h4>
+                <h3 class="tapp-how-card__title">Connect Your Application and Define Resources</h3>
+              </div>
+              <p class="tapp-how-card__desc">Connect your custom application to TrustApp using REST APIs and register
+                the resources it exposes, such as URLs, database tables, dashboards, or files. TrustApp then becomes the
+                central policy authority for controlling access to those resources.</p>
+
+              <!-- <div class="tapp-how-card__divider"></div>
+              <p class="tapp-how-card__label">WHAT'S SENT</p>
+              <ul class="tapp-how-card__list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>Actor identity &amp; role</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>Resource being requested</li>
+              </ul>
+              <div class="tapp-how-card__extra">
+                <ul class="tapp-how-card__list" style="margin-top:.6rem">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>Action &amp; request context</li>
+                </ul>
+              </div> -->
+
+            </div>
+
+            <!-- Step 02 · Identity Attributes -->
+            <div class="tapp-how-card reveal" data-delay="1">
+              <div class="tapp-how-card__head">
+                <!-- <div class="tapp-how-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M5 20c1-3.5 3.5-5 7-5s6 1.5 7 5" />
+                    <path d="M9 4l-1.5-1.5M15 4l1.5-1.5M12 2.5V1" />
+                  </svg>
+                </div> -->
+                <h4 class="font-13">02</h4>
+
+                <h3 class="tapp-how-card__title">Configure Attributes and Policies</h3>
+              </div>
+              <p class="tapp-how-card__desc">Link user and resource attributes directly to your identity source such as
+                Azure ID via user principal name. Define exactly who can access what, under which conditions, through
+                executable Rego policies evaluated by OPA.</p>
+
+              <!-- <div class="tapp-how-card__divider"></div>
+              <p class="tapp-how-card__label">SUPPORTS</p>
+              <ul class="tapp-how-card__list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>Okta &amp; Microsoft Entra ID</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>Ping, Auth0, any OIDC IdP</li>
+              </ul>
+              <div class="tapp-how-card__extra">
+                <ul class="tapp-how-card__list" style="margin-top:.6rem">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>Role, group, geo attributes</li>
+                </ul>
+              </div> -->
+
+            </div>
+
+            <!-- Step 03 · Policy Decision Engine -->
+            <div class="tapp-how-card reveal" data-delay="2">
+              <div class="tapp-how-card__head">
+                <!-- <div class="tapp-how-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.8l-4.9 2.4.9-5.5L4 7.8l5.5-.8z" />
+                  </svg>
+                </div> -->
+                <h4 class="font-13">03</h4>
+
+                <h3 class="tapp-how-card__title">Evaluate Access Requests in Real Time</h3>
+              </div>
+              <p class="tapp-how-card__desc">Developers integrate applications with TrustApp's Policy APIs. Each access
+                request is evaluated against centralized policies, with allow or deny decisions returned in
+                milliseconds.</p>
+
+              <!-- <div class="tapp-how-card__divider"></div>
+              <p class="tapp-how-card__label">POWERED BY</p>
+              <ul class="tapp-how-card__list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>OPA (Open Policy Agent)</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>Rego policy-as-code</li>
+              </ul>
+              <div class="tapp-how-card__extra">
+                <ul class="tapp-how-card__list" style="margin-top:.6rem">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>Versioned &amp; centrally managed</li>
+                </ul>
+              </div> -->
+
+            </div>
+
+            <!-- Step 04 · Decision returned & logged -->
+            <div class="tapp-how-card reveal" data-delay="3">
+              <div class="tapp-how-card__head">
+                <!-- <div class="tapp-how-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M8.5 12l2.5 2.5 4.5-4.5" />
+                  </svg>
+                </div> -->
+                <h4 class="font-13">04</h4>
+
+                <h3 class="tapp-how-card__title">Decision Returned, Logged &amp; Visible</h3>
+              </div>
+              <p class="tapp-how-card__desc">The moment a decision is made, it's recorded. Every access request
+                and its outcome — who asked, what they requested, and what TrustApp decided — is captured in a full
+                authorization audit log visible to central security teams.</p>
+
+              <!-- <div class="tapp-how-card__divider"></div>
+              <p class="tapp-how-card__label">STREAMS TO</p>
+              <ul class="tapp-how-card__list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>Splunk</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>Microsoft Sentinel</li>
+              </ul>
+              <div class="tapp-how-card__extra">
+                <ul class="tapp-how-card__list" style="margin-top:.6rem">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>Any SIEM or data lake</li>
+                </ul>
+              </div> -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <!-- ============ BUILT FOR — Four application profiles ============ -->
-    <section class="tapp-built reveal">
+    <!-- <section class="tapp-built reveal">
       <div class="tapp-built__inner">
 
         <div class="tapp-built__head">
@@ -2627,7 +2491,6 @@
 
         <div class="tapp-built__grid">
 
-          <!-- Profile 1 · Lighthouse -->
           <div class="tapp-built-card reveal">
             <div class="tapp-built-card__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
@@ -2646,7 +2509,6 @@
               internal systems with access governed by HR-driven relationship entitlements.</p>
           </div>
 
-          <!-- Profile 2 · Managed Service -->
           <div class="tapp-built-card reveal" data-delay="1">
             <div class="tapp-built-card__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
@@ -2664,7 +2526,6 @@
               requiring strict geo-fencing and data residency enforcement.</p>
           </div>
 
-          <!-- Profile 3 · Customer 360 -->
           <div class="tapp-built-card reveal" data-delay="2">
             <div class="tapp-built-card__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
@@ -2681,7 +2542,6 @@
               specific, auditable access purpose.</p>
           </div>
 
-          <!-- Profile 4 · Self-Service -->
           <div class="tapp-built-card reveal" data-delay="3">
             <div class="tapp-built-card__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
@@ -2701,7 +2561,7 @@
 
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- ============ VALUE TRUSTAPP DELIVERS ============ -->
     <section class="tapp-value reveal">
